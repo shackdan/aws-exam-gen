@@ -31,6 +31,34 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Tuning for more VRAM
+
+The defaults in [config.py](config.py) are sized for the dev box's Nvidia GTX 1070 (8 GB VRAM): a 4096-token context window and 4 RAG chunks retrieved per query. If you have a card with more VRAM to spare, raise these via environment variables instead of editing the code:
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `OLLAMA_MODEL` | `qwen2.5:7b-instruct` | Ollama model to use — a larger model (e.g. `qwen2.5:14b-instruct`) can improve question quality |
+| `OLLAMA_NUM_CTX` | `4096` | Context window size (tokens) passed to Ollama |
+| `RAG_TOP_K` | `4` | Number of RAG chunks retrieved per question |
+
+The prompt's context-truncation limit scales automatically with `OLLAMA_NUM_CTX`, so raising it also lets more retrieved context reach the model.
+
+**PowerShell**
+
+```powershell
+$env:OLLAMA_MODEL = "qwen2.5:14b-instruct"
+$env:OLLAMA_NUM_CTX = "16384"
+$env:RAG_TOP_K = "8"
+```
+
+**Bash**
+
+```bash
+export OLLAMA_MODEL="qwen2.5:14b-instruct"
+export OLLAMA_NUM_CTX="16384"
+export RAG_TOP_K="8"
+```
+
 ## Supported certifications
 
 Run `python main.py list` to see all certifications known to [registry.json](registry.json), their tier, domains, and exam question counts.

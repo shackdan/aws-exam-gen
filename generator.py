@@ -246,7 +246,7 @@ def retrieve_context(
     domain:          str,
     collection:      Any,
     embedding_model: Any,
-    n_results:       int = 5,
+    n_results:       int = EMBEDDING_CONFIG.top_k_results,
 ) -> Tuple[str, Optional[str], List[str]]:
     """
     Retrieve the most relevant document chunks from ChromaDB for a
@@ -436,19 +436,19 @@ def build_generation_prompt(
     """
     Assemble the user-turn prompt for the LLM generation call.
 
-    Inserts a truncated context block to stay within the 4096-token
-    num_ctx limit configured for the GTX 1070.
+    Inserts a truncated context block to stay within the configured
+    OLLAMA_CONFIG.num_ctx limit (4096 tokens on the GTX 1070 dev box,
+    override via the OLLAMA_NUM_CTX env var on higher-VRAM systems).
 
     Context budget:
-      System prompt  ≈  350 tokens
-      User prompt    ≈  400 tokens (template scaffolding)
-      Context block  ≈ 1800 tokens (6 × ~300-token chunks)
-      Response       ≈ 2048 tokens (max_tokens cap)
-      ─────────────────────────────
-      Total          ≈ 4598 tokens  → truncate context to ~1600 chars
+      System + user prompt ≈  750 tokens (template scaffolding)
+      Response             ≈ OLLAMA_CONFIG.max_tokens (generation cap)
+      Context block        ≈ remainder of num_ctx, at ~4 chars/token
     """
     # Truncate context to avoid exceeding num_ctx
-    max_context_chars = 5000  # ~1250 tokens at 4 chars/token
+    reserved_tokens   = 750 + OLLAMA_CONFIG.max_tokens
+    context_budget    = max(OLLAMA_CONFIG.num_ctx - reserved_tokens, 500)
+    max_context_chars = context_budget * 4  # ~4 chars/token
     if len(context) > max_context_chars:
         context = context[:max_context_chars] + "\n… [context truncated]"
 
@@ -735,7 +735,7 @@ def generate_single_question(
                 domain          = domain,
                 collection      = collection,
                 embedding_model = embedding_model,
-                n_results       = 5,
+                n_results       = EMBEDDING_CONFIG.top_k_results,
             )
 
             if not context:

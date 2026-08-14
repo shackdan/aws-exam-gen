@@ -43,8 +43,11 @@ class OllamaConfig:
             "OLLAMA_BASE_URL", "http://localhost:11434"
         )
     )
-    # 4 096 tokens keeps the full KV-cache inside 8 GB VRAM at Q4_K_M
-    num_ctx: int = 4096
+    # 4 096 tokens keeps the full KV-cache inside 8 GB VRAM at Q4_K_M.
+    # Raise via OLLAMA_NUM_CTX on systems with more VRAM headroom.
+    num_ctx: int = field(
+        default_factory=lambda: int(os.getenv("OLLAMA_NUM_CTX", "4096"))
+    )
     # Temperature controls creativity vs. consistency
     temperature: float = 0.4
     # top_p nucleus sampling
@@ -71,7 +74,10 @@ class EmbeddingConfig:
     # Number of RAG chunks returned per query.
     # 4 chunks × 500 tokens = 2 000 input tokens, leaving ~2 000 tokens for
     # the generated response within the 4 096-token context window.
-    top_k_results: int = 4
+    # Raise via RAG_TOP_K alongside OLLAMA_NUM_CTX on higher-VRAM systems.
+    top_k_results: int = field(
+        default_factory=lambda: int(os.getenv("RAG_TOP_K", "4"))
+    )
 
 
 # ─────────────────────────────────────────────
