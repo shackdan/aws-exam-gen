@@ -1,0 +1,214 @@
+{
+  "certifications": {
+    "CLF-C02": {
+      "name": "AWS Certified Cloud Practitioner",
+      "tier": "Foundational",
+      "domains": [
+        "Cloud Concepts",
+        "Security and Compliance",
+        "Cloud Technology and Services",
+        "Billing, Pricing, and Support"
+      ],
+      "domain_weights": {
+        "Cloud Concepts": 0.24,
+        "Security and Compliance": 0.30,
+        "Cloud Technology and Services": 0.34,
+        "Billing, Pricing, and Support": 0.12
+      },
+      "total_questions": 65,
+      "passing_score": 700
+    },
+    "AIF-C01": {
+      "name": "AWS Certified AI Practitioner",
+      "tier": "Foundational",
+      "domains": [
+        "Fundamentals of AI and ML",
+        "Fundamentals of Generative AI",
+        "Applications of Foundation Models",
+        "Guidelines for Responsible AI",
+        "Security, Compliance, and Governance for AI Solutions"
+      ],
+      "domain_weights": {
+        "Fundamentals of AI and ML": 0.20,
+        "Fundamentals of Generative AI": 0.24,
+        "Applications of Foundation Models": 0.28,
+        "Guidelines for Responsible AI": 0.14,
+        "Security, Compliance, and Governance for AI Solutions": 0.14
+      },
+      "total_questions": 85,
+      "passing_score": 700
+    },
+    "SAA-C03": {
+      "name": "AWS Certified Solutions Architect Associate",
+      "tier": "Associate",
+      "domains": [
+        "Design Secure Architectures",
+        "Design Resilient Architectures",
+        "Design High-Performing Architectures",
+        "Design Cost-Optimized Architectures"
+      ],
+      "domain_weights": {
+        "Design Secure Architectures": 0.30,
+        "Design Resilient Architectures": 0.26,
+        "Design High-Performing Architectures": 0.24,
+        "Design Cost-Optimized Architectures": 0.20
+      },
+      "total_questions": 65,
+      "passing_score": 720
+    },
+    "DVA-C02": {
+      "name": "AWS Certified Developer Associate",
+      "tier": "Associate",
+      "domains": [
+        "Development with AWS Services",
+        "Security",
+        "Deployment",
+        "Troubleshooting and Optimization"
+      ],
+      "domain_weights": {
+        "Development with AWS Services": 0.32,
+        "Security": 0.26,
+        "Deployment": 0.24,
+        "Troubleshooting and Optimization": 0.18
+      },
+      "total_questions": 65,
+      "passing_score": 720
+    },
+    "SOA-C02": {
+      "name": "AWS Certified SysOps Administrator Associate",
+      "tier": "Associate",
+      "domains": [
+        "Monitoring, Logging, and Remediation",
+        "Reliability and Business Continuity",
+        "Deployment, Provisioning, and Automation",
+        "Security and Compliance",
+        "Networking and Content Delivery",
+        "Cost and Performance Optimization"
+      ],
+      "domain_weights": {
+        "Monitoring, Logging, and Remediation": 0.20,
+        "Reliability and Business Continuity": 0.16,
+        "Deployment, Provisioning, and Automation": 0.18,
+        "Security and Compliance": 0.16,
+        "Networking and Content Delivery": 0.18,
+        "Cost and Performance Optimization": 0.12
+      },
+      "total_questions": 65,
+      "passing_score": 720
+    },
+    "DEA-C01": {
+      "name": "AWS Certified Data Engineer Associate",
+      "tier": "Associate",
+      "domains": [
+        "Data Ingestion and Transformation",
+        "Data Store Management",
+        "Data Operations and Support",
+        "Data Security and Governance"
+      ],
+      "domain_weights": {
+        "Data Ingestion and Transformation": 0.34,
+        "Data Store Management": 0.26,
+        "Data Operations and Support": 0.22,
+        "Data Security and Governance": 0.18
+      },
+      "total_questions": 65,
+      "passing_score": 720
+    },
+    "MLA-C01": {
+      "name": "AWS Certified Machine Learning Engineer Associate",
+      "tier": "Associate",
+      "domains": [
+        "Data Preparation for Machine Learning",
+        "ML Model Development",
+        "Deployment and Orchestration of ML Workflows",
+        "ML Solution Monitoring, Maintenance, and Security"
+      ],
+      "domain_weights": {
+        "Data Preparation for Machine Learning": 0.28,
+        "ML Model Development": 0.26,
+        "Deployment and Orchestration of ML Workflows": 0.22,
+        "ML Solution Monitoring, Maintenance, and Security": 0.24
+      },
+      "total_questions": 65,
+      "passing_score": 720
+    },
+    "SAP-C02": {
+      "name": "AWS Certified Solutions Architect Professional",
+      "tier": "Professional",
+      "domains": [
+        "Design Solutions for Organizational Complexity",
+        "Design for New Solutions",
+        "Continuous Improvement for Existing Solutions",
+        "Accelerate Workload Migration and Modernization"
+      ],
+      "domain_weights": {
+        "Design Solutions for Organizational Complexity": 0.26,
+        "Design for New Solutions": 0.29,
+        "Continuous Improvement for Existing Solutions": 0.25,
+        "Accelerate Workload Migration and Modernization": 0.20
+      },
+      "total_questions": 75,
+      "passing_score": 750
+    },
+    "DOP-C02": {
+      "name": "AWS Certified DevOps Engineer Professional",
+      "tier": "Professional",
+      "domains": [
+        "SDLC Automation",
+        "Configuration Management and IaC",
+        "Resilient Cloud Solutions",
+        "Monitoring and Logging",
+        "Incident and Event Response",
+        "Security and Compliance"
+      ],
+      "domain_weights": {
+        "SDLC Automation": 0.22,
+        "Configuration Management and IaC": 0.17,
+        "Resilient Cloud Solutions": 0.15,
+        "Monitoring and Logging": 0.15,
+        "Incident and Event Response": 0.14,
+        "Security and Compliance": 0.17
+      },
+      "total_questions": 75,
+      "passing_score": 750
+    },
+    "SCS-C02": {
+      "name": "AWS Certified Security Specialty",
+      "tier": "Specialty",
+      "domains": [
+        "Threat Detection and Incident Response",
+        "Security Logging and Monitoring",
+        "Infrastructure Security",
+        "Identity and Access Management",
+        "Data Protection"
+      ],
+      "domain_weights": {
+        "Threat Detection and Incident Response": 0.14,
+        "Security Logging and Monitoring": 0.18,
+        "Infrastructure Security": 0.20,
+        "Identity and Access Management": 0.21,
+        "Data Protection": 0.27
+      },
+      "total_questions": 65,
+      "passing_score": 750
+    },
+    "ANS-C01": {
+      "name": "AWS Certified Advanced Networking Specialty",
+      "tier": "Specialty",
+      "domains": [
+        "Network Design",
+        "Network Implementation",
+        "Network Management and Operations",
+        "Network Security, Compliance, and Governance"
+      ],
+      "domain_weights": {
+        "Network Design": 0.30,
+        "Network Implementation": 0.26,
+        "Network Management and Operations": 0.20,
+        "Network Security, Compliance, and Governance": 0.24
+      },
+      "total_questions": 65,
+      "passing_score": 750
+    }
+  }
+}

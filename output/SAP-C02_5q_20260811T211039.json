@@ -1,0 +1,152 @@
+{
+  "metadata": {
+    "cert_code": "SAP-C02",
+    "generated_at": "2026-08-11T21:10:39.107446+00:00",
+    "total_questions": 5,
+    "approved": 5,
+    "rejected": 0
+  },
+  "questions": [
+    {
+      "question_id": "c24e2d6a-6f11-4682-8c09-bdd7657512be",
+      "cert_code": "SAP-C02",
+      "domain": "Design Solutions for Organizational Complexity",
+      "question_type": "multiple",
+      "question_text": "You are designing a monitoring and observability strategy for an application that spans multiple AWS accounts. You need to ensure end-to-end visibility, identify potential operational issues, and continuously monitor external dependencies. Which two services should you use to meet these requirements? (Select TWO)",
+      "options": [
+        "A. Amazon SNS",
+        "B. AWS X-Ray",
+        "C. Amazon GuardDuty",
+        "D. AWS Config",
+        "E. Amazon CloudWatch"
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. Amazon SNS - Not directly related to observability or end-to-end visibility; primarily used for notifications.\nB. AWS X-Ray - Integrates with your application to gain insights into its behavior and performance, which is essential for end-to-end monitoring as per the AWS Well-Architected Framework (Source 1 & Source 2).\nC. Amazon GuardDuty - Primarily focuses on security by detecting malicious activity and unauthorized policy changes in your accounts; not directly related to observability or dependency monitoring.\nD. AWS Config - Manages configuration items for AWS resources, helping ensure compliance with policies but not specifically designed for end-to-end application performance monitoring.\nE. Amazon CloudWatch - Provides detailed visibility into the health and performance of applications by collecting and tracking metrics, logging service messages, and creating customizable alarms (Source 1 & Source 2).",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "AWS X-Ray",
+        "Amazon CloudWatch"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-11T21:01:30.133243Z"
+    },
+    {
+      "question_id": "3602ec20-53ab-4b34-86bb-85b861c412a4",
+      "cert_code": "SAP-C02",
+      "domain": "Design Solutions for Organizational Complexity",
+      "question_type": "single",
+      "question_text": "A multinational company with a complex microservices architecture is looking to improve its observability and ensure high availability of their services. They have recently experienced issues where service dependencies were not properly monitored, leading to performance bottlenecks and outages. Which combination of AWS services should they implement to address these concerns while balancing cost and complexity?",
+      "options": [
+        "A. Implement Amazon CloudWatch with detailed logging and alarms for all services.",
+        "B. Use AWS X-Ray and Amazon DevOps Guru together to trace requests and identify operational issues.",
+        "C. Deploy an on-premises monitoring tool that integrates with AWS services for full observability.",
+        "D. Enable AWS Config and set up a custom CloudWatch alarm for each service dependency."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best answer is B because AWS X-Ray provides detailed tracing of requests, helping to identify bottlenecks and dependencies in the microservices architecture, while Amazon DevOps Guru uses machine learning to predict issues and recommend actions. This combination offers a balanced approach between cost and complexity compared to other options.\n\nA is too basic as it does not provide end-to-end traceability or predictive insights. C introduces additional costs and complexity of on-premises tools that may not integrate seamlessly with AWS services. D, while useful for monitoring, lacks the proactive issue prediction capabilities provided by DevOps Guru.",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "AWS X-Ray",
+        "Amazon DevOps Guru"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-11T21:01:46.043739Z"
+    },
+    {
+      "question_id": "20a5bf3b-d1e1-40fb-8d9a-4d300ef8ea5c",
+      "cert_code": "SAP-C02",
+      "domain": "Design for New Solutions",
+      "question_type": "single",
+      "question_text": "A new e-commerce application is being developed, and the development team wants to ensure they can quickly identify performance bottlenecks and operational issues. They are considering different monitoring strategies but need guidance on which tools to use. The application will handle high traffic and needs a comprehensive monitoring solution that integrates various AWS services for end-to-end visibility.",
+      "options": [
+        "A. Implement AWS X-Ray with CloudWatch for tracing requests and setting up alerts.",
+        "B. Use Amazon CloudWatch Logs Insights exclusively for log analysis.",
+        "C. Deploy Amazon DevOps Guru integrated with CloudWatch and X-Ray for a more comprehensive analysis.",
+        "D. Configure Amazon SNS notifications for every API Gateway request."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best approach is to implement AWS X-Ray with CloudWatch, as this provides detailed tracing of requests and allows setting up alerts (Source: AWS Well-Architected Framework). Option B alone uses logs insights which may not capture end-to-end performance issues. Option C correctly integrates DevOps Guru with other monitoring services for a more comprehensive analysis. Option D is overly granular for monitoring application performance.",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "AWS X-Ray",
+        "CloudWatch",
+        "DevOps Guru",
+        "SNS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-11T21:04:15.256672Z"
+    },
+    {
+      "question_id": "572e3eca-95c9-4aa9-ad4c-595090498bc2",
+      "cert_code": "SAP-C02",
+      "domain": "Design for New Solutions",
+      "question_type": "single",
+      "question_text": "A new e-commerce application is being developed that will heavily rely on third-party APIs. The development team wants to ensure they can monitor the performance of these external services and identify potential issues before they impact user experience. Which approach should be prioritized to effectively manage this dependency?",
+      "options": [
+        "A. Implement AWS X-Ray to trace requests from start to end, providing insights into how the application interacts with third-party APIs.",
+        "B. Deploy Amazon CloudWatch Logs Insights on all API calls to monitor and analyze logs for anomalies.",
+        "C. Use Amazon SNS to send notifications every time a third-party API fails or returns an error response.",
+        "D. Enable AWS Lambda dead-letter queues (DLQs) for failed API requests to prevent data loss."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because AWS X-Ray provides detailed insights into the performance and behavior of applications, including tracing requests from start to end. This is crucial for identifying issues with third-party APIs before they impact user experience. B is incorrect as CloudWatch Logs Insights is more suited for analyzing logs after an issue occurs rather than proactively monitoring API interactions. C is not ideal because it only provides notifications without the context needed to diagnose and address the root cause of the failure. D is relevant for managing failed requests but does not provide real-time insights into API performance.",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "AWS X-Ray",
+        "Amazon CloudWatch Logs Insights"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-11T21:04:28.769490Z"
+    },
+    {
+      "question_id": "999e433a-5230-40de-9c1e-a818ff749f8d",
+      "cert_code": "SAP-C02",
+      "domain": "Continuous Improvement for Existing Solutions",
+      "question_type": "multiple",
+      "question_text": "An existing e-commerce application is experiencing performance issues and occasional outages. The DevOps team has decided to implement monitoring and tracing solutions to improve the application's reliability. Which two services should they choose to effectively monitor the application\u2019s dependencies and provide actionable insights? (Select TWO)",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon CloudWatch",
+        "C. AWS X-Ray",
+        "D. Amazon S3",
+        "E. Amazon DevOps Guru"
+      ],
+      "correct_answers": [
+        "C",
+        "E"
+      ],
+      "explanation": "A - AWS Config is used to track the configuration changes of your AWS resources, which is not directly related to monitoring application dependencies or providing actionable insights. B - Amazon CloudWatch provides monitoring and logging for applications and services running on AWS, but it does not specifically focus on tracing end-to-end application performance as required. C - AWS X-Ray is designed to trace requests through a distributed system, identifying bottlenecks and failures in the external services or components your application relies on, making it highly relevant. D - Amazon S3 is an object storage service for storing and retrieving any amount of data at any time, which does not align with monitoring dependencies or providing actionable insights. E - Amazon DevOps Guru uses machine learning to identify operational issues, predict when critical issues might occur, and recommend actions based on the application\u2019s performance metrics, logs, and traces from AWS X-Ray, CloudWatch, Config, and CloudTrail.",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "AWS X-Ray",
+        "Amazon DevOps Guru"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-11T21:08:27.537772Z"
+    }
+  ]
+}

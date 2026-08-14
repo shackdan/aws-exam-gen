@@ -1,0 +1,1608 @@
+{
+  "metadata": {
+    "cert_code": "AIF-C01",
+    "generated_at": "2026-08-13T07:29:30.001230+00:00",
+    "total_questions": 57,
+    "approved": 57,
+    "rejected": 0
+  },
+  "questions": [
+    {
+      "question_id": "50ddbbb1-1d88-4e6f-8d00-b0e66d40aa26",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application that will be used across multiple teams. Which two measures should the organization implement to ensure governance and compliance while maintaining transparency in model outputs? (Select TWO)",
+      "options": [
+        "A. AWS CodePipeline for continuous integration and deployment of models",
+        "B. AWS S3 for storing training data, ensuring version control and access logs",
+        "C. AWS GuardDuty for monitoring and detecting potential security threats to the AI application",
+        "D. AWS SageMaker Model Monitor for tracking and validating model performance and bias",
+        "E. AWS Config for defining and enforcing governance policies across all AWS services"
+      ],
+      "correct_answers": [
+        "B",
+        "D"
+      ],
+      "explanation": "A. AWS CodePipeline is a continuous integration and delivery service, which is not directly related to governance or compliance measures in the context of AI model outputs.\n\nB. AWS S3 provides storage with version control and access logs, ensuring that data used for training models is properly managed and auditable, aligning with governance and compliance requirements.\n\nC. AWS GuardDuty is a security service for monitoring and detecting threats to your AWS environment, which does not directly address the specific needs of AI model outputs or transparency.\n\nD. AWS SageMaker Model Monitor helps track and validate model performance and bias, ensuring that models are transparent and explainable, which aligns with governance and compliance requirements in the context of AI applications.\n\nE. AWS Config is a service for defining and enforcing governance policies across all AWS services, but it does not directly address the specific needs of AI model outputs or transparency.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS S3",
+        "AWS SageMaker Model Monitor"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:24:28.859109Z"
+    },
+    {
+      "question_id": "2142a3e0-923a-4274-ad01-f3609a99d3a8",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI application that will be used across multiple teams. They want to ensure the solution adheres to governance and compliance regulations while maintaining flexibility in model selection. Which approach should they take to best achieve this goal?",
+      "options": [
+        "A. Implement separate governance policies for each team's individual models.",
+        "B. Use AWS Config to monitor and enforce security controls across all AI models.",
+        "C. Establish a centralized governance framework that applies default guardrails to all generative AI applications.",
+        "D. Rely on AWS GuardDuty to automatically detect and mitigate risks in the AI application."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The best approach is C, establishing a centralized governance framework (Option C) that applies default guardrails to all generative AI applications. This aligns with the AWS prescriptive guidance which recommends a platform-centric approach for scaling generative AI adoption across the enterprise [Source 2]. It ensures consistency and minimizes risk while allowing flexibility in model selection.\n\nA (Option A) is suboptimal because it would lead to fragmented governance policies, making it harder to enforce consistent practices. B (Option B) focuses on monitoring rather than establishing guardrails, which does not directly address the need for governance and compliance. D (Option D) is insufficient as GuardDuty is designed for detecting security issues in traditional applications, not specifically for generative AI models [Source 3].",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Config",
+        "GuardDuty"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:24:42.022224Z"
+    },
+    {
+      "question_id": "3e50390d-386c-4bba-9654-15ec7cfaf4fb",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An e-commerce company wants to implement a recommendation system that can suggest products based on customer browsing history. The system should be scalable, cost-effective, and capable of handling both online and offline data. Which two AWS services would best meet these requirements? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Redshift",
+        "C. Amazon Kinesis",
+        "D. Amazon DynamoDB",
+        "E. AWS Glue"
+      ],
+      "correct_answers": [
+        "A",
+        "C"
+      ],
+      "explanation": "A. AMAZON SAGEMAKER: Amazon SageMaker is a fully managed service that provides developers and data scientists with the ability to build, train, and deploy machine learning models quickly. It supports both online and offline data processing and can scale automatically based on demand, making it cost-effective for large-scale applications like recommendation systems.\n\nB. NOT RELEVANT: Amazon Redshift is a fully managed data warehouse service that provides fast, parallel query performance for petabyte-scale data sets. While useful for analytics, it is not specifically designed for real-time or online recommendation systems and does not meet the scalability requirements mentioned in the scenario.\n\nC. AMAZON KINESIS: Amazon Kinesis can process and analyze streaming data in real time, which is suitable for handling customer browsing history data as part of a recommendation system. It supports both online and offline processing and can scale automatically to handle varying loads.\n\nD. NOT RELEVANT: Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. While it could be used in the backend, it does not directly support real-time recommendation systems or streaming data processing as required by the scenario.\n\nE. AWS GLUE: AWS Glue is a fully managed extract, transform, load (ETL) service for preparing data to be analyzed and stored in data lakes. It is primarily used for data integration tasks and does not provide real-time capabilities or machine learning services that are necessary for building recommendation systems.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Kinesis"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:25:29.284325Z"
+    },
+    {
+      "question_id": "f1d3f748-b086-4922-9e71-3b8fed8ec39c",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that predicts which products a customer is likely to purchase based on their browsing history. The system should be scalable, cost-effective, and capable of handling large volumes of data in real-time. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker and Amazon Kinesis Data Firehose",
+        "B. Amazon Personalize and Amazon DynamoDB",
+        "C. Amazon Redshift and Amazon EMR",
+        "D. Amazon EC2 and Amazon S3"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B: Amazon Personalize and Amazon DynamoDB. Amazon Personalize provides a fully managed service for building recommendation systems, which aligns well with the company's need to predict product purchases based on browsing history. It can handle real-time data processing and scaling requirements efficiently. Additionally, Amazon DynamoDB offers fast and predictable performance with seamless scalability, making it suitable for storing and retrieving large volumes of data in real-time recommendations.\n\nOption A (Amazon SageMaker and Amazon Kinesis Data Firehose) is not the best choice because while SageMaker can handle model training and deployment, Kinesis Data Firehose is more suited for streaming data ingestion rather than real-time recommendation processing. Option C (Amazon Redshift and Amazon EMR) is less suitable as it focuses on batch processing and analytics rather than real-time recommendations. Option D (Amazon EC2 and Amazon S3) lacks the managed service capabilities needed for scalable, real-time recommendation systems.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize",
+        "Amazon DynamoDB"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:25:44.627959Z"
+    },
+    {
+      "question_id": "f0c4c664-251c-4de7-987c-2393a71f9990",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to predict which products are likely to be purchased by its customers based on their browsing history, purchase history, and demographic data. The company is concerned about the cost and performance implications of different machine learning approaches.",
+      "options": [
+        "A. Use Amazon SageMaker for training a deep learning model with labeled data and deploy it using an AWS Lambda function to serve real-time predictions.",
+        "B. Utilize Amazon Comprehend to process unstructured text data from customer reviews and use the insights to train a classification model on structured data.",
+        "C. Implement a batch processing job in Amazon SageMaker to train a supervised learning model with historical purchase data, then deploy it as an API endpoint for real-time predictions.",
+        "D. Deploy a serverless recommendation system using AWS Personalize, leveraging implicit feedback from customer interactions."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because the company needs to predict product purchases based on historical data and real-time browsing behavior. Amazon SageMaker with batch processing (option C) is suitable for training a supervised learning model using structured data, which aligns well with their use case. It also allows deploying the trained model as an API endpoint for real-time predictions, addressing both cost and performance concerns effectively.\n\nOption A is incorrect because deep learning models are generally more resource-intensive than necessary for this task, making them less cost-effective. Option B is inappropriate since Amazon Comprehend is designed for text analysis, not predicting purchase behavior based on structured data. Option D, while useful for recommendation systems, does not directly address the need to train a model from historical and real-time data.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:26:15.530360Z"
+    },
+    {
+      "question_id": "488a7a8e-a33b-40b7-8f1b-4e64608dfcc7",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is deploying a generative AI model to generate customer support responses. They want to ensure the model's outputs are secure, compliant, and can be audited for accuracy. Which two strategies should they implement according to AWS best practices? (Select TWO)",
+      "options": [
+        "A. Deploy the AI model in a VPC with security groups to restrict access.",
+        "B. Use Amazon SageMaker to train the model but ignore all built-in logging features.",
+        "C. Configure AWS Config rules for continuous compliance checks of the AI environment.",
+        "D. Implement Amazon GuardDuty to monitor network traffic and detect potential threats.",
+        "E. Enable Amazon CloudWatch Logs for detailed monitoring and auditing of the AI model's outputs."
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "A. DEPLOY THE AI MODEL IN A VPC WITH SECURITY GROUPS TO RESTRICT ACCESS - This aligns with AWS best practices, which recommend implementing security controls through a layered approach, including network security measures like using VPC and security groups to restrict access.\n\nB. USE AMAZON SAGEMAKER TO TRAIN THE MODEL BUT IGNORE ALL BUILT-IN LOGGING FEATURES - This is incorrect as ignoring built-in logging features would violate the best practice of establishing comprehensive audit logging capabilities for monitoring and auditing model outputs.\n\nC. CONFIGURE AWS CONFIG RULES FOR CONTINUOUS COMPLIANCE CHECKS OF THE AI ENVIRONMENT - While this is a good practice, it is not specifically mentioned in the provided sources as being critical for generative AI applications compared to other options.\n\nD. IMPLEMENT AMAZON GUARDDUTY TO MONITOR NETWORK TRAFFIC AND DETECT POTENTIAL THREATS - This is more relevant for general network security and threat detection rather than specific auditing of model outputs, making it a less direct fit for the scenario.\n\nE. ENABLE AMAZON CLOUDWATCH LOGS FOR DETAILED MONITORING AND AUDITING OF THE AI MODEL'S OUTPUTS - This aligns with AWS best practices as it ensures detailed monitoring and auditing capabilities are in place to track and verify model outputs, which is critical for compliance and security.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "VPC",
+        "Amazon SageMaker",
+        "AWS Config",
+        "Amazon GuardDuty",
+        "Amazon CloudWatch"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:26:37.307270Z"
+    },
+    {
+      "question_id": "fa9c251a-88a0-4c0c-950d-8d21883e56f5",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement an AI governance framework that ensures ethical use and compliance with regulatory standards. The CIO has tasked you with selecting a service that will help define policies, monitor AI systems, and continuously revise results to ensure alignment with business goals. Which AWS service should you recommend?",
+      "options": [
+        "A. AWS Config",
+        "B. AWS GuardDuty",
+        "C. AWS CodeGuru Governance",
+        "D. AWS SageMaker Governance"
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D. AWS SageMaker Governance helps you monitor and manage the quality of your machine learning models, ensuring they align with business goals and regulatory standards. It provides tools to define policies, monitor AI systems, and continuously revise results to ensure alignment with business goals by tracking model performance, drift, and bias.\n\nA. AWS Config is primarily used for recording changes to the configuration of AWS resources, which does not directly address defining policies or monitoring AI systems.\nB. AWS GuardDuty provides continuous threat intelligence by discovering malicious activity in your AWS environment, focusing on security rather than governance and compliance.\nC. AWS CodeGuru Governance helps you monitor and improve the quality of your code but is not designed for defining policies or monitoring AI systems.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker Governance"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-13T06:27:05.202387Z"
+    },
+    {
+      "question_id": "baf574d9-4459-4b69-a4e8-686e2571384d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI application to generate customer service chat responses. They want to ensure the security and compliance of their model while maintaining ease of use for developers. Which approach best balances these requirements?",
+      "options": [
+        "A. Use AWS S3 to store the model artifacts and IAM roles with least privilege access.",
+        "B. Implement a custom authentication layer using Amazon Cognito and restrict access to the model endpoint based on user groups.",
+        "C. Deploy the model in a VPC with no public IP address, use API Gateway for secure endpoints, and enable AWS CloudTrail logging.",
+        "D. Utilize AWS SageMaker Notebooks for development and deployment, enabling Jupyter notebooks directly from S3 buckets."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "Option C is the best approach as it provides a robust security posture by deploying the model in a VPC with no public IP address, which helps prevent unauthorized access. Using API Gateway for secure endpoints ensures that only authenticated and authorized users can interact with the model. AWS CloudTrail logging enables comprehensive audit trails, helping to monitor and manage compliance. While IAM roles (Option A) are important for least privilege access, they do not provide the same level of control over the model's endpoint as a VPC deployment and API Gateway. Custom authentication layers (Option B) can be complex and may introduce additional security risks if not implemented correctly. Direct Jupyter notebook use from S3 buckets (Option D) is convenient but does not offer the necessary network isolation or logging capabilities.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker",
+        "Amazon VPC",
+        "API Gateway",
+        "AWS CloudTrail"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:27:19.586162Z"
+    },
+    {
+      "question_id": "d0f70766-0dfb-41a6-b43d-ec06ff63ba55",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An AI practitioner is tasked with selecting the most appropriate AWS service to enable a cross-functional team to collaborate on developing an ML model for predicting customer churn. The team requires access to pre-built models and specific use cases, as well as specialized environments for development and deployment.",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon QuickSight",
+        "C. AWS Glue",
+        "D. Amazon Comprehend"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The most appropriate service is Amazon SageMaker (A) because it provides a fully managed environment for building, training, and deploying machine learning models. It supports pre-built models and specific use cases through built-in algorithms and frameworks, which aligns with the requirements of the cross-functional team. Amazon QuickSight (B) is a business intelligence service focused on data visualization and analytics, AWS Glue (C) is for ETL jobs in data lakes, and Amazon Comprehend (D) is designed for natural language processing tasks, none of which are suitable for collaborative model development as described.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:28:01.893008Z"
+    },
+    {
+      "question_id": "d68f9d28-61bd-4c62-afae-01d18a276d3e",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a governance framework for its AI initiatives. The CIO wants to ensure that the chosen solution aligns with organizational goals, manages risks, and ensures ethical use of AI technologies. Which AWS service or practice should be prioritized to meet these requirements?",
+      "options": [
+        "A. AWS CloudFormation",
+        "B. Amazon SageMaker",
+        "C. AWS Control Tower",
+        "D. AWS Well-Architected Framework"
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D. AWS Well-Architected Framework, as it provides a set of best practices for designing, deploying, and operating secure, high-performing, resilient, and efficient workloads in the cloud. It includes guidance on governance, risk management, compliance, and ethical considerations, which align with the CIO's requirements. \n\nA. AWS CloudFormation is a service that helps you model and set up your AWS resources so you can spend less time managing them and more time focusing on your applications. It does not specifically address AI governance.\n\nB. Amazon SageMaker is a fully managed service that provides every developer and data scientist with the ability to build, train, and deploy machine learning (ML) models quickly. While it supports ML model development, it does not provide comprehensive governance practices for AI initiatives.\n\nC. AWS Control Tower helps you establish secure, scalable, and compliant multi-account governance in your organization. It is more focused on cloud resource management and compliance rather than specific AI governance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Well-Architected Framework"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:28:15.875746Z"
+    },
+    {
+      "question_id": "a19d8f7c-1a72-4a34-bdd8-99141e2f8814",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An e-commerce company wants to implement a recommendation system for its website. The system should suggest products based on user browsing history, past purchases, and current trends. Which two services would be most suitable for this use case? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Lambda",
+        "C. Amazon S3",
+        "D. Amazon Redshift",
+        "E. Amazon Personalize"
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "{'A': 'Amazon SageMaker is a fully managed service that provides developers and data scientists with the ability to build, train, and deploy machine learning models quickly. It supports building recommendation systems using built-in algorithms or custom ones.', 'B': 'AWS Lambda can be used for running code in response to events without provisioning or managing servers, but it is not specifically designed for building recommendation systems.', 'C': 'Amazon S3 is a highly scalable object storage service and would be used for storing data such as user browsing history and past purchases, but it does not provide the machine learning capabilities needed for recommendations.', 'D': 'Amazon Redshift is a fully managed data warehouse that provides fast analytics in petabyte scale. It can be used to store large datasets, but it does not offer built-in recommendation algorithms or services.', 'E': 'Amazon Personalize is a service specifically designed for building and deploying recommendation systems. It uses machine learning to provide personalized recommendations based on user behavior.'}",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:28:29.991139Z"
+    },
+    {
+      "question_id": "cbcdf251-0c4a-4884-9566-6c1e9b6bc2a2",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a chatbot to assist with customer service inquiries. You need to ensure the model is fair and unbiased, as well as transparent in its decision-making process. Which of the following approaches would be most appropriate for ensuring the responsible development of this AI system?",
+      "options": [
+        "A. Implement Amazon SageMaker Model Monitor to continuously monitor the chatbot's performance and alert on any anomalies.",
+        "B. Use Amazon Lex to build the chatbot, focusing solely on improving user engagement metrics.",
+        "C. Establish an AI center of excellence (AI CoE) and a model governance committee to develop evaluation criteria for fairness and transparency.",
+        "D. Deploy the chatbot using AWS Lambda functions without additional oversight or governance."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because establishing an AI center of excellence (AI CoE) and a model governance committee, as described in the AWS prescriptive guidance, ensures that there are dedicated teams focusing on responsible practices like fairness and transparency. This aligns with Task Statement 4.1 from the AIF-C01 Exam Guide which emphasizes responsible AI development including bias, fairness, inclusivity, robustness, safety, veracity, and legal risks.\n\nOption A is incorrect because Amazon SageMaker Model Monitor is used for monitoring model performance, not specifically for ensuring fairness or transparency. Option B is incorrect as it focuses only on user engagement metrics without addressing the responsible AI criteria mentioned in the exam guide. Option D is incorrect since deploying a chatbot without additional oversight or governance does not address the responsible development of an AI system.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor",
+        "Amazon Lex"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:28:57.100409Z"
+    },
+    {
+      "question_id": "6eff6d27-0e82-4f56-80d1-679fc47724da",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI system to improve customer service. The team needs to ensure the model's performance and adherence to responsible AI practices. Which three of the following actions should be prioritized? (Select THREE)",
+      "options": [
+        "A. Implement Amazon SageMaker Model Monitor for continuous monitoring of model performance and drift detection.",
+        "B. Use AWS Ground Truth to manually label training data, ensuring high accuracy and consistency.",
+        "C. Deploy the AI system in a public subnet with internet access to allow real-time customer interactions.",
+        "D. Establish an AI Center of Excellence (CoE) to guide generative AI initiatives across the organization and maintain governance standards.",
+        "E. Integrate Amazon Lex for chatbot development, leveraging its built-in natural language processing capabilities."
+      ],
+      "correct_answers": [
+        "A",
+        "D",
+        "E"
+      ],
+      "explanation": "A. CORRECT - Implementing Amazon SageMaker Model Monitor is a responsible AI practice as it helps monitor model performance and detect drift, ensuring the system remains effective over time.\n\nB. INCORRECT - While AWS Ground Truth can be used for data labeling, manual labeling might not always be feasible or scalable. This option does not directly address responsible AI practices or model performance monitoring.\n\nC. INCORRECT - Deploying the AI system in a public subnet with internet access is not a responsible practice as it exposes the system to potential security risks and violates privacy concerns. Responsible AI requires secure deployment environments.\n\nD. CORRECT - Establishing an AI Center of Excellence (CoE) helps guide generative AI initiatives, maintain governance standards, and ensure alignment with business objectives, which are key aspects of responsible AI.\n\nE. CORRECT - Integrating Amazon Lex for chatbot development is a responsible practice as it leverages built-in natural language processing capabilities to enhance customer interactions and improve user satisfaction.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor",
+        "AI Center of Excellence (CoE)",
+        "Amazon Lex"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:29:17.104751Z"
+    },
+    {
+      "question_id": "364f2dd3-5ce5-4561-9be6-9c9ac2e2eabb",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI application to assist employees with document summarization. To ensure the security and compliance of this application, you need to implement robust access controls and monitoring capabilities. Which AWS service would be most appropriate for establishing comprehensive audit logging and monitoring?",
+      "options": [
+        "A. Amazon S3",
+        "B. AWS CloudTrail",
+        "C. Amazon EC2",
+        "D. AWS Config"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B: AWS CloudTrail. According to the AWS documentation, 'Implement security controls through a layered approach, starting with robust access management and authentication. Make sure that proper network security and data protection measures are in place, including comprehensive audit logging and monitoring capabilities.' AWS CloudTrail provides detailed logs of API activity for your AWS account, which can be used to monitor and analyze the events occurring within the application.\n\nA: Amazon S3 is a storage service designed for storing and retrieving any amount of data at any time. It does not provide built-in audit logging capabilities for monitoring API activities.\n\nC: Amazon EC2 instances are compute resources that do not have built-in support for comprehensive audit logging. They can be configured with additional tools, but this would require extra setup and management.\n\nD: AWS Config provides configuration management to track the evolution of your AWS infrastructure. While it can help monitor changes in your environment, it does not provide detailed logs of API calls or events.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS CloudTrail"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-13T06:29:41.069261Z"
+    },
+    {
+      "question_id": "953ca897-0165-4c61-8ca8-430059392041",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is looking to implement a responsible AI governance practice as part of its culture evolution. They need to ensure that their AI models are ethically used, data quality is maintained, and costs are optimized. Which two services or practices should they prioritize? (Select TWO)",
+      "options": [
+        "A. AWS CodeGuru Profiler - To monitor the performance of machine learning models in real-time.",
+        "B. AWS SageMaker Model Monitor - To continuously track the performance and bias of AI models, ensuring compliance with ethical standards.",
+        "C. AWS Budgets - To set up cost alerts for AI workloads to ensure financial management.",
+        "D. Amazon Redshift - For storing large volumes of data used in training machine learning models.",
+        "E. AWS Config - To enforce security policies and monitor the configuration changes across all AWS services."
+      ],
+      "correct_answers": [
+        "B",
+        "C"
+      ],
+      "explanation": "A. AWS CodeGuru Profiler is a monitoring tool for code, not specifically designed for AI model monitoring or bias detection.\n\nB. AWS SageMaker Model Monitor is essential for continuously tracking the performance and bias of AI models, ensuring compliance with ethical standards, which aligns well with responsible use of AI governance practices.\n\nC. AWS Budgets are crucial for setting up cost alerts to manage costs associated with AI workloads, ensuring financial management as part of cloud financial management (CFM).\n\nD. Amazon Redshift is a data warehouse service and not directly related to the responsible use of AI or ethical deployment of models.\n\nE. AWS Config is primarily used for monitoring changes in resource configurations across all services, which does not directly address the specific needs of AI governance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker Model Monitor",
+        "AWS Budgets"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:30:12.081983Z"
+    },
+    {
+      "question_id": "746fb2ae-f797-448c-9d2f-d7d1605ff997",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to adopt AI for customer service chatbots and wants to ensure the solution aligns with their business goals. They need a governance framework that includes defining policies, monitoring AI systems, and continuously revising results based on predefined thresholds. Which of the following capabilities from AWS Cloud Adoption Framework (CAF) best supports this requirement?",
+      "options": [
+        "A. Responsible Use of AI",
+        "B. ML Services",
+        "C. Data Curation",
+        "D. Cloud Financial Management"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Responsible Use of AI as it directly addresses the need for defining governance goals, developing policies and guidelines, monitoring AI systems, performance, compliance, bias, and continuously revising results based on predefined thresholds, which are all critical components of an effective AI governance framework according to AWS CAF documentation (Source 2).\n\nOption B, ML Services, focuses more on simplifying the connection between platforms and off-the-shelf AI services for development and deployment. While it is important, it does not cover the broader aspects of governance such as defining policies or monitoring compliance.\n\nOption C, Data Curation, involves creating value from data catalogs and products, which is relevant but does not align with the specific governance requirements mentioned in the scenario.\n\nOption D, Cloud Financial Management (CFM), is about planning, measuring, and optimizing the cost of AI in the cloud. Although it is a critical aspect for organizations adopting AI, it does not encompass the broader scope of defining policies or monitoring AI systems as required by the scenario.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Managed Services",
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:30:36.978583Z"
+    },
+    {
+      "question_id": "d91072ea-999e-470b-a1da-8e46a62c43b9",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is developing an AI-driven recommendation system and wants to ensure that the deployment process adheres to established policies, monitors the performance of the model, and maintains compliance with organizational standards. Which AWS service should be primarily used for managing these responsibilities?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Config",
+        "C. AWS GuardDuty",
+        "D. AWS Control Tower"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker provides the necessary tools to manage, train, and deploy machine learning models, including model monitoring and policy enforcement through Model Monitor. This service can help ensure that the AI-driven recommendation system adheres to established policies and maintains compliance with organizational standards. AWS Config (B) focuses on continuous assessment of infrastructure configuration, while AWS GuardDuty (C) provides security and threat detection services. AWS Control Tower (D) is primarily used for establishing a consistent cloud architecture across business units but does not provide the specific AI governance capabilities required in this scenario.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-13T06:30:59.185392Z"
+    },
+    {
+      "question_id": "4fd5b50e-d64e-4c50-b200-b5399410174d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a generative AI model for customer service chatbots. To ensure the security and robustness of this deployment, which three measures should be prioritized according to AWS best practices? (Select THREE)",
+      "options": [
+        "A. Implement VPC Endpoint Services to control access to the generative AI model.",
+        "B. Use Amazon GuardDuty for continuous monitoring of the chatbot logs and responses.",
+        "C. Configure AWS Secrets Manager to securely store API keys and other credentials used by the chatbot.",
+        "D. Enable AWS CloudTrail for logging all API calls related to the generative AI model deployment.",
+        "E. Deploy an Amazon S3 bucket with public read access to share the generated content externally."
+      ],
+      "correct_answers": [
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "A. INCORRECT: VPC Endpoint Services are used for secure communication between services within a VPC and external resources, but they do not directly address security controls for generative AI models.\n\nB. CORRECT: Amazon GuardDuty can be used to continuously monitor the chatbot logs and responses, providing real-time threat detection and alerting capabilities as per AWS best practices.\n\nC. CORRECT: Using AWS Secrets Manager to securely store API keys and other credentials is a recommended practice for managing sensitive information in generative AI applications.\n\nD. CORRECT: Enabling AWS CloudTrail for logging all API calls related to the generative AI model deployment ensures comprehensive audit trails, which are crucial for compliance and incident response as per AWS guidelines.\n\nE. INCORRECT: Deploying an Amazon S3 bucket with public read access is not secure and goes against best practices, especially when dealing with sensitive customer data in a chatbot application.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon GuardDuty",
+        "AWS Secrets Manager",
+        "AWS CloudTrail"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:31:17.859590Z"
+    },
+    {
+      "question_id": "9a50da2d-c254-422d-9e93-31343d27eb1b",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An e-commerce company wants to implement a recommendation system for its website. The system should be able to suggest products based on user browsing history, purchase history, and also take into account the popularity of items and seasonal trends (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker - For building and deploying machine learning models.",
+        "B. AWS Lambda - To process real-time data streams from user interactions.",
+        "C. Amazon Redshift - For storing all user browsing and purchase history in a relational database.",
+        "D. Amazon Kinesis Data Firehose - To stream data directly into Amazon S3 for batch processing.",
+        "E. Amazon Personalize - For building, deploying, and monitoring recommendation models."
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "A. CORRECT: Amazon SageMaker is a fully managed service that provides the entire machine learning workflow from data preparation to model deployment and management. It can be used for building custom recommendation models based on user browsing history, purchase history, and other factors.\n\nB. INCORRECT: AWS Lambda can process real-time data streams, but it is not specifically designed for building recommendation systems. While it could be part of the solution, it does not directly address the need to build a recommendation model.\n\nC. INCORRECT: Amazon Redshift is a fully managed data warehouse service that stores and analyzes large amounts of transactional data. It would be more appropriate for querying historical data rather than building real-time or personalized recommendations.\n\nD. INCORRECT: Amazon Kinesis Data Firehose can stream data to various destinations, including Amazon S3, but it is not a machine learning service and does not provide the capabilities needed for building recommendation models.\n\nE. CORRECT: Amazon Personalize is specifically designed for building, deploying, and monitoring recommendation models. It supports multiple algorithms and can be used to incorporate user browsing history, purchase history, and seasonal trends into recommendations.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:32:11.603977Z"
+    },
+    {
+      "question_id": "eb6ababf-5a13-41e4-92b2-7108a72ec2f2",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "Your organization is developing a generative AI application that will be used to create content for marketing purposes. To ensure compliance with data protection laws and minimize risks associated with model outputs, you need to implement security controls. Which of the following approaches best aligns with AWS recommendations for securing generative AI applications?",
+      "options": [
+        "A. Enable AWS Config rules to monitor and enforce governance policies across all resources.",
+        "B. Deploy Amazon GuardDuty to continuously monitor for malicious activities within the application.",
+        "C. Implement input sanitization, output filtering, and access controls for model usage as recommended by AWS security disciplines.",
+        "D. Use AWS Key Management Service (KMS) to encrypt data at rest but not in transit."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because it aligns with the core security disciplines recommended by AWS for generative AI applications, specifically mentioning input sanitization, output filtering, and access controls. These measures directly address the risk management and governance aspects as described in the AWS prescriptive guidance documents.\n\nA (Enable AWS Config rules) is a good practice for governance but does not directly address model outputs or input validation which are critical for generative AI applications.\nB (Deploy Amazon GuardDuty) focuses on detecting malicious activities, which is important but does not cover the core security controls needed for generative AI models.\nD (Use AWS Key Management Service (KMS)) only addresses encryption at rest and not in transit, which is insufficient given the dynamic nature of model inputs and outputs.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Config",
+        "Amazon GuardDuty",
+        "AWS Key Management Service (KMS)"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:32:26.581472Z"
+    },
+    {
+      "question_id": "4dc8715a-30d3-4bed-9813-e3101f523022",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI chatbot to assist customers with product inquiries. To ensure the AI model's outputs are aligned with business objectives and ethical standards, which of the following approaches should be prioritized?",
+      "options": [
+        "A. Implement Amazon SageMaker Model Monitor for continuous monitoring of the model\u2019s performance metrics.",
+        "B. Establish an AI Center of Excellence (CoE) to guide generative AI initiatives across the organization and a dedicated Model Governance Committee to oversee ethical AI principles.",
+        "C. Use Amazon Lex to build the chatbot with predefined intents and slots, ensuring user engagement and productivity.",
+        "D. Deploy the model on AWS Lambda for cost-effective scaling during peak customer traffic hours."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Establishing an AI Center of Excellence (CoE) and a Model Governance Committee aligns with responsible AI practices as outlined in the AWS Prescriptive Guidance Building an enterprise-ready generative AI platform on AWS. The CoE provides guidance, best practices, and technical capabilities for building generative AI applications while maintaining governance and quality standards. The Model Governance Committee develops evaluation criteria, reviews usage requests, and validates compliance with ethical AI principles, ensuring that the model's outputs are aligned with business objectives and ethical standards.\n\nOption A (Amazon SageMaker Model Monitor) is a useful tool but focuses more on performance monitoring rather than ensuring alignment with business objectives and ethical standards. Option C (Amazon Lex) is a suitable service for building chatbots but does not address responsible AI practices. Option D (AWS Lambda) is cost-effective scaling, which is important but not directly related to the responsible development of generative AI models.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor",
+        "AI Center of Excellence",
+        "Model Governance Committee"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:32:42.148476Z"
+    },
+    {
+      "question_id": "52646617-4ca6-4ba2-8d36-4451c8c4d665",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement an AI governance framework for a new project. They need to ensure the project aligns with organizational goals, manages risks, and optimizes costs while enabling cross-functional collaboration. Which TWO strategies should they prioritize according to AWS Cloud Adoption Framework? (Select TWO)",
+      "options": [
+        "A. Implement ML services to simplify AI application development and deployment.",
+        "B. Establish a cloud financial management plan for cost optimization of AI workloads.",
+        "C. Develop a data curation strategy to create value from data catalogs and products.",
+        "D. Create an MLOps practice to automate the training, deployment, and monitoring of ML models.",
+        "E. Foster cross-functional collaboration by defining clear governance goals and policies."
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. Implement ML services to simplify AI application development and deployment.\n- This is a good practice for enabling teams but not directly related to the governance of the project.\n\nB. Establish a cloud financial management plan for cost optimization of AI workloads.\n- Correct. Cloud Financial Management (CFM) is explicitly mentioned as a foundational capability that helps in planning, measuring, and optimizing costs, which aligns with organizational goals.\n\nC. Develop a data curation strategy to create value from data catalogs and products.\n- This is beneficial for data management but not directly related to governance or cost optimization.\n\nD. Create an MLOps practice to automate the training, deployment, and monitoring of ML models.\n- While important for AI development, it does not directly address the governance requirements of the project.\n\nE. Foster cross-functional collaboration by defining clear governance goals and policies.\n- Correct. The Responsible Use of AI capability emphasizes the importance of organizational alignment and defining mechanisms to monitor AI systems, which is crucial for governance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Cloud Financial Management",
+        "Organizational Alignment"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:33:11.358770Z"
+    },
+    {
+      "question_id": "ed191fa1-ac3d-447c-9e43-49aadd9f44c7",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is developing an AI chatbot to assist customer service inquiries. They want to ensure the model's outputs are explainable and comply with GDPR regulations regarding data protection. Which AWS service should they implement to address both requirements effectively?",
+      "options": [
+        "A. Amazon SageMaker Explainability",
+        "B. Amazon GuardDuty",
+        "C. AWS Config",
+        "D. Amazon Inspector"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker Explainability should be implemented to ensure the AI chatbot's outputs are explainable, as it provides built-in capabilities for explaining predictions made by machine learning models. This aligns with Task Statement 4.2 of the AWS Certified AI Practitioner (AIF-C01) exam, which recognizes the importance of transparent and explainable models.\n\nB is incorrect because Amazon GuardDuty is a threat detection service that monitors for malicious activity in your Amazon Web Services environment, including data breaches. It does not provide model explainability or compliance with GDPR regulations.\nC is incorrect as AWS Config provides configuration management capabilities to track changes to your AWS resources and ensure they align with desired configurations. While it can help with governance, it does not address the need for explainable models or GDPR compliance specifically.\nD is incorrect because Amazon Inspector is a security assessment service that helps you identify vulnerabilities in applications running on EC2 instances, containers, and AWS Lambda functions. It focuses on application security rather than model explainability or GDPR compliance.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Explainability"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:33:37.821686Z"
+    },
+    {
+      "question_id": "f7d2f829-762f-454e-807b-018fcd5257b0",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application to improve customer service. The team needs to ensure the application adheres to responsible AI practices while balancing business objectives. Which TWO of the following approaches should they take? (Select TWO)",
+      "options": [
+        "A. Implement Amazon SageMaker for model training and deployment, focusing on cost optimization.",
+        "B. Establish an AI center of excellence (AI CoE) to guide generative AI initiatives across the organization.",
+        "C. Use Amazon Comprehend Medical to process unstructured medical data without additional governance checks.",
+        "D. Deploy models using AWS Lambda for every customer interaction to ensure real-time responses.",
+        "E. Develop a model governance committee that oversees model performance and risk assessments."
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. While cost optimization is important, it does not directly address responsible AI practices such as bias and fairness. Amazon SageMaker can be used but focusing solely on cost may overlook other critical aspects.\n\nB. Establishing an AI CoE ensures guidance, best practices, and technical capabilities for building generative AI applications, which are essential for responsible AI development.\n\nC. Using Amazon Comprehend Medical without additional governance checks could lead to biased or inaccurate results, violating responsible AI principles. Governance is crucial even with specialized services like Amazon Comprehend Medical.\n\nD. Deploying models using AWS Lambda for every customer interaction may not balance the trade-offs between real-time responses and model robustness and safety. It is important to consider the broader impact on user trust and model reliability.\n\nE. A dedicated model governance committee develops evaluation criteria, reviews usage requests, and validates compliance with ethical AI principles, ensuring responsible use of models.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Lambda",
+        "Amazon Comprehend Medical"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:34:05.940116Z"
+    },
+    {
+      "question_id": "7187e8fd-9ef4-40e4-8c1d-77d82639fe51",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on past purchase history. The system should be able to handle real-time requests from users while also being cost-effective. Which combination of AWS services best meets these requirements?",
+      "options": [
+        "A. Amazon SageMaker with batch inference for real-time recommendations and Amazon DynamoDB for user data storage.",
+        "B. Amazon Personalize for real-time recommendations and Amazon S3 for storing historical purchase data.",
+        "C. Amazon Comprehend for text analysis of past purchases followed by manual curation of recommendations.",
+        "D. AWS Lambda with API Gateway for handling requests and Amazon RDS for storing user data."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "Amazon Personalize is the best choice for real-time recommendation systems as it supports both batch and real-time inferencing, making it suitable for handling user requests in near real-time. It also provides a cost-effective solution by automatically scaling resources based on demand and optimizing costs through its built-in machine learning models. Amazon S3 can be used to store historical purchase data which Personalize can then use to train its recommendation model. \n\nOption A is incorrect because Amazon SageMaker with batch inference alone would not provide real-time recommendations, which is a key requirement for the e-commerce company.\nOption C is incorrect because Amazon Comprehend is designed for text analysis and sentiment understanding rather than generating personalized product recommendations based on purchase history.\nOption D is incorrect as AWS Lambda and API Gateway are more suitable for handling requests but do not provide the machine learning capabilities needed to generate personalized recommendations.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:34:30.669931Z"
+    },
+    {
+      "question_id": "948d346e-20fc-45b9-b444-d417c1eb2b40",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An e-commerce company wants to implement a recommendation system for its website. The system should suggest products based on customer browsing history, purchase history, and product ratings. (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker - A managed service that provides every developer access to machine learning without requiring advanced ML expertise.",
+        "B. AWS Lambda - An event-driven compute service for running code in response to events.",
+        "C. Amazon Personalize - A fully managed service for building and deploying recommendation models at scale, using real-time recommendations and batch recommendations.",
+        "D. Amazon Redshift - A fast, fully managed data warehouse that makes it simple and cost-effective to store, manage, analyze, and query large volumes of data in a data lake or data mart.",
+        "E. AWS Glue - A fully managed extract, transform, load (ETL) service that makes it easy to clean, prepare, and move data between data stores."
+      ],
+      "correct_answers": [
+        "C",
+        "A"
+      ],
+      "explanation": "A. Amazon SageMaker is the correct choice as it provides a managed environment for building and deploying machine learning models without requiring advanced ML expertise. It can be used to build recommendation systems by training models on customer data.\n\nB. AWS Lambda is not directly relevant here since it's an event-driven compute service that doesn't specialize in building recommendation systems or handling large datasets.\n\nC. Amazon Personalize is the best option for implementing a recommendation system as it provides fully managed services to build, deploy, and serve real-time and batch recommendations at scale using customer data like browsing history and purchase history.\n\nD. Amazon Redshift is a data warehouse service designed for querying and analyzing large datasets. While useful in some scenarios, it's not specifically tailored for building recommendation systems.\n\nE. AWS Glue is an ETL service used to clean and prepare data before loading it into a data warehouse or data lake. It\u2019s not directly relevant to building a recommendation system.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AMAZON_SAGEMAKER",
+        "AMAZON_PERSONALIZE"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:35:01.527152Z"
+    },
+    {
+      "question_id": "95629ac4-0573-4cab-82f3-000cc368ffa7",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to leverage AI for predictive maintenance in their manufacturing plant. They want to ensure that the AI models are developed and deployed efficiently, with a focus on reducing operational costs while maintaining high accuracy. Which AWS service or combination of services should they primarily utilize?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Budgets",
+        "C. AWS IoT Core",
+        "D. Amazon Redshift"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker is the best choice for developing and deploying AI models in this scenario, as it provides a fully managed service to build, train, and deploy machine learning (ML) models quickly. It supports both supervised and unsupervised algorithms, making it suitable for predictive maintenance tasks where historical data can be used to train models to predict equipment failures or maintenance needs. SageMaker also offers automatic model tuning and deployment capabilities, which aligns with the organization's goal of reducing operational costs while maintaining high accuracy.\n\nOption B (AWS Budgets) is a cost management tool that helps in setting up budgets for AWS services but does not directly support AI model development or deployment.\n\nOption C (AWS IoT Core) is designed to connect and securely handle data from billions of devices, making it more suited for edge-to-cloud data processing rather than the core task of training and deploying ML models.\n\nOption D (Amazon Redshift) is a fully managed data warehouse service that supports complex analytics. While useful in certain scenarios involving large-scale data analysis, it is not designed for AI model development or deployment.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:35:16.012393Z"
+    },
+    {
+      "question_id": "30ccadfe-9161-45e1-b454-af4e54f74458",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a governance framework for their AI initiatives, focusing on aligning with the company's strategic goals and ensuring ethical use. The CIO has tasked you with defining key mechanisms that will enable continuous monitoring and compliance checks of AI systems across business units.",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon GuardDuty",
+        "C. Amazon SageMaker Model Monitor",
+        "D. AWS CloudTrail"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Amazon SageMaker Model Monitor, as it provides continuous monitoring of machine learning models in production and helps detect concept drift and bias. This aligns with the governance framework requirement to continuously monitor AI systems and compliance checks.\n\nA. AWS Config monitors changes to AWS resources and records a configuration history, but it does not provide detailed monitoring of AI system performance or bias.\nB. Amazon GuardDuty is a security service that provides real-time threat detection for your AWS workloads, but it focuses on detecting malicious activity rather than continuous monitoring of AI systems.\nD. AWS CloudTrail logs API calls and user actions in the console, which is more suited to auditing and compliance with general AWS resource usage rather than specific AI system governance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-13T06:35:28.470293Z"
+    },
+    {
+      "question_id": "c266a32c-7d3c-4a16-b13b-5abab8004cfc",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is looking to implement a responsible AI governance framework. They want to ensure alignment with organizational goals, manage costs effectively, and curate data for model training. Which two services or practices should they focus on? (Select TWO)",
+      "options": [
+        "A. AWS CodeGuru Profiler - For monitoring the performance of machine learning models during development.",
+        "B. AWS SageMaker - To simplify the connection between their platform and off-the-shelf AI services, enabling model training and deployment.",
+        "C. AWS Cost Explorer - To plan, measure, and optimize the cost of AI in the cloud, ensuring financial management.",
+        "D. Amazon Redshift - For creating a data catalog to curate and manage large datasets for model training.",
+        "E. AWS Glue DataBrew - To automate routine tasks and reduce human error during data preparation."
+      ],
+      "correct_answers": [
+        "C",
+        "B"
+      ],
+      "explanation": "A. AWS CodeGuru Profiler is a monitoring tool that tracks the performance of machine learning models, which is useful but not directly related to cost management or data curation.\n\nB. AWS SageMaker simplifies the connection between the platform and off-the-shelf AI services, enabling model training and deployment, making it essential for responsible use of AI governance.\n\nC. AWS Cost Explorer helps plan, measure, and optimize the cost of AI in the cloud, ensuring effective financial management, which is a core aspect of AI governance.\n\nD. Amazon Redshift is a data warehouse service used for large-scale analytics, not directly related to the responsible use of AI governance.\n\nE. AWS Glue DataBrew automates routine tasks during data preparation but does not address cost optimization or data curation as comprehensively as SageMaker and Cost Explorer.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker",
+        "AWS Cost Explorer"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:35:58.370289Z"
+    },
+    {
+      "question_id": "3df1ccf2-0c09-4f40-987a-1b0fa324bce5",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on user browsing history. The system should be scalable, cost-effective, and able to handle real-time data processing. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker with batch inference",
+        "B. Amazon Elastic Kubernetes Service (EKS) with Apache Spark for real-time processing",
+        "C. Amazon Personalize with real-time recommendations",
+        "D. Amazon Redshift with AWS Lambda for data transformation"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "Amazon Personalize is the best choice because it provides a fully managed service that can handle both batch and real-time recommendation scenarios, making it scalable and cost-effective. It leverages machine learning to provide personalized recommendations based on user behavior, which aligns with the company's needs.\n\nOption A (Amazon SageMaker with batch inference) is not ideal for real-time data processing as it focuses more on training models rather than real-time inferencing.\n\nOption B (Amazon Elastic Kubernetes Service [EKS] with Apache Spark for real-time processing) is overly complex and costly, requiring significant setup and maintenance. It also lacks the built-in machine learning capabilities needed for recommendation systems.\n\nOption D (Amazon Redshift with AWS Lambda for data transformation) is not designed for real-time recommendations and would require additional custom development to handle the complexity of a recommendation system.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:36:11.588769Z"
+    },
+    {
+      "question_id": "f78bf940-347c-4344-966b-d5ae9142957b",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI application that will be used across multiple departments. To ensure compliance with data protection laws and industry-specific regulations, you need to implement appropriate security controls. Which of the following approaches best aligns with AWS recommendations for governance and compliance in your AI solution?",
+      "options": [
+        "A. Implementing Amazon GuardDuty for monitoring network traffic and identifying potential threats.",
+        "B. Enforcing strict access controls using AWS Identity and Access Management (IAM) policies and enabling multi-factor authentication (MFA).",
+        "C. Creating a default set of security guardrails through AWS Config and ensuring all AI applications adhere to these policies.",
+        "D. Utilizing Amazon Inspector for application security testing and identifying vulnerabilities in the code."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because creating a default set of security guardrails through AWS Config ensures that all generative AI-powered applications benefit from a standardized approach to compliance, as recommended by AWS. This aligns with the platform-centric approach described in the reference context for implementing governance and compliance measures across multiple teams building AI applications.\n\nA (Amazon GuardDuty) is more focused on monitoring network traffic and identifying threats rather than enforcing data protection policies or ensuring regulatory compliance.\nB (IAM and MFA) are important but do not cover the broader scope of security and compliance as required for generative AI applications, which includes model selection, data usage, and output validation.\nD (Amazon Inspector) is useful for application security testing but does not address the governance and compliance aspects highlighted in the reference context.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Config",
+        "IAM"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:36:26.182888Z"
+    },
+    {
+      "question_id": "904bba71-0b30-4997-ba65-d5fdb0ec9c5f",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a generative AI model for content creation. They want to ensure the model's outputs are aligned with their brand guidelines and ethical standards, while also managing costs effectively. Which AWS service should they use to define policies and monitor the model\u2019s performance to meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS CloudFormation",
+        "C. AWS Config",
+        "D. AWS Guard Duty"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A: Amazon SageMaker. Amazon SageMaker provides a managed service for building, training, and deploying machine learning models, which can be used to implement the generative AI model. It also allows defining policies and monitoring the model\u2019s performance through built-in monitoring features like Model Monitor, which helps in ensuring compliance with brand guidelines and ethical standards.\n\nOption B: AWS CloudFormation is a service for provisioning infrastructure as code but does not provide mechanisms for defining AI-specific policies or monitoring model performance.\n\nOption C: AWS Config is used to track the configuration of AWS resources but lacks capabilities related to training, deploying, and monitoring machine learning models.\n\nOption D: AWS Guard Duty is an advanced threat detection service that monitors for malicious activity in your AWS environment. It does not provide the necessary tools for defining AI policies or monitoring model performance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:36:38.712278Z"
+    },
+    {
+      "question_id": "901575ab-25ec-4516-b98f-40e215d0aa88",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application to improve customer service. They are considering several strategies to ensure the AI system adheres to responsible AI practices. Which THREE of the following approaches should they prioritize? (Select THREE)",
+      "options": [
+        "A. Implementing a robust data governance framework to manage and curate training datasets for inclusivity and diversity.",
+        "B. Using Amazon SageMaker to train models with minimal computational resources, prioritizing cost savings over model performance.",
+        "C. Establishing an AI center of excellence (AI CoE) to provide guidance on responsible AI practices and ensure alignment with business objectives.",
+        "D. Deploying the generative AI application in a production environment without any form of bias detection or mitigation mechanisms.",
+        "E. Regularly auditing model outputs for fairness and veracity, involving stakeholders from diverse backgrounds."
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "E"
+      ],
+      "explanation": "A. IMPLEMENTING A ROBUST DATA GOVERNANCE FRAMEWORK TO MANAGE AND CURATE TRAINING DATASETS FOR INCLUSIVITY AND DIVERSITY is a key responsible AI practice as it ensures the data used to train models is representative and unbiased, aligning with AWS best practices for ethical AI (Source 1).\n\nB. USING AMAZON SAGEMAKER TO TRAIN MODELS WITH MINIMAL COMPUTATIONAL RESOURCES, PRIORITIZING COST SAVINGS OVER MODEL PERFORMANCE does not directly address responsible AI principles such as fairness or inclusivity and could lead to suboptimal model performance, which may compromise user satisfaction (Source 3).\n\nC. ESTABLISHING AN AI CENTER OF EXCELLENCE (AI COE) TO PROVIDE GUIDANCE ON RESPONSIBLE AI PRACTICES AND ENSURE ALIGNMENT WITH BUSINESS OBJECTIVES is a strategic organizational structure that promotes responsible AI and ensures ethical use of models, as per AWS prescriptive guidance on enterprise-ready generative AI platforms (Source 2).\n\nD. DEPLOYING THE GENERATIVE AI APPLICATION IN A PRODUCTION ENVIRONMENT WITHOUT ANY FORM OF BIAS DETECTION OR MITIGATION MECHANISMS is a significant risk to responsible AI practices and could lead to biased or harmful outputs, violating ethical guidelines (Source 1).\n\nE. REGULARLY AUDITING MODEL OUTPUTS FOR FAIRNESS AND VERACITY, INVOLVING STAKEHOLDERS FROM DIVERSE BACKGROUNDS is a critical step in ensuring the AI system's outputs are fair and accurate, aligning with responsible AI practices (Source 1).",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS CodeGuru"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:37:01.148188Z"
+    },
+    {
+      "question_id": "09df5982-9ac7-4ec4-a84d-9189f1c8ed26",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on customer browsing history. The system should be scalable, cost-effective, and able to handle real-time data processing. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker with batch inference",
+        "B. Amazon Personalize with real-time recommendations",
+        "C. AWS Lambda with Amazon DynamoDB",
+        "D. Amazon Kinesis Data Streams with Amazon S3"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B: Amazon Personalize with real-time recommendations because it is specifically designed for building recommendation systems that can handle real-time data processing and provide scalable, cost-effective solutions. It uses machine learning to analyze user behavior and generate personalized recommendations in near-real time.\n\nOption A (Amazon SageMaker with batch inference) is not ideal as it focuses on training models rather than serving them in real-time, which would increase latency and reduce the system's responsiveness.\n\nOption C (AWS Lambda with Amazon DynamoDB) could be used for processing data but lacks built-in machine learning capabilities to generate personalized recommendations. While scalable and cost-effective, it does not provide the necessary recommendation engine functionality out-of-the-box.\n\nOption D (Amazon Kinesis Data Streams with Amazon S3) is more suited for streaming data ingestion and storage rather than real-time recommendation generation.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AMAZON_PERSONALIZE",
+        "AWS_LAMBDA",
+        "AMAZON_DYNAMODB",
+        "KINESIS_DATA_STREAMS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:38:29.191773Z"
+    },
+    {
+      "question_id": "7c3ee0ad-72e9-46fd-9d64-b21ef7a1223c",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "You are designing a new customer service chatbot for your company's website. The chatbot will handle common queries like order tracking, refund requests, and product recommendations. Which three AWS services would be most appropriate to implement this solution? (Select THREE)",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon S3",
+        "C. AWS Lambda with API Gateway",
+        "D. Amazon RDS",
+        "E. Amazon Comprehend"
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "E"
+      ],
+      "explanation": "A. AMAZON SAGEMAKER: Correct. Amazon SageMaker is a fully managed service that provides developers and data scientists with the ability to build, train, and deploy machine learning (ML) models quickly. For a chatbot solution, it can be used to develop and host ML models to understand natural language queries.\n\nB. AMAZON S3: Incorrect. Amazon S3 is an object storage service that provides secure scalable storage for any type of data. While useful for storing static content or backups, it does not directly support the development or deployment of a chatbot solution.\n\nC. AWS LAMBDA WITH API GATEWAY: Correct. AWS Lambda can be used to run code without provisioning or managing servers. When combined with API Gateway, it allows you to create and deploy APIs for your chatbot that can handle real-time interactions with users. This setup is ideal for building a scalable and cost-effective chatbot.\n\nD. AMAZON RDS: Incorrect. Amazon RDS (Relational Database Service) provides resizable database capacity for an application\u2014without requiring administration from you. While it could be used to store data, it does not directly support the development or deployment of a chatbot solution.\n\nE. AMAZON COMPREHEND: Correct. Amazon Comprehend is a natural language processing (NLP) service that uses machine learning to find insights and relationships in text. It can be used to understand customer queries, classify intents, and extract key phrases, which are essential for building an effective chatbot.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda",
+        "API Gateway",
+        "Amazon Comprehend"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:38:51.236226Z"
+    },
+    {
+      "question_id": "3516f077-f9e6-4add-ba5b-3c5653c68cfb",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An e-commerce company is planning to implement an AI-driven product recommendation system to improve customer engagement. The team aims to align their implementation with the AWS Well-Architected Framework for AI, focusing on ML Fluency and workforce transformation capabilities. Which approach would best support these goals?",
+      "options": [
+        "A. Develop a custom recommendation engine without any training or validation steps.",
+        "B. Utilize pre-built Amazon Personalize models to quickly deploy recommendations, while educating team members on model performance metrics and tuning techniques.",
+        "C. Deploy an open-source recommendation system and manage all infrastructure manually.",
+        "D. Focus solely on hiring external AI experts and outsourcing the entire project."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Utilizing pre-built Amazon Personalize models to quickly deploy recommendations, while educating team members on model performance metrics and tuning techniques aligns with building ML Fluency and workforce transformation capabilities as per the AWS Well-Architected Framework for AI. Amazon Personalize offers managed services that simplify complex tasks such as data preparation, model training, and deployment. By using these managed services, the e-commerce company can focus on understanding and optimizing model performance, thereby fostering a culture of ML fluency within the team. This approach also reduces the burden of infrastructure management, allowing the team to concentrate on developing domain-specific knowledge and skills in machine learning.\n\nOption A is incorrect because implementing a custom-built recommendation engine without any training or validation steps would not align with the ML Fluency capability as it lacks the use of managed services and does not ensure the quality of the model. Option C is incorrect because deploying an open-source recommendation system and managing all infrastructure manually contradicts the goal of building ML Fluency, which emphasizes using managed services to reduce complexity and increase efficiency. Option D is incorrect as it focuses solely on hiring external AI experts and outsourcing the project, which does not foster workforce transformation or build internal capabilities within the team.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-13T06:39:06.485687Z"
+    },
+    {
+      "question_id": "cba9187c-18e9-4063-aee9-7a7a44913679",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on customer browsing history. The system should be scalable, cost-effective, and capable of handling real-time data processing. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker for model training and deployment, with Amazon Kinesis Data Streams for real-time data processing.",
+        "B. Amazon Elastic MapReduce (EMR) for batch processing and Amazon S3 for storage of browsing history.",
+        "C. AWS Lambda functions triggered by API Gateway to process real-time data directly, with Amazon DynamoDB for storing customer data.",
+        "D. Amazon Redshift for querying historical data and Amazon AppStream 2.0 for real-time analytics."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Option A is the best choice as it leverages Amazon SageMaker for scalable model training and deployment, which can handle both batch and real-time inferencing. Amazon Kinesis Data Streams are ideal for real-time data processing, ensuring that customer browsing history can be ingested and used to make recommendations in near-real time. This combination balances cost-effectiveness with the scalability needed for an e-commerce recommendation system.\n\nOption B (EMR) is more suited for batch processing large datasets but lacks a direct solution for real-time inferencing. Option C uses Lambda functions, which are great for serverless computing and real-time data processing, but it does not provide a built-in machine learning model training service, making it less comprehensive. Option D is primarily designed for querying historical data and streaming analytics, respectively, without the necessary ML capabilities to train and deploy models.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Kinesis Data Streams"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:39:21.549606Z"
+    },
+    {
+      "question_id": "787ecc5b-6a33-45aa-b647-bddcc800b055",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application that will be used across multiple departments. The CTO wants to ensure the solution adheres to governance and compliance regulations while also maintaining operational simplicity. Which two measures should the team prioritize? (Select TWO)",
+      "options": [
+        "A. IMPLEMENT AWS IAM ROLES AND POLICIES TO CONTROL ACCESS TO THE AI MODEL",
+        "B. USE AWS CLOUDHSM FOR ENCRYPTING ALL AI-GENERATED CONTENT",
+        "C. ENSURE AI MODELS ARE TRAINED ON DYNAMICALLY SELECTED DATASETS BASED ON DEPARTMENTAL NEEDS",
+        "D. CREATE A POLICY FRAMEWORK THAT GUIDES MODEL SELECTION AND DATA USAGE ACROSS THE ORGANIZATION",
+        "E. USE AWS S3 FOR STORING ALL AI-GENERATED CONTENT TO ENSURE HIGH AVAILABILITY"
+      ],
+      "correct_answers": [
+        "D",
+        "A"
+      ],
+      "explanation": "A. IMPLEMENT AWS IAM ROLES AND POLICIES TO CONTROL ACCESS TO THE AI MODEL - This is a correct answer as it ensures that access to the AI model is controlled, which aligns with governance and compliance requirements. According to AWS Prescriptive Guidance Building an enterprise-ready generative AI platform on AWS (Layer 3: Security and governance for generative AI platforms on AWS), implementing security controls such as input sanitization, output filtering, and access controls for model usage are essential.\n\nB. USE AWS CLOUDHSM FOR ENCRYPTING ALL AI-GENERATED CONTENT - While encryption is important, it may not be the most direct approach to governance and compliance in this scenario. The question emphasizes simplicity, which might make overcomplicating with CloudHSM less suitable for an enterprise-wide solution.\n\nC. ENSURE AI MODELS ARE TRAINED ON DYNAMICALLY SELECTED DATASETS BASED ON DEPARTMENTAL NEEDS - This option is more about data management and not directly related to governance and compliance, making it a distractor in this context.\n\nD. CREATE A POLICY FRAMEWORK THAT GUIDES MODEL SELECTION AND DATA USAGE ACROSS THE ORGANIZATION - This is the correct answer as it addresses governance by creating policies that guide model selection and data usage across departments, ensuring consistency and adherence to regulations.\n\nE. USE AWS S3 FOR STORING ALL AI-GENERATED CONTENT TO ENSURE HIGH AVAILABILITY - While high availability is important for operational simplicity, this option does not directly address the governance and compliance aspects of the question.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "IAM",
+        "S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:39:43.415608Z"
+    },
+    {
+      "question_id": "ccdee6e6-b13d-44ae-970d-f76fb90eafbb",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application to generate customer support responses. The development team wants to ensure the solution adheres to governance and compliance requirements while maintaining model transparency. Which two AWS services or configurations should be implemented? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker Model Monitor - For monitoring model bias and fairness",
+        "B. AWS CloudTrail - To log API calls for auditing purposes",
+        "C. AWS Key Management Service (KMS) - To encrypt sensitive data at rest",
+        "D. AWS Certificate Manager (ACM) - To manage SSL/TLS certificates for HTTPS requests",
+        "E. Amazon SageMaker Explainability - For generating explainable model outputs"
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "A. CORRECT - Amazon SageMaker Model Monitor is a service that helps you monitor and validate machine learning models in production for drift, bias, and more. This aligns with the governance and compliance requirements mentioned in the scenario.\n\nB. INCORRECT - AWS CloudTrail logs API calls and management UI actions to the AWS CloudTrail console and delivers log files to Amazon S3. While this is useful for auditing purposes, it does not directly address model transparency or governance as required by the scenario.\n\nC. INCORRECT - AWS Key Management Service (KMS) provides secure key storage and encryption/decryption capabilities. Although important for data protection, it does not directly contribute to model transparency or compliance requirements in this context.\n\nD. INCORRECT - AWS Certificate Manager (ACM) is used to provision, manage, and deploy SSL/TLS certificates for web properties. This service is relevant for HTTPS requests but does not address the governance and compliance requirements of the scenario.\n\nE. CORRECT - Amazon SageMaker Explainability provides an easy way to generate explanations for model predictions, which aligns with the need for transparent and explainable models as mentioned in the scenario.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AMAZON_SAGEMAKER",
+        "KMS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:40:50.513050Z"
+    },
+    {
+      "question_id": "938f1ed2-b98d-45fd-b48e-7bbd13556a3a",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI application that will be used by multiple teams across the organization. To ensure compliance with legal and privacy regulations, which AWS service should you leverage to manage access controls and monitor usage of the AI models?",
+      "options": [
+        "A. Amazon GuardDuty",
+        "B. AWS Config",
+        "C. AWS Identity and Access Management (IAM)",
+        "D. AWS Key Management Service (KMS)"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C, AWS Identity and Access Management (IAM). IAM provides the necessary tools to manage access controls and monitor usage of AI models by different teams, ensuring compliance with legal and privacy regulations. It allows you to create policies, procedures, and reporting mechanisms that empower the business while minimizing risk.\n\nA. Amazon GuardDuty is a security monitoring service for AWS cloud resources and does not provide direct access control or usage monitoring features tailored for generative AI applications.\nB. AWS Config provides configuration history and resource change tracking but does not manage access controls or monitor AI model usage effectively.\nD. AWS Key Management Service (KMS) manages encryption keys, which is useful for data at rest protection but does not address the broader governance and compliance requirements for generative AI.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "IAM"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:41:26.925430Z"
+    },
+    {
+      "question_id": "27fa27e9-c973-43fd-831a-0a172756dc66",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is developing a responsible AI governance framework to ensure ethical and compliant use of machine learning models. They need to define policies, monitor the deployment and performance of their AI systems, and continuously review these practices. Which AWS service would best support the 'Responsible use of AI' capability as described in the AWS Cloud Adoption Framework for Artificial Intelligence?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Config",
+        "C. AWS GuardDuty",
+        "D. AWS Control Tower"
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D. AWS Control Tower supports the 'Responsible use of AI' capability by enabling organizations to define and enforce policies, monitor the deployment and performance of their AI systems, and continuously review these practices as described in the AWS Cloud Adoption Framework for Artificial Intelligence. AWS Control Tower provides a comprehensive governance solution that includes policy management, continuous monitoring, and compliance tracking, making it well-suited for responsible AI governance frameworks.\n\nOption A (Amazon SageMaker) is primarily used for building, training, and deploying machine learning models but does not focus on governance practices such as policy definition and continuous monitoring.\n\nOption B (AWS Config) is a configuration management service that helps track changes to AWS resources. While it can be useful in certain scenarios, it is not specifically designed to support AI governance frameworks or the 'Responsible use of AI' capability.\n\nOption C (AWS GuardDuty) is a security service that monitors for malicious activity and helps protect AWS accounts. It is not specifically designed to support AI governance frameworks or the 'Responsible use of AI' capability.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Control Tower"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-13T06:42:11.575846Z"
+    },
+    {
+      "question_id": "adf24da7-e5c3-405d-88f6-2d5fb99e7f2d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on user browsing history. The system should be able to scale with minimal manual intervention and provide real-time recommendations. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker for model training and deployment, and Amazon Personalize for real-time recommendations",
+        "B. Amazon Elastic Compute Cloud (EC2) instances running custom recommendation algorithms",
+        "C. AWS Lambda with API Gateway to handle all the recommendation logic in a serverless manner",
+        "D. Amazon Redshift for storing user browsing history and Amazon QuickSight for generating recommendations"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A: Amazon SageMaker for model training and deployment, and Amazon Personalize for real-time recommendations. Amazon SageMaker provides a managed platform that simplifies the process of building and deploying machine learning models with minimal manual intervention. Amazon Personalize is specifically designed for building real-time recommendation engines, which aligns well with the customer's requirement to provide timely suggestions based on user browsing history.\n\nOption B (Amazon EC2 instances) would require more manual management and could be less scalable compared to managed services like SageMaker and Personalize. Option C (AWS Lambda with API Gateway) is suitable for serverless architectures but might not offer the same level of machine learning capabilities as SageMaker and Personalize. Option D (Amazon Redshift and QuickSight) is useful for data warehousing and business intelligence, but it does not provide real-time recommendation capabilities.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:42:25.929741Z"
+    },
+    {
+      "question_id": "a9c54f26-23e3-4851-b7ec-bb4b0205f349",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application that will be used across multiple departments. The team needs to ensure the application adheres to governance and compliance regulations, maintains legal and privacy requirements, and mitigates potential risks associated with data poisoning and model output biases (Select THREE)",
+      "options": [
+        "A. ENABLE AWS SNS FOR REAL-TIME NOTIFICATIONS OF MODEL UPDATES",
+        "B. IMPLEMENT AWS IAM TO MANAGE ACCESS CONTROL FOR AI MODELS",
+        "C. USE AWS COMPLIANCE TO AUTOMATE REGULATORY REPORTING AND AUDITS",
+        "D. SET UP AWS WAF TO FILTER INPUTS AND OUTPUTS FROM THE AI APPLICATION",
+        "E. CONFIGURE AWS CLOUDHSM FOR ENCRYPTED STORAGE OF AI MODEL DATA"
+      ],
+      "correct_answers": [
+        "B",
+        "C",
+        "D"
+      ],
+      "explanation": "A. AWS SNS IS USED FOR REAL-TIME NOTIFICATIONS, WHICH IS NOT DIRECTLY RELEVANT TO THE GOVERNANCE AND COMPLIANCE REQUIREMENTS IN THIS CONTEXT.\n\nB. AWS IAM (IDENTITY AND ACCESS MANAGEMENT) CAN BE USED TO MANAGE ACCESS CONTROL FOR AI MODELS, ENHANCING SECURITY AND RESPONSIBLE AI PRACTICES. THIS IS A CORRECT ANSWER.\n\nC. AWS COMPLIANCE CAN AUTOMATE REGULATORY REPORTING AND AUDITS, HELPING ORGANIZATIONS MEET LEGAL AND PRIVACY REQUIREMENTS, MAKING IT A CORRECT ANSWER.\n\nD. AWS WAF (WEB APPLICATION FIREWALL) CAN FILTER INPUTS AND OUTPUTS FROM THE AI APPLICATION TO MITIGATE RISKS SUCH AS DATA POISONING AND MODEL OUTPUT BIASES, MAKING IT A CORRECT ANSWER.\n\nE. AWS CLOUDHSM IS USED FOR ENCRYPTED STORAGE OF SENSITIVE DATA BUT DOES NOT DIRECTLY ADDRESS GOVERNANCE, COMPLIANCE, OR RISK MITIGATION REQUIREMENTS IN THIS CONTEXT.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "IAM",
+        "COMPLIANCE",
+        "WAF"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:42:46.600021Z"
+    },
+    {
+      "question_id": "0f1fb00f-b850-46c4-ba0a-7b5cb5baaf2a",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your organization is developing a chatbot using generative AI to improve customer service. You need to ensure the model adheres to responsible AI practices, including addressing bias and maintaining transparency. Which of the following approaches best aligns with these requirements?",
+      "options": [
+        "A. Implementing Amazon SageMaker Model Monitor for drift detection",
+        "B. Using Amazon Comprehend Medical to identify sensitive medical information in chat logs",
+        "C. Establishing an AI center of excellence and a model governance committee",
+        "D. Configuring AWS Lambda functions to log all customer interactions"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Establishing an AI center of excellence (AI CoE) and a model governance committee aligns with responsible AI practices as outlined in the AWS Prescriptive Guidance for Building an Enterprise-Ready Generative AI Platform on AWS. The AI CoE can offer guidance, best practices, and technical capabilities to build generative AI applications while maintaining governance and quality standards. It also ensures regular engagement with business units to identify opportunities for adoption and compliance with ethical principles.\n\nOption A is incorrect because Amazon SageMaker Model Monitor is primarily used for detecting model drift, which is not directly related to addressing bias or ensuring transparency in the context of responsible AI practices. Option B is irrelevant as Amazon Comprehend Medical is a service designed for identifying sensitive medical information, which does not address the broader scope of responsible AI practices. Option D is too narrow and only focuses on logging interactions without providing structured governance or best practices.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor",
+        "Amazon Comprehend Medical"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:43:00.723379Z"
+    },
+    {
+      "question_id": "026f764b-2f5a-47af-b8cb-1abf69ec5585",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "Your organization is developing a generative AI application to generate customer support responses. The model contains sensitive data and must not be exposed to unauthorized users. How should you ensure secure access to the model while allowing authorized users to interact with it through an API?",
+      "options": [
+        "A. Deploy the model in an Amazon S3 bucket with public access enabled for easy access.",
+        "B. Use AWS IAM roles to grant read-only access to the model to a specific group of users.",
+        "C. Place the model in an Amazon EC2 instance and allow all IP addresses to access it over the internet.",
+        "D. Set up an API Gateway with Cognito User Pools for authentication and secure access to the model."
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D because setting up an API Gateway with Cognito User Pools provides a robust, scalable, and secure way to authenticate users before they can access the generative AI model. This approach ensures that only authorized users can interact with the model through controlled APIs. Option A (public S3 bucket) would expose the model to unauthorized access, violating security policies. Option B (IAM roles for read-only access) is too broad and does not control who can access the model; it also lacks a secure authentication layer. Option C (EC2 instance accessible from any IP) poses significant security risks as it allows unrestricted internet access to the model.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "API Gateway",
+        "Cognito User Pools"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-13T06:43:13.410571Z"
+    },
+    {
+      "question_id": "8e199a66-bfa9-4fe2-862b-a19172570af3",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI model to improve customer support. The team needs to ensure the model adheres to responsible AI practices and considers both ethical and legal implications. Which TWO of the following actions should be prioritized? (Select TWO)",
+      "options": [
+        "A. Implement Amazon SageMaker Model Monitor for continuous monitoring of model performance.",
+        "B. Establish an AI Center of Excellence (CoE) to guide generative AI initiatives across the organization.",
+        "C. Use Amazon Lex to directly interact with customers and provide personalized responses.",
+        "D. Deploy AWS Lambda functions to process customer data before feeding it into the generative AI model.",
+        "E. Create a dedicated Model Governance Committee that develops evaluation criteria for foundation models."
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. Implement Amazon SageMaker Model Monitor for continuous monitoring of model performance.\n- This option is about monitoring the model's performance, which is important but not directly related to responsible AI practices or ethical/legal implications.\n\nB. Establish an AI Center of Excellence (CoE) to guide generative AI initiatives across the organization.\n- This aligns with Task Statement 4.1 and helps in guiding initiatives while maintaining governance and quality standards.\n\nC. Use Amazon Lex to directly interact with customers and provide personalized responses.\n- While useful for customer interaction, it does not address responsible AI practices or legal/ethical considerations.\n\nD. Deploy AWS Lambda functions to process customer data before feeding it into the generative AI model.\n- This is a technical implementation detail rather than addressing responsible AI practices or ethical/legal implications.\n\nE. Create a dedicated Model Governance Committee that develops evaluation criteria for foundation models.\n- This aligns with Task Statement 4.1 and ensures compliance with ethical AI principles, making it crucial for responsible AI.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AI Center of Excellence",
+        "Model Governance Committee"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:43:30.264786Z"
+    },
+    {
+      "question_id": "cbf6b454-14b6-4ee8-b31b-cdf01ec533bd",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on customer browsing history. The system should be scalable, cost-effective, and capable of handling real-time data streaming. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker for model training and deployment, Amazon Kinesis Data Streams for real-time data processing",
+        "B. Amazon DynamoDB for storing customer browsing history, AWS Lambda for real-time recommendations",
+        "C. Amazon Redshift for data warehousing, Amazon EC2 for batch processing",
+        "D. Amazon S3 for storage, AWS Glue for ETL, and Amazon SageMaker for model training"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because Amazon SageMaker provides a fully managed service for building, training, and deploying machine learning models at scale, which aligns with the scalable and cost-effective needs. Amazon Kinesis Data Streams can handle real-time data streaming, making it suitable for processing customer browsing history in real-time. \n\nB is incorrect as DynamoDB is primarily used for NoSQL database storage, not for building ML models or handling real-time recommendations directly. AWS Lambda could be part of the solution but would need to be integrated with other services.\n\nC is not ideal because Amazon Redshift is a data warehouse service and Amazon EC2 instances are more expensive than SageMaker for model training and deployment.\n\nD focuses on storage and ETL, which do not directly address real-time processing or scalable ML model deployment.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Kinesis Data Streams"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:43:58.667399Z"
+    },
+    {
+      "question_id": "02930374-f8c3-4b3a-a8f5-5f90ec124306",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI model to assist customer service agents in responding to common queries. They want to ensure the model adheres to ethical guidelines and avoid potential biases. Which approach should they prioritize to maintain responsible AI practices?",
+      "options": [
+        "A. Implement Amazon SageMaker Model Monitor for continuous monitoring of the model's performance.",
+        "B. Use Amazon Comprehend Medical to automatically detect and redact sensitive information in customer queries.",
+        "C. Establish an AI Center of Excellence (AI CoE) to oversee model development, governance, and ethical considerations.",
+        "D. Deploy AWS Lambda functions to automate the generation of responses based on predefined templates."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because establishing an AI Center of Excellence (AI CoE) ensures that there is a dedicated team responsible for overseeing model development, governance, and ethical considerations. This aligns with the guidelines for responsible AI as outlined in AWS best practices documents, which emphasize the importance of having a structured approach to AI initiatives, including regular engagement with business units and maintaining governance standards.\n\nOption A (Amazon SageMaker Model Monitor) is useful for monitoring model performance but does not address ethical considerations or bias. Option B (Amazon Comprehend Medical) focuses on data redaction rather than broader responsible AI practices. Option D (AWS Lambda functions) automates response generation, which is a technical aspect of implementing the model but does not ensure adherence to responsible AI principles.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor",
+        "Amazon Comprehend Medical"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:44:12.443429Z"
+    },
+    {
+      "question_id": "4b7c8289-96c7-4a58-b288-851a60a8632a",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on user browsing history. The solution should be scalable, cost-effective, and provide accurate recommendations in real-time. (Select THREE)",
+      "options": [
+        "A. Amazon SageMaker for building the model training pipeline",
+        "B. AWS Lambda for handling batch processing of user data",
+        "C. Amazon Personalize for real-time recommendation generation using a pre-trained model",
+        "D. Amazon Redshift for storing user browsing history in a structured database",
+        "E. Amazon S3 for storing large amounts of unstructured user interaction logs"
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "E"
+      ],
+      "explanation": "A. AMAZON SAGE MAKER IS SUITABLE FOR BUILDING THE MODEL TRAINING PIPELINE AS IT OFFERS A COMPLETE MACHINE LEARNING WORKFLOW FROM DATA PREPARATION TO DEPLOYMENT AND MONITORING. THIS MEETS THE REQUIREMENTS OF SCALABILITY AND COST-EFFECTIVENESS.\n\nB. AWS LAMBDA IS NOT OPTIMAL FOR REAL-TIME RECOMMENDATIONS AS IT IS DESIGNED FOR SERVERLESS BATCH PROCESSING, WHICH MIGHT BE INEFFICIENT FOR HIGH-FREQUENCY USER DATA PROCESSING.\n\nC. AMAZON PERSONALIZE IS THE BEST CHOICE FOR REAL-TIME RECOMMENDATION GENERATION AS IT USES PRE-TRAINED MODELS AND AUTOMATICALLY SCALES TO HANDLE HIGH VOLUME TRAFFIC, MAKING IT COST-EFFECTIVE AND SUITABLE FOR REAL-TIME APPLICATIONS.\n\nD. AMAZON REDSHIFT IS NOT THE BEST CHOICE FOR USER BROWSING HISTORY AS IT IS DESIGNED FOR OLAP ANALYSIS OF STRUCTURED DATA, WHICH MIGHT BE OVERKILL FOR THIS USE CASE WHERE UNSTRUCTURED LOGS ARE MORE APPROPRIATE.\n\nE. AMAZON S3 IS SUITABLE FOR STORING LARGE AMOUNTS OF UNSTRUCTURED USER INTERACTION LOGS AS IT PROVIDES HIGH-SCALABILITY AND LOW-COST STORAGE, MAKING IT COST-EFFECTIVE FOR DATA INGESTION.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Personalize",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:44:31.499920Z"
+    },
+    {
+      "question_id": "012130d8-2e41-4eac-8d1f-6d93de8798df",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on customer browsing history. The system should be able to handle a large volume of data without significant performance degradation. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker and Amazon Kinesis Data Streams",
+        "B. Amazon Comprehend and Amazon Elastic MapReduce (EMR)",
+        "C. Amazon Personalize and Amazon S3",
+        "D. Amazon Redshift and AWS Lambda"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "Amazon Personalize is the best choice for a recommendation system as it provides pre-built machine learning models that can be trained with customer data to generate personalized recommendations. It also integrates well with other AWS services like Amazon S3 for storing datasets, making C the correct answer.\n\nA) Amazon SageMaker and Amazon Kinesis Data Streams are more suited for real-time analytics and streaming data processing rather than batch recommendation generation.\nB) Amazon Comprehend is used for text analysis and sentiment understanding, not for building recommendation systems. Amazon EMR is a good service for big data processing but lacks the specialized ML models needed for recommendations.\nD) Amazon Redshift is great for complex query analytics on large datasets, but it does not provide built-in machine learning capabilities for generating personalized recommendations.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:44:58.338998Z"
+    },
+    {
+      "question_id": "ad44365b-3930-49bf-a26a-8eed86e9aa5e",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that suggests products based on customer browsing history. The system should be scalable, cost-effective, and capable of handling real-time data with minimal latency.",
+      "options": [
+        "A. Use Amazon SageMaker for training the model and AWS Lambda for serving real-time recommendations using batch inferencing.",
+        "B. Deploy a custom-trained TensorFlow model on an EC2 instance to handle both training and inference in real-time.",
+        "C. Utilize Amazon Comprehend Medical to process text data from customer reviews and generate product recommendations.",
+        "D. Implement Amazon Personalize for the recommendation system, leveraging its built-in real-time inference capabilities."
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D because Amazon Personalize is specifically designed for building recommendation systems that can handle both training and real-time inferencing with minimal latency, making it cost-effective and scalable. It automatically optimizes the model to balance accuracy and performance, which aligns well with the company's requirements.\n\nA is incorrect as Amazon SageMaker batch inferencing is not suitable for real-time data handling due to its batch processing nature, leading to higher latency. B is inefficient because training a custom model on an EC2 instance would be more expensive and less scalable compared to managed services like Personalize. C is inappropriate since Amazon Comprehend Medical is intended for processing medical text data, not general product recommendations based on browsing history.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda",
+        "EC2",
+        "Amazon Comprehend Medical",
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:45:12.353848Z"
+    },
+    {
+      "question_id": "38103bf1-aefc-4981-9537-89d8a7fe1f37",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI application to assist customer service agents in responding to inquiries. To ensure the model's fairness and mitigate potential biases, you are considering implementing various practices. Which of the following approaches would best align with responsible AI development according to AWS guidelines?",
+      "options": [
+        "A. Regularly review and update training datasets to include diverse user inputs.",
+        "B. Use Amazon SageMaker Model Monitor to continuously monitor model performance.",
+        "C. Implement a model governance committee to oversee ethical AI principles and validate compliance.",
+        "D. Deploy the model in a production environment with minimal oversight."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. According to AWS guidelines, establishing a dedicated model governance committee (as described in 'AWS Prescriptive Guidance Building an enterprise-ready generative AI platform on AWS') is essential for responsible AI use. This committee develops evaluation criteria, reviews usage requests, and validates compliance with ethical principles, ensuring balanced innovation and quality standards.\n\nOption A is plausible but does not directly address the need for a governance structure as emphasized in the guidelines. Option B focuses on performance monitoring rather than governance and ethics. Option D contradicts responsible AI practices by suggesting minimal oversight in production.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.14, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Identify relevant metrics to assess FM performance (for example, Recall-Oriented Understudy\nfor Gisting Evaluation [ROUGE], Bilingual Evaluation Understudy [BLEU], BERTScore, LLM-as-a-\njudge).\n- Determine whether an FM effectively meets business objectives (for example, productivit",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:45:23.997587Z"
+    },
+    {
+      "question_id": "3a37003f-1692-44bb-816e-e01d76d1d300",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a generative AI model for customer support. They want to ensure the solution is cost-effective, scalable, and aligns with their business goals while also addressing potential risks. Which two AWS services or configurations should they consider? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker for building and deploying the AI model.",
+        "B. AWS Budgets to monitor and manage costs associated with the AI deployment.",
+        "C. Amazon VPC to isolate the AI model from other resources, enhancing security but increasing complexity.",
+        "D. AWS Config for continuously monitoring and managing risks in their AI systems.",
+        "E. AWS Lambda for automating routine tasks related to data processing."
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "A. Amazon SageMaker is a fully managed service that provides developers and data scientists with the ability to build, train, and deploy machine learning models quickly. It fits well into the scenario as it enables building and deploying an AI model for customer support.\n\nB. AWS Budgets helps you monitor your costs and usage across services in your AWS account, set up alerts when a budget is exceeded, and create forecasts of future spend. This aligns with ensuring cost-effectiveness and managing associated risks.\n\nC. Amazon VPC can be useful but it increases complexity and does not directly address the cost-effectiveness or scalability requirements mentioned in the scenario.\n\nD. AWS Config provides configuration management for your AWS resources, which is more about compliance and risk management than cost-effectiveness or scaling an AI model.\n\nE. AWS Lambda can automate routine tasks, but it is less relevant to building and deploying a generative AI model compared to Amazon SageMaker.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.23, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nsearching for valuable business problems is the focus of\nthis perspective. Culture is king, even more so when adopting AI. This perspective comprises seven\ncapabilities shown in the following table. Common stakeholders include the CIO, COO, CTO, cloud\ndirector, and cross-functional and enterprise-wide leaders.\nFoundational Capability Explanation\nNew: ML Fluency Building a s",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Budgets"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:45:39.652899Z"
+    },
+    {
+      "question_id": "961579f9-e2c9-4bf4-b702-2ade1a0b3491",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a recommendation system that predicts which products customers are likely to purchase based on their browsing history. The system should be scalable, accurate, and able to handle real-time data streaming. Which combination of AWS services would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker for model training and deployment, AWS Lambda for real-time processing",
+        "B. Amazon Redshift for data storage, Amazon EC2 instances for batch processing",
+        "C. Amazon S3 for storing logs, Amazon API Gateway for API creation",
+        "D. AWS AppStream 2.0 for application streaming, Amazon CloudWatch for monitoring"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because Amazon SageMaker provides the necessary tools to train and deploy machine learning models at scale, which are essential for a recommendation system. It supports real-time data processing through its built-in capabilities or integration with AWS Lambda functions. Amazon Redshift, while excellent for large-scale data warehousing, does not provide real-time predictive analytics. EC2 instances can be used but require more manual management and may not offer the same level of scalability as SageMaker. AppStream 2.0 is intended for application streaming and CloudWatch is a monitoring service, neither of which are directly relevant to building a recommendation system.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:46:05.109680Z"
+    },
+    {
+      "question_id": "5fcb9d0e-150f-4e0e-98ce-58f230da140f",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application that will be deployed across multiple teams. To ensure the security and compliance of this application, which two measures should the organization implement? (Select TWO)",
+      "options": [
+        "A. AWS Identity and Access Management (IAM) policies to control access to model endpoints",
+        "B. Amazon S3 for storing all AI training data without encryption",
+        "C. AWS CloudTrail to monitor API calls related to AI models",
+        "D. Amazon SageMaker endpoint configurations with network isolation using VPCs",
+        "E. AWS Config to set up compliance checks but not enable any enforcement actions"
+      ],
+      "correct_answers": [
+        "A",
+        "D"
+      ],
+      "explanation": "A. CORRECT - IAM policies are crucial for controlling access to AI model endpoints, ensuring that only authorized users and services can interact with the models. This aligns with governance and compliance requirements.\n\nB. INCORRECT - Storing data without encryption is not compliant with AWS best practices, especially when dealing with sensitive information in generative AI applications. AWS recommends encrypting all data at rest using KMS keys.\n\nC. CORRECT - AWS CloudTrail can be used to monitor API calls related to AI models, which helps in identifying any unauthorized access or usage patterns. This is part of the risk management discipline.\n\nD. CORRECT - Configuring endpoints with network isolation using VPCs ensures that the AI models are only accessible within a trusted environment, reducing the risk of data breaches and ensuring compliance with security policies.\n\nE. INCORRECT - While AWS Config can be used to set up compliance checks, it does not enforce any actions by default. Enforcing actions is necessary for effective governance, and simply setting up checks without enforcement would leave the organization vulnerable.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "IAM",
+        "CloudTrail",
+        "SageMaker",
+        "Config"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:46:35.233635Z"
+    },
+    {
+      "question_id": "5434f7ad-3660-4fe6-9ef0-6e9d2707d74a",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI application that will be used across multiple departments. The CTO wants to ensure that the application adheres to governance and compliance standards while minimizing operational overhead. Which approach should they take to achieve this goal?",
+      "options": [
+        "A. Deploy separate VPCs for each department's instance of the AI model.",
+        "B. Use Amazon SageMaker with built-in security controls and governance features.",
+        "C. Implement a custom IAM policy for each user accessing the AI application.",
+        "D. Configure AWS WAF to monitor and filter all requests to the AI application."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Using Amazon SageMaker with built-in security controls and governance features allows the organization to adhere to governance and compliance standards while minimizing operational overhead. Amazon SageMaker provides a platform for building, training, and deploying machine learning models that includes built-in security controls such as IAM roles, network isolation via VPCs, and access control through IAM policies. This approach simplifies management by leveraging AWS-managed services.\n\nOption A is incorrect because deploying separate VPCs for each department's instance of the AI model increases complexity and operational overhead without providing additional governance benefits. Option C is not suitable as it would lead to a proliferation of custom IAM policies, increasing administrative burden and potential misconfigurations. Option D is inappropriate since AWS WAF is designed for web application security and does not address the broader governance and compliance requirements of an AI application.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:47:13.125837Z"
+    },
+    {
+      "question_id": "517df61e-a5c7-4d58-a7ec-da3b6bae92d7",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a generative AI model for customer support. They need to ensure the model's security, compliance, and rapid development while minimizing costs. Which two approaches should they prioritize? (Select TWO)",
+      "options": [
+        "A. Use AWS GuardDuty for continuous monitoring of the AI environment.",
+        "B. Implement Amazon SageMaker Model Monitor for real-time model performance tracking.",
+        "C. Deploy AWS Lambda functions to automate data preprocessing tasks.",
+        "D. Establish a cross-functional team including IT, data science, legal, and business units.",
+        "E. Configure Amazon S3 with server-side encryption and access control policies."
+      ],
+      "correct_answers": [
+        "D",
+        "E"
+      ],
+      "explanation": "A. AWS GuardDuty is useful for monitoring security threats but does not directly address the need for a cross-functional team or cost minimization.\n\nB. Amazon SageMaker Model Monitor is beneficial for model performance tracking, but it's not essential for rapid development and cost minimization.\n\nC. While AWS Lambda can automate data preprocessing, it doesn't contribute to security policies or compliance efforts directly.\n\nD. Establishing a cross-functional team (as per the sources) ensures consistency and quality across implementations, which is crucial for rapid development and compliance with organizational requirements.\n\nE. Configuring Amazon S3 with server-side encryption and access control policies enhances data protection, aligning with security and compliance needs, though it doesn't directly impact cost minimization.",
+      "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS GuardDuty",
+        "Amazon SageMaker Model Monitor",
+        "AWS Lambda",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-13T06:47:27.391427Z"
+    }
+  ]
+}

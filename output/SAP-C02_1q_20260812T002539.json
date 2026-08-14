@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "cert_code": "SAP-C02",
+    "generated_at": "2026-08-12T00:25:39.969337+00:00",
+    "total_questions": 1,
+    "approved": 1,
+    "rejected": 0
+  },
+  "questions": [
+    {
+      "question_id": "96f2b2c2-1592-476c-94cd-b18cb7da34d8",
+      "cert_code": "SAP-C02",
+      "domain": "Continuous Improvement for Existing Solutions",
+      "question_type": "single",
+      "question_text": "Select ONE: Your company has an existing web application hosted on Amazon EC2 instances in an Auto Scaling group, which relies on several external APIs. To continuously monitor and improve the performance of this application, you need to implement a comprehensive monitoring strategy. Which approach should you prioritize to gain insights into how your application is performing with respect to its dependencies?",
+      "options": [
+        "A. Enable Amazon CloudWatch Logs for all services within the VPC.",
+        "B. Set up AWS X-Ray to trace requests from end-to-end and analyze them using X-Ray Insights.",
+        "C. Deploy an on-premises monitoring tool that periodically checks API health.",
+        "D. Configure AWS Lambda functions to send periodic emails with status updates."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B because AWS X-Ray provides detailed insights into the performance of your application and its dependencies by tracing requests from end-to-end, which aligns well with the continuous improvement strategy outlined in the AWS Well-Architected Framework. X-Ray Insights can automatically analyze these traces to help identify bottlenecks or failures in external services. A is incorrect because enabling CloudWatch Logs alone does not provide the same level of detailed tracing and analysis as X-Ray. C is less effective since it lacks real-time monitoring capabilities and might miss issues that arise between checks. D is inferior due to its manual nature, lack of integration with other AWS services for deeper insights, and potential delays in issue detection.",
+      "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.145, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nalth to aggregate AWS\nHealth events across accounts.\n5. Instrument your application with AWS X-Ray: AWS X-Ray provides insights into how\napplications and their underlying dependencies are performing. By tracing requests from start\nto end, you can identify bottlenecks or failures in the external services or components your\napp",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
+      "difficulty": "Professional",
+      "aws_services": [
+        "X-Ray",
+        "CloudWatch Logs"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T00:16:22.933074Z"
+    }
+  ]
+}

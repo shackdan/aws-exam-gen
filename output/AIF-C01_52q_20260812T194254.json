@@ -1,0 +1,1478 @@
+{
+  "metadata": {
+    "cert_code": "AIF-C01",
+    "generated_at": "2026-08-12T19:42:54.932070+00:00",
+    "total_questions": 52,
+    "approved": 52,
+    "rejected": 0
+  },
+  "questions": [
+    {
+      "question_id": "724e9875-84fd-4a00-b2bc-d784cccfd694",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "Single answer: An organization is planning to implement a generative AI model that will generate text for customer support responses. They want the model to be highly customizable and able to adapt to new data without extensive retraining. Which AWS service should they use?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Comprehend",
+        "C. Amazon Polly",
+        "D. Amazon QuickSight"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Amazon SageMaker is the best choice for implementing a highly customizable and adaptable generative AI model. It provides tools to train, host, and deploy machine learning models, including those used in text generation, with the ability to adapt to new data through incremental training or fine-tuning without extensive retraining. Amazon Comprehend is designed for natural language processing tasks such as entity recognition, sentiment analysis, and key phrase extraction but does not support custom training or adaptation to new data without retraining. Amazon Polly generates speech from text but is more focused on voice synthesis rather than text generation. Amazon QuickSight is a business intelligence service that focuses on visualizing data through interactive dashboards and does not support generative AI tasks.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:25:25.068536Z"
+    },
+    {
+      "question_id": "68d85ec9-e78a-4e93-8ef6-d9dec692b09a",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is implementing a generative AI model to automate content creation for their marketing department. They want to ensure the solution is scalable, cost-effective, and can handle high traffic during peak hours without compromising performance. (Select TWO)",
+      "options": [
+        "A. AWS SageMaker Endpoint with Auto Scaling",
+        "B. Amazon Comprehend for text generation",
+        "C. AWS Lambda with API Gateway",
+        "D. Amazon EC2 Spot Instances",
+        "E. AWS Budgets and Cost Explorer"
+      ],
+      "correct_answers": [
+        "A",
+        "D"
+      ],
+      "explanation": "A. AWS SageMaker Endpoint with Auto Scaling - Correct: This option allows the organization to deploy a generative AI model using SageMaker, which provides an endpoint for real-time inference. By integrating this with Auto Scaling, they can ensure that the solution scales automatically based on traffic demands without over-provisioning resources during low-traffic periods.\n\nB. Amazon Comprehend for text generation - Incorrect: While Amazon Comprehend is a powerful natural language processing service, it is not designed specifically for generative AI tasks and may not provide the flexibility or performance required for content creation at scale.\n\nC. AWS Lambda with API Gateway - Incorrect: Although this combination can handle traffic spikes efficiently due to its serverless nature, it does not inherently support machine learning models directly. It would require additional setup and might be less cost-effective compared to SageMaker endpoints.\n\nD. Amazon EC2 Spot Instances - Correct: This option allows the organization to leverage unused capacity at a significant discount, making the solution more cost-effective while still ensuring high performance during peak hours. Spot Instances can be dynamically adjusted based on demand, aligning well with the need for scalable and cost-efficient solutions.\n\nE. AWS Budgets and Cost Explorer - Incorrect: These tools are primarily used for monitoring and managing costs rather than directly addressing the scalability or performance requirements of a generative AI model.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker",
+        "Auto Scaling",
+        "Amazon EC2 Spot Instances"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:25:44.930554Z"
+    },
+    {
+      "question_id": "96bb820f-680c-4233-9eeb-c587f70d25e8",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a predictive maintenance solution for its fleet of industrial machinery using AWS services. The goal is to predict equipment failures before they occur, ensuring minimal downtime and reducing maintenance costs associated with unexpected breakdowns.",
+      "options": [
+        "A. Use Amazon SageMaker to train the ML model with historical data from the machines and deploy it on an Auto Scaling group for real-time predictions.",
+        "B. Deploy a custom-built Python script using AWS Lambda that reads sensor data directly from IoT devices, processes it, and triggers alarms based on predefined conditions.",
+        "C. Implement Amazon SageMaker to train the ML model with historical data but use Amazon QuickSight for real-time monitoring of equipment health.",
+        "D. Use Amazon S3 to store all sensor data, then process this data using AWS Glue jobs before feeding it into an RDS instance for analysis and prediction."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Option A is the best choice as Amazon SageMaker provides a fully managed service that enables organizations to build and deploy machine learning models quickly. It integrates well with other AWS services, allowing real-time predictions using Auto Scaling groups for handling varying workloads efficiently. The other options are less suitable because they either lack the integration capabilities (B), use older technologies like RDS for processing (D), or do not provide the necessary real-time monitoring and predictive analytics features (C). Amazon QuickSight can indeed offer real-time insights, making option C a viable but slightly inferior choice compared to A.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Auto Scaling",
+        "AWS Lambda",
+        "IoT devices",
+        "Amazon QuickSight",
+        "Amazon S3",
+        "AWS Glue",
+        "RDS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:26:00.375836Z"
+    },
+    {
+      "question_id": "64d461e5-c8ff-4f3a-a2f3-26f014af6045",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is developing a chatbot to handle customer inquiries, including diverse topics such as product information, billing issues, and technical support. The team wants to ensure the chatbot can understand and respond to natural language queries effectively while maintaining cost efficiency. Which approach should they take?",
+      "options": [
+        "A. Deploy a custom-trained transformer model on Amazon SageMaker and use Amazon Polly for text-to-speech.",
+        "B. Use Amazon Lex with built-in intents and slot types.",
+        "C. Implement a rule-based keyword matching system using AWS Lambda.",
+        "D. Utilize Amazon Comprehend to analyze customer queries."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best approach is B because it leverages Amazon Lex, which provides built-in intents and slot types for handling diverse customer inquiries effectively. This method offers a balance between cost efficiency and the ability to handle natural language processing tasks without requiring custom training. Option A (A) can be complex and costly due to custom training requirements. Option C (C) is too rigid and cannot adapt to varied customer inquiries, making it less effective. Option D (D), while useful for text analysis, may not provide the same level of natural language understanding as Amazon Lex.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Polly",
+        "Amazon Lex",
+        "AWS Lambda",
+        "Amazon Comprehend"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:26:25.397593Z"
+    },
+    {
+      "question_id": "8a60291f-6c5d-453e-8b5e-8b49aad91fb2",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is looking to leverage generative AI models for content creation and customer service chatbots. They want to ensure the solution is cost-effective, scalable, and provides high-quality outputs while minimizing latency. Which two services should they consider? (Select TWO)",
+      "options": [
+        "A. AWS SageMaker",
+        "B. Amazon Comprehend",
+        "C. Amazon Lex",
+        "D. Amazon S3",
+        "E. Amazon Polly"
+      ],
+      "correct_answers": [
+        "A",
+        "C"
+      ],
+      "explanation": "{'A. AWS SageMaker': 'AWS SageMaker is a fully managed service that provides the ability to build, train, and deploy machine learning models at scale. It supports generative AI models and can help in creating cost-effective solutions by optimizing model training and deployment.', 'B. Amazon Comprehend': 'Amazon Comprehend is an automated natural language processing (NLP) technology for extracting insights from text data. While useful for NLP tasks, it does not directly support generative AI models.', 'C. Amazon Lex': 'Amazon Lex can be used to build conversational interfaces with natural-sounding speech and text. It supports both chatbots and voice bots, making it a suitable choice for customer service applications. However, it is more focused on NLP rather than generative AI content creation.', 'D. Amazon S3': 'Amazon S3 is an object storage service that can be used to store the datasets and models required by generative AI solutions. While essential for storing data, it does not provide the capabilities needed for model training or real-time chatbot interactions.', 'E. Amazon Polly': 'Amazon Polly converts text into lifelike speech, which is useful for content creation but not directly related to customer service chatbots or generative AI models.'}",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker",
+        "Amazon Lex"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:26:41.767196Z"
+    },
+    {
+      "question_id": "fb689ab6-c019-4e38-aea8-980ab98f197d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a machine learning model for predicting customer churn. They want to ensure the solution can handle high volumes of data while maintaining accuracy and speed. Which AWS service should they prioritize to meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon QuickSight",
+        "C. Amazon Redshift Spectrum",
+        "D. AWS Glue"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Amazon SageMaker is the best choice for implementing a machine learning model to predict customer churn because it provides a fully managed service that enables developers and data scientists to build, train, and deploy machine learning models quickly. It supports both supervised and unsupervised learning algorithms and can handle large volumes of data efficiently. Amazon QuickSight is an analytics service designed for business intelligence, not suitable for model training. Amazon Redshift Spectrum allows querying data in S3 but does not provide the full ML capabilities required. AWS Glue is a extract, transform, load (ETL) service used to move and process large amounts of data, which is not directly related to building machine learning models.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:26:52.724321Z"
+    },
+    {
+      "question_id": "4bc8a3c0-8d1a-46a5-a824-a8c11ed4b78a",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a machine learning model for predicting customer churn. The team wants to ensure the solution is scalable, cost-effective, and can handle large volumes of data efficiently. Which approach should they adopt?",
+      "options": [
+        "A. Deploy a custom-built on-premises ML model using TensorFlow and manage infrastructure manually.",
+        "B. Use Amazon SageMaker for building and deploying the ML model, leveraging managed services to scale automatically.",
+        "C. Implement an AWS Lambda function with periodic batch processing jobs for data analysis.",
+        "D. Utilize Amazon Redshift for real-time churn prediction by querying large datasets."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best approach is B: Using Amazon SageMaker, as it provides a fully managed service that simplifies the process of building and deploying ML models at scale. It automatically scales to handle large volumes of data without requiring manual infrastructure management, which aligns with the organization's need for cost-effectiveness and scalability.\n\nA (Option A) is inferior because managing on-premises infrastructure manually is costly and time-consuming, and it does not offer automatic scaling capabilities. C (Option C) is less suitable as AWS Lambda is better suited for event-driven processing rather than continuous data analysis tasks like churn prediction. D (Option D) uses Amazon Redshift for real-time queries, which is not ideal for machine learning model training or deployment; it's more appropriate for analytics and reporting.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:27:48.541150Z"
+    },
+    {
+      "question_id": "e4b14c82-c0e1-4cb0-9af5-fff3d1f64748",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "Your company is considering implementing a generative AI model for content creation. The goal is to balance cost and performance while ensuring the solution can handle high traffic during peak hours. Which three options should be selected? (Select THREE)",
+      "options": [
+        "A. Utilize Amazon SageMaker for model training and deployment, leveraging managed instances.",
+        "B. Deploy the generative AI model on AWS F1 instances to minimize costs by using dedicated hardware.",
+        "C. Use Amazon EC2 Spot Instances during off-peak hours to reduce costs and ensure availability during peak times.",
+        "D. Implement an Auto Scaling group for the generative AI service to automatically scale based on traffic demand.",
+        "E. Configure AWS Lambda with a cold start optimization to handle sporadic requests efficiently."
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A. Utilize Amazon SageMaker for model training and deployment, leveraging managed instances: Correct. Amazon SageMaker provides managed instances that can be scaled up or down based on the workload, ensuring both cost efficiency and performance.\n\nB. Deploy the generative AI model on AWS F1 instances to minimize costs by using dedicated hardware: Incorrect. AWS F1 instances are designed for specific workloads like in-memory databases and not suitable for general-purpose machine learning tasks.\n\nC. Use Amazon EC2 Spot Instances during off-peak hours to reduce costs and ensure availability during peak times: Correct. EC2 Spot Instances can be used to save on costs while maintaining availability, which is crucial for handling high traffic during peak hours.\n\nD. Implement an Auto Scaling group for the generative AI service to automatically scale based on traffic demand: Correct. Auto Scaling ensures that resources are optimized according to real-time traffic demands, balancing cost and performance.\n\nE. Configure AWS Lambda with a cold start optimization to handle sporadic requests efficiently: Incorrect. AWS Lambda is not typically used for continuous or high-traffic applications like generative AI models; it is more suited for event-driven workloads.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "SageMaker",
+        "EC2 Spot Instances",
+        "Auto Scaling"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:28:36.049489Z"
+    },
+    {
+      "question_id": "a7dde6e9-c646-4cdd-aa80-dcc3eb2cc9f5",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a generative AI model that can produce text similar to human-written content for customer support chatbots. They want the solution to be scalable and cost-effective, with minimal manual intervention required during deployment. Which AWS service should they choose?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Comprehend",
+        "C. Amazon Polly",
+        "D. Amazon Textract"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Amazon SageMaker is the best choice for implementing a generative AI model that can produce text similar to human-written content, as it supports building and deploying machine learning models with minimal manual intervention. Amazon SageMaker provides an end-to-end platform for training and hosting ML models, which aligns well with the organization's requirements of scalability and cost-effectiveness. \n\nAmazon Comprehend is a natural language processing (NLP) service that focuses on extracting structured insights from unstructured text data, such as sentiment analysis or entity recognition. While it can be used for generating text, it does not support generative models out-of-the-box.\n\nAmazon Polly is an AI service that generates speech from text and is primarily designed for converting text to speech, not generating human-like text content for chatbots.\n\nAmazon Textract is a document analysis service that extracts structured information from scanned documents. It is not suitable for text generation tasks.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:29:34.831747Z"
+    },
+    {
+      "question_id": "aa1bf7fb-e3fe-48c5-ba59-cafd71df89e8",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a machine learning model for predicting customer churn. They want to ensure the solution can handle large volumes of data efficiently while maintaining cost-effectiveness. Which AWS service should they choose?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Redshift",
+        "C. Amazon Athena",
+        "D. Amazon S3"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Amazon SageMaker is the best choice for implementing a machine learning model to predict customer churn as it offers end-to-end capabilities including data preparation, model training, and deployment. It can handle large volumes of data efficiently using built-in algorithms and scalable infrastructure. Amazon Redshift is designed for petabyte-scale data warehousing and analytics but may not be cost-effective or optimized for real-time machine learning tasks. Amazon Athena is a serverless query service that works with data in S3, ideal for ad-hoc queries on large datasets but not suitable for training ML models. Amazon S3 is a highly scalable object storage service used to store and retrieve any amount of data at any time, making it a good choice for storing data but not for processing or training machine learning models.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Redshift",
+        "Amazon Athena",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:30:01.555308Z"
+    },
+    {
+      "question_id": "baca68df-fc7c-4fce-9dad-df2d76cd04da",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your organization is developing a predictive model to forecast customer churn. You need to ensure the model's predictions are fair and unbiased, adhering to ethical guidelines. Which AWS service should you use to incorporate fairness checks into your machine learning pipeline?",
+      "options": [
+        "A. Amazon SageMaker Model Monitor",
+        "B. Amazon Redshift",
+        "C. AWS Config",
+        "D. AWS Lambda"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker Model Monitor can be used to monitor the performance of your machine learning models and detect any drift or bias in the model's predictions, ensuring that the model remains fair and unbiased over time. This aligns with AWS guidelines for responsible AI by providing tools to maintain fairness and integrity in ML applications.\n\nOption B (Amazon Redshift) is a data warehouse service designed for complex analytics, not specifically for monitoring model performance or detecting bias. Option C (AWS Config) is used for compliance and security configuration management, which does not address the specific need for fairness checks in machine learning models. Option D (AWS Lambda) is a serverless compute service that can be used to run code in response to events, but it is not designed for monitoring model performance or detecting bias.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:30:16.357840Z"
+    },
+    {
+      "question_id": "ddd17aac-c9d3-4901-8c77-415a3ce99cd4",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is deploying a generative AI model to generate customer support chatbot responses. The team wants to ensure that the generated content adheres strictly to company policies regarding data privacy and does not include any copyrighted material or sensitive information. Which approach should they take to enforce these requirements?",
+      "options": [
+        "A. Implement AWS Config rules to monitor for policy compliance during model training.",
+        "B. Use Amazon GuardDuty to detect and block inappropriate content generated by the AI model.",
+        "C. Configure AWS Lambda functions to preprocess input data before it is fed into the generative AI model, ensuring no sensitive information is included.",
+        "D. Deploy an Amazon S3 bucket with versioning enabled for storing all training datasets and models."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because AWS Lambda functions can be used to preprocess input data before it is fed into the generative AI model, ensuring that no sensitive information is included. This approach directly addresses the requirement of enforcing company policies during the preprocessing stage of the AI model deployment. \n\nA (AWS Config) is designed for continuous compliance monitoring and resource change tracking but does not prevent content generation issues.\nB (Amazon GuardDuty) is a threat detection service that monitors AWS resources for malicious activity, which is more suited for detecting threats to existing infrastructure rather than preventing sensitive data from being included in AI-generated content.\nD (Amazon S3 with versioning enabled) is useful for storing and managing datasets but does not provide real-time preprocessing or content filtering capabilities.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:30:49.833495Z"
+    },
+    {
+      "question_id": "0e0fb0f8-56d5-4827-a0ef-3011eaeba9b4",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization wants to use a generative AI model to create product descriptions for its e-commerce website. The team is concerned about maintaining the quality and consistency of text generated by the model. Which approach should they take to ensure that the text output remains aligned with their brand's tone and style?",
+      "options": [
+        "A. Deploy the generative AI model on an EC2 instance and manually review each product description before publishing.",
+        "B. Use Amazon Comprehend Medical to analyze and correct any medical-related content in the generated descriptions.",
+        "C. Integrate a pre-trained Amazon SageMaker endpoint with custom training data that includes examples of their brand's tone and style.",
+        "D. Configure AWS Lambda functions to automatically publish all generated product descriptions without review."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The best approach is C, integrating a pre-trained Amazon SageMaker endpoint with custom training data that includes examples of the organization\u2019s brand's tone and style. This method ensures that the text output remains aligned with their specific requirements through machine learning customization. \n\nA (Option A) is suboptimal because it involves manual review, which can be time-consuming and costly for large volumes of content.\nB (Option B) is irrelevant as Amazon Comprehend Medical is designed to identify and redact sensitive medical information, not to ensure brand tone consistency.\nD (Option D) is risky since automatic publishing without review could lead to inconsistent or inappropriate text being published, potentially damaging the brand's reputation.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:31:03.753741Z"
+    },
+    {
+      "question_id": "17402955-932b-409a-9b93-a3210b596c10",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a generative AI model for content creation. They want to ensure the model can handle large volumes of data and provide high-quality outputs while keeping costs under control. Which three services or configurations should they consider implementing? (Select THREE)",
+      "options": [
+        "A. Amazon SageMaker with built-in algorithms",
+        "B. AWS Lambda with custom code for text generation",
+        "C. Amazon S3 for storing large datasets and model artifacts",
+        "D. Amazon EC2 instances in a Spot Fleet configuration",
+        "E. AWS Glue for data transformation and ETL processes"
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "{'A': 'Amazon SageMaker with built-in algorithms is a good choice as it provides pre-built models that can be fine-tuned, reducing the need for custom development. This aligns well with cost control and high-quality output requirements.', 'B': 'AWS Lambda with custom code is not ideal because it may require significant upfront costs for development and maintenance, and the model might not be optimized for large volumes of data without substantial tuning.', 'C': 'Amazon S3 is essential for storing large datasets and model artifacts. It provides scalable storage at a lower cost compared to on-premises solutions, making it suitable for high-volume data handling.', 'D': 'Using Amazon EC2 instances in a Spot Fleet configuration can help manage costs effectively by leveraging unused capacity at significantly reduced rates. This is particularly useful when the organization needs to handle large volumes of data without constant high demand.', 'E': 'AWS Glue is primarily used for ETL processes and data integration, which might not be directly relevant to the content creation use case unless there are specific data transformation tasks involved.'}",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon S3",
+        "Amazon EC2"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:31:32.035700Z"
+    },
+    {
+      "question_id": "ad776c09-46ef-4ba7-9e14-b77140251598",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI model to create customer support chatbots. To ensure the model respects user privacy, what action should they take according to AWS guidelines?",
+      "options": [
+        "A. Implement encryption at rest and in transit for all data processed by the AI model.",
+        "B. Use Amazon SageMaker to train the model with anonymized datasets and deploy it on a VPC.",
+        "C. Enable AWS CloudTrail logging for monitoring access to the AI model's training data.",
+        "D. Configure Amazon S3 to block public read access to any datasets used in training."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. According to AWS guidelines, using Amazon SageMaker to train the model with anonymized datasets and deploying it on a VPC ensures that user privacy is respected while leveraging AWS's robust security features. Anonymizing data during training helps protect individual identities, and deploying in a VPC adds an extra layer of network isolation. \n\nOption A is too broad; encryption alone does not address the need for data anonymization. Option C focuses on monitoring but does not directly impact privacy protection. Option D only addresses S3 bucket permissions and does not cover the entire AI model's training process.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "VPC"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:31:44.222968Z"
+    },
+    {
+      "question_id": "a475725e-962a-4010-b975-0be5e8d464e9",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "Your company is planning to implement a recommendation system for its e-commerce platform. The system should be able to handle high traffic during peak hours while ensuring minimal latency. Which AWS service combination would best meet these requirements?",
+      "options": [
+        "A. Amazon SageMaker and Amazon Elasticache",
+        "B. Amazon Redshift and Amazon S3",
+        "C. AWS Lambda and Amazon API Gateway",
+        "D. Amazon EC2 and Amazon RDS"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Option A (Amazon SageMaker and Amazon ElastiCache) is the best choice for this scenario as it provides both machine learning capabilities through SageMaker to build the recommendation model, and caching to reduce latency with ElastiCache. This combination ensures that the system can handle high traffic during peak hours efficiently. Option B (Amazon Redshift and Amazon S3) is more suited for data warehousing and storage rather than real-time recommendations. Option C (AWS Lambda and Amazon API Gateway) would be better for serverless APIs but lacks the machine learning capabilities needed for a recommendation system. Option D (Amazon EC2 and Amazon RDS) provides compute resources but does not include the necessary ML services to build the recommendation model.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon ElastiCache"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:31:56.201106Z"
+    },
+    {
+      "question_id": "83af4f84-9b5e-4c43-93ed-7f67ab8ddf1c",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is implementing an AI solution using SageMaker to predict customer churn. They want to ensure the model's predictions are accurate while also maintaining high security standards. Which TWO of the following actions should they take? (Select TWO)",
+      "options": [
+        "A. ENABLE S3 SERVER-SIDE ENCRYPTION FOR THE MODEL ARTIFACTS STORED IN S3",
+        "B. USE AWS KMS TO MANAGE AND ENCRYPT THE MODEL ARTIFACTS",
+        "C. CONFIGURE SAGEMAKER ENDPOINT WITH A CUSTOM VPC ENDPOINT POLICY TO ALLOW ONLY TRUSTED SOURCES",
+        "D. IMPLEMENT SAGEMAKER AUTO-ML FOR MODEL TRAINING AND DEPLOYMENT",
+        "E. USE AWS IAM ROLES TO GRANT ACCESS TO THE SAGEMAKER ENDPOINT"
+      ],
+      "correct_answers": [
+        "B",
+        "C"
+      ],
+      "explanation": "A. ENABLE S3 SERVER-SIDE ENCRYPTION FOR THE MODEL ARTIFACTS STORED IN S3 - This is a good practice for data at rest, but it does not directly address the security of the model's predictions or the endpoint itself.\n\nB. USE AWS KMS TO MANAGE AND ENCRYPT THE MODEL ARTIFACTS - This ensures that the model artifacts are encrypted both in transit and at rest, which is crucial for maintaining high security standards.\n\nC. CONFIGURE SAGEMAKER ENDPOINT WITH A CUSTOM VPC ENDPOINT POLICY TO ALLOW ONLY TRUSTED SOURCES - This helps secure the SageMaker endpoint by controlling who can access it, ensuring that only trusted sources can make predictions from the model.\n\nD. IMPLEMENT SAGEMAKER AUTO-ML FOR MODEL TRAINING AND DEPLOYMENT - While this is a useful feature for automating the machine learning process, it does not directly enhance security or compliance of the deployed model's predictions.\n\nE. USE AWS IAM ROLES TO GRANT ACCESS TO THE SAGEMAKER ENDPOINT - This is important for managing access to the endpoint but does not directly secure the model's predictions.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "S3",
+        "KMS",
+        "IAM",
+        "SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:32:29.882526Z"
+    },
+    {
+      "question_id": "3979aee5-0a0b-4fb0-b75e-7e98305e1a50",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a chatbot to assist customers with product inquiries. The model used in the chatbot has been trained on historical data that might contain biases, and your team needs to ensure the chatbot does not perpetuate these biases. To address this concern, you need to implement techniques that promote fairness and transparency in the AI system's decision-making process.",
+      "options": [
+        "A. Use Amazon SageMaker Clarify for bias detection and mitigation during training.",
+        "B. Implement logging and auditing in Amazon S3 to track model outputs and decisions.",
+        "C. Enable Amazon SageMaker Model Monitor to continuously monitor model performance and drift.",
+        "D. Deploy the chatbot on AWS Lambda with a VPC endpoint to enhance security."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because Amazon SageMaker Clarify provides a suite of tools to detect and mitigate bias in machine learning models, which aligns with the goal of promoting fairness and transparency. This service directly addresses the issue of bias detection and mitigation during training as part of responsible AI practices.\n\nB is incorrect because implementing logging and auditing in Amazon S3 helps track model outputs and decisions but does not address bias or transparency issues in the model's decision-making process. C is also incorrect as Amazon SageMaker Model Monitor monitors model performance and drift, which can help ensure the model remains fair over time. D, while useful for enhancing security, does not directly help in mitigating bias during training.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Clarify",
+        "Amazon S3",
+        "Amazon SageMaker Model Monitor",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-12T18:32:42.313873Z"
+    },
+    {
+      "question_id": "4be64b86-c9d9-4f02-b057-085d4306c207",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "Your company is looking to implement a generative AI model that can generate text for customer service responses. The team wants to ensure the solution scales well and can be easily updated with new training data without significant downtime. Which approach should they take?",
+      "options": [
+        "A. Use Amazon SageMaker to train and deploy the model, leveraging real-time endpoint deployments.",
+        "B. Deploy a custom-trained model using AWS Lambda and API Gateway, handling updates by redeploying the function.",
+        "C. Utilize Amazon Comprehend Medical for text generation tasks, as it is specialized in medical text.",
+        "D. Implement an on-premises solution with TensorFlow and Keras, hosting models on EC2 instances."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best approach is to use Amazon SageMaker (Option A) because it provides scalable training and deployment capabilities that can handle real-time updates without significant downtime. Real-time endpoint deployments allow for continuous model updates with minimal service disruption, aligning well with the requirement for easy scaling and frequent updates. In contrast, AWS Lambda and API Gateway (Option B) would require redeployments which could cause service interruptions, making it less suitable for this use case. Amazon Comprehend Medical (Option C) is specialized in medical text but may not be as flexible or scalable for general customer service response generation. An on-premises solution with EC2 instances (Option D) lacks the managed services and scalability benefits of AWS, making it a suboptimal choice.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:32:56.329905Z"
+    },
+    {
+      "question_id": "c6100a7a-70e4-4cbc-b4ec-d8dc5b28ebf1",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to use a generative AI model for content creation. They want to ensure the solution is scalable, cost-effective, and secure. Which three approaches should they consider? (Select THREE)",
+      "options": [
+        "A. Use Amazon SageMaker to train and deploy the model with Auto Scaling enabled.",
+        "B. Deploy the model on-premises using traditional servers for better performance.",
+        "C. Implement AWS Key Management Service (KMS) to encrypt sensitive data used by the AI model.",
+        "D. Utilize Amazon S3 to store training datasets and serve generated content securely.",
+        "E. Configure a VPC endpoint for Amazon SageMaker to reduce public internet exposure."
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A. USE AMAZON SAGEMAKER TO TRAIN AND DEPLOY THE MODEL WITH AUTO SCALING ENABLED: This approach is correct as it leverages managed services, ensuring scalability and cost-effectiveness for the AI model deployment. B. DEPLOY THE MODEL ON-PREMISES USING TRADITIONAL SERVERS FOR BETTER PERFORMANCE: This option is incorrect because on-premises deployment can be less scalable and more expensive compared to cloud-based solutions like SageMaker. C. IMPLEMENT AWS KEY MANAGEMENT SERVICE (KMS) TO ENCRYPT SENSITIVE DATA USED BY THE AI MODEL: This approach is correct as it ensures data security by encrypting sensitive information, which aligns with the organization's requirements for cost-effectiveness and security. D. UTILIZE AMAZON S3 TO STORE TRAINING DATASETS AND SERVE GENERATED CONTENT SECURELY: This option is correct because Amazon S3 provides secure storage and can be used to serve content efficiently, contributing to both cost-effectiveness and security. E. CONFIGURE A VPC ENDPOINT FOR AMAZON SAGEMAKER TO REDUCE PUBLIC INTERNET EXPOSURE: While this is a good practice, it is not as critical for the initial setup compared to training and deployment scalability and data security. However, it is important for securing the AI model from the start.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Key Management Service (KMS)",
+        "Amazon S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:33:17.075470Z"
+    },
+    {
+      "question_id": "162bda97-bb27-4b19-81d2-592171b84b9b",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "single",
+      "question_text": "An organization is developing a generative AI model to create customer service chatbot responses. They want the chatbot to generate human-like text based on user inputs and historical data. Which AWS service should they use to achieve this goal?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Lex",
+        "C. Amazon Comprehend",
+        "D. Amazon Polly"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A, Amazon SageMaker. Amazon SageMaker is an end-to-end machine learning (ML) service that enables developers and data scientists to build and deploy ML models quickly. For generative AI tasks requiring the generation of human-like text based on user inputs and historical data, Amazon SageMaker provides a comprehensive platform with built-in algorithms, training instances, and model hosting services, making it suitable for complex NLP (Natural Language Processing) tasks such as chatbot response generation. \n\nOption B, Amazon Lex, is primarily used for building conversational interfaces with voice and text. While it can be integrated into chatbots, it is more focused on creating dialog flows rather than generating human-like text.\n\nOption C, Amazon Comprehend, is an AI service that uses natural language processing to find insights and relationships in text. It is better suited for tasks such as sentiment analysis, entity recognition, and key phrase extraction but does not generate text based on user inputs and historical data.\n\nOption D, Amazon Polly, is a service that converts text into lifelike speech. While it can be used to read out generated text, it is not designed for generating human-like text based on complex inputs and historical data.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Lex",
+        "Amazon Comprehend",
+        "Amazon Polly"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:33:33.072833Z"
+    },
+    {
+      "question_id": "fedc2d32-dafc-4e2c-bc3c-31caf0d096df",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a generative AI model for content creation. They want to ensure the solution is scalable, cost-effective, and can handle high traffic during peak hours while maintaining data privacy. (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker with Auto Scaling",
+        "B. AWS Lambda with API Gateway",
+        "C. Amazon S3 for storing model artifacts",
+        "D. Amazon Redshift for real-time analytics",
+        "E. AWS CloudHSM for encryption at rest"
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "A. AMAZON SAGE MAKER WITH AUTO SCALING: This is the correct choice as it provides a managed environment to build, train, and deploy machine learning models. Auto Scaling ensures that the solution can handle high traffic during peak hours, making it scalable and cost-effective.\n\nB. AWS LAMBDA WITH API GATEWAY: This is also correct because AWS Lambda with API Gateway can handle varying loads efficiently without requiring a provisioned server, ensuring cost-effectiveness and scalability. It's ideal for serving content creation requests from users.\n\nC. AMAZON S3 FOR STORING MODEL ARTIFACTS: While this is true, it is not directly related to handling high traffic or scaling the solution during peak hours. It is more about storage of model artifacts rather than real-time processing and scalability.\n\nD. AWS REDSHIFT FOR REAL-TIME ANALYTICS: This service is designed for large-scale data warehousing and analytics, which might be overkill for a content creation application that requires high traffic handling and cost-effectiveness during peak hours. It does not directly address the scaling or cost concerns mentioned in the scenario.\n\nE. AWS CLOUDHSM FOR ENCRYPTION AT REST: This is correct for ensuring data privacy but it doesn't directly contribute to scalability, cost-effectiveness, or handling high traffic during peak hours. It's more about securing data at rest rather than managing traffic and costs.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Auto Scaling",
+        "AWS Lambda",
+        "API Gateway"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:34:27.142776Z"
+    },
+    {
+      "question_id": "efcf4b32-f1be-412e-8bce-4d61bc8f4833",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is deploying a new customer service chatbot using generative AI to handle common queries. To ensure the chatbot's responses are accurate and unbiased, which of the following approaches should be prioritized?",
+      "options": [
+        "A. Implementing AWS Comprehend to analyze user sentiment and adjust response tone.",
+        "B. Utilizing Amazon SageMaker to train a machine learning model with diverse datasets.",
+        "C. Deploying AWS Lambda functions to filter out inappropriate content in real-time.",
+        "D. Using Amazon Lex to create conversational interfaces with predefined intents."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Utilizing Amazon SageMaker to train a machine learning model with diverse datasets ensures that the chatbot's responses are accurate and unbiased, as it leverages comprehensive training data. AWS Comprehend (Option A) is primarily for sentiment analysis and adjusting response tone, not ensuring accuracy and bias. Deploying AWS Lambda functions (Option C) can filter content but does not address the core issue of model accuracy and fairness. Amazon Lex (Option D) focuses on creating conversational interfaces with predefined intents, which may not cover a wide range of diverse scenarios to ensure unbiased responses.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:34:38.688013Z"
+    },
+    {
+      "question_id": "36538a9e-0966-4086-ace6-2e24b6fec141",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a generative AI model for content creation. The team wants to ensure the solution is scalable, cost-effective, and can handle high-frequency requests without compromising performance. Which three services or configurations should they consider implementing? (Select THREE)",
+      "options": [
+        "A. AWS S3 for storing large datasets used by the generative AI model",
+        "B. Amazon SageMaker for deploying and managing the generative AI model",
+        "C. AWS Lambda with API Gateway to handle high-frequency requests efficiently",
+        "D. Amazon Redshift for real-time analytics of generated content",
+        "E. AWS Glue for data integration and ETL processes"
+      ],
+      "correct_answers": [
+        "B",
+        "C",
+        "E"
+      ],
+      "explanation": "A. AWS S3 is a great choice for storing large datasets, but it is not directly involved in the model's deployment or handling high-frequency requests.\n\nB. Amazon SageMaker is essential for deploying and managing the generative AI model, ensuring scalability and efficient resource utilization.\n\nC. AWS Lambda with API Gateway can handle high-frequency requests efficiently by scaling automatically and reducing costs through serverless architecture.\n\nD. Amazon Redshift is designed for real-time analytics of large datasets but is not directly relevant to the deployment or handling of generative AI models in this context.\n\nE. AWS Glue can be used for data integration and ETL processes, which might be necessary before feeding data into the model, making it a valuable component in the overall solution.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda",
+        "API Gateway"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:35:06.034961Z"
+    },
+    {
+      "question_id": "6c340453-024d-46bb-a19d-43c84c7ab48b",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your organization is developing a chatbot that will interact with customers in natural language. To ensure the responses are appropriate and respectful, you need to implement mechanisms to monitor and filter inappropriate content. Which of the following approaches best aligns with AWS guidelines for responsible AI?",
+      "options": [
+        "A. Use Amazon Lex with external profanity filters.",
+        "B. Deploy a custom machine learning model using Amazon SageMaker that classifies text as appropriate or inappropriate.",
+        "C. Integrate Amazon Comprehend to analyze the sentiment and content of customer messages, then filter out any inappropriate content.",
+        "D. Implement AWS Lambda functions triggered by API Gateway to manually review each chat message before sending a response."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because Amazon Comprehend provides pre-built models and APIs that can analyze the sentiment and content of customer messages, making it easier to filter out inappropriate content. This approach aligns with AWS guidelines for responsible AI by leveraging pre-built services designed for natural language processing (NLP) tasks.\n\nOption A is incorrect as Amazon Lex does not have built-in profanity filters; it focuses on building conversational interfaces and understanding user inputs, but can be integrated with external profanity filter services. Option B involves deploying custom machine learning models which can be complex to maintain and may require significant resources for training and tuning the model. This approach deviates from the simplicity and ease of use advocated by AWS guidelines for responsible AI.\n\nOption D is not scalable or practical as manually reviewing each chat message would be time-consuming and could introduce delays in customer interactions, making it impractical for real-time applications.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Lex",
+        "Amazon Comprehend",
+        "AWS Lambda",
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:35:34.311565Z"
+    },
+    {
+      "question_id": "ee161cd2-ba1d-4a3e-b16b-e64ff9484bb8",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a machine learning model for customer segmentation. The goal is to balance cost efficiency with the need for accurate predictions. Which two services should they consider implementing? (Select TWO)",
+      "options": [
+        "A. AWS SageMaker Notebooks - For interactive data exploration and model building.",
+        "B. Amazon EC2 Spot Instances - To reduce costs by using spare capacity at a discount.",
+        "C. AWS Glue - For automated ETL jobs to clean and prepare the data.",
+        "D. Amazon Redshift - For large-scale data warehousing and analytics.",
+        "E. AWS Budgets - To monitor and control spending on machine learning services."
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. AWS SageMaker Notebooks are ideal for interactive data exploration and model building, but they do not directly address cost efficiency.\n\nB. Amazon EC2 Spot Instances can significantly reduce costs by using spare capacity at a discount, making them suitable for balancing cost with accuracy requirements.\n\nC. AWS Glue is useful for automated ETL jobs to clean and prepare the data, which is important for model accuracy but does not directly address cost efficiency.\n\nD. Amazon Redshift is designed for large-scale data warehousing and analytics, enhancing data quality but not directly related to reducing costs or improving prediction accuracy in a cost-efficient manner.\n\nE. AWS Budgets can help monitor and control spending on machine learning services, ensuring that the organization stays within budget constraints while still achieving accurate predictions.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "EC2 Spot Instances",
+        "AWS Budgets"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:36:16.600185Z"
+    },
+    {
+      "question_id": "2e9b5ae7-514e-4198-b84c-52a417746073",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is developing a predictive maintenance system for their manufacturing equipment using machine learning. They want to ensure the model can be easily updated with new data while maintaining high availability. Which approach should they take?",
+      "options": [
+        "A. Deploy the ML model on an Amazon EC2 instance and manually update it with new data.",
+        "B. Use Amazon SageMaker for model training and hosting, enabling automatic retraining and redeployment of models.",
+        "C. Store the model in Amazon S3 and use AWS Lambda to trigger updates when new data is available.",
+        "D. Implement a custom solution using Apache Spark on Amazon EMR to handle model updates."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best answer is B because Amazon SageMaker provides an end-to-end machine learning platform that simplifies the process of training and deploying ML models, including automatic retraining and redeployment. This ensures high availability and ease of updating with new data. \n\nA: Deploying the model on EC2 requires manual intervention for updates and lacks automated retraining capabilities.\nB: SageMaker is specifically designed to handle these tasks efficiently, making it a superior choice for maintaining model accuracy and availability.\nC: Storing the model in S3 and using Lambda does not provide automatic retraining or hosting services, which are crucial for predictive maintenance systems.\nD: Using Apache Spark on EMR lacks the built-in capabilities of SageMaker for ML model management and deployment.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:36:30.173339Z"
+    },
+    {
+      "question_id": "657e80d0-55a0-4ac5-a7e0-023ffd2e57f3",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a recommendation system for its e-commerce platform. The system should be able to provide personalized product recommendations based on user behavior data, which includes purchase history and browsing patterns. Which AWS service combination would best meet the requirements of this use case while keeping costs low?",
+      "options": [
+        "A. Amazon SageMaker with pre-built models",
+        "B. Amazon Personalize with a custom model",
+        "C. Amazon Comprehend for text analysis followed by manual rule-based recommendations",
+        "D. AWS Lambda and API Gateway to call existing recommendation APIs"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best answer is B: Amazon Personalize with a custom model because it provides a fully managed service that uses machine learning algorithms to build, train, and deploy personalized recommendations at scale. It can leverage the organization's user behavior data for training models without requiring extensive ML expertise or infrastructure management, which aligns well with keeping costs low. \n\nOption A (Amazon SageMaker with pre-built models) might be too limited as it relies on predefined models that may not fully capture the nuances of personalized recommendations based on specific e-commerce behaviors.\n\nOption C (Amazon Comprehend for text analysis followed by manual rule-based recommendations) is less effective because Amazon Comprehend is a natural language processing service, which is more suited to text analysis rather than recommendation systems. Manual rule-based recommendations would also be costly and less scalable compared to a fully managed service like Amazon Personalize.\n\nOption D (AWS Lambda and API Gateway to call existing recommendation APIs) might not provide the level of personalization required for an e-commerce platform, as it relies on external APIs that may lack the necessary data integration capabilities.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:36:57.272095Z"
+    },
+    {
+      "question_id": "485f31a8-490b-4acb-a7a6-635a9ac14167",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a machine learning model for customer segmentation. They want to ensure the model is scalable, cost-effective, and can handle large volumes of data. Which two strategies should they adopt? (Select TWO)",
+      "options": [
+        "A. Use Amazon SageMaker for deploying and managing the ML model.",
+        "B. Implement an on-premises Hadoop cluster for processing big data.",
+        "C. Deploy a custom-built TensorFlow model using AWS Lambda.",
+        "D. Utilize Amazon Redshift to store and query large datasets.",
+        "E. Choose Amazon SageMaker Notebooks for model training and experimentation."
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "A. USE AMAZON SAGEMAKER FOR DEPLOYING AND MANAGING THE ML MODEL: This is the correct choice as AWS SageMaker provides a fully managed service that includes automatic model tuning, deployment, and management of models at scale. It supports multiple frameworks like TensorFlow, PyTorch, and XGBoost.\n\nB. IMPLEMENT AN ON-PREMISES HADOOP CLUSTER FOR PROCESSING BIG DATA: This is incorrect as it does not leverage AWS services for scalability and cost-effectiveness. On-premises solutions require significant upfront investment and maintenance costs.\n\nC. DEPLOY A CUSTOM-BUILT TENSORFLOW MODEL USING AWS LAMBDA: While this can be done, AWS Lambda is better suited for serverless functions rather than complex ML models that SageMaker handles more efficiently.\n\nD. UTILIZE AMAZON REDSHIFT TO STORE AND QUERY LARGE DATASETS: This is not directly related to model training or deployment but rather data warehousing and analytics. It does not address the scalability and cost-effectiveness of deploying an ML model.\n\nE. CHOOSE AMAZON SAGEMAKER NOTEBOOKS FOR MODEL TRAINING AND EXPERIMENTATION: This is correct as SageMaker Notebooks provide a Jupyter environment for training models, making it easier to experiment with different algorithms and parameters.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Redshift"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:37:15.416758Z"
+    },
+    {
+      "question_id": "838ff2ef-d88e-4133-8586-0bc920289db1",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is developing a generative AI application that requires high-quality image synthesis for its product catalog. The team aims to balance between the cost and performance while ensuring the quality of generated images matches industry standards. (Select TWO)",
+      "options": [
+        "A. AWS S3 for storing raw image data",
+        "B. Amazon SageMaker for training the generative model",
+        "C. AWS Batch for real-time image generation tasks",
+        "D. Amazon Comprehend for text-to-image conversion",
+        "E. AWS Lambda with custom code to optimize image processing"
+      ],
+      "correct_answers": [
+        "B",
+        "E"
+      ],
+      "explanation": "A. AWS S3 is used for storing raw data, but it does not directly contribute to the quality of generated images or the balance between cost and performance.\n\nB. Amazon SageMaker is essential for training the generative model, which directly impacts image quality. It also allows for optimization based on cost-performance trade-offs through various instance types and algorithms.\n\nC. AWS Batch is suitable for batch processing but may not be necessary if real-time generation is not required, making it less relevant to the balance between cost and performance in this scenario.\n\nD. Amazon Comprehend is a natural language processing service that can extract insights from text; it does not contribute to image synthesis or quality.\n\nE. AWS Lambda with custom code allows for optimized image processing based on specific requirements, balancing cost and performance effectively.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "SageMaker",
+        "Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:37:55.981313Z"
+    },
+    {
+      "question_id": "c042caf2-6872-4e97-adaa-aeab117f0742",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement a machine learning model for predicting customer churn. They want to ensure the model can handle large datasets efficiently while keeping costs low. Which AWS service should they choose to best balance performance with cost?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Redshift",
+        "C. Amazon Elastic Compute Cloud (Amazon EC2) with Spot Instances",
+        "D. Amazon Aurora"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The best answer is C, Amazon Elastic Compute Cloud (Amazon EC2) with Spot Instances. This service allows the organization to run machine learning models at a lower cost by using unused capacity in the AWS cloud, which can be significantly cheaper than regular On-Demand instances. Amazon SageMaker (A), while powerful for building and deploying ML models, is generally more expensive due to its managed nature. Amazon Redshift (B) is designed for data warehousing and analytics on large datasets but is not optimized for machine learning tasks. Amazon Aurora (D) is a relational database service that can be used for storing data but does not provide the necessary computing power or flexibility required for training ML models.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon EC2",
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:38:07.301704Z"
+    },
+    {
+      "question_id": "3532fefe-8d57-499d-8a51-b222e1a4842a",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An e-commerce company wants to implement a product recommendation system using generative AI. The company is concerned about the cost and performance trade-offs, as well as the ease of integration with their existing AWS infrastructure.",
+      "options": [
+        "A. Use Amazon SageMaker to train a custom model and deploy it on an EC2 instance for real-time recommendations.",
+        "B. Deploy Amazon Comprehend Medical to analyze product descriptions and generate recommendations based on medical content.",
+        "C. Leverage Amazon Personalize for building, training, and deploying recommendation models with minimal configuration effort.",
+        "D. Implement a custom solution using AWS Lambda and API Gateway to fetch data from DynamoDB and generate recommendations."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C because Amazon Personalize provides a managed service that simplifies the process of building, training, and deploying recommendation models with minimal configuration effort. It optimizes performance and cost by automatically tuning model parameters and using scalable AWS services under the hood. \n\nOption A is incorrect as it requires more manual setup and maintenance compared to Amazon Personalize. Training custom models on EC2 instances can be costly and time-consuming.\n\nOption B is not suitable for product recommendations, as Amazon Comprehend Medical is designed for analyzing medical text data, not general product descriptions or generating recommendations.\n\nOption D is a viable approach but may require significant development effort compared to using Amazon Personalize. It also lacks the automated tuning and optimization features provided by Amazon Personalize.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Personalize"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:38:21.172681Z"
+    },
+    {
+      "question_id": "a8b2446b-cb50-4f9d-a815-e0fbfd2e5a96",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a generative AI model for content creation. They need to balance cost, performance, and ease of use while ensuring the model can handle large volumes of data. (Select TWO)",
+      "options": [
+        "A. AWS S3 for storing training data",
+        "B. Amazon SageMaker for hosting the model",
+        "C. AWS Lambda for continuous integration and deployment",
+        "D. Amazon Redshift for data warehousing",
+        "E. AWS AppSync for real-time data streaming"
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "A. AWS S3 is the correct choice as it provides scalable storage for training data, making it cost-effective and suitable for large volumes of data. It ensures that the model has access to sufficient data without incurring high costs.\n\nB. Amazon SageMaker is appropriate for hosting the generative AI model due to its built-in support for machine learning workflows, including model training, hosting, and deployment. This service offers a balance between performance and ease of use, making it ideal for deploying generative models.\n\nC. AWS Lambda can be used for serverless computing tasks, such as preprocessing data or invoking the model during inference. However, in this context, it is not the primary choice for hosting the AI model itself.\n\nD. Amazon Redshift is designed for data warehousing and analytics, but it may not be necessary if the organization already has a robust data storage solution in place (e.g., S3). It could add unnecessary costs unless there's specific need for complex analytical queries on large datasets.\n\nE. AWS AppSync is primarily used for real-time data streaming and API management, which are not directly relevant to deploying a generative AI model.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "S3",
+        "SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:39:02.135413Z"
+    },
+    {
+      "question_id": "746af417-0586-4f2c-a5a2-8fab1b80be7e",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a generative AI model for content creation. The goal is to balance between the cost and performance while ensuring that the solution can scale as needed. (Select TWO)",
+      "options": [
+        "A. USE THE AWS SAGEMAKER GAN TOOLS FOR CONTENT GENERATION AND AUTOMATE TRAINING WITH LAMBDA TRIGGERS",
+        "B. IMPLEMENT A CUSTOM PYTHON FUNCTION IN AWS LAMBDA THAT GENERATES CONTENT BASED ON USER INPUTS",
+        "C. DEPLOY A PRETRAINED MODEL FROM THE HUGGINGFACE HUB USING SAGEMAKER ENDPOINTS FOR REAL-TIME CONTENT GENERATION",
+        "D. USE AWS GLACIER FOR STORING TRAINED MODELS TO REDUCE COSTS",
+        "E. IMPLEMENT AN AUTO-SCALING GROUP FOR SAGEMAKER ENDPOINTS TO AUTOMATICALLY ADJUST THE NUMBER OF INSTANCES BASED ON TRAFFIC"
+      ],
+      "correct_answers": [
+        "C",
+        "E"
+      ],
+      "explanation": "A. While AWS SageMaker GAN tools can be used for content generation, automating training with Lambda triggers is not a cost-effective solution as it may lead to unnecessary compute costs.\n\nB. Implementing a custom Python function in AWS Lambda does not provide the scalability and managed services that are essential for generative AI models.\n\nC. Deploying a pretrained model from the HuggingFace Hub using SageMaker Endpoints is an optimal choice as it provides real-time content generation with cost-effective pricing through SageMaker Inference Pricing.\n\nD. AWS Glacier is designed for long-term archival storage, not for storing trained models that need to be frequently accessed and used in inference, making this option suboptimal.\n\nE. Implementing an Auto-Scaling Group for SageMaker Endpoints allows the solution to automatically adjust the number of instances based on traffic, ensuring cost optimization while maintaining performance.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "SAGEMAKER",
+        "LAMBDA",
+        "AUTO_SCALING"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:40:00.865727Z"
+    },
+    {
+      "question_id": "0bc0f4bf-f620-4ee5-a3ca-3d220fdbd7a0",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a machine learning model for predicting customer churn. They want to leverage AWS services that are easy to set up but also provide robust performance. Which combination of AWS services would best meet their requirements?",
+      "options": [
+        "A. Amazon SageMaker and AWS Lambda",
+        "B. Amazon QuickSight and Amazon S3",
+        "C. Amazon SageMaker and Amazon Elastic Inference",
+        "D. Amazon Redshift and Amazon EC2"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C: Amazon SageMaker and Amazon Elastic Inference. Amazon SageMaker provides a fully managed service for building, training, and deploying machine learning models, which aligns with the organization's need to easily set up an ML model. Additionally, Amazon Elastic Inference allows them to reduce costs by providing GPU-accelerated inference capabilities without requiring upfront investment in dedicated hardware.\n\nOption A (Amazon SageMaker and AWS Lambda) is not ideal because AWS Lambda is a serverless compute service for running code, which may complicate the setup compared to SageMaker. Option B (Amazon QuickSight and Amazon S3) is more suited for data visualization and storage rather than model training and deployment. Option D (Amazon Redshift and Amazon EC2) involves significant upfront costs and complexity in managing EC2 instances, making it less suitable for easy setup.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Elastic Inference"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:40:13.910408Z"
+    },
+    {
+      "question_id": "70629376-c5c3-4ea0-a388-9c23fa2a59aa",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Your company is developing a predictive model to forecast sales trends. You want to ensure that the model does not perpetuate historical biases and maintains fairness in its predictions. Which approach should you take to address these concerns?",
+      "options": [
+        "A. Deploy the model using Amazon SageMaker with built-in bias mitigation tools.",
+        "B. Use Amazon Comprehend to analyze sales data for potential biases before training the model.",
+        "C. Implement a custom bias detection and correction algorithm within your model's codebase.",
+        "D. Train the model on an anonymized dataset without considering historical sales trends."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because Amazon SageMaker provides built-in bias mitigation tools that can help detect and mitigate biases in training datasets and models, ensuring fairness in predictions. This aligns with AWS's guidelines for responsible AI by addressing the issue directly within the model development process. Option B is incorrect as Amazon Comprehend is designed for text analysis and not specifically for detecting or mitigating biases in sales data. Option C involves implementing custom solutions, which can be complex and may not cover all potential biases effectively. Option D is problematic because anonymizing the dataset could lead to loss of valuable historical context that might be necessary for accurate predictions.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:40:38.015819Z"
+    },
+    {
+      "question_id": "361c32db-dd77-4130-b150-347487a802b5",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An organization is looking to implement a machine learning model for customer churn prediction. They want to ensure the solution is cost-effective while maintaining high performance. Which two services should they consider combining? (Select TWO)",
+      "options": [
+        "A. AWS SageMaker Notebooks and Amazon S3",
+        "B. Amazon EC2 Spot Instances and AWS Lambda",
+        "C. Amazon Redshift and Amazon DynamoDB",
+        "D. AWS Budgets and AWS Trusted Advisor",
+        "E. Amazon SageMaker and Amazon SageMaker Autopilot"
+      ],
+      "correct_answers": [
+        "A",
+        "E"
+      ],
+      "explanation": "A. AWS SageMaker Notebooks and Amazon S3 - SageMaker Notebooks provide a Jupyter notebook environment for interactive machine learning, while S3 can be used to store datasets. This combination is cost-effective as it leverages the pay-as-you-go pricing of S3 and the flexible pricing models of SageMaker.\n\nB. Amazon EC2 Spot Instances and AWS Lambda - While this could reduce costs by using Spot Instances, Lambda is not well-suited for training large machine learning models due to its cold start latency and limited memory. This combination might not maintain high performance.\n\nC. Amazon Redshift and Amazon DynamoDB - These services are primarily used for data warehousing and NoSQL databases respectively, which do not align with the needs of a machine learning model for churn prediction.\n\nD. AWS Budgets and AWS Trusted Advisor - These services help manage costs and monitor resource usage but do not directly contribute to the performance or cost-effectiveness of the machine learning model itself.\n\nE. Amazon SageMaker and Amazon SageMaker Autopilot - SageMaker is a fully managed service for building, training, and deploying ML models, while Autopilot automates hyperparameter tuning and feature engineering. Combining these services ensures high performance and cost-effectiveness.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS SageMaker",
+        "Amazon S3",
+        "Amazon SageMaker Autopilot"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:40:55.337777Z"
+    },
+    {
+      "question_id": "026a882f-689b-42c1-a828-6c1d30323397",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is deploying a generative AI model to generate customer support responses. They want to ensure the model does not produce any content that could be harmful or inappropriate. Which of the following approaches should they take to enforce this requirement?",
+      "options": [
+        "A. Enable AWS Config rules for monitoring and alerting on model outputs.",
+        "B. Implement Amazon GuardDuty to detect and block inappropriate content in real-time.",
+        "C. Use Amazon SageMaker Model Monitor with built-in bias mitigation capabilities.",
+        "D. Configure AWS Lambda functions to preprocess input data before it reaches the AI model."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Amazon SageMaker Model Monitor can be used to enforce content filtering by leveraging its built-in bias mitigation and monitoring features. This service allows organizations to set up continuous monitoring of their models, including detecting inappropriate or harmful content in the outputs. \n\nOption A (AWS Config) is a configuration management tool that monitors and records AWS resources, which does not directly address content filtering for AI model outputs.\n\nOption B (Amazon GuardDuty) is designed for security and compliance monitoring across AWS services, not specifically for real-time content filtering of AI-generated text.\n\nOption D (AWS Lambda) can be used to preprocess input data, but it does not provide mechanisms for directly filtering or monitoring the output of an AI model.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker Model Monitor"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:41:08.701343Z"
+    },
+    {
+      "question_id": "d7d46079-50e1-4bae-bc5e-b548a82b5c54",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is developing an AI solution that involves sensitive customer data. They need to ensure both the security of this data and compliance with GDPR regulations. Which two AWS services should they use to meet these requirements? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Secrets Manager",
+        "C. AWS Config",
+        "D. AWS Key Management Service (KMS)",
+        "E. Amazon Simple Storage Service (S3)"
+      ],
+      "correct_answers": [
+        "B",
+        "D"
+      ],
+      "explanation": "A. Amazon SageMaker is an end-to-end machine learning service that helps developers and data scientists quickly build and deploy machine learning models at any scale. While it's a critical component for building AI solutions, it does not directly address the security of sensitive customer data or compliance with GDPR regulations.\n\nB. AWS Secrets Manager securely stores and controls access to secrets such as database credentials, API keys, and other sensitive information. This service is essential for ensuring that sensitive customer data is protected by managing secrets in a secure manner. It aligns well with GDPR requirements for protecting personal data.\n\nC. AWS Config is a service that helps you evaluate, audit, and record the configuration of your AWS resources. While it can help ensure compliance with certain regulations, it does not directly address the security or encryption of sensitive customer data.\n\nD. AWS Key Management Service (KMS) makes it easy to create and control the encryption keys used to encrypt your data. It provides a managed service for key storage, rotation, and auditing, which is crucial for ensuring that sensitive customer data is encrypted both at rest and in transit. This aligns well with GDPR's requirement for strong data protection measures.\n\nE. Amazon Simple Storage Service (S3) is a scalable object storage service that can store unstructured data like text files, images, and videos. While it provides features to secure data such as server-side encryption, S3 itself does not directly address the security of sensitive customer data or compliance with GDPR regulations in the same way AWS Secrets Manager and KMS do.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Secrets Manager",
+        "AWS Key Management Service (KMS)"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:41:54.090216Z"
+    },
+    {
+      "question_id": "4a6582b5-fce3-466d-b358-d4e8a692dccd",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "An organization is looking to implement a chatbot that can answer customer inquiries about its products. The company wants the solution to be cost-effective, scalable, and capable of handling a wide range of questions without requiring frequent retraining. Which AWS service should they use?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Lex with AWS Lambda",
+        "C. Amazon Polly",
+        "D. Amazon Comprehend"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "Amazon Lex with AWS Lambda is the best option for building a scalable chatbot that can handle a wide range of customer inquiries without frequent retraining, aligning well with cost-effectiveness and scalability requirements as outlined in the AWS Cloud Adoption Framework for Artificial Intelligence. Amazon SageMaker (A) is more suited for complex machine learning models requiring extensive data preprocessing and training, making it overkill for simple chatbot applications. Amazon Polly (C) is primarily used for text-to-speech conversion and does not handle conversational AI tasks. Amazon Comprehend (D) focuses on sentiment analysis and entity recognition, which are not the primary requirements of a customer service chatbot.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Lex",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:42:16.007686Z"
+    },
+    {
+      "question_id": "4d81b248-0150-45ea-a3ad-fe859ca82134",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is looking to implement a generative AI model for content creation. The team wants to ensure the solution is scalable, cost-effective, and easy to manage while maintaining high quality and performance. Which two services should they consider combining? (Select TWO)",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Lambda",
+        "C. Amazon Redshift",
+        "D. Amazon S3",
+        "E. AWS Glue"
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "A. AMAZON SAGE MAKER: This is the correct choice as it provides a fully managed service for training and deploying machine learning models, which aligns well with generative AI needs.\n\nB. AWS LAMBDA: This is also correct because it can be used to run code without provisioning or managing servers, making it cost-effective and easy to manage for model inference in a scalable manner.\n\nC. AMAZON REDSHIFT: While useful for data warehousing and analytics, this service is not directly relevant to generative AI content creation.\n\nD. AMAZON S3: This service is primarily used for storing and serving unstructured objects like text files or images but does not provide the necessary machine learning capabilities for generative AI.\n\nE. AWS GLUE: This service is designed for data integration tasks, helping to prepare and move data between different sources. It is not directly relevant to generative AI content creation.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:42:43.084580Z"
+    },
+    {
+      "question_id": "ebdea4aa-a526-4c32-827d-65c3e56bc0d8",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "An organization is deploying a generative AI model to generate customer support responses. They want to ensure the model only uses data from their own AWS S3 buckets and does not access any external data sources. Which of the following approaches should they take to enforce this requirement?",
+      "options": [
+        "A. Use Amazon SageMaker with a VPC endpoint to restrict internet access.",
+        "B. Configure an IAM role for the AI model that only has permissions to read from specific S3 buckets.",
+        "C. Implement AWS PrivateLink between the AI model and S3 buckets.",
+        "D. Deploy the AI model in a private subnet within a VPC without internet access."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B because configuring an IAM role for the AI model that only has permissions to read from specific S3 buckets ensures that the model can only access the designated data sources. This approach directly aligns with the requirement of using data exclusively from their own AWS S3 buckets and not accessing any external data sources, as stated in the AWS documentation on managing access to AWS services through IAM roles.\n\nOption A is incorrect because while a VPC endpoint for SageMaker can restrict internet access, it does not control direct access to specific S3 buckets. Option C is also incorrect since AWS PrivateLink only ensures that data transfers over a private network but does not control the permissions of the AI model. Option D is incorrect as deploying the AI model in a private subnet without internet access would limit its functionality and prevent it from accessing any external or internal resources, including S3 buckets.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "IAM",
+        "SageMaker",
+        "VPC",
+        "PrivateLink"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:43:15.961780Z"
+    },
+    {
+      "question_id": "29995560-2031-4cf1-af9c-2a1d259460af",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement an AI solution for customer support chatbots. They want a scalable, cost-effective approach that can handle high traffic without significant upfront investment. Which AWS service should they choose?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Comprehend",
+        "C. Amazon Lex",
+        "D. AWS Lambda with Amazon API Gateway"
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The best answer is D, AWS Lambda with Amazon API Gateway. This option provides a serverless architecture that scales automatically and requires no upfront investment in infrastructure. It can handle high traffic efficiently while keeping costs low due to its pay-per-use pricing model. \n\nA (Amazon SageMaker) is more suited for training machine learning models but involves significant upfront costs and complexity, making it less cost-effective for this scenario.\nB (Amazon Comprehend) is a managed service that provides automatic language understanding, which can be integrated into chatbots, but it requires setting up an endpoint, which adds to the operational overhead. \nC (Amazon Lex) is also suitable for building conversational interfaces and integrates well with other AWS services, but it has higher costs compared to serverless options like Lambda due to its usage-based pricing model.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Lambda",
+        "Amazon API Gateway"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:44:07.543437Z"
+    },
+    {
+      "question_id": "0c0b6a5a-1a83-4c20-8fc9-24eae41ac623",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of Generative AI",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to deploy a generative AI model for content creation, requiring real-time processing and frequent requests. The team wants to ensure the solution is scalable, cost-effective, and easy to manage while providing high-quality output. Which three approaches should they consider? (Select THREE)",
+      "options": [
+        "A. USE SAGEMAKER TO DEPLOY AND MANAGE THE MODEL, AS IT OFFERS PREBUILT TEMPLATES AND AUTOMATION FOR EASY SCALING.",
+        "B. IMPLEMENT A CUSTOM INFRASTRUCTURE USING EC2 INSTANCES, WHICH PROVIDES FULL CONTROL BUT IS MORE COMPLEX TO SET UP AND MAINTAIN.",
+        "C. OPT FOR SAGEMAKER ENDPOINT VARIANTS TO DYNAMICALLY SCALE THE MODEL BASED ON TRAFFIC, REDUCING COSTS AND IMPROVING PERFORMANCE.",
+        "D. USE LAMBDA FUNCTION TO PROCESS AND GENERATE CONTENT IN REAL-TIME, MAKING IT SUITABLE FOR FREQUENT REQUESTS.",
+        "E. DEPLOY A COMPLEX CLOUDFORMATION STACK TO MANAGE ALL ASPECTS OF THE MODEL DEPLOYMENT, INCLUDING INFRASTRUCTURE AND ENVIRONMENT CONFIGURATION."
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A. SAGEMAKER IS DESIGNED FOR EASY DEPLOYMENT AND MANAGEMENT OF AI MODELS WITH PREBUILT TEMPLATES AND AUTOMATION, MAKING IT A GOOD FIT FOR THE ORGANIZATION'S REQUIREMENTS.\n\nC. SAGEMAKER ENDPOINT VARIANTS AUTOMATICALLY SCALE THE MODEL BASED ON TRAFFIC, REDUCING COSTS AND IMPROVING PERFORMANCE, MAKING IT A STRONG CANDIDATE FOR SCALABILITY AND COST-EFFECTIVENESS.\n\nD. LAMBDA IS SUITABLE FOR REAL-TIME CONTENT GENERATION AT SCALE AND FREQUENT REQUESTS, MAKING IT AN IDEAL CHOICE FOR THE ORGANIZATION'S NEEDS.\n\nB. WHILE EC2 PROVIDES FULL CONTROL, IT REQUIRES MORE MANUAL CONFIGURATION AND MAINTENANCE, WHICH IS NOT AS COST-EFFECTIVE OR EASY TO MANAGE AS SAGEMAKER.\n\nE. COMPLEX CLOUDFORMATION CAN MANAGE ALL ASPECTS OF DEPLOYMENT BUT IS MORE COMPLEX TO SET UP AND MAINTAIN THAN SAGEMAKER, MAKING IT LESS SUITABLE FOR EASY MANAGEMENT.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:44:42.902555Z"
+    },
+    {
+      "question_id": "bc99c8b1-0d90-41af-8810-eb94a76e8eec",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Single answer\nYour organization is developing a chatbot to assist customers with product inquiries. To ensure the chatbot's responses are accurate and respectful, you need to implement measures that prevent biased or inappropriate content from being generated. Which of the following approaches should you prioritize?",
+      "options": [
+        "A. Implement AWS Comprehend Medical to analyze text for medical-related content only.",
+        "B. Use Amazon SageMaker to train a custom model with diverse datasets and regular testing.",
+        "C. Configure AWS Lambda functions to filter out inappropriate words and phrases using pre-defined rules.",
+        "D. Deploy Amazon Lex with built-in sentiment analysis capabilities."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Using Amazon SageMaker to train a custom model with diverse datasets and regular testing ensures that the chatbot\u2019s responses are accurate, respectful, and free from bias. This approach aligns with AWS guidelines for responsible AI by allowing organizations to tailor their models to specific use cases and continuously improve them through data validation and retraining.\n\nOption A is factually incorrect as AWS Comprehend Medical can be used for a wide range of text analysis tasks beyond just medical content, making it less suitable for general chatbot applications. Option C relies on pre-defined rules which may not cover all types of biases or inappropriate content that might arise in natural language processing scenarios. Option D uses Amazon Lex with built-in sentiment analysis but does not directly address the issue of bias and inappropriate content.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Comprehend Medical",
+        "Amazon Lex",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-12T18:45:08.243991Z"
+    },
+    {
+      "question_id": "d6ad1968-2f1a-429c-88c6-15440a062dab",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "An organization is planning to implement an AI solution for customer service chatbots. They want a cost-effective, scalable, and easy-to-deploy solution that can handle high volumes of conversations while maintaining the quality of responses. Which AWS service should they choose?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS Lambda with Amazon Lex",
+        "C. Amazon Comprehend",
+        "D. Amazon Polly"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The best option for an organization looking to implement a cost-effective, scalable, and easy-to-deploy chatbot solution is AWS Lambda with Amazon Lex. AWS Lambda allows the organization to run code without provisioning or managing servers, making it highly scalable and cost-efficient. Amazon Lex provides natural language understanding (NLU) capabilities that can handle customer inquiries, and integrates seamlessly with AWS Lambda for processing and responding to those inquiries. This combination offers a flexible and powerful solution tailored to handling high volumes of conversations while maintaining the quality of responses.\n\n- Amazon SageMaker is more suited for building custom machine learning models from scratch, which may not be necessary if pre-built capabilities are sufficient.\n- Amazon Comprehend focuses on text analytics and sentiment analysis, making it less suitable for a full-fledged chatbot solution that needs to handle natural language conversations.\n- Amazon Polly is primarily used for converting text into speech, and while useful in certain scenarios, it does not provide the conversational capabilities needed for customer service chatbots.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Lambda",
+        "Amazon Lex"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:45:52.318830Z"
+    },
+    {
+      "question_id": "13d27fca-ef8e-40ca-912e-1a906ac8c48d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "multiple",
+      "question_text": "An organization is planning to implement a machine learning model for predictive maintenance in their manufacturing plant. They want to ensure the model is cost-effective, scalable, and can handle large volumes of sensor data. (Select TWO)",
+      "options": [
+        "A. AWS SageMaker Notebooks for model training and deployment",
+        "B. Amazon EC2 Spot Instances for model training",
+        "C. Amazon S3 for storing raw sensor data",
+        "D. AWS Lambda for real-time data processing",
+        "E. Amazon Redshift for data warehousing"
+      ],
+      "correct_answers": [
+        "A",
+        "B"
+      ],
+      "explanation": "A. AWS SageMaker Notebooks for model training and deployment - Correct. SageMaker provides Jupyter notebooks that can be used to train models, making it a cost-effective solution as you only pay for the resources used during training.\n\nB. Amazon EC2 Spot Instances for model training - Correct. Using EC2 Spot Instances can significantly reduce costs compared to On-Demand instances while still providing sufficient compute power for machine learning tasks.\n\nC. Amazon S3 for storing raw sensor data - Correct, but not selected as the best answer in this context. S3 is a good choice for storing large volumes of data, but it does not directly contribute to cost-effectiveness or scalability in training models.\n\nD. AWS Lambda for real-time data processing - Incorrect. While useful for real-time processing, Lambda may not be the most cost-effective solution for model training and can add unnecessary complexity.\n\nE. Amazon Redshift for data warehousing - Incorrect. Redshift is designed for data warehousing and analytics, which is not the primary focus of this scenario. It would be more appropriate if the organization needed to query historical data.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "SageMaker",
+        "EC2 Spot Instances",
+        "S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:46:32.819871Z"
+    },
+    {
+      "question_id": "fb046fbe-8bac-4f3c-8ef5-1c6713090f70",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "An organization is developing an AI model to predict customer churn. They are concerned about bias in their dataset, which could lead to unfair treatment of certain groups. Which AWS service should they use to ensure the model's fairness and mitigate potential biases?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. AWS CodeGuru",
+        "C. AWS Config",
+        "D. AWS GuardDuty"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker provides built-in bias detection capabilities that can help organizations identify and mitigate biases in their training data, ensuring the fairness of the AI model. This aligns with AWS's guidelines for responsible AI by addressing potential ethical issues proactively. Distractors B (AWS CodeGuru), C (AWS Config), and D (AWS GuardDuty) are not relevant to bias detection in machine learning models; they serve different purposes such as code review, resource configuration management, and security monitoring respectively.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:46:42.950850Z"
+    },
+    {
+      "question_id": "2e2550f9-00f1-4a89-9f38-f95164cccbd0",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "Your company is planning to implement an AI model for customer support chatbots. The goal is to quickly integrate a pre-built conversational AI solution with minimal upfront cost, while ensuring the chatbot can handle basic queries and escalate complex issues to human agents.",
+      "options": [
+        "A. AWS Lambda with API Gateway",
+        "B. Amazon SageMaker",
+        "C. Amazon Lex with Amazon Connect",
+        "D. AWS Ground Truth"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The best solution for quickly integrating a pre-built conversational AI chatbot is Amazon Lex combined with Amazon Connect, as it offers a ready-to-use conversational interface and seamless integration with human agents. Amazon Lex can handle basic queries and escalate complex issues to human support teams through Amazon Connect. AWS Lambda with API Gateway (A) is more suited for serverless functions rather than building a conversational AI chatbot from scratch. Amazon SageMaker (B) is primarily used for training machine learning models, which is not the primary requirement in this scenario. AWS Ground Truth (D) is for labeling data to train machine learning models and does not provide the pre-built conversational interface needed.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Lex",
+        "Amazon Connect"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:46:54.352859Z"
+    },
+    {
+      "question_id": "8d8da877-4348-499f-a677-89d065fbf07f",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is implementing an AI model that processes sensitive customer data. They want to ensure the highest level of security and compliance while minimizing costs. Which two services should they implement? (Select TWO)",
+      "options": [
+        "A. AWS SageMaker Notebook Instances - To provide a Jupyter notebook environment for data scientists.",
+        "B. Amazon GuardDuty - To monitor for malicious activity and policy violations in their AWS account.",
+        "C. AWS Secrets Manager - To store, manage, and rotate sensitive information like database passwords, API keys, and access keys.",
+        "D. AWS Key Management Service (KMS) - To create and control the encryption keys used to encrypt data at rest and in transit.",
+        "E. Amazon SageMaker Training Jobs - To run training jobs for machine learning models."
+      ],
+      "correct_answers": [
+        "B",
+        "C"
+      ],
+      "explanation": "A. AWS SageMaker Notebook Instances - This is a development environment that helps data scientists build, train, and deploy ML models. It does not directly address security or compliance concerns.\n\nB. Amazon GuardDuty - This service provides continuous monitoring for malicious activity and policy violations in their AWS account. It is crucial for ensuring the security of sensitive customer data.\n\nC. AWS Secrets Manager - This service securely stores, manages, and rotates sensitive information like database passwords, API keys, and access keys. It ensures that the organization can manage secrets without exposing them directly in code or configuration files.\n\nD. AWS Key Management Service (KMS) - This service is essential for creating and controlling encryption keys used to encrypt data at rest and in transit. However, it alone does not cover monitoring and policy enforcement.\n\nE. Amazon SageMaker Training Jobs - This service helps build and train ML models but does not directly address security or compliance concerns.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon GuardDuty",
+        "AWS Secrets Manager"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:47:24.529776Z"
+    },
+    {
+      "question_id": "320beba0-ced6-445c-8aa6-3757056602ed",
+      "cert_code": "AIF-C01",
+      "domain": "Guidelines for Responsible AI",
+      "question_type": "single",
+      "question_text": "Select ONE: An organization is developing a chatbot using generative AI to handle customer inquiries. The team wants to ensure the model does not generate inappropriate content and respects user privacy. Which approach should they take?",
+      "options": [
+        "A. Implement AWS SageMaker Model Monitor with built-in bias mitigation tools.",
+        "B. Use Amazon Comprehend Medical to filter sensitive medical data before processing.",
+        "C. Configure AWS Lambda functions to manually review and approve all chatbot responses.",
+        "D. Enable AWS Comprehend for monitoring and alerting on inappropriate content."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best approach is A, as AWS SageMaker Model Monitor with built-in bias mitigation tools can help ensure the model does not generate inappropriate content by continuously monitoring and improving the model's performance. It aligns well with responsible AI practices by automating the process of detecting and mitigating biases in the model outputs. B is incorrect because Amazon Comprehend Medical is designed for identifying sensitive medical information, which is not directly related to preventing inappropriate content generation. C is inefficient as it involves manual review, which can be time-consuming and may introduce delays. D is not suitable for this use case as AWS Comprehend is primarily used for text analysis and sentiment detection, but it does not provide the necessary AI-specific content filtering capabilities.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "SageMaker",
+        "Comprehend"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-12T18:47:37.394567Z"
+    },
+    {
+      "question_id": "7076e8cf-d9d5-4926-ae43-0bd37d788a19",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "multiple",
+      "question_text": "An organization is deploying a generative AI model to create customer support chatbots. To ensure the model's outputs are compliant with data privacy regulations and maintain high security standards, which two options should be prioritized? (Select TWO)",
+      "options": [
+        "A. ENABLE AWS S3 VERSIONING TO TRACK CHANGES IN THE MODEL'S TRAINING DATA",
+        "B. USE AWS CLOUDHSM FOR ENCRYPTING AND MANAGING KEYS USED BY THE AI MODEL",
+        "C. IMPLEMENT AWS IAM ROLES TO LIMIT ACCESS TO THE AI MODEL ONLY TO CERTIFIED DEVELOPERS",
+        "D. DEPLOY THE AI MODEL ON AN EC2 INSTANCE IN A PUBLIC SUBNET TO ENSURE NETWORK SECURITY",
+        "E. ENABLE AWS SNS FOR NOTIFICATION OF DATA ACCESS AND MODIFICATIONS"
+      ],
+      "correct_answers": [
+        "B",
+        "C"
+      ],
+      "explanation": "A. INCORRECT: AWS S3 VERSIONING IS USEFUL FOR TRACKING CHANGES TO THE TRAINING DATA, BUT IT DOES NOT DIRECTLY IMPROVE COMPLIANCE OR SECURITY OF THE MODEL'S OUTPUTS.\n\nB. CORRECT: AWS CLOUDHSM PROVIDES FIPS 140-2 LEVEL 3 COMPLIANT ENCRYPTION FOR KEYS USED BY THE AI MODEL, WHICH IS CRITICAL FOR DATA PRIVACY AND REGULATORY COMPLIANCE.\n\nC. CORRECT: IMPLEMENTING AWS IAM ROLES LIMITS ACCESS TO THE AI MODEL ONLY TO CERTIFIED DEVELOPERS, ENHANCING SECURITY AND CONTROLLABILITY OF THE MODEL'S USE.\n\nD. INCORRECT: DEPLOYING THE AI MODEL ON AN EC2 INSTANCE IN A PUBLIC SUBNET IS NOT SECURE AS IT EXPOSURES THE MODEL TO POTENTIAL ATTACKS FROM THE INTERNET. PRIVATE SUBNETS ARE MORE SECURE.\n\nE. INCORRECT: AWS SNS CAN BE USED FOR NOTIFICATIONS, BUT IT DOES NOT DIRECTLY IMPROVE DATA PRIVACY OR SECURITY OF THE AI MODEL'S OUTPUTS.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.6, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial\nIntelligence, Machine Learning, and Generative AI\nAccelerating Your Cloud-Powered AI Transformation\nPublication date: February 13, 2024 (Document history)\nIn this document, we outline the AWS Cloud Adoption Framework for Art",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS CloudHSM",
+        "AWS IAM"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T18:48:15.363309Z"
+    }
+  ]
+}

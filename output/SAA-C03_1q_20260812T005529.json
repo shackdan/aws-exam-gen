@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "cert_code": "SAA-C03",
+    "generated_at": "2026-08-12T00:55:29.750282+00:00",
+    "total_questions": 1,
+    "approved": 1,
+    "rejected": 0
+  },
+  "questions": [
+    {
+      "question_id": "1dbc907b-0d5a-4b01-9f6f-3563530d6352",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A financial services company is designing a disaster recovery (DR) strategy for its critical database application that must comply with local data residency requirements. The company operates in a region with only one AWS Availability Zone (AZ). Which approach should the architect take to ensure both high availability and compliance while minimizing costs?",
+      "options": [
+        "A. Deploy the database in multiple AZs within the same Region, using Amazon S3 for backups.",
+        "B. Use Amazon RDS Multi-AZ with a read replica in another AWS Region, enabling cross-Region replication.",
+        "C. Place the database in a single AZ and use AWS Backup to schedule regular snapshots that are stored in an S3 bucket within the same Region.",
+        "D. Implement an on-premises DR site using AWS Storage Gateway for data synchronization with the primary database."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Using Amazon RDS Multi-AZ with a read replica in another AWS Region, enabling cross-Region replication, ensures both high availability and compliance with local data residency requirements since all copies of the data are stored within the same AWS Region. This approach also minimizes costs by leveraging AWS's built-in disaster recovery features without the need for additional hardware or complex setup. Option A is incorrect because a single AZ does not provide sufficient redundancy to meet high-availability requirements, and using S3 backups would not comply with local data residency rules. Option C is suboptimal as it relies on a single AZ within one Region, which may not fully address the compliance requirement and could be more costly due to frequent snapshot operations. Option D is less cost-effective and complex compared to AWS-native solutions like RDS Multi-AZ.",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.17]\nhours), then using Amazon\nGlacier or Amazon Glacier Deep Archive will significantly reduce costs of your backup and recovery\nstrategy.\nSome workloads may have regulatory data residency requirements. If this applies to your workload\nin a locality that currently has only one AWS Region, then in addition to designing multi-AZ\nworkloads for high availability as discussed above, you can also use the AZs within that Region\nas discrete locations, which can",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon RDS",
+        "AWS Backup"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-12T00:28:02.607856Z"
+    }
+  ]
+}

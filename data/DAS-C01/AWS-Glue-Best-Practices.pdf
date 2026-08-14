@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    
+    
+    
+    
+    
+    
+    
+    
+    <meta name="service-name" content="Documentation" />
+    <meta name="guide-name" content="Landing Page" />
+    <link rel='canonical' href='https://docs.aws.amazon.com/glue/'/>
+    
+    <meta name="landing-page-locale" content="en_us">
+    <link rel="icon" type="image/ico" href="/assets/r/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/ico" href="/assets/r/images/favicon.ico" />
+    <link rel='alternate' type='text/markdown' href='https://docs.aws.amazon.com/glue/index.md'/>
+     <script defer src="/assets/r/awsdocs-landing-page.2.0.0.js"></script>
+
+    <script id="awsc-panorama-bundle" type="text/javascript" src="https://prod.pa.cdn.uis.awsstatic.com/panorama-nav-init.js" data-config="{'appEntity':'aws-documentation','region':'us-east-1', 'service':'glue'}" defer></script>
+  </head>
+  <body class="awsdocs awsui awsui-visual-refresh landing-page">
+    <input type="text" id="landing-page-xml" style="display: none;" value="%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Clanding-page%20version%3D%222.0%22%3E%0A%20%20%20%3Ctitle%3EAWS%20Glue%20Documentation%3C%2Ftitle%3E%0A%20%20%20%3Ctitleabbrev%3EAWS%20Glue%3C%2Ftitleabbrev%3E%0A%20%20%20%3Cabstract%3E%0A%20%20%20%20AWS%20Glue%20is%20a%20scalable%2C%20serverless%20data%20integration%20service%20that%20makes%20it%20easy%20to%20discover%2C%20%0A%20%20%20%20prepare%2C%20and%20combine%20data%20for%20analytics%2C%20machine%20learning%2C%20and%20application%20development.%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%20%20%0A%20%20%3C%2Fabstract%3E%0A%20%20%20%3CfeedbackCTI%3EGlue%3C%2FfeedbackCTI%3E%0A%20%20%20%3Csections%3E%0A%20%20%20%20%20%20%3Csection%20id%3D%22%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ctitle%2F%3E%0A%20%20%20%20%20%20%20%20%20%3Ccards%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccolumns%20xxs%3D%222%22%20m%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fwhat-is-glue.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EWhat%20is%20AWS%20Glue%3F%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Learn%20about%20AWS%20Glue%20features%2C%20how%20to%20get%20started%2C%20and%20how%20to%20access%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20AWS%20Glue.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fcomponents-overview.html%23data-catalog-intro%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EWhat%20is%20the%20AWS%20Glue%20Data%20Catalog%3F%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Learn%20about%20the%20AWS%20Glue%20Data%20Catalog%2C%20which%20is%20your%20persistent%20metadata%20store.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fcards%3E%0A%20%20%20%20%20%20%3C%2Fsection%3E%0A%20%20%20%20%20%20%3Csection%20id%3D%22discover-and-organize-data%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ctitle%3E%0A%20%20%20%20%20%20%20%20%20%20Discover%20and%20organize%20data%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%3Ccards%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccolumns%20xxs%3D%222%22%20m%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fstart-data-catalog.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EGet%20started%20with%20the%20AWS%20Glue%20Data%20Catalog%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Use%20this%20tutorial%20to%20create%20your%20first%20AWS%20Glue%20Data%20Catalog%2C%20which%20uses%20an%20Amazon%20S3%20bucket%20as%20your%20data%20source.%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fadd-crawler.html%22%20generic%3D%22true%22%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EPopulate%20your%20Data%20Catalog%20with%20crawlers%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Populate%20the%20AWS%20Glue%20Data%20Catalog%20with%20metadata%20tables%20from%20data%20stores%20that%20you%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20define.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fpopulate-add-connection.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAdd%20connections%20to%20your%20Data%20Catalog%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Use%20AWS%20Glue%20connections%20to%20access%20certain%20types%20of%20data%20stores.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fcards%3E%0A%20%20%20%20%20%20%3C%2Fsection%3E%0A%20%20%20%20%20%20%3Csection%20id%3D%22author-and-run-data-integration-jobs%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ctitle%3E%0A%20%20%20%20%20%20%20%20%20%20Author%20and%20run%20data%20integration%20jobs%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%3Ccards%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccolumns%20xxs%3D%222%22%20m%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2FAuthorJob_AddJob_general.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3ECreate%20AWS%20Glue%20jobs%20visually%20with%20AWS%20Glue%20Studio%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Create%20jobs%20through%20AWS%20Glue%20Studio%2C%20a%20graphical%20interface%20that%20makes%20it%20easy%20to%20create%2C%20run%2C%20and%20monitor%20integration%20jobs.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Faws-glue-programming-intro-tutorial.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EWrite%20an%20AWS%20Glue%20ETL%20script%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Write%20an%20AWS%20Glue%20extract%2C%20transform%2C%20and%20load%20%28ETL%29%20script%20through%20this%20tutorial%20to%20understand%20how%20to%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20use%20scripts%20when%20you%27re%20building%20AWS%20Glue%20jobs.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fnotebook-getting-started.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3ECreate%20AWS%20Glue%20%20jobs%20with%20notebooks%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Author%20interactive%20jobs%20in%20a%20notebook%20interface%20based%20on%20Jupyter%20notebooks%20in%20AWS%20Glue%20Studio.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Finteractive-sessions.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EDevelop%20AWS%20Glue%20jobs%20locally%20with%20interactive%20sessions%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Programmatically%20build%20and%20test%20scripts%20for%20data%20preparation%20using%20interactive%20sessions.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fcards%3E%0A%20%20%20%20%20%20%3C%2Fsection%3E%0A%20%20%20%20%20%20%3Csection%20id%3D%22automate-and-monitor-data-integration-pipelines%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ctitle%3E%0A%20%20%20%20%20%20%20%20%20%20Automate%20and%20monitor%20data%20integration%20pipelines%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%3Ccards%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccolumns%20xxs%3D%222%22%20m%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Ftrigger-job.html%22%20generic%3D%22true%22%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAutomate%20with%20event-based%20triggers%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Start%20crawlers%20or%20AWS%20Glue%20jobs%20with%20event-based%20triggers.%20You%20can%20also%20design%20a%20chain%20of%20dependent%20jobs%20and%20crawlers.%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fmonitor-glue.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3ERun%20and%20monitor%20your%20jobs%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Run%20your%20AWS%20Glue%20jobs%2C%20and%20then%20monitor%20them%20with%20automated%20monitoring%20tools%2C%20the%20Apache%20Spark%20UI%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20AWS%20Glue%20%20job%20run%20insights%2C%20and%20AWS%20CloudTrail.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fworkflows_overview.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAutomate%20with%20workflows%20%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20Define%20workflows%20for%20ETL%20and%20integration%20activities%20for%20multiple%20crawlers%2C%20jobs%2C%20and%20triggers.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fcards%3E%0A%20%20%20%20%20%20%3C%2Fsection%3E%0A%20%20%20%20%20%20%3Csection%20id%3D%22user-guides%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ctitle%3E%0A%20%20%20%20%20%20%20%20%20%20User%20guides%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%3Ccards%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ccolumns%20xxs%3D%222%22%20m%3D%223%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flayout%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fglue%2Flatest%2Fdg%2Fwhat-is-glue.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAWS%20Glue%20Developer%20Guide%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3EProvides%20a%20conceptual%20overview%20of%20AWS%20Glue%2C%20detailed%20instructions%20for%20using%20the%20various%20features%2C%20and%20a%20complete%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20API%20reference%20for%20developers.%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fcli%2Flatest%2Freference%2Fglue%2Findex.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAWS%20Glue%20section%20of%20the%20AWS%20CLI%20Reference%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3EDescribes%20the%20AWS%20CLI%20commands%20that%20you%20can%20use%20with%20AWS%20Glue.%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fdatabrew%2Flatest%2Fdg%2Fwhat-is-databrew.html%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20generic%3D%22true%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAWS%20Glue%20DataBrew%20Developer%20Guide%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3EDescribes%20how%20to%20prepare%20data%20visually%20with%20ready-made%20data%20transformations%20for%20analytics%20and%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20machine%20learning.%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-card%20href%3D%22%2Fdatabrew%2Flatest%2FAPIReference%2F%22%20generic%3D%22true%22%20guide%3D%22true%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3EAWS%20Glue%20DataBrew%20API%20Reference%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cabstract%3EDescribes%20the%20API%20operations%20for%20AWS%20Glue%20DataBrew.%3C%2Fabstract%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsimple-card%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fcards%3E%0A%20%20%20%20%20%20%3C%2Fsection%3E%0A%20%20%20%3C%2Fsections%3E%0A%20%20%20%3Cside-nav%3E%0A%20%20%20%20%20%20%3Cside-nav-sections%3E%0A%20%20%20%20%20%20%20%20%20%3Cside-nav-section%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ctitle%3ERelated%20Links%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Clinks%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22http%3A%2F%2Fdocs.aws.amazon.com%2Fgeneral%2Flatest%2Fgr%2Fglos-chap.html%22%3EAWS%20Glossary%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22https%3A%2F%2Faws.amazon.com%2Fdocumentation%2Fgettingstarted%2F%22%3EGetting%20Started%20with%20AWS%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22https%3A%2F%2Faws.amazon.com%2Ftools%2F%22%3ESDKs%20%26amp%3B%20Tools%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22http%3A%2F%2Fdocs.aws.amazon.com%2Fgeneral%2Flatest%2Fgr%2FWelcome.html%22%3EAWS%20General%20Reference%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22https%3A%2F%2Faws.amazon.com%2Ftraining%2F%22%3EAWS%20Training%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22https%3A%2F%2Faws.amazon.com%2Fsolutions%2Fcase-studies%2F%22%3EAWS%20Case%20Studies%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csimple-link%20href%3D%22https%3A%2F%2Faws.amazon.com%2Fwhitepapers%2F%22%3EAWS%20Whitepapers%3C%2Fsimple-link%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Flinks%3E%0A%20%20%20%20%20%20%20%20%20%3C%2Fside-nav-section%3E%0A%20%20%20%20%20%20%3C%2Fside-nav-sections%3E%0A%20%20%20%3C%2Fside-nav%3E%0A%3C%2Flanding-page%3E%0A" />
+    <div class="awsdocs-container">
+    <div style="display:none;">
+        <header class="awsdocs-page-header">
+            <h1 class="awsdocs-page-title">AWS Glue Documentation</h1>
+            <div class="awsdocs-page-abstract">
+    AWS Glue is a scalable, serverless data integration service that makes it easy to discover, 
+    prepare, and combine data for analytics, machine learning, and application development.
+    
+    
+    
+  </div>
+        </header>
+        <main class="awsdocs-main">
+            <section class="awsdocs-section" aria-labelledby="">
+                <div class="awsdocs-cards" data-component="Grid" data-grid-definition="[{&quot;colspan&quot;:{&quot;xxs&quot;:6,&quot;m&quot;:4}}]">
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/what-is-glue.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">What is AWS Glue?</h3>
+                            <div class="awsdocs-abstract">
+              Learn about AWS Glue features, how to get started, and how to access 
+              AWS Glue.
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/components-overview.html#data-catalog-intro" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">What is the AWS Glue Data Catalog?</h3>
+                            <div class="awsdocs-abstract">
+              Learn about the AWS Glue Data Catalog, which is your persistent metadata store.
+            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <section class="awsdocs-section" aria-labelledby="discover-and-organize-data">
+                <h2 class="awsdocs-section-title" id="discover-and-organize-data">
+          Discover and organize data         
+        </h2>
+                <div class="awsdocs-cards" data-component="Grid" data-grid-definition="[{&quot;colspan&quot;:{&quot;xxs&quot;:6,&quot;m&quot;:4}}]">
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/start-data-catalog.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Get started with the AWS Glue Data Catalog</h3>
+                            <div class="awsdocs-abstract">
+              Use this tutorial to create your first AWS Glue Data Catalog, which uses an Amazon S3 bucket as your data source.             
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/add-crawler.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Populate your Data Catalog with crawlers</h3>
+                            <div class="awsdocs-abstract">
+               Populate the AWS Glue Data Catalog with metadata tables from data stores that you
+              define.
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/populate-add-connection.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Add connections to your Data Catalog</h3>
+                            <div class="awsdocs-abstract">
+              Use AWS Glue connections to access certain types of data stores.
+            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <section class="awsdocs-section" aria-labelledby="author-and-run-data-integration-jobs">
+                <h2 class="awsdocs-section-title" id="author-and-run-data-integration-jobs">
+          Author and run data integration jobs      
+        </h2>
+                <div class="awsdocs-cards" data-component="Grid" data-grid-definition="[{&quot;colspan&quot;:{&quot;xxs&quot;:6,&quot;m&quot;:4}}]">
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/AuthorJob_AddJob_general.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Create AWS Glue jobs visually with AWS Glue Studio</h3>
+                            <div class="awsdocs-abstract">
+              Create jobs through AWS Glue Studio, a graphical interface that makes it easy to create, run, and monitor integration jobs. 
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/aws-glue-programming-intro-tutorial.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Write an AWS Glue ETL script</h3>
+                            <div class="awsdocs-abstract">
+              Write an AWS Glue extract, transform, and load (ETL) script through this tutorial to understand how to 
+              use scripts when you're building AWS Glue jobs.              
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/notebook-getting-started.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Create AWS Glue  jobs with notebooks</h3>
+                            <div class="awsdocs-abstract">
+              Author interactive jobs in a notebook interface based on Jupyter notebooks in AWS Glue Studio.                
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/interactive-sessions.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Develop AWS Glue jobs locally with interactive sessions</h3>
+                            <div class="awsdocs-abstract">
+              Programmatically build and test scripts for data preparation using interactive sessions. 
+            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <section class="awsdocs-section" aria-labelledby="automate-and-monitor-data-integration-pipelines">
+                <h2 class="awsdocs-section-title" id="automate-and-monitor-data-integration-pipelines">
+          Automate and monitor data integration pipelines           
+        </h2>
+                <div class="awsdocs-cards" data-component="Grid" data-grid-definition="[{&quot;colspan&quot;:{&quot;xxs&quot;:6,&quot;m&quot;:4}}]">
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/trigger-job.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Automate with event-based triggers</h3>
+                            <div class="awsdocs-abstract">
+              Start crawlers or AWS Glue jobs with event-based triggers. You can also design a chain of dependent jobs and crawlers. 
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/monitor-glue.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Run and monitor your jobs</h3>
+                            <div class="awsdocs-abstract">
+              Run your AWS Glue jobs, and then monitor them with automated monitoring tools, the Apache Spark UI, 
+              AWS Glue  job run insights, and AWS CloudTrail.                      
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/workflows_overview.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">Automate with workflows </h3>
+                            <div class="awsdocs-abstract">
+              Define workflows for ETL and integration activities for multiple crawlers, jobs, and triggers.
+            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <section class="awsdocs-section" aria-labelledby="user-guides">
+                <h2 class="awsdocs-section-title" id="user-guides">
+          User guides        
+        </h2>
+                <div class="awsdocs-cards" data-component="Grid" data-grid-definition="[{&quot;colspan&quot;:{&quot;xxs&quot;:6,&quot;m&quot;:4}}]">
+                    <article class="awsdocs-card">
+                        <a href="/glue/latest/dg/what-is-glue.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">AWS Glue Developer Guide</h3>
+                            <div class="awsdocs-abstract">Provides a conceptual overview of AWS Glue, detailed instructions for using the various features, and a complete 
+              API reference for developers.</div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/cli/latest/reference/glue/index.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">AWS Glue section of the AWS CLI Reference</h3>
+                            <div class="awsdocs-abstract">Describes the AWS CLI commands that you can use with AWS Glue.</div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/databrew/latest/dg/what-is-databrew.html" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">AWS Glue DataBrew Developer Guide</h3>
+                            <div class="awsdocs-abstract">Describes how to prepare data visually with ready-made data transformations for analytics and 
+              machine learning.
+            </div>
+                        </a>
+                    </article>
+                    <article class="awsdocs-card">
+                        <a href="/databrew/latest/APIReference/" class="awsdocs-card-link">
+                            <h3 class="awsdocs-card-title">AWS Glue DataBrew API Reference</h3>
+                            <div class="awsdocs-abstract">Describes the API operations for AWS Glue DataBrew.</div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </main>
+        <aside class="awsdocs-side-nav">
+            <nav class="awsdocs-side-nav-section">
+                <h2 class="awsdocs-side-nav-title">Related Links</h2>
+                <ul class="awsdocs-side-nav-list">
+                    <li>
+                        <a href="http://docs.aws.amazon.com/general/latest/gr/glos-chap.html" class="awsdocs-link">AWS Glossary</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com/documentation/gettingstarted/" class="awsdocs-link">Getting Started with AWS</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com/tools/" class="awsdocs-link">SDKs &amp; Tools</a>
+                    </li>
+                    <li>
+                        <a href="http://docs.aws.amazon.com/general/latest/gr/Welcome.html" class="awsdocs-link">AWS General Reference</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com/training/" class="awsdocs-link">AWS Training</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com/solutions/case-studies/" class="awsdocs-link">AWS Case Studies</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com/whitepapers/" class="awsdocs-link">AWS Whitepapers</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</div>
+
+  </body>
+</html>
