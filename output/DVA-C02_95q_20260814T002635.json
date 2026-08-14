@@ -123,11 +123,11 @@
       "question_type": "multiple",
       "question_text": "A new e-commerce application is being developed and will rely on several external services such as payment gateways, shipping APIs, and third-party analytics tools. The development team wants to ensure the reliability and performance of these dependencies are continuously monitored. Which two actions should they take? (Select TWO)",
       "options": [
-        "A. USE CLOUDTRAIL TO MONITOR API CALLS AND RESPONSE TIMES FROM EXTERNAL SERVICES",
-        "B. IMPLEMENT DEPENDENCY TELEMETRY USING AWS XRAY FOR ALL EXTERNAL SERVICE INTERFACES",
-        "C. SET UP ALB HEALTH CHECKS FOR THE PAYMENT GATEWAY ENDPOINTS",
-        "D. ENABLE AWS SNS TOPICS TO SEND NOTIFICATIONS ABOUT ANY FAILURE IN EXTERNAL SERVICES",
-        "E. CONFIGURE CLOUDWATCH METRICS AND LOGS FOR ALL EXTERNAL SERVICE INTERFACES"
+        "A. Use CloudTrail to monitor API calls and response times from external services",
+        "B. Implement dependency telemetry using AWS xray for all external service interfaces",
+        "C. Set up ALB health checks for the payment gateway endpoints",
+        "D. Enable AWS SNS topics to send notifications about any failure in external services",
+        "E. Configure CloudWatch metrics and logs for all external service interfaces"
       ],
       "correct_answers": [
         "B",
@@ -270,7 +270,7 @@
         "B",
         "D"
       ],
-      "explanation": "A. AWS CLOUDBLITRL - This service is used for logging and tracking API calls made by or on behalf of the AWS account. It does not provide dependency telemetry.\n\nB. AMAZON CLOUDWATCH - Although CloudWatch can be used to monitor application performance, it primarily focuses on internal metrics rather than external dependencies. However, it can be used in conjunction with other services for monitoring purposes.\n\nC. AWS CONFIG - This service is used for evaluating the configuration of AWS resources and tracking changes to those configurations over time. It does not provide dependency telemetry.\n\nD. AWS X-RAY - This service provides distributed tracing capabilities that are essential for monitoring the health and performance of external services and components your workload relies on, aligning with the best practice of implementing dependency telemetry.\n\nE. AMAZON INSPECTOR - This service is used to assess security vulnerabilities in applications running on Amazon EC2 instances or AWS Fargate tasks. It does not provide dependency telemetry.",
+      "explanation": "A. AWS CLOUDBLITRL - This service is used for logging and tracking API calls made by or on behalf of the AWS account. It does not provide dependency telemetry.\n\nB. Amazon CloudWatch - Although CloudWatch can be used to monitor application performance, it primarily focuses on internal metrics rather than external dependencies. However, it can be used in conjunction with other services for monitoring purposes.\n\nC. AWS Config - This service is used for evaluating the configuration of AWS resources and tracking changes to those configurations over time. It does not provide dependency telemetry.\n\nD. AWS X-Ray - This service provides distributed tracing capabilities that are essential for monitoring the health and performance of external services and components your workload relies on, aligning with the best practice of implementing dependency telemetry.\n\nE. Amazon Inspector - This service is used to assess security vulnerabilities in applications running on Amazon EC2 instances or AWS Fargate tasks. It does not provide dependency telemetry.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -379,7 +379,7 @@
         "C",
         "E"
       ],
-      "explanation": "A. AMAZON S3 - This is a highly durable object storage service and not suitable for monitoring external dependencies.\n\nB. AWS CLOUDTRAIL - This service logs API calls made to your account, which can be useful for auditing but does not provide dependency telemetry.\n\nC. AMAZON CLOUDWATCH - This service provides detailed monitoring of your applications and infrastructure by collecting and tracking metrics, publishing custom metrics, and creating alarms. It is essential for implementing dependency telemetry as described in the AWS Well-Architected Framework.\n\nD. AWS LAMBDA - This is a serverless compute service that runs code in response to events and does not provide dependency monitoring capabilities.\n\nE. AMAZON ROUTE 53 - This is a highly available and scalable Domain Name System (DNS) web service, which can be used for health checks on external dependencies but is not specifically designed for dependency telemetry.",
+      "explanation": "A. Amazon S3 - This is a highly durable object storage service and not suitable for monitoring external dependencies.\n\nB. AWS CloudTrail - This service logs API calls made to your account, which can be useful for auditing but does not provide dependency telemetry.\n\nC. Amazon CloudWatch - This service provides detailed monitoring of your applications and infrastructure by collecting and tracking metrics, publishing custom metrics, and creating alarms. It is essential for implementing dependency telemetry as described in the AWS Well-Architected Framework.\n\nD. AWS Lambda - This is a serverless compute service that runs code in response to events and does not provide dependency monitoring capabilities.\n\nE. AMAZON ROUTE 53 - This is a highly available and scalable Domain Name System (DNS) web service, which can be used for health checks on external dependencies but is not specifically designed for dependency telemetry.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -653,7 +653,7 @@
         "C",
         "D"
       ],
-      "explanation": "A. INCORRECT: Amazon S3 is used for storing unstructured data, not for monitoring dependencies.\n\nB. INCORRECT: AWS CloudTrail is primarily used for logging API calls and service usage in AWS services, not for dependency telemetry.\n\nC. CORRECT: AWS X-Ray can be used to trace requests through the application and its dependencies, providing insights into performance issues and bottlenecks.\n\nD. CORRECT: Amazon Route 53 can perform health checks on external DNS services, ensuring that they are available and performing as expected.\n\nE. INCORRECT: While AWS CloudWatch is useful for monitoring internal metrics and logs, it does not provide direct dependency telemetry.",
+      "explanation": "A. INCORRECT: Amazon S3 is used for storing unstructured data, not for monitoring dependencies.\n\nB. INCORRECT: AWS CloudTrail is primarily used for logging API calls and service usage in AWS services, not for dependency telemetry.\n\nC. Correct: AWS X-Ray can be used to trace requests through the application and its dependencies, providing insights into performance issues and bottlenecks.\n\nD. CORRECT: Amazon Route 53 can perform health checks on external DNS services, ensuring that they are available and performing as expected.\n\nE. INCORRECT: While AWS CloudWatch is useful for monitoring internal metrics and logs, it does not provide direct dependency telemetry.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -1077,11 +1077,11 @@
       "question_type": "multiple",
       "question_text": "A new web application is being developed for a financial services company. The development team wants to ensure that the application can handle high traffic and monitor its performance, especially when relying on external APIs for real-time data. Which two actions should they take to achieve this? (Select TWO)",
       "options": [
-        "A. USE AWS CLOUDFRONT TO IMPLEMENT A CONTENT DELIVERY NETWORK AND REDUCE LATENCY",
-        "B. IMPLEMENT APPLICATION TELMETRY USING AMAZON CLOUDWATCH RUM AND SYNTHETICS",
-        "C. DEPLOY THE APPLICATION ON EC2 INSTANCES IN A SINGLE-AZ CONFIGURATION FOR EASE OF MANAGEMENT",
-        "D. ENABLE AWS X-RAY TO MONITOR THE APPLICATION'S END-TO-END TRACES",
-        "E. USE S3 AS THE PRIMARY STORAGE FOR ALL APPLICATION DATA"
+        "A. Use AWS CloudFront to implement a content delivery network and reduce latency",
+        "B. Implement application telmetry using Amazon CloudWatch rum and synthetics",
+        "C. Deploy the application on EC2 instances in a single-AZ configuration for ease of management",
+        "D. Enable AWS X-Ray to monitor the application's end-to-end traces",
+        "E. Use S3 as the primary storage for all application data"
       ],
       "correct_answers": [
         "B",
@@ -1375,11 +1375,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a new web application that will rely on several external services, such as third-party APIs and databases. The team wants to ensure the reliability and performance of their workload by implementing dependency telemetry while also considering cost efficiency. (Select TWO)",
       "options": [
-        "A. ENSURE THAT THE APPLICATION IS DEPLOYED IN A SINGLE REGION TO SIMPLIFY MANAGEMENT AND COSTS.",
-        "B. USE AWS XRAY FOR TRACING AND MONITORING EXTERNAL SERVICES TO IDENTIFY PERFORMANCE ISSUES PROACTIVELY.",
-        "C. IMPLEMENT CLOUDWATCH ALARMS BASED ON METRICS FROM THE EXTERNAL DEPENDENCIES TO DETECT ISSUES AND ALERT OPERATIONS TEAMS.",
-        "D. DEPLOY THE APPLICATION ACROSS MULTIPLE REGIONS TO IMPROVE AVAILABILITY AND REDUCE LATENCY FOR USERS IN DIFFERENT LOCATIONS.",
-        "E. USE AWS ENSURE THAT ALL EXTERNAL SERVICES ARE MONITORED USING CLOUDWATCH RUM TO CAPTURE USER EXPERIENCE DATA."
+        "A. Ensure that the application is deployed in a single region to simplify management and costs.",
+        "B. Use AWS xray for tracing and monitoring external services to identify performance issues proactively.",
+        "C. Implement CloudWatch alarms based on metrics from the external dependencies to detect issues and alert operations teams.",
+        "D. Deploy the application across multiple regions to improve availability and reduce latency for users in different locations.",
+        "E. Use AWS ensure that all external services are monitored using CloudWatch rum to capture user experience data."
       ],
       "correct_answers": [
         "B",
@@ -1431,10 +1431,10 @@
       "question_type": "single",
       "question_text": "A new e-commerce application is being developed, and the development team wants to ensure that the application\u2019s performance is not impacted by external dependencies such as payment gateways or third-party APIs. Which of the following best practices should be implemented to monitor these dependencies effectively?",
       "options": [
-        "A. ENABLE AWS CLOUDWATCH ALARMS TO MONITOR INTERNAL APPLICATION METRICS",
-        "B. IMPLEMENT DEPENDENCY TELEMETRY USING AWS XRAY AND CLOUDWATCH",
-        "C. USE AWS SNS TOPICS TO PUBLISH NOTIFICATIONS FOR ALL EXTERNAL SERVICES",
-        "D. CONFIGURE AWS LAMBDA TRIGGERS TO LOG PAYMENT GATEWAY RESPONSE TIMES"
+        "A. Enable AWS CloudWatch alarms to monitor internal application metrics",
+        "B. Implement dependency telemetry using AWS xray and CloudWatch",
+        "C. Use AWS SNS topics to publish notifications for all external services",
+        "D. Configure AWS Lambda triggers to log payment gateway response times"
       ],
       "correct_answers": [
         "B"
@@ -1495,7 +1495,7 @@
         "C",
         "E"
       ],
-      "explanation": "{'A': 'INCORRECT. Amazon S3 is a highly durable, scalable object storage service used for storing and retrieving any amount of data at any time, not for monitoring dependencies.', 'B': 'INCORRECT. AWS CloudTrail logs API usage to the AWS CloudWatch service and delivers log files to an Amazon S3 bucket. It does not provide dependency telemetry directly.', 'C': 'CORRECT. Amazon CloudWatch can be used to monitor and collect metrics from your application, including external dependencies. This allows for proactive monitoring of performance issues and failures impacting the workload.', 'D': 'INCORRECT. AWS Config provides configuration management for AWS resources but is not specifically designed for dependency telemetry.', 'E': 'CORRECT. AWS X-Ray can be used to trace requests through a distributed system, providing insights into how external dependencies impact application performance. It helps in identifying bottlenecks and issues with third-party services.'}",
+      "explanation": "{'A': 'INCORRECT. Amazon S3 is a highly durable, scalable object storage service used for storing and retrieving any amount of data at any time, not for monitoring dependencies.', 'b': 'incorrect. AWS CloudTrail logs API usage to the AWS CloudWatch service and delivers log files to an Amazon S3 bucket. It does not provide dependency telemetry directly.', 'C': 'CORRECT. Amazon CloudWatch can be used to monitor and collect metrics from your application, including external dependencies. This allows for proactive monitoring of performance issues and failures impacting the workload.', 'd': 'incorrect. AWS Config provides configuration management for AWS resources but is not specifically designed for dependency telemetry.', 'e': 'correct. AWS X-Ray can be used to trace requests through a distributed system, providing insights into how external dependencies impact application performance. It helps in identifying bottlenecks and issues with third-party services.'}",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -1830,7 +1830,7 @@
         "C",
         "D"
       ],
-      "explanation": "{'A': 'INCORRECT. Amazon S3 is a highly scalable object storage service and not suitable for monitoring external dependencies.', 'B': 'INCORRECT. AWS CloudTrail logs API calls but does not provide dependency telemetry or real-time performance insights.', 'C': 'CORRECT. AWS X-Ray can be used to trace requests through your application and its dependencies, providing valuable insights into the health and performance of third-party APIs and other external services.', 'D': 'CORRECT. Amazon CloudWatch is essential for implementing dependency telemetry as it allows you to monitor and collect metrics from various sources, including external services, and set up alerts based on these metrics.', 'E': 'INCORRECT. AWS Config is used for auditing and managing your AWS resources but does not provide the necessary monitoring capabilities for external dependencies.'}",
+      "explanation": "{'A': 'INCORRECT. Amazon S3 is a highly scalable object storage service and not suitable for monitoring external dependencies.', 'b': 'incorrect. AWS CloudTrail logs API calls but does not provide dependency telemetry or real-time performance insights.', 'c': 'correct. AWS X-Ray can be used to trace requests through your application and its dependencies, providing valuable insights into the health and performance of third-party APIs and other external services.', 'D': 'CORRECT. Amazon CloudWatch is essential for implementing dependency telemetry as it allows you to monitor and collect metrics from various sources, including external services, and set up alerts based on these metrics.', 'e': 'incorrect. AWS Config is used for auditing and managing your AWS resources but does not provide the necessary monitoring capabilities for external dependencies.'}",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -1857,7 +1857,7 @@
       "correct_answers": [
         "C"
       ],
-      "explanation": "The best answer is C: Deploy AWS X-Ray to trace requests through the application and its dependencies, including third-party services. This aligns with the best practice of implementing dependency telemetry as outlined in the AWS Well-Architected Framework (OPS04-BP04). AWS X-Ray provides a comprehensive view of both internal and external components that influence workload health, helping to identify potential bottlenecks and performance issues before they impact the application. It is designed for distributed tracing across multiple services, which is essential when dealing with third-party APIs and databases.\n\nOption A (CloudWatch Logs) only monitors application logs internally and does not provide visibility into external dependencies. Option B (Amazon SNS) can send alerts but lacks detailed traceability of requests through the system. Option D (Route 53 Health Checks) is useful for monitoring endpoint availability but does not offer deep insights into request flow or performance issues within the application.",
+      "explanation": "The best answer is C: Deploy AWS X-Ray to trace requests through the application and its dependencies, including third-party services. This aligns with the best practice of implementing dependency telemetry as outlined in the AWS Well-Architected Framework (ops04-bp04). AWS X-Ray provides a comprehensive view of both internal and external components that influence workload health, helping to identify potential bottlenecks and performance issues before they impact the application. It is designed for distributed tracing across multiple services, which is essential when dealing with third-party APIs and databases.\n\nOption A (CloudWatch Logs) only monitors application logs internally and does not provide visibility into external dependencies. Option B (Amazon SNS) can send alerts but lacks detailed traceability of requests through the system. Option D (Route 53 Health Checks) is useful for monitoring endpoint availability but does not offer deep insights into request flow or performance issues within the application.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -1886,7 +1886,7 @@
       "correct_answers": [
         "D"
       ],
-      "explanation": "The correct answer is D. AWS X-Ray is specifically designed to trace requests through a distributed system, making it ideal for implementing dependency telemetry as described in the AWS Well-Architected Framework (OPS04-BP04). It provides valuable insights into reachability, timeouts, and other critical events related to dependencies such as external APIs. \n\nA) Amazon CloudWatch Events is used for event-driven workflows, not for monitoring the health of external services directly.\nB) Periodically pinging APIs with Lambda functions and logging responses using S3 is a manual approach that doesn't provide real-time insights or dependency tracing capabilities.\nC) An Application Load Balancer's built-in health checks are meant to monitor internal resources within an application, not external dependencies.",
+      "explanation": "The correct answer is d. AWS X-Ray is specifically designed to trace requests through a distributed system, making it ideal for implementing dependency telemetry as described in the AWS Well-Architected Framework (OPS04-BP04). It provides valuable insights into reachability, timeouts, and other critical events related to dependencies such as external APIs. \n\nA) Amazon CloudWatch Events is used for event-driven workflows, not for monitoring the health of external services directly.\nB) Periodically pinging APIs with Lambda functions and logging responses using S3 is a manual approach that doesn't provide real-time insights or dependency tracing capabilities.\nC) An Application Load Balancer's built-in health checks are meant to monitor internal resources within an application, not external dependencies.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -1942,7 +1942,7 @@
         "C",
         "E"
       ],
-      "explanation": "A. DEPLOY AWS LAMBDA FUNCTIONS FOR ALL INTERNAL APPLICATION LOGIC TO REDUCE COSTS AND IMPROVE PERFORMANCE: While AWS Lambda can reduce costs and improve performance for internal application logic, it is not directly related to monitoring external dependencies. This option does not address the requirement of monitoring external services.\n\nB. USE AMAZON CLOUDWATCH TO MONITOR THE HEALTH AND PERFORMANCE OF EXTERNAL SERVICES AND DEPENDENCIES: Amazon CloudWatch is a key tool for monitoring both internal and external resources, including third-party APIs and payment gateways. It provides metrics, logs, and traces that can help identify issues with dependencies.\n\nC. IMPLEMENT UNIT, INTEGRATION, AND END-TO-END TESTS FOR THE NEW APPLICATION BEFORE DEPLOYMENT: This is a best practice for ensuring the reliability of the application but does not directly address monitoring external services. However, it supports overall quality assurance and should be part of the development process.\n\nD. CONFIGURE AWS CONFIG RULES TO ENFORCE COMPLIANCE WITH SECURITY BEST PRACTICES WITHIN THE VPC: While important for security and compliance, this option focuses on internal infrastructure rather than monitoring external dependencies.\n\nE. SET UP AMAZON CLOUDWATCH SYNTHETICS TO MEASURE PAGE LOAD TIMES AND AVAILABILITY OF EXTERNAL SERVICES: Amazon CloudWatch Synthetics can be used to measure the availability and performance of external services by simulating user interactions, making it a valuable tool for dependency telemetry.",
+      "explanation": "A. Deploy AWS Lambda functions for all internal application logic to reduce costs and improve performance: While AWS Lambda can reduce costs and improve performance for internal application logic, it is not directly related to monitoring external dependencies. This option does not address the requirement of monitoring external services.\n\nB. Use Amazon CloudWatch to monitor the health and performance of external services and dependencies: Amazon CloudWatch is a key tool for monitoring both internal and external resources, including third-party APIs and payment gateways. It provides metrics, logs, and traces that can help identify issues with dependencies.\n\nC. Implement unit, integration, and end-to-end tests for the new application before deployment: This is a best practice for ensuring the reliability of the application but does not directly address monitoring external services. However, it supports overall quality assurance and should be part of the development process.\n\nD. Configure AWS Config rules to enforce compliance with security best practices within the VPC: While important for security and compliance, this option focuses on internal infrastructure rather than monitoring external dependencies.\n\nE. Set up Amazon CloudWatch synthetics to measure page load times and availability of external services: Amazon CloudWatch Synthetics can be used to measure the availability and performance of external services by simulating user interactions, making it a valuable tool for dependency telemetry.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -2016,11 +2016,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a new web application that will rely on several external services, including databases and third-party APIs. The development team wants to ensure the application's reliability and performance by implementing dependency telemetry. Which two actions should they take to effectively monitor these dependencies? (Select TWO)",
       "options": [
-        "A. USE AWS CLOUDWATCH TO MONITOR THE APPLICATION'S INTERNAL METRICS ONLY.",
-        "B. IMPLEMENT DEPENDENCY TELEMETRY USING AWS XRAY AND CLOUDWATCH TO CAPTURE DETAILED TRACES OF EXTERNAL SERVICES.",
-        "C. CONFIGURE ALB HEALTH CHECKS FOR EACH EXTERNAL SERVICE TO ENSURE THEY ARE AVAILABLE.",
-        "D. SET UP A NEW VPC FOR THE APPLICATION TO ISOLATE IT FROM EXTERNAL DEPENDENCIES.",
-        "E. USE AWS SSM PARAMETER STORE TO STORE CREDENTIALS FOR EXTERNAL SERVICES."
+        "A. Use AWS CloudWatch to monitor the application's internal metrics only.",
+        "B. Implement dependency telemetry using AWS xray and CloudWatch to capture detailed traces of external services.",
+        "C. Configure ALB health checks for each external service to ensure they are available.",
+        "D. Set up a new VPC for the application to isolate it from external dependencies.",
+        "E. Use AWS SSM Parameter Store to store credentials for external services."
       ],
       "correct_answers": [
         "B",
@@ -2261,17 +2261,17 @@
       "question_type": "multiple",
       "question_text": "A company is developing a new web application that will rely on several external services for its functionality. The development team wants to ensure the reliability and performance of these dependencies are continuously monitored. Which two actions should they take to effectively implement dependency telemetry? (Select TWO)",
       "options": [
-        "A. USE CLOUDWATCH SYNTHETICS TO MONITOR THE HEALTH AND PERFORMANCE OF EXTERNAL SERVICES.",
-        "B. IMPLEMENT APPLICATION TELMETRY FOR ALL INTERNAL COMPONENTS ONLY.",
-        "C. DEPLOY A LOAD BALANCER IN FRONT OF ALL EXTERNAL SERVICES.",
-        "D. USE AWS XRAY TO TRACE REQUESTS ACROSS DIFFERENT SERVICES.",
-        "E. SET UP DYNAMIC ROUTING BETWEEN VPCs USING VPC ENDPOINTS."
+        "A. Use CloudWatch synthetics to monitor the health and performance of external services.",
+        "B. Implement application telmetry for all internal components only.",
+        "C. Deploy a load balancer in front of all external services.",
+        "D. Use AWS xray to trace requests across different services.",
+        "E. Set up dynamic routing between VPCs using VPC endpoints."
       ],
       "correct_answers": [
         "A",
         "D"
       ],
-      "explanation": "A. USE CLOUDWATCH SYNTHETICS TO MONITOR THE HEALTH AND PERFORMANCE OF EXTERNAL SERVICES. - This is correct as per the AWS Well-Architected Framework (OPS04-BP05), which states that dependency telemetry is essential for monitoring external services and components your workload relies on.\n\nB. IMPLEMENT APPLICATION TELMETRY FOR ALL INTERNAL COMPONENTS ONLY. - This is incorrect because the question asks about external dependencies, not internal application metrics.\n\nC. DEPLOY A LOAD BALANCER IN FRONT OF ALL EXTERNAL SERVICES. - While load balancing can improve performance and availability, it does not directly address dependency telemetry as defined by AWS Well-Architected Framework best practices (OPS04-BP05).\n\nD. USE AWS XRAY TO TRACE REQUESTS ACROSS DIFFERENT SERVICES. - This is correct because AWS XRay helps in tracing requests across different services and can be used to implement dependency telemetry, as per the AWS Well-Architected Framework (OPS04-BP03).\n\nE. SET UP DYNAMIC ROUTING BETWEEN VPCs USING VPC ENDPOINTS. - While this is a valid network configuration for connecting VPCs, it does not directly address implementing dependency telemetry.",
+      "explanation": "A. Use CloudWatch synthetics to monitor the health and performance of external services. - This is correct as per the AWS Well-Architected Framework (OPS04-BP05), which states that dependency telemetry is essential for monitoring external services and components your workload relies on.\n\nB. Implement application telmetry for all internal components only. - This is incorrect because the question asks about external dependencies, not internal application metrics.\n\nC. Deploy a load balancer in front of all external services. - While load balancing can improve performance and availability, it does not directly address dependency telemetry as defined by AWS Well-Architected Framework best practices (OPS04-BP05).\n\nD. Use AWS xray to trace requests across different services. - This is correct because AWS XRay helps in tracing requests across different services and can be used to implement dependency telemetry, as per the AWS Well-Architected Framework (OPS04-BP03).\n\nE. Set up dynamic routing between VPCs using VPC endpoints. - While this is a valid network configuration for connecting VPCs, it does not directly address implementing dependency telemetry.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -2459,7 +2459,7 @@
         "B",
         "D"
       ],
-      "explanation": "A. INCORRECT: While AWS Lambda can be used for automated testing, it is not directly related to dependency telemetry and does not monitor external dependencies.\n\nB. CORRECT: AWS X-Ray can trace requests through the application and identify potential performance bottlenecks, which aligns with the best practice of implementing dependency telemetry to understand the health and performance of your workload's external services.\n\nC. INCORRECT: Application Auto Scaling policies are based on internal metrics and do not provide insights into the health or performance of external dependencies.\n\nD. CORRECT: Amazon Route 53 health checks can be used to monitor the availability and performance of external services, which is essential for dependency telemetry.\n\nE. INCORRECT: Deploying an EC2 instance with a monitoring tool would not provide the same level of visibility or automation as AWS-native tools like X-Ray and Route 53.",
+      "explanation": "A. INCORRECT: While AWS Lambda can be used for automated testing, it is not directly related to dependency telemetry and does not monitor external dependencies.\n\nB. Correct: AWS X-Ray can trace requests through the application and identify potential performance bottlenecks, which aligns with the best practice of implementing dependency telemetry to understand the health and performance of your workload's external services.\n\nC. INCORRECT: Application Auto Scaling policies are based on internal metrics and do not provide insights into the health or performance of external dependencies.\n\nD. CORRECT: Amazon Route 53 health checks can be used to monitor the availability and performance of external services, which is essential for dependency telemetry.\n\nE. INCORRECT: Deploying an EC2 instance with a monitoring tool would not provide the same level of visibility or automation as AWS-native tools like X-Ray and Route 53.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -2531,17 +2531,17 @@
       "question_type": "multiple",
       "question_text": "You are developing a web application that relies on multiple external services for its functionality. To ensure the reliability and performance of your workload, you need to implement dependency telemetry. Which TWO actions should you take to effectively monitor these dependencies? (Select TWO)",
       "options": [
-        "A. USE AWS CLOUDWATCH TO SET UP ALARMS FOR CRITICAL DEPENDENCY METRICS",
-        "B. IMPLEMENT END-TO-END TESTING FOR THE WEB APPLICATION",
-        "C. CONFIGURE AWS XRAY TO INSTRUMENT YOUR APPLICATION AND COLLECT TRACE DATA",
-        "D. ENABLE AWS S3 VERSIONING TO MANAGE BUCKET DELETIONS",
-        "E. USE AWS LAMBDA TO AUTOMATE UNIT TESTS FOR EXTERNAL SERVICES"
+        "A. Use AWS CloudWatch to set up alarms for critical dependency metrics",
+        "B. Implement end-to-end testing for the web application",
+        "C. Configure AWS xray to instrument your application and collect trace data",
+        "D. Enable AWS S3 versioning to manage bucket deletions",
+        "E. Use AWS Lambda to automate unit tests for external services"
       ],
       "correct_answers": [
         "A",
         "C"
       ],
-      "explanation": "A. USE AWS CLOUDWATCH TO SET UP ALARMS FOR CRITICAL DEPENDENCY METRICS - Correct. CloudWatch can be used to monitor and set up alarms for critical metrics related to external dependencies, ensuring proactive issue detection and resolution (Reference: OPS04-BP04 Implement dependency telemetry).\n\nB. IMPLEMENT END-TO-END TESTING FOR THE WEB APPLICATION - Incorrect. While important for application quality, end-to-end testing is not directly related to monitoring external dependencies (Reference: AWS Well-Architected Framework - Development with AWS Services domain).\n\nC. CONFIGURE AWS XRAY TO INSTRUMENT YOUR APPLICATION AND COLLECT TRACE DATA - Correct. XRay can be used to instrument your application and collect trace data, providing insights into the performance of external services (Reference: OPS04-BP05 Implement distributed tracing).\n\nD. ENABLE AWS S3 VERSIONING TO MANAGE BUCKET DELETIONS - Incorrect. This is related to object storage management and not monitoring external dependencies (Reference: AWS Well-Architected Framework - Development with AWS Services domain).\n\nE. USE AWS LAMBDA TO AUTOMATE UNIT TESTS FOR EXTERNAL SERVICES - Incorrect. AWS Lambda can be used for serverless functions, but automating unit tests for external services is outside its scope and not directly related to dependency telemetry (Reference: AWS Well-Architected Framework - Development with AWS Services domain)",
+      "explanation": "A. Use AWS CloudWatch to set up alarms for critical dependency metrics - Correct. CloudWatch can be used to monitor and set up alarms for critical metrics related to external dependencies, ensuring proactive issue detection and resolution (Reference: OPS04-BP04 Implement dependency telemetry).\n\nB. Implement end-to-end testing for the web application - Incorrect. While important for application quality, end-to-end testing is not directly related to monitoring external dependencies (Reference: AWS Well-Architected Framework - Development with AWS Services domain).\n\nC. Configure AWS xray to instrument your application and collect trace data - Correct. XRay can be used to instrument your application and collect trace data, providing insights into the performance of external services (Reference: OPS04-BP05 Implement distributed tracing).\n\nD. Enable AWS S3 versioning to manage bucket deletions - Incorrect. This is related to object storage management and not monitoring external dependencies (Reference: AWS Well-Architected Framework - Development with AWS Services domain).\n\nE. Use AWS Lambda to automate unit tests for external services - Incorrect. AWS Lambda can be used for serverless functions, but automating unit tests for external services is outside its scope and not directly related to dependency telemetry (Reference: AWS Well-Architected Framework - Development with AWS Services domain)",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",
@@ -2587,15 +2587,15 @@
       "question_type": "single",
       "question_text": "An e-commerce company is developing a new application that relies on several external services, including payment gateways and inventory management systems. To ensure the reliability of their workload, they need to implement dependency telemetry for these external dependencies.",
       "options": [
-        "A. ENABLE AWS CLOUDWATCH ALARMS TO MONITOR THE RESPONSE TIMES OF EXTERNAL SERVICES",
-        "B. USE AWS XRAY FOR END-TO-END TRACING AND MONITORING OF EXTERNAL DEPENDENCIES",
-        "C. IMPLEMENT A CUSTOM SCRIPT THAT REGULARLY PINGS EXTERNAL SERVICES AND SAVES THE RESPONSE TIMES IN A DATABASE",
-        "D. SET UP AWS APPLICATION PERFORMANCE MANAGEMENT (APM) TO COLLECT METRICS FROM EXTERNAL DEPENDENCIES"
+        "A. Enable AWS CloudWatch alarms to monitor the response times of external services",
+        "B. Use AWS xray for end-to-end tracing and monitoring of external dependencies",
+        "C. Implement a custom script that regularly pings external services and saves the response times in a database",
+        "D. Set up AWS application performance management (apm) to collect metrics from external dependencies"
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "THE CORRECT ANSWER IS B: USE AWS XRAY FOR END-TO-END TRACING AND MONITORING OF EXTERNAL DEPENDENCIES. AWS XRay is specifically designed to provide visibility into the performance and health of external services, making it an ideal choice for dependency telemetry in this scenario. IT SUPPORTS DISTRIBUTED TRACING, WHICH CAN HELP IDENTIFY PERFORMANCE ISSUES ACROSS MULTIPLE SERVICES.\n\nOPTION A IS INFERIOR BECAUSE CLOUDWATCH ALARMS ARE USED FOR MONITORING AWS RESOURCES AND NOT EXTERNAL DEPENDENCIES. WHILE THEY CAN ALERT ON RESPONSE TIMES, THEY DO NOT PROVIDE THE SAME LEVEL OF DETAIL AS XRAY.\n\nOPTION C IS INFERIOR BECAUSE IT REQUIRES MANUAL SCRIPTS TO PING SERVICES, WHICH IS TIME-CONSUMING AND LESS AUTOMATED THAN USING AWS TOOLS LIKE XRAY. ADDITIONALLY, IT LACKS THE CAPABILITY TO COLLECT AND ANALYZE COMPLEX METRICS ACROSS MULTIPLE SERVICES.\n\nOPTION D IS INFERIOR BECAUSE APM (APM) IS DESIGNED FOR MONITORING APPLICATION PERFORMANCE WITHIN THE SAME AWS ENVIRONMENT, NOT EXTERNAL DEPENDENCIES. XRAY OFFERS MORE COMPREHENSIVE SUPPORT FOR EXTERNAL SERVICE MONITORING.",
+      "explanation": "The correct answer is b: use AWS xray for end-to-end tracing and monitoring of external dependencies. AWS XRay is specifically designed to provide visibility into the performance and health of external services, making it an ideal choice for dependency telemetry in this scenario. It supports distributed tracing, which can help identify performance issues across multiple services.\n\nOption a is inferior because CloudWatch alarms are used for monitoring AWS resources and not external dependencies. While they can alert on response times, they do not provide the same level of detail as xray.\n\nOption c is inferior because it requires manual scripts to ping services, which is time-consuming and less automated than using AWS tools like xray. Additionally, it lacks the capability to collect and analyze complex metrics across multiple services.\n\nOption d is inferior because apm (apm) is designed for monitoring application performance within the same AWS environment, not external dependencies. Xray offers more comprehensive support for external service monitoring.",
       "source_context": "[Source 1: AWS-Well-Architected-Framework.pdf, p.133, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf]\nto\nefficiently and effectively support the workloads.\nBenefits of establishing this best practice: You have appropriately-skilled team members\navailable in your organization to support the workloads. Resource allocation can adapt to shifting\npriorities without impacting performance. The result is teams being proficient at sup",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-well-architected-framework/aws-well-architected-framework.pdf",
       "difficulty": "Associate",

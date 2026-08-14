@@ -158,11 +158,11 @@
       "question_type": "multiple",
       "question_text": "An architect is designing a disaster recovery strategy for an e-commerce application running on AWS. The goal is to ensure business continuity while minimizing costs and ensuring the system can handle unexpected outages. Which two strategies should be implemented? (Select TWO)",
       "options": [
-        "A. USE RDS WITH AUTOMATIC BACKUPS TO ENSURE DATA CONSISTENCY AND AVAILABILITY",
-        "B. IMPLEMENT A CLOUDFORMATION STACK SET FOR AUTOMATED DEPLOYMENTS ACROSS REGIONS",
-        "C. ENABLE CROSS-REGION REPLICATION FOR DATABASES TO ALLOW FAILOVER",
-        "D. USE S3 FOR STORING WEBSITE CONTENT TO ENSURE HIGH AVAILABILITY AND COST-EFFICIENCY",
-        "E. CONFIGURE ALB HEALTH CHECKS BASED ON KEY PERFORMANCE INDICATORS (KPIs) FOR AUTOMATED FAILOVER"
+        "A. Use RDS with automatic backups to ensure data consistency and availability",
+        "B. Implement a CloudFormation stack set for automated deployments across regions",
+        "C. Enable cross-region replication for databases to allow failover",
+        "D. Use S3 for storing website content to ensure high availability and cost-efficiency",
+        "E. Configure ALB health checks based on key performance indicators (KPIs) for automated failover"
       ],
       "correct_answers": [
         "C",

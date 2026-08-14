@@ -14,11 +14,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will be used across multiple teams. To ensure the solution adheres to governance and compliance regulations, which two of the following actions are essential according to AWS best practices? (Select TWO)",
       "options": [
-        "A. IMPLEMENT A CLOUDHSM INSTANCE FOR ENCRYPTING MODEL DATA AT REST AND IN TRANSIT",
-        "B. ENABLE AWS IAM ROLES TO CONTROL ACCESS TO THE AI MODELS AND THEIR OUTPUTS",
-        "C. USE AWS S3 FOR STORING RAW DATA USED BY THE AI MODEL, WITH ENCRYPTION ENABLED",
-        "D. IMPLEMENT REGULAR AUDITS AND REPORTS TO MONITOR COMPLIANCE WITH ORGANIZATIONAL POLICIES",
-        "E. USE AWS GUARDDUTY FOR MONITORING AND DETECTING POTENTIAL THREATS IN AI MODEL OUTPUTS"
+        "A. Implement a CloudHSM instance for encrypting model data at rest and in transit",
+        "B. Enable AWS IAM roles to control access to the AI models and their outputs",
+        "C. Use AWS S3 for storing raw data used by the AI model, with encryption enabled",
+        "D. Implement regular audits and reports to monitor compliance with organizational policies",
+        "E. Use AWS GuardDuty for monitoring and detecting potential threats in AI model outputs"
       ],
       "correct_answers": [
         "B",
@@ -44,7 +44,7 @@
       "question_type": "single",
       "question_text": "Your company is developing a generative AI application to assist customer service representatives. The security team requires you to implement robust access controls and monitoring capabilities. Which combination of AWS services would best meet these requirements while ensuring comprehensive audit logging and incident response procedures?",
       "options": [
-        "A. IAM AND S3",
+        "A. IAM and S3",
         "B. Cognito AND CloudTrail",
         "C. GuardDuty AND VPC Flow Logs",
         "D. Secrets Manager AND Config"
@@ -52,7 +52,7 @@
       "correct_answers": [
         "B"
       ],
-      "explanation": "The correct answer is B: Cognito and CloudTrail. Cognito provides secure user identity management, which can be used for access controls to the generative AI application. CloudTrail logs API calls made against AWS services, including those related to security and incident response, ensuring comprehensive audit logging. \n\nOption A (IAM AND S3) is incorrect because IAM is primarily for managing user and role-based access policies, while S3 is a storage service that does not provide auditing capabilities.\n\nOption C (GuardDuty AND VPC Flow Logs) is incorrect as GuardDuty provides threat detection across your AWS infrastructure but does not offer user identity management or comprehensive audit logging. VPC Flow Logs are used for monitoring the traffic going to and from network interfaces, which is not directly related to generative AI application security.\n\nOption D (Secrets Manager AND Config) is incorrect because Secrets Manager stores and controls access to sensitive information like database credentials but does not provide auditing capabilities. AWS Config provides configuration management of your AWS resources but lacks user identity management features.",
+      "explanation": "The correct answer is B: Cognito and CloudTrail. Cognito provides secure user identity management, which can be used for access controls to the generative AI application. CloudTrail logs API calls made against AWS services, including those related to security and incident response, ensuring comprehensive audit logging. \n\nOption a (IAM and S3) is incorrect because IAM is primarily for managing user and role-based access policies, while S3 is a storage service that does not provide auditing capabilities.\n\nOption C (GuardDuty AND VPC Flow Logs) is incorrect as GuardDuty provides threat detection across your AWS infrastructure but does not offer user identity management or comprehensive audit logging. VPC Flow Logs are used for monitoring the traffic going to and from network interfaces, which is not directly related to generative AI application security.\n\nOption D (Secrets Manager AND Config) is incorrect because Secrets Manager stores and controls access to sensitive information like database credentials but does not provide auditing capabilities. AWS Config provides configuration management of your AWS resources but lacks user identity management features.",
       "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
       "difficulty": "Foundational",
@@ -71,11 +71,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application using AWS services. They need to choose between using Amazon SageMaker and Amazon Bedrock for hosting their model, as well as deciding whether to use on-demand instances or save costs with Spot Instances. Which two options should they select to best balance cost efficiency and performance? (Select TWO)",
       "options": [
-        "A. USE AMAZON SAGEMAKER FOR MODEL HOSTING AS IT OFFERS BOTH TRAINING AND INFERENCE CAPABILITIES.",
-        "B. CHOOSE SPOT INSTANCES TO SAVE COSTS WHILE ACCEPTING THE RISK OF INTERRUPTION DURING INFERENCING.",
-        "C. SELECT AMAZON BEDROCK FOR ALL MODELS AS IT IS DESIGNED SPECIFICALLY FOR GENERATIVE AI APPLICATIONS.",
-        "D. USE ON-DEMAND INSTANCES TO ENSURE UNINTERRUPTED INFERENCE BUT AT HIGHER COSTS.",
-        "E. IMPLEMENT A MIX OF SPOT AND ON-DEMAND INSTANCES TO BALANCE COST AND PERFORMANCE."
+        "A. Use Amazon SageMaker for model hosting as it offers both training and inference capabilities.",
+        "B. Choose spot instances to save costs while accepting the risk of interruption during inferencing.",
+        "C. Select Amazon Bedrock for all models as it is designed specifically for generative AI applications.",
+        "D. Use on-demand instances to ensure uninterrupted inference but at higher costs.",
+        "E. Implement a mix of spot and on-demand instances to balance cost and performance."
       ],
       "correct_answers": [
         "B",
@@ -192,7 +192,7 @@
         "A",
         "E"
       ],
-      "explanation": "A. AMAZON SAGEMAKER NEO - Correct. Amazon SageMaker Neo optimizes machine learning models for deployment on AWS infrastructure, which can improve performance and reduce costs compared to using a large EC2 instance type directly.\n\nB. AWS LAMBDA WITH A LARGE EC2 INSTANCE TYPE - Incorrect. While this could provide high performance, it is not cost-effective for handling high traffic volumes due to the high cost of EC2 instances and potential cold start issues with Lambda.\n\nC. AMAZON RDS FOR POSTGRESQL TO STORE GENERATED TEXT RESPONSES - Incorrect. This service is related to database management and does not directly address optimizing LLM performance or cost.\n\nD. AMAZON COMPREHEND MEDICAL FOR CONTENT FILTERING - Incorrect. This service is used for medical text analysis and content filtering, which is not relevant to the primary goal of hosting and optimizing an LLM model.\n\nE. AMAZON SAGEMAKER ENDPOINT FOR HOSTING THE LLM MODEL - Correct. Amazon SageMaker Endpoint allows you to deploy a trained model as a REST API endpoint, making it easy to serve predictions from your application while managing costs through automatic scaling and pay-per-use pricing.",
+      "explanation": "A. Amazon SageMaker neo - Correct. Amazon SageMaker Neo optimizes machine learning models for deployment on AWS infrastructure, which can improve performance and reduce costs compared to using a large EC2 instance type directly.\n\nB. AWS Lambda with a large EC2 instance type - Incorrect. While this could provide high performance, it is not cost-effective for handling high traffic volumes due to the high cost of EC2 instances and potential cold start issues with Lambda.\n\nC. Amazon RDS for postgresql to store generated text responses - Incorrect. This service is related to database management and does not directly address optimizing LLM performance or cost.\n\nD. Amazon Comprehend medical for content filtering - Incorrect. This service is used for medical text analysis and content filtering, which is not relevant to the primary goal of hosting and optimizing an LLM model.\n\nE. Amazon SageMaker endpoint for hosting the llm model - Correct. Amazon SageMaker Endpoint allows you to deploy a trained model as a REST API endpoint, making it easy to serve predictions from your application while managing costs through automatic scaling and pay-per-use pricing.",
       "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.2, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine\nLearning, and Generative AI: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\nAmazon's trademarks and trade dress may not be used in connection with any product or",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
       "difficulty": "Foundational",
@@ -278,7 +278,7 @@
         "C",
         "E"
       ],
-      "explanation": "A. IMPLEMENT AWS Identity AND ACCESS MANAGEMENT (IAM) POLICIES TO CONTROL ACCESS TO THE AI MODELS. - CORRECT. Robust access management is crucial for security, as stated in the AWS prescriptive guidance documents.\n\nB. USE AMAZON S3 FOR STORING ALL MODEL TRAINING DATA AND OUTPUTS WITHOUT ENCRYPTION. - INCORRECT. Data protection measures should include encryption, which is not mentioned here.\n\nC. ESTABLISH A CROSS-FUNCTIONAL TEAM INCLUDING IT, DATA SCIENCE, LEGAL, AND BUSINESS UNITS TO OVERSEE THE PROJECT. - CORRECT. Cross-functional teams are recommended for overseeing generative AI initiatives as per the AWS Cloud Adoption Framework for AI.\n\nD. DEPLOY AWS LAMBDA FUNCTIONS TO HANDLE REAL-TIME CUSTOMER QUERIES WITH GENERATIVE AI MODELS. - INCORRECT. While Lambda can be used, it is not specifically about security or data management.\n\nE. CONFIGURE AWS CLOUDTRAIL TO MONITOR API CALLS RELATED TO MODEL DEPLOYMENT AND UPDATES. - CORRECT. Comprehensive audit logging and monitoring capabilities are essential for security as per the AWS prescriptive guidance.",
+      "explanation": "A. IMPLEMENT AWS Identity and access management (IAM) policies to control access to the AI models. - Correct. Robust access management is crucial for security, as stated in the AWS prescriptive guidance documents.\n\nB. Use Amazon S3 for storing all model training data and outputs without encryption. - Incorrect. Data protection measures should include encryption, which is not mentioned here.\n\nC. Establish a cross-functional team including it, data science, legal, and business units to oversee the project. - Correct. Cross-functional teams are recommended for overseeing generative AI initiatives as per the AWS Cloud Adoption Framework for AI.\n\nD. Deploy AWS Lambda functions to handle real-time customer queries with generative AI models. - Incorrect. While Lambda can be used, it is not specifically about security or data management.\n\nE. Configure AWS CloudTrail to monitor API calls related to model deployment and updates. - Correct. Comprehensive audit logging and monitoring capabilities are essential for security as per the AWS prescriptive guidance.",
       "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
       "difficulty": "Foundational",
@@ -358,7 +358,7 @@
       "correct_answers": [
         "B"
       ],
-      "explanation": "The correct answer is B. According to AWS best practices, implementing robust access management and authentication (IAM roles and policies) is crucial for securing generative AI applications. This ensures that only authorized users can interact with the model and sensitive data, aligning with the layered security approach recommended in the AWS documentation. VPC endpoints (A) are important but not sufficient on their own to secure the application. CloudTrail logging (C) helps monitor usage, but it does not control access or restrict who can use the model. A WAF (D) is designed for web applications and would not be appropriate for securing generative AI models.",
+      "explanation": "The correct answer is B. According to AWS best practices, implementing robust access management and authentication (IAM roles and policies) is crucial for securing generative AI applications. This ensures that only authorized users can interact with the model and sensitive data, aligning with the layered security approach recommended in the AWS documentation. VPC endpoints (A) are important but not sufficient on their own to secure the application. CloudTrail logging (C) helps monitor usage, but it does not control access or restrict who can use the model. A WAF (d) is designed for web applications and would not be appropriate for securing generative AI models.",
       "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
       "difficulty": "Foundational",
@@ -414,7 +414,7 @@
         "A",
         "D"
       ],
-      "explanation": "A. USES Amazon SageMaker with AWS Elastic Inference (Correct): This approach leverages Amazon SageMaker's managed service and AWS Elastic Inference to train the model while optimizing costs by reducing GPU usage.\n\nB. DEPLOYING ON-PREMISES WITH DEDICATED HARDWARE IS NOT RECOMMENDED FOR COST CONTROL (Incorrect): On-premises deployment would likely incur higher costs compared to using cloud services like SageMaker with cost optimization features.\n\nC. USE OF AMAZON S3 FOR STORING DATA AND HOSTING THE MODEL (Correct but not directly related to training cost, hence less relevant for this question): While Amazon S3 is a good choice for data storage and model hosting, it does not address the core issue of training cost optimization.\n\nD. IMPLEMENTATION OF A CUSTOM TRAINING SCRIPT WITH PYTORCH ON EC2 INSTANCES (Correct): Using EC2 instances with GPUs can provide better performance and control over training resources compared to SageMaker, but may require more management effort. It is a valid approach for optimizing costs by leveraging existing infrastructure or custom configurations.\n\nE. USE OF AWS GROUND TRUTH FOR LABELING IS NOT DIRECTLY RELATED TO TRAINING COSTS (Incorrect): Ground Truth is useful for labeling data but does not directly impact the cost of training the generative AI model.",
+      "explanation": "A. USES Amazon SageMaker with AWS Elastic Inference (Correct): This approach leverages Amazon SageMaker's managed service and AWS Elastic Inference to train the model while optimizing costs by reducing GPU usage.\n\nB. Deploying on-premises with dedicated hardware is not recommended for cost control (Incorrect): On-premises deployment would likely incur higher costs compared to using cloud services like SageMaker with cost optimization features.\n\nC. Use of Amazon S3 for storing data and hosting the model (Correct but not directly related to training cost, hence less relevant for this question): While Amazon S3 is a good choice for data storage and model hosting, it does not address the core issue of training cost optimization.\n\nD. Implementation of a custom training script with pytorch on EC2 instances (Correct): Using EC2 instances with GPUs can provide better performance and control over training resources compared to SageMaker, but may require more management effort. It is a valid approach for optimizing costs by leveraging existing infrastructure or custom configurations.\n\nE. Use of AWS ground truth for labeling is not directly related to training costs (Incorrect): Ground Truth is useful for labeling data but does not directly impact the cost of training the generative AI model.",
       "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.2, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine\nLearning, and Generative AI: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\nAmazon's trademarks and trade dress may not be used in connection with any product or",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
       "difficulty": "Foundational",
@@ -514,11 +514,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will use foundation models to generate text. The team needs to ensure the solution is cost-effective, scalable, and secure while also providing an easy-to-use interface for non-technical users. Which THREE of the following should be included in their architecture? (Select THREE)",
       "options": [
-        "A. AWS S3 FOR STORING THE GENERATIVE AI MODEL AND ITS WEIGHTS",
-        "B. AWS CLOUDHSM FOR ENCRYPTING DATA AT REST AND IN TRANSIT",
-        "C. AWS SAGEMAKER ENDPOINT FOR DEPLOYING AND SERVING THE MODEL",
-        "D. AWS APPSYNC FOR MANAGING API LAYER AND QUERY RESOLUTION",
-        "E. AWS EKS FOR HOSTING A CUSTOM PYTHON SERVICE TO GENERATE TEXT"
+        "A. AWS S3 for storing the generative AI model and its weights",
+        "B. AWS CloudHSM for encrypting data at rest and in transit",
+        "C. AWS SageMaker endpoint for deploying and serving the model",
+        "D. AWS AppSync for managing API layer and query resolution",
+        "E. AWS EKS for hosting a custom python service to generate text"
       ],
       "correct_answers": [
         "B",
@@ -804,11 +804,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will leverage a large foundation model for text generation. The team needs to design the platform to support both training and deployment while ensuring cost-effectiveness and efficient resource utilization. (Select TWO)",
       "options": [
-        "A. USE SAGEMAKER FOR BOTH TRAINING AND DEPLOYMENT AS IT SUPPORTS FOUNDATION MODELS",
-        "B. IMPLEMENT A CLOUDFORMATION STACK TO AUTOMATE THE DEPLOYMENT OF ML INFRASTRUCTURE",
-        "C. USE EC2 INSTANCES WITH GPU ACCELERATORS FOR ALL STAGES OF DEVELOPMENT",
-        "D. OPT FOR SAGEMAKER ENDPOINTS FOR LOW-LATENCY INFERENCING AND COST-EFFICIENCY",
-        "E. UTILIZE THE AWS CLOUD ADAPTATION FRAMEWORK (CAF) TO ENSURE COMPLIANCE AND EFFICIENT ENVIRONMENT PROVISIONING"
+        "A. Use SageMaker for both training and deployment as it supports foundation models",
+        "B. Implement a CloudFormation stack to automate the deployment of ML infrastructure",
+        "C. Use EC2 instances with GPU accelerators for all stages of development",
+        "D. Opt for SageMaker endpoints for low-latency inferencing and cost-efficiency",
+        "E. Utilize the AWS cloud adaptation framework (CAF) to ensure compliance and efficient environment provisioning"
       ],
       "correct_answers": [
         "D",
@@ -983,7 +983,7 @@
         "A",
         "C"
       ],
-      "explanation": "A. AWS SAGEMAKER - Correct: SageMaker is designed for both training and deploying machine learning models, making it suitable for generative foundation models. It supports a wide range of frameworks and provides tools for model tuning and deployment.\n\nB. AMAZON S3 - Incorrect: While S3 can be used to store data, it does not support the training or inference of generative models directly. It is more about storage than processing power.\n\nC. AMAZON EC2 SPOT INSTANCES - Correct: Spot Instances are cost-effective for training large models as they provide unused capacity at a significant discount. This aligns with the company's need to ensure cost-effectiveness while supporting model training.\n\nD. AWS LAMBDA - Incorrect: Lambda is best suited for serverless compute tasks and not ideal for the heavy lifting of training generative foundation models, which typically require more computational resources than what Lambda can provide.\n\nE. AMAZON RDS - Incorrect: RDS is a managed relational database service and does not support the training or inference of machine learning models. It would be unsuitable for this scenario.",
+      "explanation": "A. AWS SageMaker - Correct: SageMaker is designed for both training and deploying machine learning models, making it suitable for generative foundation models. It supports a wide range of frameworks and provides tools for model tuning and deployment.\n\nB. Amazon S3 - Incorrect: While S3 can be used to store data, it does not support the training or inference of generative models directly. It is more about storage than processing power.\n\nC. Amazon EC2 spot instances - Correct: Spot Instances are cost-effective for training large models as they provide unused capacity at a significant discount. This aligns with the company's need to ensure cost-effectiveness while supporting model training.\n\nD. AWS Lambda - Incorrect: Lambda is best suited for serverless compute tasks and not ideal for the heavy lifting of training generative foundation models, which typically require more computational resources than what Lambda can provide.\n\nE. Amazon RDS - Incorrect: RDS is a managed relational database service and does not support the training or inference of machine learning models. It would be unsuitable for this scenario.",
       "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.2, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine\nLearning, and Generative AI: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\nAmazon's trademarks and trade dress may not be used in connection with any product or",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
       "difficulty": "Foundational",
@@ -1081,7 +1081,7 @@
       "question_type": "single",
       "question_text": "Select ONE: Your company is planning to deploy a generative AI model that will be used for customer service chatbots. To ensure the security and compliance of this model, you need to implement robust access controls and monitoring. Which AWS service combination would best achieve these objectives?",
       "options": [
-        "A. IAM AND SNS",
+        "A. IAM and SNS",
         "B. Cognito AND KMS",
         "C. S3 AND CloudWatch",
         "D. IAM AND GuardDuty"
@@ -1089,7 +1089,7 @@
       "correct_answers": [
         "D"
       ],
-      "explanation": "The correct answer is D: IAM AND GuardDuty. IAM (Identity and Access Management) provides robust access controls, allowing you to define who can access the generative AI model and what actions they are allowed to perform. GuardDuty offers comprehensive monitoring capabilities, helping you detect and respond to potential security threats in real-time. This combination ensures both secure access management and effective threat detection.\n\nOption A (IAM AND SNS) is incorrect because SNS (Simple Notification Service) is primarily used for sending notifications and does not provide the necessary security controls or monitoring features.\nOption B (Cognito AND KMS) is incorrect as Cognito focuses on user authentication and authorization, while KMS (Key Management Service) manages encryption keys. Neither service provides comprehensive monitoring capabilities.\nOption C (S3 AND CloudWatch) is incorrect because S3 (Simple Storage Service) handles data storage, and CloudWatch monitors AWS resources but does not address the security controls needed for generative AI models.",
+      "explanation": "The correct answer is d: IAM and GuardDuty. IAM (Identity and Access Management) provides robust access controls, allowing you to define who can access the generative AI model and what actions they are allowed to perform. GuardDuty offers comprehensive monitoring capabilities, helping you detect and respond to potential security threats in real-time. This combination ensures both secure access management and effective threat detection.\n\nOption a (IAM and SNS) is incorrect because SNS (Simple Notification Service) is primarily used for sending notifications and does not provide the necessary security controls or monitoring features.\nOption B (Cognito AND KMS) is incorrect as Cognito focuses on user authentication and authorization, while KMS (Key Management Service) manages encryption keys. Neither service provides comprehensive monitoring capabilities.\nOption c (S3 and CloudWatch) is incorrect because S3 (Simple Storage Service) handles data storage, and CloudWatch monitors AWS resources but does not address the security controls needed for generative AI models.",
       "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
       "difficulty": "Foundational",
@@ -1306,11 +1306,11 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will be used across multiple departments. The CTO wants to ensure the solution adheres to governance and compliance regulations while minimizing risks associated with data poisoning and prompt injection attacks. (Select TWO)",
       "options": [
-        "A. ENABLE AWS SNS FOR MODEL OUTPUT VALIDATION",
-        "B. IMPLEMENT AWS IAM TO MANAGE ACCESS TO AI MODELS",
-        "C. USE AWS WAF TO FILTER INPUTS AND OUTPUTS OF THE AI APPLICATION",
-        "D. CREATE CUSTOM POLICIES FOR DATA USAGE GUIDELINES IN AWS CONFIGURATION MANAGEMENT",
-        "E. SET UP AWS LAMBDA TRIGGERS TO LOG EVERY MODEL INVOCATION"
+        "A. Enable AWS SNS for model output validation",
+        "B. Implement AWS IAM to manage access to AI models",
+        "C. Use AWS WAF to filter inputs and outputs of the AI application",
+        "D. Create custom policies for data usage guidelines in AWS configuration management",
+        "E. Set up AWS Lambda triggers to log every model invocation"
       ],
       "correct_answers": [
         "B",
@@ -1400,7 +1400,7 @@
         "A",
         "D"
       ],
-      "explanation": "A. IMPLEMENT AWS IAM POLICIES TO RESTRICT ACCESS TO THE MODEL'S TRAINING DATA - Correct. Robust access management and authentication are essential for security controls in generative AI applications to prevent unauthorized access to sensitive training data.\n\nB. DEPLOY AMAZON S3 BUCKETS WITH PUBLIC READ PERMISSIONS FOR STORING THE GENERATED RESPONSES - Incorrect. Public read permissions on S3 buckets can expose sensitive data, which is a violation of security policies as mentioned in the AWS-Generative-AI-Best-Practices document.\n\nC. USE AMAZON ROUTE 53 TO ROUTE TRAFFIC TO DIFFERENT VERSIONS OF THE AI MODEL BASED ON CUSTOMER LOCATION - Incorrect. Amazon Route 53 is a DNS service for routing traffic and does not provide security or compliance features relevant to generative AI applications as per the provided context.\n\nD. ENABLE AWS CLOUDTRAIL AND AMAZON GUARDDUTY TO MONITOR AND LOG ACTIVITIES RELATED TO THE MODEL'S DEPLOYMENT AND USAGE - Correct. Both CloudTrail and GuardDuty are recommended for comprehensive audit logging and monitoring capabilities, which align with the security controls mentioned in the AWS-Generative-AI-Best-Practices document.\n\nE. CONFIGURE AMAZON SNS TOPICS FORSENDING NOTIFICATIONS ABOUT NEW MODEL TRAINING RUNS - Incorrect. While this is a useful practice for operational notifications, it does not directly address the security and compliance requirements of generative AI applications as per the provided context.",
+      "explanation": "A. Implement AWS IAM policies to restrict access to the model's training data - Correct. Robust access management and authentication are essential for security controls in generative AI applications to prevent unauthorized access to sensitive training data.\n\nB. Deploy Amazon S3 buckets with public read permissions for storing the generated responses - Incorrect. Public read permissions on S3 buckets can expose sensitive data, which is a violation of security policies as mentioned in the AWS-Generative-AI-Best-Practices document.\n\nC. Use Amazon route 53 to route traffic to different versions of the AI model based on customer location - Incorrect. Amazon Route 53 is a DNS service for routing traffic and does not provide security or compliance features relevant to generative AI applications as per the provided context.\n\nD. Enable AWS CloudTrail and Amazon GuardDuty to monitor and log activities related to the model's deployment and usage - Correct. Both CloudTrail and GuardDuty are recommended for comprehensive audit logging and monitoring capabilities, which align with the security controls mentioned in the AWS-Generative-AI-Best-Practices document.\n\nE. Configure Amazon SNS topics forsending notifications about new model training runs - Incorrect. While this is a useful practice for operational notifications, it does not directly address the security and compliance requirements of generative AI applications as per the provided context.",
       "source_context": "[Source 1: AWS-Generative-AI-Best-Practices.pdf, p.31, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf]\ne security policies and address the unique challenges of generative AI\napplications.\nImplement security controls through a layered approach, starting with robust access management\nand authentication. Make sure that proper network security and data protection measures are in\nplace, including comprehensive audit logging an",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-generative-ai-best-practices/aws-generative-ai-best-practices.pdf",
       "difficulty": "Foundational",
@@ -1508,17 +1508,17 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will be used across multiple teams. To ensure the application adheres to governance and compliance regulations while maintaining security, which TWO of the following actions should they take? (Select TWO)",
       "options": [
-        "A. ENABLE AWS IAM ROLES TO MANAGE ACCESS TO THE AI MODEL",
-        "B. IMPLEMENT A CUSTOMER MANAGED CLOUDHSM FOR ENCRYPTING SENSITIVE DATA",
-        "C. CREATE POLICIES AND PROCEDURES FOR MODEL SELECTION, DATA USAGE, AND OUTPUT VALIDATION",
-        "D. USE AWS WAF TO FILTER OUT MALICIOUS INPUTS TO THE AI MODEL",
-        "E. DEPLOY A PRIVATE VPC ENDPOINT FOR ALL AI SERVICES"
+        "A. Enable AWS IAM roles to manage access to the AI model",
+        "B. Implement a customer managed CloudHSM for encrypting sensitive data",
+        "C. Create policies and procedures for model selection, data usage, and output validation",
+        "D. Use AWS WAF to filter out malicious inputs to the AI model",
+        "E. Deploy a private VPC endpoint for all AI services"
       ],
       "correct_answers": [
         "C",
         "B"
       ],
-      "explanation": "A. ENABLING AWS IAM ROLES TO MANAGE ACCESS TO THE AI MODEL is a good security practice, but it does not directly address governance and compliance regulations for model selection, data usage, or output validation.\n\nB. IMPLEMENTING A CUSTOMER MANAGED CLOUDHSM FOR ENCRYPTING SENSITIVE DATA is crucial for meeting legal and privacy requirements, as it ensures that sensitive data is protected according to regulatory standards.\n\nC. CREATE POLICIES AND PROCEDURES FOR MODEL SELECTION, DATA USAGE, AND OUTPUT VALIDATION is directly related to governance and compliance regulations, ensuring that the AI application adheres to guidelines set by the organization or external bodies.\n\nD. USING AWS WAF TO FILTER OUT MALICIOUS INPUTS TO THE AI MODEL is a security measure but does not address governance and compliance requirements for model selection, data usage, or output validation.\n\nE. DEPLOYING A PRIVATE VPC ENDPOINT FOR ALL AI SERVICES enhances network security by restricting access to the AI services within the VPC, but it does not directly relate to governance and compliance regulations.",
+      "explanation": "A. Enabling AWS IAM roles to manage access to the AI model is a good security practice, but it does not directly address governance and compliance regulations for model selection, data usage, or output validation.\n\nB. Implementing a customer managed CloudHSM for encrypting sensitive data is crucial for meeting legal and privacy requirements, as it ensures that sensitive data is protected according to regulatory standards.\n\nC. Create policies and procedures for model selection, data usage, and output validation is directly related to governance and compliance regulations, ensuring that the AI application adheres to guidelines set by the organization or external bodies.\n\nD. Using AWS WAF to filter out malicious inputs to the AI model is a security measure but does not address governance and compliance requirements for model selection, data usage, or output validation.\n\nE. Deploying a private VPC endpoint for all AI services enhances network security by restricting access to the AI services within the VPC, but it does not directly relate to governance and compliance regulations.",
       "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
       "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
       "difficulty": "Foundational",
@@ -1676,15 +1676,15 @@
       "question_type": "single",
       "question_text": "An organization is developing a text generation application using a large language model (LLM) for customer support. They need to balance cost and performance while ensuring the service can handle high traffic volumes during peak hours.",
       "options": [
-        "A. DEPLOY THE LLM ON AWS EC2 INSTANCES WITH AUTO SCALING GROUPS TO MANAGE PEAK TRAFFIC",
-        "B. USE AWS SAGEMAKER TO HOST THE LLM AND AUTOMATICALLY SCALE AS NEEDED",
-        "C. IMPLEMENT A CLOUD FRONT DISTRIBUTION INFRONT OF THE LLM ENDPOINT FOR LOAD BALANCING",
-        "D. USE AWS EKS CLUSTERS WITH SPOT INSTANCES TO RUN THE LLM CONTAINERS"
+        "A. Deploy the llm on AWS EC2 instances with Auto Scaling groups to manage peak traffic",
+        "B. Use AWS SageMaker to host the llm and automatically scale as needed",
+        "C. Implement a cloud front distribution infront of the llm endpoint for load balancing",
+        "D. Use AWS EKS clusters with spot instances to run the llm containers"
       ],
       "correct_answers": [
         "B"
       ],
-      "explanation": "The correct answer is B. Using AWS SageMaker to host the LLM and automatically scale as needed provides a balanced solution for cost and performance. SageMaker can handle variable traffic by scaling instances based on demand, which is ideal for peak hours. It also includes built-in features like automatic model deployment, monitoring, and logging, making it easier to manage the service. \n\nOption A (EC2 Auto Scaling Groups) would be more expensive as EC2 instances are billed per hour even when idle, leading to higher costs without significant performance benefits.\n\nOption C (CloudFront Distribution) is for content delivery and caching, not directly related to hosting an LLM or managing its traffic. It could help with edge location but does not address the scaling needs of the model itself.\n\nOption D (AWS EKS Clusters with Spot Instances) would be less cost-effective as Spot instances are only available up to 10% of the time, making it unreliable for a service that needs consistent availability and performance.",
+      "explanation": "The correct answer is B. Using AWS SageMaker to host the LLM and automatically scale as needed provides a balanced solution for cost and performance. SageMaker can handle variable traffic by scaling instances based on demand, which is ideal for peak hours. It also includes built-in features like automatic model deployment, monitoring, and logging, making it easier to manage the service. \n\nOption A (EC2 Auto Scaling Groups) would be more expensive as EC2 instances are billed per hour even when idle, leading to higher costs without significant performance benefits.\n\nOption C (CloudFront Distribution) is for content delivery and caching, not directly related to hosting an LLM or managing its traffic. It could help with edge location but does not address the scaling needs of the model itself.\n\nOption d (AWS EKS Clusters with Spot Instances) would be less cost-effective as Spot instances are only available up to 10% of the time, making it unreliable for a service that needs consistent availability and performance.",
       "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.2, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learning, AWS Whitepaper\nand Generative AI\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine\nLearning, and Generative AI: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\nAmazon's trademarks and trade dress may not be used in connection with any product or",
       "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
       "difficulty": "Foundational",
@@ -1737,7 +1737,7 @@
       "correct_answers": [
         "C"
       ],
-      "explanation": "The correct answer is C because it aligns with the AWS prescriptive guidance for governance and compliance in generative AI applications, as described in the reference documents. This approach ensures that guidelines for model selection, data usage, and output validation are established to meet legal and privacy requirements.\n\nOption A (Amazon GuardDuty) is a security monitoring service used to detect potential threats, but it does not address the governance and compliance aspects specific to generative AI applications as mentioned in the reference documents. Option B (AWS Config) is useful for auditing resource configurations, which is part of risk management, but it does not directly cover the governance and compliance requirements highlighted in the context. Option D (AWS WAF) is designed to protect web applications from common web exploits, making it more suitable for web application security rather than the broader scope of generative AI governance.",
+      "explanation": "The correct answer is C because it aligns with the AWS prescriptive guidance for governance and compliance in generative AI applications, as described in the reference documents. This approach ensures that guidelines for model selection, data usage, and output validation are established to meet legal and privacy requirements.\n\nOption A (Amazon GuardDuty) is a security monitoring service used to detect potential threats, but it does not address the governance and compliance aspects specific to generative AI applications as mentioned in the reference documents. Option B (AWS Config) is useful for auditing resource configurations, which is part of risk management, but it does not directly cover the governance and compliance requirements highlighted in the context. Option d (AWS WAF) is designed to protect web applications from common web exploits, making it more suitable for web application security rather than the broader scope of generative AI governance.",
       "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
       "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
       "difficulty": "Foundational",
@@ -1756,17 +1756,17 @@
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI application that will be used across multiple departments. To ensure the application aligns with governance and compliance requirements, which two actions should be prioritized? (Select TWO)",
       "options": [
-        "A. DEPLOY AWS S3 FOR STORING ALL MODEL DATA AND OUTPUTS TO ENSURE SECURE ACCESS CONTROL.",
-        "B. IMPLEMENT A ROBOTICS PROCESS AUTOMATION (RPA) WORKFLOW FOR REGULARLY UPDATING THE AI MODEL WITH NEW DATA.",
-        "C. ESTABLISH POLICIES AND PROCEDURES FOR MODEL SELECTION, DATA USAGE, AND OUTPUT VALIDATION TO COMPLY WITH ORGANIZATIONAL GUIDELINES.",
-        "D. USE AWS SNS TO SEND NOTIFICATIONS TO DEPARTMENTS WHEN AI OUTPUTS ARE GENERATED TO ENSURE TRANSPARENT COMMUNICATION.",
-        "E. CONFIGURE AWS WAF TO FILTER INPUTS TO THE AI MODEL TO PREVENT PROMPT INJECTION ATTACKS."
+        "A. Deploy AWS S3 for storing all model data and outputs to ensure secure access control.",
+        "B. Implement a robotics process automation (rpa) workflow for regularly updating the AI model with new data.",
+        "C. Establish policies and procedures for model selection, data usage, and output validation to comply with organizational guidelines.",
+        "D. Use AWS SNS to send notifications to departments when AI outputs are generated to ensure transparent communication.",
+        "E. Configure AWS WAF to filter inputs to the AI model to prevent prompt injection attacks."
       ],
       "correct_answers": [
         "C",
         "E"
       ],
-      "explanation": "A IS INCORRECT: While AWS S3 is a secure storage solution, it does not address the governance and compliance aspects of model selection, data usage, or output validation.\n\nB IS INCORRECT: RPA is an automation tool that can be useful for operational tasks but does not directly contribute to governance and compliance requirements.\n\nC IS CORRECT: Establishing policies and procedures for model selection, data usage, and output validation ensures the AI application complies with organizational guidelines and regulatory requirements. This aligns with the content from AWS Prescriptive Guidance on security and governance for generative AI platforms (Source 2, p.18).\n\nD IS INCORRECT: While notifications can be useful for transparency, they do not directly address governance and compliance requirements.\n\nE IS CORRECT: Configuring AWS WAF to filter inputs is a recommended security control that mitigates risks such as prompt injection attacks, which are relevant to the security considerations of generative AI workloads (Source 2, p.18).",
+      "explanation": "A is incorrect: While AWS S3 is a secure storage solution, it does not address the governance and compliance aspects of model selection, data usage, or output validation.\n\nB is incorrect: rpa is an automation tool that can be useful for operational tasks but does not directly contribute to governance and compliance requirements.\n\nC is correct: Establishing policies and procedures for model selection, data usage, and output validation ensures the AI application complies with organizational guidelines and regulatory requirements. This aligns with the content from AWS Prescriptive Guidance on security and governance for generative AI platforms (Source 2, p.18).\n\nD is incorrect: While notifications can be useful for transparency, they do not directly address governance and compliance requirements.\n\nE is correct: Configuring AWS WAF to filter inputs is a recommended security control that mitigates risks such as prompt injection attacks, which are relevant to the security considerations of generative AI workloads (Source 2, p.18).",
       "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.3, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\n..... 10\nTask Statement 4.1: Explain the development of AI systems that are responsible. ................ 10\nTask Statement 4.2: Recognize the importance of transparent and explainable models. ...... 11\nContent Domain 5: Security, Compliance, and Governance for AI Solutions ................................. 11\nTask Statement 5.1: Expl",
       "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
       "difficulty": "Foundational",

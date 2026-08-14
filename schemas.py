@@ -18,6 +18,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from text_utils import fix_shouting_caps
+
 
 # ─────────────────────────────────────────────
 # Enumerations
@@ -141,9 +143,20 @@ class ExamQuestion(BaseModel):
 
     # ─── Validators ──────────────────────────
 
+    @field_validator("question_text")
+    @classmethod
+    def fix_question_text_shouting(cls, v: str) -> str:
+        return fix_shouting_caps(v)
+
+    @field_validator("explanation")
+    @classmethod
+    def fix_explanation_shouting(cls, v: str) -> str:
+        return fix_shouting_caps(v)
+
     @field_validator("options")
     @classmethod
     def validate_option_count(cls, v: List[str]) -> List[str]:
+        v = [fix_shouting_caps(opt) for opt in v]
         if len(v) not in (4, 5):
             raise ValueError(
                 f"Options list must contain exactly 4 or 5 items, got {len(v)}."
