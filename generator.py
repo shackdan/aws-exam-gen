@@ -934,6 +934,10 @@ def generate_batch(
     collection: Any,
     embedding_model: Any,
     cert_metadata: Dict[str, Any],
+    slots:              Optional[int] = None,
+    start_index:        int           = 0,
+    single_count_start: int           = 0,
+    multi_count_start:  int           = 0,
 ) -> List[ExamQuestion]:
     """
     Generate a batch of ExamQuestion objects according to the request.
@@ -956,6 +960,16 @@ def generate_batch(
         Loaded SentenceTransformer (CPU).
     cert_metadata
         Certification metadata dict from registry.json.
+    slots
+        Number of questions to generate on *this* call. Defaults to
+        `request.count`. Used by the top-up loop in
+        `run_generation_pipeline` to backfill only the shortfall after
+        earlier rounds, without losing the 75/25 type-ratio target
+        (which is always computed against `request.count` as a whole).
+    start_index, single_count_start, multi_count_start
+        Running progress from prior rounds, so `_select_question_type`
+        keeps allocating single/multiple questions against the overall
+        request total instead of restarting the ratio from zero.
 
     Returns
     ───────
@@ -966,24 +980,26 @@ def generate_batch(
     difficulty     = request.difficulty or cert_metadata["tier"]
     domain_weights = cert_metadata["domain_weights"]
     total          = request.count
+    slots_to_fill  = slots if slots is not None else total
 
     questions:          List[ExamQuestion] = []
-    single_count: int = 0
-    multi_count:  int = 0
+    single_count: int = single_count_start
+    multi_count:  int = multi_count_start
     failed_slots: int = 0
 
     log.info(
-        f"Starting batch generation: {total} questions for {cert_code} "
+        f"Starting batch generation: {slots_to_fill} questions for {cert_code} "
         f"({cert_name}) — difficulty: {difficulty}."
     )
 
     with make_progress_bar() as progress:
         task = progress.add_task(
             f"[cyan]Generating {cert_code} questions…",
-            total=total,
+            total=slots_to_fill,
         )
 
-        for idx in range(total):
+        for offset in range(slots_to_fill):
+            idx = start_index + offset
 
             # ── Select question type ───────────────
             q_type = _select_question_type(
@@ -1007,7 +1023,7 @@ def generate_batch(
             )
 
             log.debug(
-                f"  [{idx + 1}/{total}] type={q_type.value} | "
+                f"  [{offset + 1}/{slots_to_fill}] type={q_type.value} | "
                 f"domain='{domain}' | correct={num_correct}"
             )
 
@@ -1029,7 +1045,7 @@ def generate_batch(
             if question is None:
                 failed_slots += 1
                 log.warning(
-                    f"  [{idx + 1}/{total}] Generation failed — "
+                    f"  [{offset + 1}/{slots_to_fill}] Generation failed — "
                     f"slot will be skipped (total failed: {failed_slots})."
                 )
                 progress.advance(task)
@@ -1048,7 +1064,7 @@ def generate_batch(
                 task,
                 description=(
                     f"[cyan]Generating {cert_code} questions… "
-                    f"[{len(questions)}/{total} generated, "
+                    f"[{len(questions)}/{slots_to_fill} generated, "
                     f"{single_count} single, {multi_count} multi]"
                 ),
             )
@@ -1081,6 +1097,11 @@ def run_generation_pipeline(
       5.  Generate the raw question batch via generate_batch().
       6.  Wire the revision_callback and run the reviewer pipeline
           via reviewer.review_batch().
+      6b. Top up: if generation failures or reviewer rejections left
+          the approved count short of request.count, run further
+          generate + review rounds (capped by
+          GENERATION_CONFIG.max_topup_rounds) until the target is
+          met or the round budget is exhausted.
       7.  Export approved questions to the requested output format.
       8.  Return a GenerationResult summary to the CLI.
 
@@ -1222,13 +1243,106 @@ def run_generation_pipeline(
         if q.validation_status == ValidationStatus.REJECTED
     ]
 
+    log.info(
+        f"Review complete — Approved: {len(approved_questions)} | "
+        f"Rejected: {len(rejected_questions)}"
+    )
+
+    # ── Step 6b: Top-up rounds ─────────────────
+    # Generation failures and reviewer rejections both shrink the final
+    # approved count below request.count. Keep generating + reviewing
+    # additional slots — tracking single/multi counts and the index
+    # across rounds so the 75/25 ratio still holds — until the target
+    # is met or we give up (round cap, or repeated zero-progress rounds).
+    generated_total = len(raw_questions)
+    single_count = sum(
+        1 for q in raw_questions if q.question_type == QuestionType.SINGLE_ANSWER
+    )
+    multi_count = len(raw_questions) - single_count
+
+    topup_round = 0
+    zero_progress_rounds = 0
+
+    while (
+        len(approved_questions) < request.count
+        and topup_round < GENERATION_CONFIG.max_topup_rounds
+    ):
+        topup_round += 1
+        shortfall = request.count - len(approved_questions)
+        log.info(
+            f"Top-up round {topup_round}/{GENERATION_CONFIG.max_topup_rounds}: "
+            f"{len(approved_questions)}/{request.count} approved so far — "
+            f"generating {shortfall} more to backfill."
+        )
+
+        topup_raw = generate_batch(
+            request            = request,
+            ollama_client      = ollama_client,
+            collection         = collection,
+            embedding_model    = embedding_model,
+            cert_metadata      = cert_metadata,
+            slots              = shortfall,
+            start_index        = generated_total,
+            single_count_start = single_count,
+            multi_count_start  = multi_count,
+        )
+
+        if not topup_raw:
+            log.warning(
+                f"Top-up round {topup_round} produced zero raw questions — "
+                "stopping backfill."
+            )
+            break
+
+        generated_total += len(topup_raw)
+        single_count += sum(
+            1 for q in topup_raw if q.question_type == QuestionType.SINGLE_ANSWER
+        )
+        multi_count = generated_total - single_count
+
+        topup_reviewed, topup_critiques = review_batch(
+            questions         = topup_raw,
+            ollama_client     = ollama_client,
+            revision_callback = revision_cb,
+        )
+        reviewed_questions.extend(topup_reviewed)
+        critiques.extend(topup_critiques)
+
+        newly_approved = [
+            q for q in topup_reviewed
+            if q.validation_status == ValidationStatus.APPROVED
+        ]
+        approved_questions.extend(newly_approved)
+        rejected_questions.extend(
+            q for q in topup_reviewed
+            if q.validation_status == ValidationStatus.REJECTED
+        )
+
+        log.info(
+            f"Top-up round {topup_round} complete — "
+            f"{len(newly_approved)} newly approved "
+            f"({len(approved_questions)}/{request.count} total)."
+        )
+
+        if newly_approved:
+            zero_progress_rounds = 0
+        else:
+            zero_progress_rounds += 1
+            if zero_progress_rounds >= GENERATION_CONFIG.max_zero_progress_rounds:
+                log.warning(
+                    f"{zero_progress_rounds} consecutive top-up round(s) approved "
+                    "nothing — stopping backfill early."
+                )
+                break
+
     approved_count = len(approved_questions)
     rejected_count = len(rejected_questions)
 
-    log.info(
-        f"Review complete — Approved: {approved_count} | "
-        f"Rejected: {rejected_count}"
-    )
+    if approved_count < request.count:
+        log.warning(
+            f"Final approved count ({approved_count}) is still short of the "
+            f"requested {request.count} after {topup_round} top-up round(s)."
+        )
 
     # ── Step 7: Export output ──────────────────
     output_file: Optional[str] = None

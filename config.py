@@ -97,6 +97,14 @@ class GenerationConfig:
     single_options_count: int = 4
     # Number of distractor options for multiple-select questions
     multi_options_count: int = 5
+    # Extra generate+review rounds attempted to backfill questions lost to
+    # generation failures or reviewer rejection, so the final approved
+    # count matches the originally requested count where possible.
+    max_topup_rounds: int = 5
+    # Stop backfilling early if this many consecutive top-up rounds
+    # approve zero new questions (signals a systemic quality problem
+    # that more rounds won't fix).
+    max_zero_progress_rounds: int = 2
 
 
 # ─────────────────────────────────────────────
