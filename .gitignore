@@ -2,6 +2,10 @@
 local/*
 !local/.gitkeep
 
+#working files
+temp
+logs
+
 # data cache
 chroma_store
 
