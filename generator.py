@@ -27,6 +27,7 @@ import json
 import logging
 import random
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -63,9 +64,10 @@ from utils import (
     get_cert_metadata,
     load_registry,
     make_progress_bar,
+    print_domain_alignment_table,
     print_generation_summary,
     print_question_table,
-    select_domain_by_weight,
+    select_domain_by_quota,
 )
 
 # ─────────────────────────────────────────────
@@ -938,6 +940,7 @@ def generate_batch(
     start_index:        int           = 0,
     single_count_start: int           = 0,
     multi_count_start:  int           = 0,
+    domain_count_start: Optional[Dict[str, int]] = None,
 ) -> List[ExamQuestion]:
     """
     Generate a batch of ExamQuestion objects according to the request.
@@ -966,10 +969,10 @@ def generate_batch(
         `run_generation_pipeline` to backfill only the shortfall after
         earlier rounds, without losing the 75/25 type-ratio target
         (which is always computed against `request.count` as a whole).
-    start_index, single_count_start, multi_count_start
-        Running progress from prior rounds, so `_select_question_type`
-        keeps allocating single/multiple questions against the overall
-        request total instead of restarting the ratio from zero.
+    start_index, single_count_start, multi_count_start, domain_count_start
+        Running progress from prior rounds, so `_select_question_type` and
+        `select_domain_by_quota` keep allocating against the overall
+        request total instead of restarting their ratios from zero.
 
     Returns
     ───────
@@ -985,6 +988,7 @@ def generate_batch(
     questions:          List[ExamQuestion] = []
     single_count: int = single_count_start
     multi_count:  int = multi_count_start
+    domain_counts: Dict[str, int] = dict(domain_count_start or {})
     failed_slots: int = 0
 
     log.info(
@@ -1010,8 +1014,10 @@ def generate_batch(
             )
 
             # ── Select domain ──────────────────────
-            domain = select_domain_by_weight(
+            domain = select_domain_by_quota(
                 domain_weights = domain_weights,
+                domain_counts  = domain_counts,
+                total          = total,
                 domain_filter  = request.domain_filter,
             )
 
@@ -1051,11 +1057,12 @@ def generate_batch(
                 progress.advance(task)
                 continue
 
-            # ── Update type counters ───────────────
+            # ── Update type / domain counters ──────
             if question.question_type == QuestionType.SINGLE_ANSWER:
                 single_count += 1
             else:
                 multi_count += 1
+            domain_counts[question.domain] = domain_counts.get(question.domain, 0) + 1
 
             questions.append(question)
 
@@ -1251,14 +1258,16 @@ def run_generation_pipeline(
     # ── Step 6b: Top-up rounds ─────────────────
     # Generation failures and reviewer rejections both shrink the final
     # approved count below request.count. Keep generating + reviewing
-    # additional slots — tracking single/multi counts and the index
-    # across rounds so the 75/25 ratio still holds — until the target
-    # is met or we give up (round cap, or repeated zero-progress rounds).
+    # additional slots — tracking single/multi counts, domain counts, and
+    # the index across rounds so the 75/25 ratio and the content-outline
+    # domain weights both still hold — until the target is met or we
+    # give up (round cap, or repeated zero-progress rounds).
     generated_total = len(raw_questions)
     single_count = sum(
         1 for q in raw_questions if q.question_type == QuestionType.SINGLE_ANSWER
     )
     multi_count = len(raw_questions) - single_count
+    domain_counts: Dict[str, int] = dict(Counter(q.domain for q in raw_questions))
 
     topup_round = 0
     zero_progress_rounds = 0
@@ -1285,6 +1294,7 @@ def run_generation_pipeline(
             start_index        = generated_total,
             single_count_start = single_count,
             multi_count_start  = multi_count,
+            domain_count_start = domain_counts,
         )
 
         if not topup_raw:
@@ -1299,6 +1309,7 @@ def run_generation_pipeline(
             1 for q in topup_raw if q.question_type == QuestionType.SINGLE_ANSWER
         )
         multi_count = generated_total - single_count
+        domain_counts = dict(Counter(domain_counts) + Counter(q.domain for q in topup_raw))
 
         topup_reviewed, topup_critiques = review_batch(
             questions         = topup_raw,
@@ -1344,7 +1355,35 @@ def run_generation_pipeline(
             f"requested {request.count} after {topup_round} top-up round(s)."
         )
 
-    # ── Step 7: Export output ──────────────────
+    # ── Step 7: Compile content-outline alignment stats ──
+    # Compare each domain's share of *approved* questions against its
+    # target weight from registry.json (the exam guide's content outline)
+    # so alignment can be audited from both the console and the export
+    # file, rather than only being inferable by hand.
+    domain_weights = cert_metadata["domain_weights"]
+    domain_stats: Dict[str, Dict[str, Any]] = {
+        domain: {"approved": 0, "rejected": 0, "target_pct": weight * 100}
+        for domain, weight in domain_weights.items()
+    }
+    for q in reviewed_questions:
+        entry = domain_stats.setdefault(
+            q.domain, {"approved": 0, "rejected": 0, "target_pct": 0.0}
+        )
+        if q.validation_status == ValidationStatus.APPROVED:
+            entry["approved"] += 1
+        else:
+            entry["rejected"] += 1
+
+    for entry in domain_stats.values():
+        actual_pct = (
+            round(entry["approved"] / approved_count * 100, 1)
+            if approved_count > 0
+            else 0.0
+        )
+        entry["actual_pct"] = actual_pct
+        entry["delta_pct"]  = round(actual_pct - entry["target_pct"], 1)
+
+    # ── Step 8: Export output ──────────────────
     output_file: Optional[str] = None
 
     # Determine output path
@@ -1367,9 +1406,10 @@ def run_generation_pipeline(
     try:
         if request.output_format.value == "json":
             export_to_json(
-                questions   = questions_to_export,
-                output_path = output_path,
-                cert_code   = request.cert_code,
+                questions      = questions_to_export,
+                output_path    = output_path,
+                cert_code      = request.cert_code,
+                extra_metadata = {"domain_stats": domain_stats},
             )
         elif request.output_format.value == "csv":
             export_to_csv(
@@ -1389,19 +1429,8 @@ def run_generation_pipeline(
         log.error(f"Export failed: {export_err}")
         output_file = None
 
-    # ── Step 8: Build and return result ───────
+    # ── Step 9: Build and return result ───────
     duration = time.monotonic() - pipeline_start
-
-    # Compile per-domain statistics for metadata
-    domain_stats: Dict[str, Dict[str, int]] = {}
-    for q in reviewed_questions:
-        entry = domain_stats.setdefault(
-            q.domain, {"approved": 0, "rejected": 0}
-        )
-        if q.validation_status == ValidationStatus.APPROVED:
-            entry["approved"] += 1
-        else:
-            entry["rejected"] += 1
 
     # Compile revision statistics
     total_revisions = sum(q.revision_count for q in reviewed_questions)
@@ -1464,3 +1493,7 @@ def display_results(result: GenerationResult) -> None:
         print_question_table(result.questions)
 
     print_generation_summary(result)
+
+    domain_stats = result.metadata.get("domain_stats")
+    if domain_stats:
+        print_domain_alignment_table(domain_stats)

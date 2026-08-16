@@ -192,12 +192,18 @@ def export_to_json(
     questions: List[ExamQuestion],
     output_path: Path,
     cert_code: str,
+    extra_metadata: Optional[Dict[str, Any]] = None,
 ) -> Path:
     """
     Serialize questions to a structured JSON file with a metadata wrapper.
 
     The rag_source_chunks field is excluded from export as it is
     internal bookkeeping only.
+
+    extra_metadata (e.g. domain_stats comparing actual vs. target content
+    outline weights) is merged into the metadata block when provided, so
+    content-outline alignment can be audited from the exported file itself
+    instead of only from console output.
     """
     payload = {
         "metadata": {
@@ -212,6 +218,7 @@ def export_to_json(
                 1 for q in questions
                 if q.validation_status == ValidationStatus.REJECTED
             ),
+            **(extra_metadata or {}),
         },
         "questions": [
             json.loads(q.model_dump_json(exclude={"rag_source_chunks"}))
@@ -497,6 +504,44 @@ def print_generation_summary(result: GenerationResult) -> None:
     )
 
 
+def print_domain_alignment_table(domain_stats: Dict[str, Dict[str, Any]]) -> None:
+    """
+    Render a Rich table comparing each domain's actual share of
+    *approved* questions in this run against its target weight from
+    registry.json (the exam guide's content outline percentages).
+
+    domain_stats entries are expected to carry "approved", "target_pct",
+    "actual_pct", and "delta_pct" — see generator.run_generation_pipeline.
+    """
+    if not domain_stats:
+        return
+
+    table = Table(
+        title="Content Outline Alignment (Approved Questions)",
+        show_header=True,
+        header_style="bold magenta",
+        show_lines=True,
+    )
+    table.add_column("Domain",     style="green", width=40)
+    table.add_column("Approved",   style="cyan",  width=10, justify="right")
+    table.add_column("Target %",   style="blue",  width=10, justify="right")
+    table.add_column("Actual %",   style="yellow",width=10, justify="right")
+    table.add_column("Δ",          width=8,       justify="right")
+
+    for domain, stats in domain_stats.items():
+        delta = stats.get("delta_pct", 0.0)
+        delta_style = "red" if abs(delta) >= 5.0 else "dim"
+        table.add_row(
+            domain,
+            str(stats.get("approved", 0)),
+            f"{stats.get('target_pct', 0.0):.1f}",
+            f"{stats.get('actual_pct', 0.0):.1f}",
+            f"[{delta_style}]{delta:+.1f}[/{delta_style}]",
+        )
+
+    console.print(table)
+
+
 def print_validation_result(
     question_id: str,
     passed: bool,
@@ -578,35 +623,59 @@ def get_cert_metadata(
     return certs[cert_code]
 
 
-def select_domain_by_weight(
+def select_domain_by_quota(
     domain_weights: Dict[str, float],
+    domain_counts: Dict[str, int],
+    total: int,
     domain_filter: Optional[str] = None,
 ) -> str:
     """
-    Randomly select a domain according to its configured weight.
+    Select the domain that is currently most "behind" its proportional
+    target, so the domain mix converges on registry.json's domain_weights
+    (i.e. the exam guide's content outline percentages) even in small
+    batches — mirroring the deficit-tracking allocation already used for
+    the single/multiple answer-type split (see generator._select_question_type).
 
-    If domain_filter is provided and matches a known domain,
-    that domain is returned directly (ignoring weights).
+    If domain_filter is provided and matches a known domain, that domain
+    is returned directly (ignoring weights/quotas).
 
-    Uses Python's random.choices for weighted sampling without
-    requiring NumPy, keeping the dependency footprint small.
+    Parameters
+    ──────────
+    domain_weights
+        Target proportion per domain (must sum to ~1.0).
+    domain_counts
+        Running count of questions already generated per domain in this
+        request (across the current round and any prior top-up rounds).
+    total
+        The overall requested question count the quotas are computed
+        against (not just the slots remaining in this round).
     """
     import random
 
     if domain_filter:
-        # Validate the filter against known domains
         known = list(domain_weights.keys())
         for d in known:
             if domain_filter.lower() in d.lower():
                 return d
         logger.warning(
             f"Domain filter '{domain_filter}' did not match any known domain. "
-            "Falling back to weighted random selection."
+            "Falling back to quota-based selection."
         )
 
-    domains = list(domain_weights.keys())
-    weights = list(domain_weights.values())
-    return random.choices(domains, weights=weights, k=1)[0]
+    deficits = {
+        domain: (weight * total) - domain_counts.get(domain, 0)
+        for domain, weight in domain_weights.items()
+    }
+    max_deficit = max(deficits.values())
+
+    # Tie-break (common early on, e.g. all counts at 0) via weighted
+    # random among the domains sharing the largest deficit.
+    candidates = [d for d, dv in deficits.items() if dv >= max_deficit - 1e-9]
+    if len(candidates) == 1:
+        return candidates[0]
+
+    weights = [domain_weights[d] for d in candidates]
+    return random.choices(candidates, weights=weights, k=1)[0]
 
 
 def chunk_list(lst: List[Any], size: int) -> List[List[Any]]:
