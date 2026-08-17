@@ -40,7 +40,7 @@
     {
       "question_id": "e7c86476-09e5-48f4-8444-e2f66d2e7895",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI application to assist customer service representatives. The security team requires you to implement robust access controls and monitoring capabilities. Which combination of AWS services would best meet these requirements while ensuring comprehensive audit logging and incident response procedures?",
       "options": [
@@ -98,7 +98,7 @@
     {
       "question_id": "b08c1101-68e6-4e34-9495-a8b8e0c1a3da",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your organization is planning to deploy a generative AI model for customer support. The model will process sensitive user data and generate responses based on user queries. As part of the security strategy, you need to ensure that only authorized personnel can access the model's training data and generated outputs.",
       "options": [
@@ -207,7 +207,7 @@
     {
       "question_id": "88d41f8d-bd4d-4f45-afeb-5b9b8b2f3ea7",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for customer support chatbots. The Chief Information Security Officer (CISO) emphasizes the importance of robust security measures. Which of the following approaches should be prioritized first according to AWS best practices?",
       "options": [
@@ -263,7 +263,7 @@
     {
       "question_id": "4ec9dc18-3301-4ecc-8ad9-fbad9c17b550",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to deploy a generative AI model for customer service chatbots. They want to ensure robust security, efficient data management, and effective cross-functional collaboration. Which three actions should they prioritize? (Select THREE)",
       "options": [
@@ -346,7 +346,7 @@
     {
       "question_id": "db732297-960f-4a26-b1dd-3dc55f7052ad",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your organization is planning to deploy a generative AI model for customer support. You need to ensure that the model is secure and can handle sensitive data. Which of the following approaches best aligns with AWS best practices for securing generative AI applications?",
       "options": [
@@ -373,7 +373,7 @@
     {
       "question_id": "df1ca0e2-7364-459c-999c-f221e36c9e0b",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a generative AI model that will generate text for customer support responses. You need to ensure the model's outputs are secure and compliant with internal policies, including access control and audit logging.",
       "options": [
@@ -599,7 +599,7 @@
     {
       "question_id": "3a856592-4dee-4ecc-811f-62ab2d5c7435",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your organization is planning to deploy a generative AI model for customer support. To ensure security and compliance, which three actions should you take? (Select THREE)",
       "options": [
@@ -712,7 +712,7 @@
     {
       "question_id": "50008fb4-93d1-4900-962f-cf1efd72dd3e",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI assistant for customer support. They want to ensure robust security and compliance while minimizing operational overhead. Which two strategies should they prioritize? (Select TWO)",
       "options": [
@@ -1077,7 +1077,7 @@
     {
       "question_id": "5ed0e335-c7d2-4277-bf7e-4422d9be37dc",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Select ONE: Your company is planning to deploy a generative AI model that will be used for customer service chatbots. To ensure the security and compliance of this model, you need to implement robust access controls and monitoring. Which AWS service combination would best achieve these objectives?",
       "options": [
@@ -1386,7 +1386,7 @@
     {
       "question_id": "d78e0e7b-3ca7-41c2-a90d-016c3d9850a2",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is deploying a generative AI model to generate customer support responses. Given the critical nature of security and compliance in this application, which two actions should be prioritized? Select TWO.",
       "options": [
@@ -1447,7 +1447,7 @@
     {
       "question_id": "7dcee4bd-cc8f-4053-97ab-3e71197a2a8f",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI model to enhance customer service chatbots. To ensure the security and compliance of this model, you need to implement appropriate access controls and monitoring mechanisms. Which of the following approaches would best meet these requirements?",
       "options": [
@@ -1533,7 +1533,7 @@
     {
       "question_id": "865fb0bd-c04f-4d59-8f80-3f85a021c848",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI application to generate customer support responses. You need to ensure robust security and compliance with data protection regulations. Which approach should you take to address these requirements?",
       "options": [

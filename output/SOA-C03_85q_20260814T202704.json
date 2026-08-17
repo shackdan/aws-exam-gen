@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "cert_code": "SOA-C02",
+    "cert_code": "SOA-C03",
     "generated_at": "2026-08-14T20:27:04.977606+00:00",
     "total_questions": 85,
     "approved": 85,
@@ -9,8 +9,8 @@
   "questions": [
     {
       "question_id": "123c2bb4-ae36-4426-8b83-27d4c5279410",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an application running on Amazon EC2 instances. The goal is to ensure high availability while minimizing costs. Which two options should you choose? (Select TWO)",
       "options": [
@@ -39,8 +39,8 @@
     },
     {
       "question_id": "7d67fc14-740e-4249-936e-d7ad39263c12",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company is running a large-scale web application that processes millions of requests daily. The current infrastructure includes an EC2 fleet for the backend, an S3 bucket for storage, and a DynamoDB table for user data. You are tasked with optimizing costs while maintaining performance. Which action should you prioritize to achieve cost savings without significantly impacting performance?",
       "options": [
@@ -66,7 +66,7 @@
     },
     {
       "question_id": "07fd710e-06bb-428c-9157-03983f56c489",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to ensure compliance with the Health Insurance Portability and Accountability Act (HIPAA). You are setting up a new AWS environment for storing patient data. Which of the following approaches best ensures ongoing compliance validation in line with HIPAA requirements?",
@@ -92,8 +92,8 @@
     },
     {
       "question_id": "607db66b-cfaf-4a60-9ba8-c44d4a194ff2",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their EC2-based application to ensure high availability. The application runs in an Auto Scaling group across multiple Availability Zones. They want to collect detailed metrics on CPU utilization, network traffic, and disk I/O to detect potential issues before they impact the service. Which approach should they take to best achieve this goal?",
       "options": [
@@ -120,8 +120,8 @@
     },
     {
       "question_id": "584c75f5-bd10-4be0-8996-7c72534a4afa",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a highly available web application using Amazon EC2 instances behind an Application Load Balancer (ALB). They want to monitor the health of their EC2 instances and ALB for performance issues. Which approach should they take to ensure comprehensive monitoring and alerting?",
       "options": [
@@ -147,8 +147,8 @@
     },
     {
       "question_id": "4c491db8-afca-43d8-84bf-fbf27c45ddb7",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an EC2-based application that needs to collect detailed metrics and logs. Which two services should you use to ensure comprehensive observability and root cause analysis? (Select TWO)",
       "options": [
@@ -176,7 +176,7 @@
     },
     {
       "question_id": "5b522b99-c841-42f4-a6d4-e21cca34de63",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company has a global user base with varying latency requirements. They are currently using Amazon S3 to host their static content but experience high latency in regions far from the US-West-2 region where S3 buckets are located. To improve performance and reduce latency, which of the following should they implement?",
@@ -202,7 +202,7 @@
     },
     {
       "question_id": "5fc38b4f-0a02-48ab-9865-dc5d758e6d04",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit on their e-commerce platform. They have already enabled AWS Config to track resource configurations but are unsure about the next steps to ensure compliance. Which of the following actions should they take to best prepare for the audit according to AWS best practices?",
@@ -229,7 +229,7 @@
     },
     {
       "question_id": "5a031268-1b10-4bfe-9ca0-a79c0080ecfb",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "multiple",
       "question_text": "You are designing a global e-commerce platform for a multinational company. The platform needs to handle high traffic, serve content quickly, and be resilient against DDoS attacks. Which three of the following actions should you take? (Select THREE)",
@@ -260,7 +260,7 @@
     },
     {
       "question_id": "11fd84ce-3c5a-49c8-9921-06215e23a0a2",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "An e-commerce company is designing a new application to handle peak holiday traffic. They want to ensure high availability but are concerned about the cost implications of using multiple Availability Zones (AZs). Which configuration should they choose to balance cost with reliability?",
@@ -287,8 +287,8 @@
     },
     {
       "question_id": "d262929a-48ec-4135-b257-34c817123235",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their multi-tier web application running on Amazon EC2 instances. They want to ensure they can quickly identify issues with the backend services while maintaining cost efficiency. Which of the following approaches should they take?",
       "options": [
@@ -314,7 +314,7 @@
     },
     {
       "question_id": "c5f0537f-b737-430f-a697-c45c3c5ed8b2",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a new web application using AWS services. They want to ensure the deployment process is fully automated, with minimal human intervention and quick error detection. Which of the following approaches should they adopt to meet these requirements?",
@@ -341,8 +341,8 @@
     },
     {
       "question_id": "efdd161f-f16d-4c6b-9653-5dcc229220e3",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company is evaluating the cost-effectiveness of moving a legacy application from on-premises to AWS. The application has been running for years with minimal changes, but now requires significant updates due to changing business needs. You need to decide how often you should review the costs associated with this workload to ensure it remains optimized.",
       "options": [
@@ -367,7 +367,7 @@
     },
     {
       "question_id": "ee43898f-570c-45eb-8705-07763a8252b8",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "multiple",
       "question_text": "You are designing a highly available web application for an e-commerce platform that requires minimal downtime but has a limited budget. Which two options should you consider to achieve the desired reliability while staying within cost constraints? (Select TWO)",
@@ -397,7 +397,7 @@
     },
     {
       "question_id": "04fb7228-285c-416f-a64b-0fc190db864f",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit of their AWS-based e-commerce platform. The development team has not yet integrated compliance requirements into the architecture design process, which could lead to non-compliance issues during the audit. Which step should they take first according to best practices?",
@@ -424,7 +424,7 @@
     },
     {
       "question_id": "60d1e29e-695f-4b21-930e-3cdb5c737d33",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to comply with HIPAA regulations. You are designing a new application that will store patient medical records in the AWS Cloud. Which of the following steps should you take first to ensure compliance with HIPAA requirements?",
@@ -452,7 +452,7 @@
     },
     {
       "question_id": "dbad42ce-33ab-4dcd-bec3-d5cf2714b4e7",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to comply with HIPAA regulations. You are tasked with ensuring that your AWS environment adheres to these compliance requirements. Which of the following approaches would be most effective in meeting this requirement?",
@@ -479,8 +479,8 @@
     },
     {
       "question_id": "3cbe578e-5362-4bf7-bde0-4d4139daac5f",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "An AWS customer wants to ensure they have comprehensive monitoring and logging for their EC2 instances running in a VPC. They are also concerned about performance impact on the EC2 instances due to additional overhead from monitoring tools. Which two actions should they take? (Select TWO)",
       "options": [
@@ -508,7 +508,7 @@
     },
     {
       "question_id": "40ca770e-9414-49fd-8775-23cbecefee94",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce platform that experiences high traffic spikes during major sales events. To ensure the system remains highly available, you are considering implementing a solution that includes multiple AWS services. Which of the following configurations would best balance cost and performance while maintaining high availability?",
@@ -536,8 +536,8 @@
     },
     {
       "question_id": "29429538-0e87-48fc-92c0-847cb82d083c",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is deploying a microservices-based application that requires real-time monitoring of CPU usage, memory consumption, and network traffic. The team wants to ensure they can quickly identify performance bottlenecks and potential security issues. Which approach should the team take for effective monitoring and logging?",
       "options": [
@@ -564,7 +564,7 @@
     },
     {
       "question_id": "c8045aef-e8bc-495d-a836-2d5b818a936c",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "An e-commerce company operates a global online store with users distributed across multiple continents. The company wants to ensure low-latency content delivery while also protecting against DDoS attacks. Which approach should the architect recommend?",
@@ -591,8 +591,8 @@
     },
     {
       "question_id": "7d137b0f-3176-4e77-9075-f566ae61852b",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an application running on Amazon EC2 instances. You need to collect detailed logs from the application and also monitor resource usage metrics. Which two services should you use to achieve this goal? (Select TWO)",
       "options": [
@@ -620,7 +620,7 @@
     },
     {
       "question_id": "c586ff71-6d08-446f-9e15-8fa68d1cdfea",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to comply with HIPAA regulations. You are tasked with ensuring that your AWS environment is configured correctly to meet these compliance requirements. Which of the following approaches should you take to ensure ongoing compliance monitoring and validation?",
@@ -647,7 +647,7 @@
     },
     {
       "question_id": "803309d6-25b3-471b-b230-80eb91068f3c",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit, as they store credit card information. To ensure compliance, you need to implement measures that validate the ongoing security of your AWS resources. Which approach should you take?",
@@ -674,7 +674,7 @@
     },
     {
       "question_id": "3251913d-eb66-4363-8c8f-4971c9310f33",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Select ONE: Your company is preparing for a SOC2 Type II audit, which requires you to ensure that your AWS resources are compliant with the necessary controls. You have identified that your development team needs to understand the compliance requirements they must adhere to. Which of the following actions should you take to best prepare your team and infrastructure for this audit?",
@@ -701,7 +701,7 @@
     },
     {
       "question_id": "754fa6c2-a3e6-4c56-8c0c-30432b4e53d7",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company has a global user base spread across multiple continents. The current architecture serves static content from an EC2 instance in the US-East-1 region, which is causing high latency for users in Europe and Asia. You need to improve the availability and performance of your application by reducing latency and ensuring that the content is served from a location closer to the user.",
@@ -727,7 +727,7 @@
     },
     {
       "question_id": "ef81037d-0275-46aa-963b-7012b4ee62e7",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit related to storing credit card information. The team has identified the need to ensure that all AWS resources are compliant with the PCI-DSS framework. Which of the following approaches should they take to best prepare for this compliance requirement?",
@@ -754,7 +754,7 @@
     },
     {
       "question_id": "a39e8cf9-fe1c-4240-af92-3c59a4e75cd2",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to migrate its on-premises application to AWS. The development team has decided to use a blue/green deployment strategy for the initial release to minimize downtime and risk. Which of the following best practices should they follow to ensure automated, safe deployments?",
@@ -780,7 +780,7 @@
     },
     {
       "question_id": "ea842f06-7bb0-4a6a-a1ed-4c19d79a7284",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "multiple",
       "question_text": "You are designing a global website that requires low latency, high availability, and content caching. Your users are spread across multiple geographic regions. Which three of the following should you implement to achieve these goals? (Select THREE)",
@@ -811,7 +811,7 @@
     },
     {
       "question_id": "8ec198f7-e2cd-4a19-83bc-6d28c2c45779",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce website with users spread across multiple continents. You need to ensure that the website is highly available, performs well under heavy loads, and can handle DDoS attacks. Which of the following approaches would best achieve these objectives?",
@@ -838,7 +838,7 @@
     },
     {
       "question_id": "8e1f5f3f-f720-4207-ad73-3011a5a319ae",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "multiple",
       "question_text": "An organization is preparing for a PCI-DSS audit of its AWS-based payment processing system. Which two actions should the team take to ensure compliance and prepare for security events? (Select TWO)",
@@ -868,7 +868,7 @@
     },
     {
       "question_id": "e6d403a9-40b1-4625-b4d3-cbf7122ae19e",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a financial services firm that needs to comply with the Payment Card Industry Data Security Standard (PCI-DSS) for storing credit card information. You are designing a new application that will store this sensitive data in AWS S3. Which of the following approaches should you take to ensure compliance and minimize manual effort during audits?",
@@ -894,7 +894,7 @@
     },
     {
       "question_id": "578a8c10-5209-4ef4-8dde-99c554e49f72",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "An e-commerce company wants to deploy a new version of its website with minimal downtime. The development team has created the updated codebase but is unsure about the best deployment strategy. Which approach should they use to ensure that the update can be rolled out safely and with low risk?",
@@ -920,7 +920,7 @@
     },
     {
       "question_id": "ebcda7bf-8d5d-4090-8f84-9b074e87bc66",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "Your company is migrating a legacy on-premises application to AWS. The application requires high availability and must be resilient against failures, but the team has limited budget for additional hardware. Which of the following strategies would best achieve these goals within cost constraints?",
@@ -947,7 +947,7 @@
     },
     {
       "question_id": "328ed2f1-309b-47ef-b8c1-0e5ed0bc8b45",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a new web application on AWS. They want to ensure that the deployment process is automated and can be tested thoroughly before going live. Which of the following approaches should they choose to achieve this goal?",
@@ -974,7 +974,7 @@
     },
     {
       "question_id": "ad1bbd51-1dc6-491d-abc9-024ef0449c0e",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "multiple",
       "question_text": "An e-commerce company is planning to migrate its legacy application from on-premises servers to AWS. The company wants to ensure high availability while keeping costs under control. Which two options should the Solutions Architect recommend for achieving this goal? (Select TWO)",
@@ -1005,7 +1005,7 @@
     },
     {
       "question_id": "f411bd0c-3ba4-4287-8c80-59c572205a98",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to comply with HIPAA regulations. You are tasked with ensuring that your AWS architecture meets the necessary compliance requirements. Which of the following actions should you take to best ensure ongoing compliance monitoring for your workload?",
@@ -1032,7 +1032,7 @@
     },
     {
       "question_id": "33eafee1-0111-4421-a462-3be65c2b2dc3",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "An e-commerce company wants to ensure its web application remains available during unexpected outages. The company's infrastructure currently consists of a single Amazon EC2 instance running the application in the us-east-1 region. Which of the following strategies should they implement to improve the availability and reliability of their service?",
@@ -1059,7 +1059,7 @@
     },
     {
       "question_id": "20b3c6bb-2e31-448b-a2b4-2f5674a4ea1a",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce platform with high traffic during peak hours. The current architecture uses Auto Scaling groups in multiple Availability Zones (AZs) to handle the load, but there are occasional service disruptions due to unexpected outages. To improve resiliency and ensure minimal downtime, which of the following approaches should be prioritized?",
@@ -1086,8 +1086,8 @@
     },
     {
       "question_id": "cb179be6-52a8-4f90-9016-a038edf841ea",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are managing a growing e-commerce application on AWS that processes millions of transactions daily. You need to ensure the system can handle increased load while also optimizing costs. Which three strategies should you implement? (Select THREE)",
       "options": [
@@ -1119,7 +1119,7 @@
     },
     {
       "question_id": "80879953-faea-4c4c-8350-8000a6a61c58",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is developing a new application that will store sensitive customer data. You need to ensure compliance with the relevant industry standards, such as GDPR and PCI-DSS, throughout the development lifecycle. Which of the following approaches best aligns with AWS Well-Architected Framework recommendations for ensuring ongoing compliance during the application's development?",
@@ -1146,7 +1146,7 @@
     },
     {
       "question_id": "646a9459-f7e2-4f7c-980d-b4aa625aa4ab",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company operates an e-commerce website with a global user base. You want to ensure that the content is delivered quickly and reliably, even during high traffic periods or DDoS attacks. Which of the following approaches should you take?",
@@ -1173,8 +1173,8 @@
     },
     {
       "question_id": "24f35d80-cc46-4272-8570-bdce940d7c97",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company is deploying a new microservices-based application on AWS. To ensure high availability and monitoring of the services, you need to set up logging and metrics collection for each service. You want to collect logs from your Amazon ECS tasks running in a cluster while minimizing overhead and ensuring efficient processing. Which approach should you take?",
       "options": [
@@ -1200,8 +1200,8 @@
     },
     {
       "question_id": "0011ab40-d46d-44ba-ac45-febfde5c0e75",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "An organization wants to enhance the observability of its AWS Lambda functions while minimizing costs. Which two actions should be taken? (Select TWO)",
       "options": [
@@ -1230,7 +1230,7 @@
     },
     {
       "question_id": "b183b070-476d-4816-a047-5dca52f16eb3",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit of its AWS-based e-commerce platform. The development team has implemented encryption at rest and in transit, but they are unsure about the next steps to ensure compliance with the PCI-DSS framework. Which action should they take to best prepare their architecture for the audit?",
@@ -1257,8 +1257,8 @@
     },
     {
       "question_id": "cad8aa14-7429-43a1-bec8-5bbbc6ba78bd",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company operates a web application with multiple AWS Lambda functions that process user requests. You need to monitor the performance of these functions and ensure they are handling errors effectively. Which approach would be most effective for this scenario?",
       "options": [
@@ -1284,8 +1284,8 @@
     },
     {
       "question_id": "02d5b435-efbc-427c-89fb-2abfa422d60d",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An e-commerce company is experiencing rapid growth, leading to increased traffic on their web application. The current architecture uses a single Amazon EC2 instance with an attached Amazon EBS volume for the database. To optimize costs while maintaining performance, which of the following actions should be prioritized?",
       "options": [
@@ -1312,7 +1312,7 @@
     },
     {
       "question_id": "95404f7e-5963-4904-91d4-cf4e4e55d56d",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "multiple",
       "question_text": "An organization is preparing for a PCI-DSS audit of its AWS-based credit card processing system. The team needs to ensure that all necessary compliance requirements are met and that they can efficiently validate ongoing adherence. Which two actions should the team take to best prepare for this audit? (Select TWO)",
@@ -1341,7 +1341,7 @@
     },
     {
       "question_id": "d7bb1d22-e45e-4f35-94dc-434d6a97b073",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for an upcoming SOC2 Type II audit and needs to ensure that their AWS resources are compliant with the required security controls. Which of the following approaches would best help your team prepare for this audit by continuously validating compliance?",
@@ -1367,7 +1367,7 @@
     },
     {
       "question_id": "2b198ff6-d738-4bd5-8b5b-3adde15311ad",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "multiple",
       "question_text": "You are designing a highly available web application for global users. Your primary concern is ensuring that the content is delivered with low latency and high availability, while also considering cost optimization. Which two services should you use to achieve these goals? (Select TWO)",
@@ -1396,7 +1396,7 @@
     },
     {
       "question_id": "4151878c-ba21-43f1-b534-f8b78f7e2c55",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "An e-commerce company with users spread across multiple countries wants to ensure low latency and high availability of its web content. The company is currently using Amazon S3 for storing static assets but has not implemented any form of content delivery network (CDN). Which solution should the company implement to improve the performance and reliability of its web content distribution?",
@@ -1422,7 +1422,7 @@
     },
     {
       "question_id": "92680109-64fd-4a03-8f6b-98efdfd49e09",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit of its payment processing system hosted on AWS. The team needs to ensure that all compliance requirements are met, including regular validation of controls. Which approach should the team take to best achieve this goal?",
@@ -1449,7 +1449,7 @@
     },
     {
       "question_id": "c7beacea-bf12-4daf-9fd9-6398162de9a6",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "An e-commerce company with a global user base is experiencing high latency and low availability for its website. The company wants to improve the performance and reliability of its web content delivery across multiple regions. Which solution should be implemented to ensure that the workload is accessible and available to users, considering both performance efficiency and geographic distribution?",
@@ -1476,8 +1476,8 @@
     },
     {
       "question_id": "8bbfa672-aac4-4fb3-8630-4c94b0486902",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an application running on Amazon EC2 instances. The goal is to ensure high visibility into the health of the application while minimizing costs and ensuring data security. Which two services should you use? (Select TWO)",
       "options": [
@@ -1505,8 +1505,8 @@
     },
     {
       "question_id": "e161ee43-1e26-45ff-8968-4c88bbec5924",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their EC2 instances running in multiple Availability Zones. They want to ensure they can quickly identify issues with memory usage and disk I/O performance. Which approach should they take to best meet these requirements?",
       "options": [
@@ -1533,7 +1533,7 @@
     },
     {
       "question_id": "fb6782b9-dd77-4b45-a57b-1d38925572ce",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "multiple",
       "question_text": "An organization is preparing for a SOC2 Type II audit of its AWS-based application that stores sensitive customer data. The team needs to ensure they are adhering to the required compliance framework while also minimizing manual effort in audits. (Select TWO)",
@@ -1562,7 +1562,7 @@
     },
     {
       "question_id": "dbf9b3c2-8610-4bde-ab0d-9120b64a31a5",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "An e-commerce company with a global user base is experiencing high latency and occasional outages. The company wants to improve the availability and performance of its web application by optimizing network connectivity and content delivery. Which approach should be chosen to ensure that the workload is accessible and available to users, especially during DDoS attacks?",
@@ -1589,8 +1589,8 @@
     },
     {
       "question_id": "656d8b34-4494-4dac-a3d5-2c15b0cb0fe7",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company is experiencing rapid growth, leading to increased demand on their existing Amazon EC2 instances. The workload team has identified that moving to AWS Lambda could potentially reduce costs while improving performance. However, they are unsure if the current application can be refactored for Lambda. Which of the following actions should the team take first to best evaluate whether a migration is feasible and cost-effective?",
       "options": [
@@ -1617,7 +1617,7 @@
     },
     {
       "question_id": "54b9d42e-a261-4692-9012-d80ce5b64003",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "multiple",
       "question_text": "Your company is planning to deploy a new web application on AWS. They want to ensure the deployment process is fully automated, minimize human errors, and allow for safe rollbacks. Given these requirements, which two strategies should they implement? (Select TWO)",
@@ -1646,7 +1646,7 @@
     },
     {
       "question_id": "ffce9e35-62f4-4819-9918-fc2126c79fec",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider required to comply with HIPAA. You need to ensure that all S3 buckets storing patient data are encrypted at rest, access logs are enabled for auditing, and the encryption keys are managed by AWS KMS. Which combination of services should you use to meet these requirements?",
@@ -1673,7 +1673,7 @@
     },
     {
       "question_id": "4084f4e2-dc24-46ef-b243-dee24507a5c9",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce website with users distributed across multiple continents. You are tasked with ensuring high availability, minimizing latency, and optimizing content delivery to enhance user experience. Which solution should you implement to achieve these objectives?",
@@ -1700,8 +1700,8 @@
     },
     {
       "question_id": "8a759e48-8397-4555-bdb2-c1c3ac40b7b1",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "An organization is designing a monitoring and logging strategy for its AWS-based application. The goal is to ensure comprehensive visibility into the application's performance while minimizing costs. Which two actions should the architect take? (Select TWO)",
       "options": [
@@ -1729,7 +1729,7 @@
     },
     {
       "question_id": "7a07b629-f6ce-4f57-a80d-d6976637fa5d",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "single",
       "question_text": "Your company is launching a global e-commerce platform with millions of users across multiple continents. To ensure high availability and performance, you need to distribute content efficiently while minimizing latency. Which approach would be the most effective for this scenario?",
@@ -1756,8 +1756,8 @@
     },
     {
       "question_id": "d94d5e2a-bf71-410c-bbf4-1c558d0966e1",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a highly available web application that runs on Amazon EC2 instances behind an Application Load Balancer (ALB). They want to monitor the health of their instances and receive alerts when CPU usage exceeds 80% for more than 5 minutes. Which approach should they take?",
       "options": [
@@ -1784,8 +1784,8 @@
     },
     {
       "question_id": "12b55c43-235a-48b2-b29c-38247f20c82b",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an application running on Amazon EC2 instances. You need to ensure that you can monitor the health of the instances and also capture detailed logs for troubleshooting purposes. Which two services or configurations would best achieve these objectives while maintaining a balance between cost and performance? (Select TWO)",
       "options": [
@@ -1814,7 +1814,7 @@
     },
     {
       "question_id": "27b037f5-156f-4643-8dff-23c89b40a7d6",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to migrate its on-premises application to AWS. The development team wants to minimize downtime during deployment while ensuring that the new version of the application can be rolled back if issues arise. Which approach should they adopt according to the AWS Well-Architected Framework?",
@@ -1841,7 +1841,7 @@
     },
     {
       "question_id": "56dc296d-ab58-4a0d-81bc-bf61446e06f6",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that needs to comply with HIPAA regulations. You are designing a new application that will store patient medical records. Which of the following strategies should you prioritize to ensure compliance and minimize manual audit efforts?",
@@ -1868,8 +1868,8 @@
     },
     {
       "question_id": "ef8711f8-e045-4321-a428-76b00e76fe6c",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for an application running on Amazon EC2 instances. They want to collect metrics from these instances and correlate them with logs generated by the application. Which of the following approaches would best enable this capability according to the AWS Well-Architected Framework?",
       "options": [
@@ -1896,7 +1896,7 @@
     },
     {
       "question_id": "500072db-6a93-4c2c-bea1-2026fedd46f4",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "multiple",
       "question_text": "You are designing a global content delivery system for an e-commerce website with users spread across multiple continents. Your goal is to minimize latency, ensure high availability, and reduce the load on origin servers while maintaining cost efficiency. Which three of the following options should you consider implementing? (Select THREE)",
@@ -1927,8 +1927,8 @@
     },
     {
       "question_id": "1c6b34b2-99ee-4f4e-b398-e389b785f6d2",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their microservices architecture. They want to ensure they can detect anomalies in service performance metrics and correlate logs from different services for root cause analysis. Which combination of AWS services should the customer use to achieve this goal?",
       "options": [
@@ -1954,8 +1954,8 @@
     },
     {
       "question_id": "a41d2193-61d9-4342-806c-8302a51b2e1d",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are designing a monitoring solution for an application running on Amazon EC2 instances behind an Application Load Balancer (ALB). The goal is to collect detailed logs, set up alerts, and continuously monitor the health of your application. Which three services or configurations should you implement? (Select THREE)",
       "options": [
@@ -1985,8 +1985,8 @@
     },
     {
       "question_id": "8dcb4f37-ed48-4be1-8aba-7b16cad50230",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An e-commerce company has recently migrated its web application to AWS. The current architecture uses Amazon EC2 instances for the front-end layer, with a single instance type that is over-provisioned during peak hours but underutilized at other times. To optimize costs while maintaining performance, which of the following approaches should be taken?",
       "options": [
@@ -2013,7 +2013,7 @@
     },
     {
       "question_id": "031c6968-8f11-4f3d-a7f7-154561bd3caf",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is preparing for a PCI-DSS audit of its AWS-based payment processing system. The development team has already secured the application, but now needs to ensure that the underlying infrastructure also complies with the required standards. Which of the following actions should they take to best prepare for this audit?",
@@ -2040,7 +2040,7 @@
     },
     {
       "question_id": "c0055031-21ee-42c6-ad9f-40f1fc9a6af3",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "multiple",
       "question_text": "An e-commerce company is planning to migrate its legacy application to AWS. The company wants to ensure high availability while keeping costs under control. Which two options should the architect recommend for achieving this balance? (Select TWO)",
@@ -2071,7 +2071,7 @@
     },
     {
       "question_id": "dec4b294-24f3-45ca-9201-d5eda9cfd2a2",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Reliability and Business Continuity",
       "question_type": "single",
       "question_text": "An e-commerce company is migrating its legacy application to AWS. The application experiences high traffic during peak shopping hours, requiring a highly available architecture. Which of the following solutions best ensures the application\u2019s availability while minimizing costs?",
@@ -2099,7 +2099,7 @@
     },
     {
       "question_id": "9df21f06-166a-4517-adbb-b1fad4dbc2ef",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Networking and Content Delivery",
       "question_type": "multiple",
       "question_text": "An e-commerce company is launching a global online store with users spread across multiple continents. They want to ensure high availability, reduce latency for content delivery, and mitigate DDoS attacks. Which two strategies should they implement? (Select TWO)",
@@ -2128,7 +2128,7 @@
     },
     {
       "question_id": "398b6af6-a5c1-4549-95cc-9b30e6adfb50",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Security and Compliance",
       "question_type": "single",
       "question_text": "Your company is a healthcare provider that must comply with HIPAA regulations. You are designing a new application that will store patient medical records in the AWS Cloud. Which of the following approaches should you take to ensure continuous compliance monitoring and validation?",
@@ -2155,7 +2155,7 @@
     },
     {
       "question_id": "b4c65722-40f7-4f74-b72e-e6cb45ffb57a",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to migrate its on-premises application to AWS. The development team has decided to use AWS CodePipeline for continuous integration and deployment (CI/CD). Which of the following would be the most appropriate approach to ensure automated, safe deployments while minimizing impact on production?",
@@ -2182,8 +2182,8 @@
     },
     {
       "question_id": "c1fe97f4-e7bc-4c4c-b8da-152cf6d1f765",
-      "cert_code": "SOA-C02",
-      "domain": "Cost and Performance Optimization",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "multiple",
       "question_text": "You are managing a web application that has experienced significant growth in traffic over the past year. You need to optimize costs while maintaining performance. Which three strategies should you implement? (Select THREE)",
       "options": [
@@ -2213,8 +2213,8 @@
     },
     {
       "question_id": "9c1c4bac-de60-4234-a3f4-554aa439caef",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their multi-tier web application. The application consists of an API Gateway, Lambda functions, and an EC2 instance running the backend service. They want to ensure they can monitor resource performance and troubleshoot issues effectively. Which approach should they take to collect and aggregate metrics from all components in a cost-effective manner?",
       "options": [
@@ -2240,8 +2240,8 @@
     },
     {
       "question_id": "ec5f8027-e2d2-465b-976b-da7f3843067b",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "Your company runs a microservices-based application on Amazon EC2 instances. You need to monitor the CPU utilization of these instances and set up alerts when the CPU usage exceeds 80% for more than 5 minutes. Which solution would you recommend to meet this requirement?",
       "options": [
@@ -2268,7 +2268,7 @@
     },
     {
       "question_id": "30988feb-7924-40fe-b959-36e3ea8e5cfd",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a new web application on AWS. They want to ensure that the deployment process is automated and can be rolled back if issues arise. Which approach would best meet these requirements according to the AWS Well-Architected Framework?",
@@ -2295,7 +2295,7 @@
     },
     {
       "question_id": "bc204e51-f4df-4fb3-a47d-bfc630a4c2f5",
-      "cert_code": "SOA-C02",
+      "cert_code": "SOA-C03",
       "domain": "Deployment, Provisioning, and Automation",
       "question_type": "multiple",
       "question_text": "An AWS Solutions Architect is tasked with implementing a robust deployment strategy for a web application that minimizes downtime and ensures high availability. The architect decides to use blue/green deployments and infrastructure as code (IaC) to manage the application's environment. Which three of the following options should be included in the implementation plan? (Select THREE)",
@@ -2326,8 +2326,8 @@
     },
     {
       "question_id": "d38fb68f-022b-43b9-905a-8abbdd4f0b0d",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is designing a monitoring solution for their multi-tier web application hosted on Amazon EC2 instances. They want to ensure that they can effectively monitor the health of their applications and quickly identify issues before they impact users. Which combination of services should they use to best achieve this objective?",
       "options": [
@@ -2353,8 +2353,8 @@
     },
     {
       "question_id": "c42e1161-2601-4d8a-a4d0-8cd21e6dcb80",
-      "cert_code": "SOA-C02",
-      "domain": "Monitoring, Logging, and Remediation",
+      "cert_code": "SOA-C03",
+      "domain": "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
       "question_type": "single",
       "question_text": "An AWS customer is developing a microservices-based application that runs on Amazon EC2 instances. They want to monitor the memory usage of each instance in real-time and set up alerts when memory usage exceeds a certain threshold. Which approach should they take to achieve this goal?",
       "options": [

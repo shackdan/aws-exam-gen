@@ -369,7 +369,7 @@
     {
       "question_id": "f054c983-e441-40be-a1f4-5b1f879169f6",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a new generative AI application to automate content creation for marketing purposes. The goal is to generate diverse and creative text-based content that can be used across various channels, including social media and email campaigns. Which AWS service should you use to ensure the model can handle a wide range of input data types and produce high-quality outputs?",
       "options": [
@@ -589,7 +589,7 @@
     {
       "question_id": "fc028a9c-f209-4cf1-a64a-c5971e351c8c",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "You are developing a generative AI application for an e-commerce company that aims to generate product descriptions and customer reviews. The goal is to enhance the user experience by providing highly personalized content. Which three services would be most appropriate to achieve this objective? (Select THREE)",
       "options": [
@@ -893,7 +893,7 @@
     {
       "question_id": "5462fd05-861c-49b6-8940-58867fd2bbdb",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI model to generate customer support responses. The goal is to automate the process and reduce response time while maintaining high-quality output. Which AWS service should be used for this task?",
       "options": [
@@ -919,7 +919,7 @@
     {
       "question_id": "8037900e-4082-4d65-b718-f43492f593f5",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to implement a generative AI model for content creation. The goal is to balance cost with performance while ensuring the model can handle high traffic during peak hours. Which three options should you consider? (Select THREE)",
       "options": [
@@ -980,7 +980,7 @@
     {
       "question_id": "4702bc9b-a842-4081-ac06-8541416edaaa",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is looking to implement generative AI for content creation. The team wants to ensure that the solution is cost-effective while providing high-quality output and maintaining data privacy. Which two services or configurations should they consider implementing? (Select TWO)",
       "options": [
@@ -1205,7 +1205,7 @@
     {
       "question_id": "5dcb93b2-2f40-4a96-b35d-97eb5511ba66",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a new product that requires generating text for customer support emails based on user queries. The goal is to automate the response process and improve customer satisfaction. Which AWS service should be used to generate human-like responses efficiently?",
       "options": [
@@ -1377,7 +1377,7 @@
     {
       "question_id": "4908d16d-ab9f-4145-bb83-a3f78df3589a",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI solution for content creation. The goal is to balance cost and performance while ensuring the system can scale as needed. Which two services should be selected to best achieve this objective? (Select TWO)",
       "options": [

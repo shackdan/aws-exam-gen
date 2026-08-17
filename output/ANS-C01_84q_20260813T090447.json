@@ -95,7 +95,7 @@
     {
       "question_id": "52679479-ec2c-455b-83e7-96a5fd299da7",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "An enterprise has multiple Amazon Virtual Private Cloud (VPC) environments spread across different AWS Regions. They require a scalable solution for secure, high-speed communication between these VPCs with centralized visibility into network traffic. Which option should the Solutions Architect recommend?",
       "options": [
@@ -151,7 +151,7 @@
     {
       "question_id": "fbe9d976-4f4f-4e4a-b18a-6b64c47ba8af",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs that need to communicate with each other for internal services. The network team is looking for a solution that provides central visibility of IP traffic and simplifies management across many VPCs.",
       "options": [
@@ -505,7 +505,7 @@
     {
       "question_id": "ada2ad9b-587c-47ee-8c77-be2129ec8cb3",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs across different AWS Regions, and they want to establish a secure and scalable network connection between them. Which of the following options would be the most suitable for this requirement according to the AWS documentation?",
       "options": [
@@ -587,7 +587,7 @@
     {
       "question_id": "1535b509-b4d6-4749-80e3-e0186e855cb7",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company is planning to connect multiple VPCs across different AWS accounts into a single virtual network for easier management. The company wants to ensure that there's a centralized visibility of IP traffic going to and from these VPCs without affecting the network throughput or latency.",
       "options": [
@@ -748,7 +748,7 @@
     {
       "question_id": "3f950ccb-a74f-420f-83f3-a166740f4aad",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "An organization has multiple VPCs spread across different AWS regions and needs a scalable solution for inter-VPC communication. The network team is considering several options but wants to ensure the chosen method provides central visibility into IP traffic without adding complexity or significantly increasing costs.",
       "options": [
@@ -831,7 +831,7 @@
     {
       "question_id": "84959f5e-c087-421b-9f0a-f64edf95770d",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company is planning to deploy a multi-account architecture where multiple VPCs need to communicate securely. The network architects are concerned about the complexity of managing direct VPC peering connections between all pairs of VPCs, especially as more VPCs are added in different AWS accounts. Which solution would best address their requirement while maintaining simplicity and ease of management?",
       "options": [
@@ -909,7 +909,7 @@
     {
       "question_id": "21fde836-a364-4013-ab0e-b6d6090d06be",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs across different AWS Regions and wants to enable seamless communication between them while maintaining a simple management structure. Which connectivity option should the company choose?",
       "options": [
@@ -965,7 +965,7 @@
     {
       "question_id": "e5f2c616-08ee-4cc3-bd3e-72acf51695b7",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company needs to connect multiple VPCs across different regions for efficient traffic management and visibility. The network architect is considering options that provide a centralized view of all VPC traffic, simplify the management of connections, and minimize costs.",
       "options": [
@@ -1045,7 +1045,7 @@
     {
       "question_id": "8d7cecb9-28b1-498f-ac8f-558383d2fd45",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company is expanding its AWS VPC architecture to support multiple regional deployments. They need a solution that simplifies the management of cross-VPC traffic while maintaining security and visibility. Which option should they choose?",
       "options": [
@@ -1179,7 +1179,7 @@
     {
       "question_id": "1364aac8-06d4-4d8b-bc21-9b26316ad2af",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs that need to communicate with each other for internal traffic. The network team is looking for a solution that provides centralized management, easier policy enforcement, and better visibility into the traffic flows between VPCs without using internet gateways or software-based VPN appliances.",
       "options": [
@@ -1205,7 +1205,7 @@
     {
       "question_id": "f7775a9e-bb19-4c6a-a019-ade3f012fafb",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs spread across different AWS regions, each with its own set of security policies. They want to simplify the network management by reducing the number of direct peering connections while maintaining high availability and security. Which option should they choose for their network connectivity?",
       "options": [
@@ -1231,7 +1231,7 @@
     {
       "question_id": "8d22d932-b85c-401e-b52a-31a1f0c7b0eb",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "multiple",
       "question_text": "A company is planning to connect its on-premises network with multiple AWS VPCs using a cost-effective and scalable solution. Which two options should the architect recommend? (Select TWO)",
       "options": [
@@ -1343,7 +1343,7 @@
     {
       "question_id": "465ee68b-2c40-4f1d-9ff6-349902c448b2",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "An organization has multiple VPCs spread across different AWS regions, and they need a scalable solution for routing traffic between them. Which of the following options should they choose to provide a centralized management point while ensuring high availability and minimizing complexity?",
       "options": [
@@ -1369,7 +1369,7 @@
     {
       "question_id": "1f248ebe-1c4f-4477-a1fd-f1977b568cda",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs spread across different AWS Regions and wants to enable secure and efficient communication between them. The network team prefers a solution that minimizes administrative overhead while providing visibility into the traffic flow.",
       "options": [
@@ -1395,7 +1395,7 @@
     {
       "question_id": "be5e6d0a-108e-4a30-8b14-41de3addbbe8",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company is expanding its AWS VPC architecture to support multiple regional deployments. They want a solution that simplifies network management across regions while maintaining high availability and security. Which option should they choose for connecting their VPCs in different regions?",
       "options": [
@@ -1587,7 +1587,7 @@
     {
       "question_id": "fe3b0f20-e3db-4a52-b861-36ba5e6851a1",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A large enterprise has multiple VPCs spread across different AWS Regions. They need a solution that allows for seamless communication between these VPCs while providing centralized visibility into network traffic. Which option should the architect recommend to meet their requirements?",
       "options": [
@@ -1639,7 +1639,7 @@
     {
       "question_id": "e058a85c-81ec-45df-beb5-c90f764d4995",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A large enterprise is designing a network architecture that requires multiple VPCs to communicate with each other seamlessly. The company wants to minimize the complexity of managing multiple VPC peering connections while ensuring high availability and low latency between VPCs.",
       "options": [
@@ -1665,7 +1665,7 @@
     {
       "question_id": "74e79fd2-073b-4573-8014-beeae8c5a05f",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A company has multiple VPCs in different AWS Regions and wants to enable seamless communication between them while maintaining centralized visibility of network traffic. Which option should the architect recommend for this use case?",
       "options": [
@@ -1984,7 +1984,7 @@
     {
       "question_id": "c2fd3045-d000-43bb-9ef0-9182525e7257",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "A multinational company has a headquarters VPC in the US-East-1 region with multiple departments requiring secure, low-latency connectivity to their respective regional VPCs. The company wants to minimize complexity while ensuring high availability for critical applications. Which solution would be most appropriate?",
       "options": [
@@ -2094,7 +2094,7 @@
     {
       "question_id": "26f000a4-a6ef-47e4-9244-6c53bde4ac70",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "multiple",
       "question_text": "A company has multiple VPCs that need to communicate with each other for internal network traffic. The company wants a solution that is scalable, secure, and provides centralized visibility into the network traffic. Which two options should be selected? (Select TWO)",
       "options": [
@@ -2176,7 +2176,7 @@
     {
       "question_id": "533e6958-c725-4547-a28c-05fea2278dfa",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "single",
       "question_text": "An organization has multiple VPCs that need to communicate with each other. The network architect wants a solution that provides central visibility of IP traffic, is scalable, and simplifies management compared to VPC peering. Which connectivity option should the architect choose?",
       "options": [
@@ -2228,7 +2228,7 @@
     {
       "question_id": "4e4ab917-5fdc-463f-bed7-db0403a64e0c",
       "cert_code": "ANS-C01",
-      "domain": "Network Management and Operations",
+      "domain": "Network Management and Operation",
       "question_type": "multiple",
       "question_text": "A company is planning to connect its on-premises network with multiple Amazon VPCs in a cost-effective manner while ensuring high availability. They are considering several options for network connectivity. (Select TWO)",
       "options": [
