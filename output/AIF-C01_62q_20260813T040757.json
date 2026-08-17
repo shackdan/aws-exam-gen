@@ -93,7 +93,7 @@
     {
       "question_id": "836964c5-03c2-454e-9f92-ee23e45d0e57",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI solution for content creation. The initial phase involves launching a proof-of-concept (PoC) to demonstrate the potential benefits before scaling up. Which approach should you prioritize during this launch phase to ensure it meets organizational and business needs while setting a foundation for future growth?",
       "options": [
@@ -512,7 +512,7 @@
     {
       "question_id": "5a3c00ca-3c79-4fbf-970a-fd9bcce9a305",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to launch a generative AI pilot project that will generate customer support responses. The team wants to ensure the solution can handle high volumes and provide fast response times while keeping costs under control. Select ONE approach they should take.",
       "options": [
@@ -595,7 +595,7 @@
     {
       "question_id": "dfe7d3dd-e615-4dfa-92ef-3a2f4ed64906",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for content creation. The goal is to quickly prototype and demonstrate value before scaling up, with minimal infrastructure overhead. Which approach aligns best with the AWS Cloud Adoption Framework's 'Launch' phase, considering both technical feasibility and business impact?",
       "options": [
@@ -704,7 +704,7 @@
     {
       "question_id": "44688dfe-ffc5-42ae-bee8-2188a5f2ea02",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to launch a generative AI pilot project aimed at improving customer service chatbots. The goal is to quickly demonstrate value while laying the groundwork for future scaling. Select THREE strategies that should be prioritized in this initial phase.",
       "options": [
@@ -765,7 +765,7 @@
     {
       "question_id": "e459dac7-d390-46b7-ac38-c684412ede57",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Select TWO. An organization is planning to launch a generative AI pilot project that will generate customer service responses. The goal is to demonstrate the value of AI in reducing response time and improving accuracy.",
       "options": [
@@ -880,7 +880,7 @@
     {
       "question_id": "19cdf134-d1c5-4f7b-a811-348935af9ea3",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to launch a generative AI pilot project that will generate customer service chatbot responses. To ensure the project's success, which two AWS services should be prioritized for setting up the initial environment? (Select TWO)",
       "options": [
@@ -940,7 +940,7 @@
     {
       "question_id": "1fcabafc-8816-4461-b9f1-990b6a0d4c51",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to launch a generative AI pilot project aimed at improving customer service through chatbots. The team wants to ensure they can quickly iterate and learn from the initial phase before scaling up. Which approach should they prioritize during the 'Launch' phase of their AI transformation journey?",
       "options": [
@@ -967,7 +967,7 @@
     {
       "question_id": "3befdc57-b59a-4e80-b569-23109368821a",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to launch a generative AI pilot project that will generate customer support chatbot responses. The goal is to demonstrate the value of AI in reducing response times and improving customer satisfaction. Which two services should be prioritized for this pilot? (Select TWO)",
       "options": [
@@ -1023,7 +1023,7 @@
     {
       "question_id": "d9ce2b47-c22b-4f6f-b10f-250791f407e0",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a generative AI model that will generate customer support responses. You need to ensure the model can handle high volumes of requests while maintaining low latency and cost efficiency. Which approach should you take?",
       "options": [
@@ -1190,7 +1190,7 @@
     {
       "question_id": "5c78af4b-9589-4a3f-958e-125d362b016d",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to launch a generative AI project that will generate customer support responses. You need to ensure the solution scales well and can handle high traffic while also keeping costs under control. Which two services should you use for this purpose? (Select TWO)",
       "options": [
@@ -1220,7 +1220,7 @@
     {
       "question_id": "1ed7ae29-163a-4e98-b30b-59a3396c33d1",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to launch a generative AI model that will generate product descriptions for new items. The goal is to quickly iterate and improve the quality of generated text over time. Which approach should be prioritized according to AWS Cloud Adoption Framework for Artificial Intelligence?",
       "options": [
@@ -1471,7 +1471,7 @@
     {
       "question_id": "558b7ca8-1f51-447b-9899-448652e2ec32",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to launch a generative AI chatbot for customer service, aiming to handle high volumes of queries. The team has decided to use Amazon SageMaker for model training and hosting but is concerned about the cost implications of scaling the solution. Which approach should they prioritize to balance cost efficiency with performance and scalability?",
       "options": [
@@ -1497,7 +1497,7 @@
     {
       "question_id": "e10d6580-7afb-4f6b-99fa-c91b850fbcf7",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI solution for customer support. The goal is to quickly prototype and demonstrate the value of this technology before scaling it across departments. Given your current technology stack, which approach should you take during the launch phase to ensure incremental business value while maintaining agility? Select one.",
       "options": [
@@ -1581,7 +1581,7 @@
     {
       "question_id": "9fac7ace-a933-4adc-b1a4-9f92ad4c83b4",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to launch a generative AI pilot project that will generate customer support responses. The goal is to demonstrate the value of AI in automating response generation and improving customer satisfaction. Which approach should they prioritize to ensure the pilot's success while adhering to best practices outlined in AWS Cloud Adoption Framework for Artificial Intelligence?",
       "options": [

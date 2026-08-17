@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "cert_code": "SCS-C02",
+    "cert_code": "SCS-C03",
     "generated_at": "2026-08-14T14:50:53.753344+00:00",
     "total_questions": 93,
     "approved": 93,
@@ -9,7 +9,7 @@
   "questions": [
     {
       "question_id": "74eae7f8-e9a1-4997-bcb7-0d092e7e89dc",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company is expanding its operations to a new region and wants to ensure that network traffic between the old and new regions is inspected for compliance with security policies. Which AWS service should be used to implement this requirement, ensuring that inspection rules are updated automatically based on threat intelligence?",
@@ -35,8 +35,8 @@
     },
     {
       "question_id": "76c3be38-172f-44be-b5e6-3e7c59b1a723",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "multiple",
       "question_text": "Your organization is looking to enhance its threat detection capabilities by implementing a robust incident response process. Which two of the following strategies are most effective in reducing attacker dwell time and improving overall security posture? (Select TWO)",
       "options": [
@@ -65,7 +65,7 @@
     },
     {
       "question_id": "9de447e4-abbf-41c1-b1a6-d366ed5c0a95",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An organization is developing a new financial application that will store sensitive customer data, including credit card numbers and personal identification information. The security team wants to ensure that the data is protected both at rest and in transit using industry-standard encryption methods.",
@@ -93,8 +93,8 @@
     },
     {
       "question_id": "665f1941-f1fb-4827-83c1-037fcf366196",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization wants to monitor network traffic for potential security breaches in their VPC. They have enabled VPC Flow Logs to capture detailed information about IP traffic. To further analyze the logs, they are considering using Amazon GuardDuty or setting up a custom CloudWatch Logs Insights query. Select ONE.",
       "options": [
@@ -120,7 +120,7 @@
     },
     {
       "question_id": "de47505d-4c3a-4402-be4a-ba2c7ae89a75",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your organization is undergoing a restructuring, with roles changing frequently among employees. You need to ensure that access privileges are updated promptly without manual intervention. Which three of the following actions should you take? (Select THREE)",
@@ -151,7 +151,7 @@
     },
     {
       "question_id": "547ac7a9-d6eb-4480-bb0f-dedf59778be9",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce platform with multiple microservices deployed across several AWS Regions. To ensure that data in transit between your network layers is inspected and authorized, which of the following would be the most effective approach to implement inspection-based protection as per the AWS Well-Architected Framework?",
@@ -177,7 +177,7 @@
     },
     {
       "question_id": "20e99183-f058-4a19-8aa0-4439cd16bef8",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company is designing a new application that will store sensitive customer data, including credit card numbers and personal identification information. The team wants to ensure the data is protected both at rest and in transit using industry-standard practices.",
@@ -205,7 +205,7 @@
     },
     {
       "question_id": "aa65023a-5c34-4b91-b13d-b32d2b625125",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company is planning to migrate its on-premises infrastructure to AWS and wants to ensure that the network traffic between different Availability Zones (AZs) within a single Region is inspected for compliance with regulatory requirements. Which of the following approaches should be used to implement inspection-based protection as per the AWS Well-Architected Framework?",
@@ -231,8 +231,8 @@
     },
     {
       "question_id": "a60b754f-a2ae-44c4-aaa4-9d6943d9db04",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "An organization wants to implement a robust security logging and monitoring strategy for their AWS VPC. They need to capture network traffic logs, ensure compliance with GRC standards, and enable threat detection using GuardDuty. Which two services should they configure? (Select TWO)",
       "options": [
@@ -261,7 +261,7 @@
     },
     {
       "question_id": "7da5c536-c1d1-426c-a2ac-46ac671ae2f7",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization has recently adopted a new HR system that automatically updates employee roles. You need to ensure that IAM users' access permissions are updated accordingly without manual intervention. Which AWS service best supports this requirement, allowing for automated synchronization of workforce user identities and permissions based on changes in the HR system?",
@@ -287,8 +287,8 @@
     },
     {
       "question_id": "6170b19d-91a2-4a73-ab98-3ceca694a208",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "A company is designing a VPC architecture that requires detailed network traffic analysis for security purposes. They want to ensure they can capture and analyze flow logs efficiently while also considering the use of AWS services for advanced threat detection. Which combination best meets their needs?",
       "options": [
@@ -314,7 +314,7 @@
     },
     {
       "question_id": "20e448b5-3a6a-46ca-8a91-2eb9fad771a6",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your organization is transitioning from a decentralized identity management system to AWS IAM Identity Center. You want to ensure that workforce user access is managed based on their job roles, while minimizing administrative overhead and ensuring compliance with the principle of least privilege. (Select TWO)",
@@ -343,7 +343,7 @@
     },
     {
       "question_id": "4dd16287-9cfa-4ba7-963a-d3909739fb6d",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services firm needs to store and process sensitive customer data, including credit card numbers. The firm wants to ensure that only authorized personnel can access this data while maintaining the highest level of security. Which approach should be implemented to meet these requirements?",
@@ -371,8 +371,8 @@
     },
     {
       "question_id": "2d3b74c7-ec3d-4723-b563-b6302ef5b343",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company has recently experienced a significant increase in security incidents, with longer attacker dwell times. The CISO wants to improve the incident response process by reducing the mean time to acknowledge (MTTA) alerts. Which of the following actions would most effectively help achieve this goal?",
       "options": [
@@ -397,8 +397,8 @@
     },
     {
       "question_id": "8754a37a-6a8e-45d7-be3f-8299debf9b43",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "An AWS customer has implemented Amazon GuardDuty to monitor their VPC for suspicious activities. They want to ensure that any potential security incidents are identified as quickly as possible, minimizing the attacker dwell time. Which of the following metrics should they focus on improving first?",
       "options": [
@@ -423,7 +423,7 @@
     },
     {
       "question_id": "01de519b-91e9-4bec-a0ae-97caec9476f8",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce platform and needs to ensure that traffic between its network layers is inspected for compliance with regional data protection laws. Which approach should be implemented to meet this requirement while providing the most comprehensive security coverage according to AWS best practices?",
@@ -449,7 +449,7 @@
     },
     {
       "question_id": "b550d403-1cd9-4f38-96fe-5eed62390521",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "multiple",
       "question_text": "You are designing a secure infrastructure for an e-commerce application that processes sensitive customer data. To implement defense in depth, you need to ensure that traffic is inspected and authorized at multiple layers of the network architecture. Which three actions should you take? (Select THREE)",
@@ -480,8 +480,8 @@
     },
     {
       "question_id": "e765054e-7db6-444a-adba-db0d69348d2f",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is designing a security monitoring solution for its VPC, aiming to capture network traffic logs for auditing purposes. The solution should be cost-effective while providing detailed insights into network activity without overwhelming the logging system with excessive data.",
       "options": [
@@ -507,7 +507,7 @@
     },
     {
       "question_id": "6ac2e500-2346-4e05-af52-1cd9b6287d3c",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company needs to store and process sensitive customer data, including credit card numbers. They want to ensure that the data is protected both at rest and in transit, while minimizing the risk of human error during manual processing. Which approach would best align with AWS security best practices for data protection?",
@@ -534,7 +534,7 @@
     },
     {
       "question_id": "404d7f9d-6f93-42bc-b16f-d1f8326b8a80",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "Your company is developing a new financial application that will store sensitive customer data, including credit card numbers. To ensure compliance with industry regulations and minimize the risk of data exposure, you need to implement appropriate data protection measures. Which approach should be prioritized for protecting this sensitive information?",
@@ -561,8 +561,8 @@
     },
     {
       "question_id": "46fd6696-94f8-4879-b30a-1fdc581fac25",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "An organization is designing a security monitoring solution for its VPC. They want to capture network traffic data, but are concerned about the volume of logs generated by VPC Flow Logs. Additionally, they need to ensure that logs from various AWS services and applications can be centrally managed and queried efficiently. Which two options should they implement? (Select TWO)",
       "options": [
@@ -590,7 +590,7 @@
     },
     {
       "question_id": "27ee9db7-fb06-4efb-9367-b8c0e6951ea3",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization has recently adopted AWS IAM Identity Center to manage workforce identities. An employee, John Doe, has left the company, but his access was not revoked in several applications due to a manual oversight. To prevent similar issues in the future, which of the following is the most effective approach according to AWS best practices?",
@@ -617,7 +617,7 @@
     },
     {
       "question_id": "242d87ef-ac4f-4531-a402-7a85d33d960e",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company is planning to migrate its on-premises workload to AWS and needs to ensure that network traffic between different Availability Zones (AZs) within a single Region is inspected for compliance with regulatory requirements. Which of the following approaches should be used to implement this requirement while maintaining security best practices as per the AWS Well-Architected Framework?",
@@ -643,7 +643,7 @@
     },
     {
       "question_id": "3b903483-9f05-4ac1-829c-702d179f1454",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your organization has recently undergone a restructure, leading to changes in employee roles. You need to ensure that these changes are reflected promptly in their access permissions across multiple AWS services. Which two actions should you take to achieve this goal while adhering to the principle of least privilege? (Select TWO)",
@@ -672,8 +672,8 @@
     },
     {
       "question_id": "9b58ae76-f049-44ae-816d-71200c552ce8",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your organization is experiencing frequent security alerts, but the response times are inconsistent. You want to improve your incident response process by reducing attacker dwell time. Which of the following metrics would best help you track the effectiveness of your alert processing and prioritization?",
       "options": [
@@ -698,8 +698,8 @@
     },
     {
       "question_id": "f95e54f6-03d1-474f-a346-9c2d011b287e",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company is looking to enhance its incident response process by focusing on reducing the attacker dwell time. Which of the following metrics should your team prioritize tracking to ensure they can respond more effectively to security incidents?",
       "options": [
@@ -725,8 +725,8 @@
     },
     {
       "question_id": "5196fa4c-b199-4c38-b053-db10823f5e9c",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "An organization is designing a security architecture that requires comprehensive logging for network traffic and application events. They want to leverage AWS services to ensure compliance, threat detection, and efficient log management while minimizing costs. Which two services should they implement? (Select TWO)",
       "options": [
@@ -754,7 +754,7 @@
     },
     {
       "question_id": "18c05343-6d78-47fc-9678-dd95a745404d",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "An organization is designing a secure architecture for its new application that will process highly sensitive personal health information (PHI) and must comply with regional data residency requirements. The application will run in multiple AWS Regions to ensure high availability and compliance with these strict regulations. Which of the following strategies should be prioritized to enhance infrastructure protection while maintaining compliance?",
@@ -783,7 +783,7 @@
     },
     {
       "question_id": "13328aa9-fd78-4121-82b8-7b840e73262b",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An organization is developing a new application that will store sensitive customer data, including credit card numbers and personal identification information. The company wants to ensure the data remains secure while also allowing for efficient access during normal operations. Which approach should the architect recommend to best balance security with operational efficiency?",
@@ -810,7 +810,7 @@
     },
     {
       "question_id": "42e1a2e7-dd44-4d46-a957-c454257ef5fe",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your company is undergoing a restructuring, and you need to ensure that employee access privileges are updated promptly based on their new roles. You want to leverage AWS services to automate this process while adhering to the principle of least privilege. Which two services should you implement? (Select TWO)",
@@ -839,7 +839,7 @@
     },
     {
       "question_id": "d686c44d-9381-4f53-b766-21b6e80c93da",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "A company is designing a multi-region architecture to ensure high availability and compliance with regional data residency laws. They have chosen to deploy their application in two AWS Regions, each Region containing multiple Availability Zones (AZs). To further enhance security, they need to implement traffic inspection points between network layers. Which of the following best practices should they adopt for robust infrastructure protection?",
@@ -865,7 +865,7 @@
     },
     {
       "question_id": "fdad8ba4-284c-4221-a085-0141addaf223",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company operates a global e-commerce platform and wants to ensure that network traffic is inspected at multiple layers to protect against potential threats. They are considering implementing AWS services to achieve this, but need advice on the best approach.",
@@ -891,8 +891,8 @@
     },
     {
       "question_id": "2d9aa1a7-b666-4afb-8eb5-14245533c517",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company has recently experienced a significant increase in security alerts, leading to an overloaded incident response team. To improve the efficiency of your alert handling process, you need to establish metrics that can help you measure how well your team is processing and prioritizing these alerts. Which metric would be most effective for this purpose?",
       "options": [
@@ -917,7 +917,7 @@
     },
     {
       "question_id": "2d197d9c-3747-44fb-97ee-35c020511ae0",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization is undergoing a restructuring, and several employees are changing roles. You want to ensure that their access privileges are updated automatically based on changes in your HR system without manual intervention. Which AWS service best supports this requirement?",
@@ -943,8 +943,8 @@
     },
     {
       "question_id": "71dbcfcd-8523-4402-a2d4-24f0f0b4fd80",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "multiple",
       "question_text": "An organization wants to improve its incident response capabilities by reducing the attacker dwell time. Which two of the following actions should be prioritized? (Select TWO)",
       "options": [
@@ -973,8 +973,8 @@
     },
     {
       "question_id": "3a01c2e6-5563-4793-8fd9-59daa0d9c2fd",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "An AWS customer is looking to improve their incident response process by reducing the attacker dwell time. They have already implemented Amazon GuardDuty for threat detection but are unsure of how to better prioritize alerts. Which of the following approaches would most effectively help them in this scenario?",
       "options": [
@@ -1001,8 +1001,8 @@
     },
     {
       "question_id": "9906bf8f-2e21-47c6-bb22-07c4dc2ee41b",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your organization is experiencing an increase in security alerts from various AWS services, but the SOC team struggles to acknowledge these alerts quickly. To improve this situation, you need to establish a metric that tracks how well your team processes and prioritizes alerts. Which of the following metrics would be most effective for this purpose?",
       "options": [
@@ -1027,8 +1027,8 @@
     },
     {
       "question_id": "8d2c3e25-4865-42e6-b657-b50b1cd34d9a",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your organization has recently experienced a significant number of false positive alerts from Amazon GuardDuty, which is impacting the efficiency of your incident response team. You are looking to optimize your alerting process by reducing false positives while maintaining detection accuracy. Which of the following strategies would be most effective in achieving this goal?",
       "options": [
@@ -1054,7 +1054,7 @@
     },
     {
       "question_id": "cc62355d-835e-4861-a895-d2c2643c7559",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "multiple",
       "question_text": "You are designing a secure infrastructure for a multinational company that requires data residency in multiple AWS Regions. To ensure robust protection and compliance, which two strategies should you implement? (Select TWO)",
@@ -1083,7 +1083,7 @@
     },
     {
       "question_id": "4b21a1f9-b758-42da-9154-120e011727f4",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services firm is designing a new application that will store and process sensitive customer data, including credit card numbers. They want to ensure the data is protected both at rest and in transit while minimizing the risk of human error during processing.",
@@ -1110,7 +1110,7 @@
     },
     {
       "question_id": "ef55f8d7-0436-4d82-b8ef-57303290ba23",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your company is undergoing a restructuring, and the HR department has informed you that several employees will change roles. You need to ensure their access privileges in AWS are updated accordingly without manual intervention. Which approach should you take to manage this efficiently?",
@@ -1136,8 +1136,8 @@
     },
     {
       "question_id": "8266e3ec-e93a-4755-af49-aa72d8ca1a57",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "A company is implementing a logging strategy for its VPC to monitor network traffic. They are considering using VPC Flow Logs, Traffic Mirroring, Amazon GuardDuty, and AWS Config to capture and analyze the logs. Which two services should they use together to provide comprehensive monitoring while minimizing costs? (Select TWO)",
       "options": [
@@ -1165,7 +1165,7 @@
     },
     {
       "question_id": "51ce6882-e543-4f17-b1f6-95b0e6fc3b46",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company is designing a new application that will store and process sensitive customer data, including credit card numbers. The company wants to ensure the data is protected while also minimizing the risk of human error in handling this data directly.",
@@ -1192,7 +1192,7 @@
     },
     {
       "question_id": "dde5ce5b-1b1e-4654-920b-445e781abc7f",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "A multinational company is deploying its application in the AWS cloud. The application needs to comply with regional data residency requirements and must be protected against potential natural disasters such as earthquakes. Which of the following strategies should the architect implement to ensure both compliance and high availability?",
@@ -1219,8 +1219,8 @@
     },
     {
       "question_id": "ce186809-b6dc-4409-acab-2961361dbb93",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company is experiencing an increase in security incidents. You want to improve your incident response process by reducing the attacker dwell time. Which of the following actions would best help you achieve this goal?",
       "options": [
@@ -1246,7 +1246,7 @@
     },
     {
       "question_id": "bf4f9567-faf5-42e3-aebf-b126c27cc069",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "multiple",
       "question_text": "An organization wants to protect sensitive customer data in an AWS environment, ensuring that the data is encrypted both at rest and in transit. They also want to implement measures to reduce the sensitivity of the data where appropriate. Which two actions should they take? (Select TWO)",
@@ -1275,7 +1275,7 @@
     },
     {
       "question_id": "a40b5b0e-b935-43d2-8d21-e6bdc5b44c65",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization is undergoing a restructuring, and several employees are changing roles. You want to ensure that their access privileges in AWS are updated promptly without manual intervention. Which of the following approaches would best achieve this goal while adhering to the principle of least privilege?",
@@ -1301,8 +1301,8 @@
     },
     {
       "question_id": "bed5dc89-77b3-4e3b-9241-9ea2bd1c8809",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is implementing logging for a VPC to monitor network traffic. They want to capture detailed information about the IP traffic going to and from their network interfaces, and also have the ability to enable full packet capture when needed. Which combination of AWS services best meets these requirements?",
       "options": [
@@ -1328,7 +1328,7 @@
     },
     {
       "question_id": "b8761e4d-092d-47f6-aa10-8798269dfa5c",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a defense-in-depth strategy across multiple AWS Regions and Availability Zones. They want to ensure that their network traffic is inspected at various points, but they are concerned about the complexity of managing multiple security controls. Which two strategies should they employ to balance security with operational simplicity? (Select TWO)",
@@ -1357,7 +1357,7 @@
     },
     {
       "question_id": "a135b506-c8c3-4abd-94aa-9958f93f4090",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An organization is designing a data protection strategy for its customer information, which includes personally identifiable information (PII) and financial records. They want to ensure that the data remains secure while also reducing the risk of human error in handling sensitive data.",
@@ -1385,8 +1385,8 @@
     },
     {
       "question_id": "5e83779f-7877-4ed7-9582-4bd2151d3ed8",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is reviewing its security logging strategy to ensure compliance with regulatory requirements. They want a solution that can capture detailed network traffic information, including IP addresses, protocols, and timestamps, for audit purposes. Which of the following best meets their needs while also providing insights through AWS-managed threat detection services?",
       "options": [
@@ -1413,7 +1413,7 @@
     },
     {
       "question_id": "9596ff16-086c-4692-9e10-dbbffde8b7d9",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "An AWS customer is designing a secure architecture for their financial application that requires strict network traffic inspection and protection. The application must be protected against unauthorized access, and the team wants to leverage AWS services to implement comprehensive security measures at multiple levels of the network infrastructure.",
@@ -1439,7 +1439,7 @@
     },
     {
       "question_id": "0e6c3b0c-9d02-4636-94c6-2c4798ce9c24",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Select TWO. Your organization is undergoing a restructuring, and you need to ensure that user access privileges are updated promptly based on role changes. Which two AWS services or configurations should you implement to achieve this goal while adhering to the principle of least privilege?",
@@ -1468,7 +1468,7 @@
     },
     {
       "question_id": "2e949843-6dc6-4468-9346-32f92d2e3a16",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your company is undergoing a restructuring, and several employees have changed roles. You need to ensure that their access privileges are updated accordingly without manual intervention. Which AWS service should you implement to automate this process based on changes in your organization's authoritative identity source?",
@@ -1494,8 +1494,8 @@
     },
     {
       "question_id": "b12579e3-9ca3-45bc-bf44-8a0835405546",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is designing a security monitoring solution for its VPC. They want to capture network traffic information, retain logs for auditing purposes, and use automated threat detection. Which combination of services should they implement?",
       "options": [
@@ -1521,8 +1521,8 @@
     },
     {
       "question_id": "ac50a451-b50d-4d0d-b814-1664faffe718",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "An organization wants to implement robust security logging and monitoring for its VPCs, including capturing network traffic data and ensuring compliance with GRC standards. Which three of the following actions should be taken? (Select THREE)",
       "options": [
@@ -1553,7 +1553,7 @@
     },
     {
       "question_id": "f130d7f1-1f9f-4482-a09b-bda5861fb483",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company is expanding its operations to a new region and needs to ensure that network traffic between the existing Region and the new one is inspected for compliance with security policies. Which of the following approaches should you prioritize to meet this requirement while maintaining strict control over data in transit?",
@@ -1579,7 +1579,7 @@
     },
     {
       "question_id": "9bf47923-f8d3-4a33-ba35-ed8ce7b84458",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company needs to store and process sensitive customer data, including credit card information. The company wants to ensure that the data is protected both at rest and in transit while minimizing the risk of human error and unauthorized access.",
@@ -1606,7 +1606,7 @@
     },
     {
       "question_id": "c436aaa7-c1ae-41fe-aad6-23149a69b8fb",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "multiple",
       "question_text": "A company is developing a new financial application that will process sensitive customer data, including credit card numbers and personal identification information. The application must be designed to minimize the risk of unauthorized access while ensuring compliance with industry standards such as PCI-DSS. Which three strategies should the architect implement? (Select THREE)",
@@ -1637,7 +1637,7 @@
     },
     {
       "question_id": "9c6f5edd-8f62-4d63-8516-352d494e9b69",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An AWS customer is designing a data protection strategy for their financial services application, which involves handling sensitive credit card information. They want to ensure that the data remains secure and unreadable even if it is intercepted by unauthorized parties. Which of the following approaches should they adopt to meet these requirements?",
@@ -1664,8 +1664,8 @@
     },
     {
       "question_id": "87fa05bd-ded4-450d-b18a-4dbb508f0db8",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company is experiencing frequent security alerts from AWS Security Hub, but the mean time to acknowledge (MTTA) for these alerts is consistently high. To improve this metric and reduce attacker dwell time, which of the following actions should be prioritized?",
       "options": [
@@ -1691,7 +1691,7 @@
     },
     {
       "question_id": "7dae3c44-def7-49e7-b8c1-ac5ab1596f2d",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization has recently adopted AWS IAM Identity Center to manage workforce identities. An employee, John Doe, has just been promoted from a developer role to a senior developer. To ensure he has the necessary access while adhering to the principle of least privilege, which action should be taken?",
@@ -1717,8 +1717,8 @@
     },
     {
       "question_id": "4a50da72-eb44-4db3-b6d3-b70e8e3ad168",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "multiple",
       "question_text": "An organization wants to implement a robust security logging and monitoring strategy for their AWS VPC. They are considering using VPC Flow Logs, Traffic Mirroring, Amazon GuardDuty, AWS Config, and Amazon CloudWatch Logs to meet their needs. Which TWO services should they select to achieve comprehensive network traffic analysis and threat detection? (Select TWO)",
       "options": [
@@ -1747,7 +1747,7 @@
     },
     {
       "question_id": "3165910a-1d96-43c1-bbec-e68f94dacdc5",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services firm is designing a new application that will store and process sensitive customer data, including credit card numbers. The firm wants to ensure that the data remains secure and comply with regulatory requirements such as PCI DSS. Which of the following approaches should be taken to protect the data while minimizing the risk of unauthorized access and maintaining compliance?",
@@ -1776,8 +1776,8 @@
     },
     {
       "question_id": "c130cfb6-e474-47da-a2de-1d829b22315a",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your organization is experiencing frequent false positives in your security monitoring, which are delaying the response to actual incidents. You want to improve the accuracy of your alerts while ensuring timely incident detection. Which approach should you prioritize?",
       "options": [
@@ -1803,8 +1803,8 @@
     },
     {
       "question_id": "ab3831fd-26c5-4101-9a0f-ad58e0fe03be",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization wants to monitor network traffic for potential threats while ensuring compliance with data retention policies. They are considering using VPC Flow Logs, Amazon GuardDuty, and AWS Config for this purpose. Which combination of services would best meet their needs?",
       "options": [
@@ -1830,8 +1830,8 @@
     },
     {
       "question_id": "a5602dc8-89ef-4dbe-8766-5ecf62350974",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is designing a security architecture that requires detailed network traffic analysis for compliance purposes. They want to ensure they can capture all relevant data, including IP traffic from VPC interfaces, and have the ability to enable full packet capture when needed without disrupting production environments. Which combination of services best meets these requirements according to AWS documentation?",
       "options": [
@@ -1858,7 +1858,7 @@
     },
     {
       "question_id": "bbd0adac-2b94-41d1-9dc2-e09f69484f94",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your organization has recently onboarded a new IAM Identity Center to manage workforce identities. You need to ensure that access privileges are updated automatically when an employee's role changes, while also minimizing the risk of over-privileging users. (Select TWO)",
@@ -1887,7 +1887,7 @@
     },
     {
       "question_id": "b80447aa-a23c-43ec-bc4d-eaf7af4b2dd6",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company is designing a new application that will store and process sensitive customer data, including credit card numbers. The team wants to ensure the highest level of security while minimizing the risk of human error in handling this data directly. Which approach should they take to align with AWS best practices for data protection?",
@@ -1914,7 +1914,7 @@
     },
     {
       "question_id": "1d980043-d737-43ad-9b2b-034d2f17ac95",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An organization is developing a new application that will store sensitive customer data, including credit card numbers and personal identification information. The team wants to ensure the data is protected both at rest and in transit. Which of the following approaches should they take to best align with AWS security best practices for data protection?",
@@ -1941,8 +1941,8 @@
     },
     {
       "question_id": "80ecb52a-bfd7-4482-9647-22eb6761014c",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is designing a security monitoring solution for their VPC. They want to capture network traffic data for routine analysis but also need the ability to enable detailed packet capture when suspicious activity is detected. Which combination of AWS services best meets these requirements?",
       "options": [
@@ -1968,8 +1968,8 @@
     },
     {
       "question_id": "35b90b50-5f71-41a4-94c9-d0d094252688",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "multiple",
       "question_text": "An organization wants to improve its incident response capabilities by reducing the attacker dwell time. Which two actions should they prioritize? (Select TWO)",
       "options": [
@@ -1997,8 +1997,8 @@
     },
     {
       "question_id": "94b35dc3-8db5-40b8-a3db-7c705405c5b5",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization wants to monitor network traffic for security incidents in their VPC. They have enabled VPC Flow Logs to capture the data, but are unsure of how best to integrate this with other logging solutions for comprehensive analysis. Which approach should they take to ensure effective monitoring and compliance with governance requirements?",
       "options": [
@@ -2024,7 +2024,7 @@
     },
     {
       "question_id": "41b565a2-e97e-41be-9614-aa3f2639ccd2",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization has recently adopted AWS IAM Identity Center for managing workforce identities. An employee, John Doe, has been promoted to a new role that requires access to additional resources. You need to ensure his access is updated promptly without manual intervention. Which of the following approaches best aligns with AWS security best practices?",
@@ -2051,8 +2051,8 @@
     },
     {
       "question_id": "2bde59dd-8162-487e-aca6-ccbe4f77d5bc",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "A company is designing a security architecture for its AWS VPC, aiming to capture network traffic data for analysis. They are considering using VPC Flow Logs to monitor all network traffic within their VPC and also want to ensure they can perform detailed packet inspection when necessary. Which of the following best describes how they should configure their logging solution?",
       "options": [
@@ -2080,7 +2080,7 @@
     },
     {
       "question_id": "b5cee983-16ae-4023-b152-200aa4f2bdbd",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "multiple",
       "question_text": "You are designing a secure infrastructure for an e-commerce application that processes credit card transactions and must comply with PCI DSS. To protect the network traffic between different layers, you need to implement inspection-based protection. Which two services or configurations should you use to achieve this goal? (Select TWO)",
@@ -2109,7 +2109,7 @@
     },
     {
       "question_id": "b07e64c3-7d0f-4618-8b5c-d80dd0a53d91",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "A multinational company with a global customer base is deploying its new application across multiple AWS Regions to meet data residency requirements. The security team wants to ensure that network traffic between different Availability Zones (AZs) within the same Region is inspected for compliance and threat detection. Which of the following should they implement to achieve this goal while adhering to best practices in the Well-Architected Framework?",
@@ -2135,7 +2135,7 @@
     },
     {
       "question_id": "647042d8-24e6-4007-9dfc-a96d80fbb632",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization has recently adopted AWS IAM Identity Center for managing workforce user identities. An employee named John has just been promoted to a new role that requires access to sensitive data in multiple applications. Which of the following actions should be taken to ensure John's access is managed according to best practices?",
@@ -2161,7 +2161,7 @@
     },
     {
       "question_id": "46e06c85-6907-4420-b347-09243fb83e69",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization is undergoing a restructuring, with employees changing roles frequently. You need to ensure that their access privileges are updated in real-time across multiple AWS services without manual intervention. Which approach would best align with the principles of least privilege and automated identity lifecycle management as described in the AWS Well-Architected Framework?",
@@ -2187,7 +2187,7 @@
     },
     {
       "question_id": "870db0c8-e804-4d31-a82f-ee9ef4cd1178",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "Your company is developing a new financial application that will store sensitive user data, including credit card numbers and personal identification information. To ensure the security of this data, you need to implement appropriate encryption methods and tokenization techniques as part of your data protection strategy. The application must support strong key management practices, secure storage of sensitive data at rest, and proper handling of data in transit.",
@@ -2218,8 +2218,8 @@
     },
     {
       "question_id": "e4e1fe0e-b2cd-4dc1-9e5f-97e47b1572ed",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "A company wants to monitor network traffic for security incidents in their VPC. They have enabled VPC Flow Logs to capture data, but are concerned about the volume of logs generated and want a solution that can also provide real-time threat detection. Which combination of services should they use?",
       "options": [
@@ -2245,7 +2245,7 @@
     },
     {
       "question_id": "752ec9d0-4849-4e0d-8615-f6c18536271e",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "An organization needs to protect sensitive financial data stored in Amazon S3. The data must be encrypted both at rest and in transit, and the company wants to minimize manual handling of the data as much as possible. Which approach should they take?",
@@ -2271,7 +2271,7 @@
     },
     {
       "question_id": "5976a094-71c2-43a4-a42b-e25213607f52",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "multiple",
       "question_text": "Your organization is undergoing a restructuring, leading to changes in employee roles. You need to ensure that access privileges are updated promptly without manual intervention. Which two AWS services or configurations should you implement? (Select TWO)",
@@ -2301,8 +2301,8 @@
     },
     {
       "question_id": "3762ed70-babf-4ec7-9a2c-641cab4ceb03",
-      "cert_code": "SCS-C02",
-      "domain": "Security Logging and Monitoring",
+      "cert_code": "SCS-C03",
+      "domain": "Detection",
       "question_type": "single",
       "question_text": "An organization is designing a security monitoring solution for its VPC. They want to capture network traffic data from all subnets and have the ability to enable detailed packet capture when needed. Which combination of AWS services should they use to meet these requirements?",
       "options": [
@@ -2328,8 +2328,8 @@
     },
     {
       "question_id": "0ddca1a1-504c-4e25-af33-9b22dc87328b",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company is experiencing frequent security alerts that require immediate attention. You want to minimize the attacker dwell time by improving your incident response process. Which of the following actions would best help you achieve this goal?",
       "options": [
@@ -2356,7 +2356,7 @@
     },
     {
       "question_id": "d595b3eb-3fdc-4e1b-acdb-6e59f311278a",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "multiple",
       "question_text": "You are designing a multi-region architecture for an e-commerce platform that requires high availability and compliance with regional data residency laws. Which two options should you implement to ensure both security and regulatory requirements are met while minimizing operational overhead? (Select TWO)",
@@ -2385,7 +2385,7 @@
     },
     {
       "question_id": "34949797-b404-407b-b81a-0aa7be8d718c",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization is transitioning from a local Active Directory (AD) to AWS Single Sign-On (SSO). You need to ensure that when an employee's role changes, their access privileges are automatically updated in all relevant applications. Which of the following approaches best aligns with AWS Well-Architected Framework recommendations for managing workforce user identities and permissions?",
@@ -2411,7 +2411,7 @@
     },
     {
       "question_id": "81fc403e-ded9-4d3d-bef7-cbccaad79900",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "Your company is transitioning its on-premises infrastructure to AWS. They want to ensure that their network traffic between different Availability Zones (AZs) within the same Region is inspected and authorized based on explicit rules, threat intelligence, and deviations from baseline behaviors. Which of the following approaches should they implement to achieve this goal?",
@@ -2437,7 +2437,7 @@
     },
     {
       "question_id": "8de841c3-cb97-4fe9-92ed-0a1a7c3414db",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "single",
       "question_text": "A financial services company is designing a new application that will handle sensitive customer data, including credit card numbers and personal identification information. The team wants to ensure the data remains confidential and tamper-proof while in storage and during transmission. Which of the following approaches should they prioritize for protecting this data according to AWS best practices?",
@@ -2465,7 +2465,7 @@
     },
     {
       "question_id": "fccadd75-2acc-46df-ac0e-f3de06b47450",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Data Protection",
       "question_type": "multiple",
       "question_text": "An organization is implementing data protection strategies for its sensitive financial and personal data. The goal is to ensure that the data remains protected while minimizing operational overhead. Which two of the following actions should the organization take? (Select TWO)",
@@ -2494,8 +2494,8 @@
     },
     {
       "question_id": "5d37e1cc-23b5-4a96-a503-48fe97f79c92",
-      "cert_code": "SCS-C02",
-      "domain": "Threat Detection and Incident Response",
+      "cert_code": "SCS-C03",
+      "domain": "Incident Response",
       "question_type": "single",
       "question_text": "Your company has recently experienced a security breach, and you are tasked with improving the incident response process. To reduce attacker dwell time, you need to enhance your alerting mechanisms. Which of the following approaches would be most effective in minimizing the impact and scope of potential threats?",
       "options": [
@@ -2520,7 +2520,7 @@
     },
     {
       "question_id": "4f8830c8-232e-4fd7-a707-72cf208d7366",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Identity and Access Management",
       "question_type": "single",
       "question_text": "Your organization is undergoing a restructuring, and several employees are changing roles. You need to ensure that their access privileges are updated accordingly without manually managing changes in multiple applications. Which AWS service should you use to manage this scenario effectively?",
@@ -2546,7 +2546,7 @@
     },
     {
       "question_id": "f05ed8f0-06bb-4f93-a3ce-590fc3b1b71e",
-      "cert_code": "SCS-C02",
+      "cert_code": "SCS-C03",
       "domain": "Infrastructure Security",
       "question_type": "single",
       "question_text": "An organization is planning to deploy a web application in multiple AWS Regions for high availability and data residency. They want to ensure that traffic between the different Regions is inspected for security purposes, especially as it moves closer to sensitive internal systems. Which approach should they take to meet their requirements while maintaining a robust defense-in-depth strategy?",

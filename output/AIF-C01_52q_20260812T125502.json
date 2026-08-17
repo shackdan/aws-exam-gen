@@ -394,7 +394,7 @@
     {
       "question_id": "d99d1604-a125-4223-910a-e2f23f3cc4c2",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to implement a generative AI model for content creation. The team wants to ensure the model can be updated frequently without downtime and with minimal operational overhead. Which approach should they adopt?",
       "options": [
@@ -501,7 +501,7 @@
     {
       "question_id": "f7c57a7c-74ba-41a3-a44e-231da8ebb964",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI model for content creation. They want to ensure the model is both cost-effective and performs well under varying workloads. Which two approaches should they consider? (Select TWO)",
       "options": [
@@ -618,7 +618,7 @@
     {
       "question_id": "83454990-a692-4d3e-b7a2-be1c4c81bcbc",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI model for content creation. The team needs to ensure the solution is cost-effective, secure, and scalable while also prioritizing ease of use. (Select THREE)",
       "options": [
@@ -957,7 +957,7 @@
     {
       "question_id": "bbcecb87-e6ed-4afc-a5fd-49f59379cf1e",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to adopt generative AI for content creation. They want to ensure the solution is cost-effective, scalable, and secure while minimizing operational overhead. Which three strategies should they employ? (Select THREE)",
       "options": [
@@ -988,7 +988,7 @@
     {
       "question_id": "d35e5060-2106-441c-a87d-1e94cd44e0de",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to deploy a generative AI model for content creation. The primary goal is to ensure the model can be quickly and iteratively developed, while maintaining data privacy and security. Which AWS service should the organization prioritize to support this requirement?",
       "options": [
@@ -1017,7 +1017,7 @@
     {
       "question_id": "c8c29400-41f7-4aab-9b63-0582143fc225",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is looking to implement a generative AI model for content creation. You need to ensure the solution is scalable, secure, and cost-effective while maintaining high performance. Which three services or configurations should you consider implementing? (Select THREE)",
       "options": [
@@ -1101,7 +1101,7 @@
     {
       "question_id": "cef5bc66-b0cf-4bf8-ab3a-9b2af3002980",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to deploy a generative AI model for content creation. The team wants to ensure that the model can be iteratively improved and integrated into their existing software development lifecycle (SDLC). Which AWS service should they use to facilitate this process?",
       "options": [
@@ -1219,7 +1219,7 @@
     {
       "question_id": "6b0f9fc1-f0be-40f0-9972-9b9d06b4c8d4",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to adopt generative AI to improve content creation for marketing campaigns. As a first step, you need to establish a governance framework that ensures compliance with data privacy laws and ethical standards. Which AWS service should be integrated into your foundational capabilities to support this initiative?",
       "options": [
@@ -1442,7 +1442,7 @@
     {
       "question_id": "9f7c96e8-a009-4e33-8379-2c367583109e",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to deploy a generative AI model for content creation. They want to ensure the model can be easily updated and integrated into their existing application without significant downtime. Which approach should they take to achieve this goal?",
       "options": [

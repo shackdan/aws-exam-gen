@@ -496,7 +496,7 @@
     {
       "question_id": "d72a9753-32f6-4140-9997-6e9ff194d832",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to implement a generative AI model that will be used for content creation. The CIO wants to ensure the model can handle high traffic during peak hours while keeping costs as low as possible. Which approach should they take?",
       "options": [
@@ -522,7 +522,7 @@
     {
       "question_id": "444c4b85-6860-4ae7-a140-aed1adfbbe14",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your organization is considering implementing a generative AI solution to improve customer service. The CTO wants to ensure the platform supports both rapid development and robust governance, while the CHRO emphasizes the importance of talent management and culture. Which two approaches should be prioritized in your initial strategy? (Select TWO)",
       "options": [
@@ -778,7 +778,7 @@
     {
       "question_id": "ff6663e3-fb05-496f-9f11-d6b9e51381f4",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to deploy a generative AI model that will generate customer support responses. The CEO wants the model to be cost-effective while ensuring high-quality output and minimal latency. Which approach should you recommend?",
       "options": [
@@ -832,7 +832,7 @@
     {
       "question_id": "8235bb70-308b-43e7-8eae-0b65e40c8fe1",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is developing a generative AI model to enhance its customer service chatbot. The team aims to balance cost and performance while ensuring the model can handle high traffic during peak hours. Which three strategies should they prioritize? (Select THREE)",
       "options": [
@@ -1258,7 +1258,7 @@
     {
       "question_id": "49492b3e-6b88-4bef-84a8-89ad68f39d5e",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is looking to implement a generative AI model that will be used for content creation. The CEO wants the project to align with the company's data governance policies and ensure responsible use of AI. Which AWS service should the architect recommend to best support this requirement?",
       "options": [
@@ -1284,7 +1284,7 @@
     {
       "question_id": "97082173-e2ec-415a-9f4d-88f0f5ab40b5",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to implement a generative AI model that will generate customer support tickets based on user queries. The CTO wants to ensure the platform can handle high traffic during peak hours while keeping costs low and providing real-time responses for customer support tickets. Which approach should they take?",
       "options": [
@@ -1311,7 +1311,7 @@
     {
       "question_id": "4e253ffb-be49-41a0-aec4-9ede4cfc37fa",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization wants to implement a generative AI solution that balances cost and performance while ensuring data security. Which two strategies should they prioritize? (Select TWO)",
       "options": [

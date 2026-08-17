@@ -10,7 +10,7 @@
     {
       "question_id": "8f2589cb-7188-410e-8cda-5c7ac89983a7",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is considering using generative AI to create custom content for marketing. They want to ensure that the process is efficient and scalable, with a focus on maintaining high-quality output while minimizing costs. Which approach should they take?",
       "options": [
@@ -157,7 +157,7 @@
     {
       "question_id": "1c140df8-b323-4380-af63-639782d36a1a",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for content creation. The primary goal is to ensure the model can generate high-quality, relevant text while maintaining control over potential biases and ensuring compliance with internal policies. Which approach should you prioritize to achieve these objectives?",
       "options": [
@@ -184,7 +184,7 @@
     {
       "question_id": "e34a536f-2a40-4a52-8b18-6a62175348c0",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is considering adopting generative AI to improve its product design process. The team wants to ensure that the solution is scalable, cost-effective, and allows for human oversight in critical stages. Which two approaches should they prioritize? (Select TWO)",
       "options": [
@@ -242,7 +242,7 @@
     {
       "question_id": "32318072-7af9-48a6-b8cf-d7d8e453ba5b",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to implement a generative AI model for content creation. To ensure the model's robustness and alignment with business objectives, you need to consider multiple aspects of the AWS Cloud Adoption Framework for Artificial Intelligence (AWS CAF-AI). Which THREE capabilities should be prioritized? (Select THREE)",
       "options": [
@@ -353,7 +353,7 @@
     {
       "question_id": "3e20e0e2-49f1-4777-b285-854d0fef81bb",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for content creation. The primary goal is to streamline the development process and ensure that the model can be easily integrated into existing workflows, including data labeling, training, deployment, and monitoring. Which approach would best align with the AWS Cloud Adoption Framework for Artificial Intelligence (AWS CAF-AI) and enable a modular design for the AI value chain?",
       "options": [
@@ -661,7 +661,7 @@
     {
       "question_id": "033af714-eb6f-41b7-817c-50be095ba9e4",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to implement a generative AI model for content creation. You need to ensure the solution is scalable, cost-effective, and minimizes bias. Which two AWS services should you consider implementing? (Select TWO)",
       "options": [
@@ -998,7 +998,7 @@
     {
       "question_id": "530d8bde-2e24-4be1-b203-08c77eb35982",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for text generation. The goal is to streamline the development process and ensure that the model can be easily integrated into their existing software development lifecycle (SDLC). You need to choose an approach that allows for quick iterations, modular design, and easy scalability.",
       "options": [
@@ -1106,7 +1106,7 @@
     {
       "question_id": "bf65c78a-e27c-4924-9c46-da0950bd83e8",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to implement a generative AI model for content creation. They want to ensure the model can be easily updated and scaled independently while maintaining performance. Which approach should they take?",
       "options": [
@@ -1340,7 +1340,7 @@
     {
       "question_id": "5b4fed51-acdc-489a-8214-3cfacef30ed6",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is planning to implement a generative AI solution for content creation. They want to ensure the solution can be easily scaled and updated without significant downtime, while also maintaining high data privacy standards. Which approach should they adopt based on AWS Cloud Adoption Framework for Artificial Intelligence (AWS CAF-AI)?",
       "options": [
@@ -1507,7 +1507,7 @@
     {
       "question_id": "8254d07a-c691-41b6-b82e-a7c626ac6dea",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI solution for content creation. They want to ensure the solution is scalable, cost-effective, and aligns with their existing culture. Which three strategies should they adopt? (Select THREE)",
       "options": [

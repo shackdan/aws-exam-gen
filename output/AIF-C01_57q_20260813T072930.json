@@ -149,7 +149,7 @@
     {
       "question_id": "488a7a8e-a33b-40b7-8f1b-4e64608dfcc7",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is deploying a generative AI model to generate customer support responses. They want to ensure the model's outputs are secure, compliant, and can be audited for accuracy. Which two strategies should they implement according to AWS best practices? (Select TWO)",
       "options": [
@@ -207,7 +207,7 @@
     {
       "question_id": "baf574d9-4459-4b69-a4e8-686e2571384d",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is developing a generative AI application to generate customer service chat responses. They want to ensure the security and compliance of their model while maintaining ease of use for developers. Which approach best balances these requirements?",
       "options": [
@@ -375,7 +375,7 @@
     {
       "question_id": "364f2dd3-5ce5-4561-9be6-9c9ac2e2eabb",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI application to assist employees with document summarization. To ensure the security and compliance of this application, you need to implement robust access controls and monitoring capabilities. Which AWS service would be most appropriate for establishing comprehensive audit logging and monitoring?",
       "options": [
@@ -483,7 +483,7 @@
     {
       "question_id": "4fd5b50e-d64e-4c50-b200-b5399410174d",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to deploy a generative AI model for customer service chatbots. To ensure the security and robustness of this deployment, which three measures should be prioritized according to AWS best practices? (Select THREE)",
       "options": [
@@ -1238,7 +1238,7 @@
     {
       "question_id": "026f764b-2f5a-47af-b8cb-1abf69ec5585",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your organization is developing a generative AI application to generate customer support responses. The model contains sensitive data and must not be exposed to unauthorized users. How should you ensure secure access to the model while allowing authorized users to interact with it through an API?",
       "options": [
@@ -1576,7 +1576,7 @@
     {
       "question_id": "517df61e-a5c7-4d58-a7ec-da3b6bae92d7",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to deploy a generative AI model for customer support. They need to ensure the model's security, compliance, and rapid development while minimizing costs. Which two approaches should they prioritize? (Select TWO)",
       "options": [

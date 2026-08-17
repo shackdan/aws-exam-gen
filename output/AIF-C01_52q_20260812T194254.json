@@ -10,7 +10,7 @@
     {
       "question_id": "724e9875-84fd-4a00-b2bc-d784cccfd694",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Single answer: An organization is planning to implement a generative AI model that will generate text for customer support responses. They want the model to be highly customizable and able to adapt to new data without extensive retraining. Which AWS service should they use?",
       "options": [
@@ -210,7 +210,7 @@
     {
       "question_id": "e4b14c82-c0e1-4cb0-9af5-fff3d1f64748",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is considering implementing a generative AI model for content creation. The goal is to balance cost and performance while ensuring the solution can handle high traffic during peak hours. Which three options should be selected? (Select THREE)",
       "options": [
@@ -241,7 +241,7 @@
     {
       "question_id": "a7dde6e9-c646-4cdd-aa80-dcc3eb2cc9f5",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is looking to implement a generative AI model that can produce text similar to human-written content for customer support chatbots. They want the solution to be scalable and cost-effective, with minimal manual intervention required during deployment. Which AWS service should they choose?",
       "options": [
@@ -374,7 +374,7 @@
     {
       "question_id": "17402955-932b-409a-9b93-a3210b596c10",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI model for content creation. They want to ensure the model can handle large volumes of data and provide high-quality outputs while keeping costs under control. Which three services or configurations should they consider implementing? (Select THREE)",
       "options": [
@@ -519,7 +519,7 @@
     {
       "question_id": "4be64b86-c9d9-4f02-b057-085d4306c207",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is looking to implement a generative AI model that can generate text for customer service responses. The team wants to ensure the solution scales well and can be easily updated with new training data without significant downtime. Which approach should they take?",
       "options": [
@@ -576,7 +576,7 @@
     {
       "question_id": "162bda97-bb27-4b19-81d2-592171b84b9b",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "An organization is developing a generative AI model to create customer service chatbot responses. They want the chatbot to generate human-like text based on user inputs and historical data. Which AWS service should they use to achieve this goal?",
       "options": [
@@ -662,7 +662,7 @@
     {
       "question_id": "36538a9e-0966-4086-ace6-2e24b6fec141",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to deploy a generative AI model for content creation. The team wants to ensure the solution is scalable, cost-effective, and can handle high-frequency requests without compromising performance. Which three services or configurations should they consider implementing? (Select THREE)",
       "options": [
@@ -943,7 +943,7 @@
     {
       "question_id": "746af417-0586-4f2c-a5a2-8fab1b80be7e",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to implement a generative AI model for content creation. The goal is to balance between the cost and performance while ensuring that the solution can scale as needed. (Select TWO)",
       "options": [
@@ -1138,7 +1138,7 @@
     {
       "question_id": "4d81b248-0150-45ea-a3ad-fe859ca82134",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is looking to implement a generative AI model for content creation. The team wants to ensure the solution is scalable, cost-effective, and easy to manage while maintaining high quality and performance. Which two services should they consider combining? (Select TWO)",
       "options": [
@@ -1223,7 +1223,7 @@
     {
       "question_id": "0c0b6a5a-1a83-4c20-8fc9-24eae41ac623",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "An organization is planning to deploy a generative AI model for content creation, requiring real-time processing and frequent requests. The team wants to ensure the solution is scalable, cost-effective, and easy to manage while providing high-quality output. Which three approaches should they consider? (Select THREE)",
       "options": [

@@ -65,7 +65,7 @@
     {
       "question_id": "34d967c7-3051-446d-9a5a-6bca828dd64a",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An AWS user is preparing a dataset for machine learning and needs to choose an appropriate Amazon EC2 instance type that supports large-scale image processing tasks with high network bandwidth. The user also wants the instance to be cost-effective while maintaining good performance. Which EC2 instance type should they select?",
       "options": [
@@ -198,7 +198,7 @@
     {
       "question_id": "0bc76597-5b81-423f-b4ec-7dc86c71698d",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing a large dataset for training and needs to ensure the data is stored efficiently. The dataset is around 5 TB in size, with frequent access patterns but also occasional periods of less activity. Which EBS volume type should be used to optimize cost while maintaining performance?",
       "options": [
@@ -251,7 +251,7 @@
     {
       "question_id": "3b4d4e33-16fa-4daf-9f2b-9a131cdf8b71",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "An organization is preparing data for a machine learning model and needs to balance cost, performance, and data access speed. They are considering using Amazon S3 for storing the dataset, AWS Glue for ETL jobs, and Amazon Redshift for analytics. Which two services should they select for optimal data preparation? (Select TWO)",
       "options": [
@@ -306,7 +306,7 @@
     {
       "question_id": "513fd416-6511-46cf-9288-31dbd298a094",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "Your company is preparing to load a large dataset into Amazon S3 for machine learning model training. The data includes both structured and unstructured files, with varying sizes ranging from small text files to large video clips. To ensure efficient data processing and cost-effectiveness, which S3 storage class should you choose?",
       "options": [
@@ -332,7 +332,7 @@
     {
       "question_id": "7bb0c147-cc38-401d-8bcb-1393985efe22",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "An organization needs to preprocess and clean a large dataset before feeding it into a machine learning model. The dataset is stored in an S3 bucket and the preprocessing involves complex data transformations, including filtering, aggregation, and feature engineering. Which two services should be used for efficient data preparation? (Select TWO)",
       "options": [
@@ -388,7 +388,7 @@
     {
       "question_id": "0dea94ca-b609-4591-82ed-fd55c1f3cd24",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing a dataset for training on an Amazon EC2 instance. The dataset is large and the process requires high network bandwidth to transfer data between instances. Which type of Amazon EBS volume should be used to maximize the performance during the data preparation phase?",
       "options": [
@@ -440,7 +440,7 @@
     {
       "question_id": "a18911db-9021-477b-8d53-faf5420a737a",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "You are preparing data for a machine learning model and need to balance cost with performance. You have chosen to use Amazon S3 for storing raw data, AWS Glue for ETL jobs, and Amazon EMR for processing large datasets. Which two services should you consider integrating to optimize your workflow while keeping costs in check? (Select TWO)",
       "options": [
@@ -547,7 +547,7 @@
     {
       "question_id": "59e2a03c-100a-429f-94fd-a10208e33402",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "You are preparing a dataset for machine learning and need to balance storage costs with performance. You have decided to use Amazon EBS General Purpose SSD (gp2) volumes for their cost-effectiveness while ensuring sufficient IOPS for your workload. Which two of the following actions should you take to optimize the performance of gp2 volumes? (Select TWO)",
       "options": [
@@ -630,7 +630,7 @@
     {
       "question_id": "a6676b29-bb87-4db6-8a4e-974c525465ae",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing to clean and preprocess a large dataset using Python on an Amazon EC2 instance. The data size is around 50GB, and the processing time should be as fast as possible while keeping costs low. Which type of Amazon EBS volume should they choose for their EC2 instance?",
       "options": [
@@ -714,7 +714,7 @@
     {
       "question_id": "0fa4aacf-f8f2-4817-b979-292b1aaea304",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing to clean and transform a large dataset before training a machine learning model. The data includes structured, semi-structured, and unstructured formats. Which AWS service should be used for efficient and scalable data preparation?",
       "options": [
@@ -1229,7 +1229,7 @@
     {
       "question_id": "a9bbac48-0240-4bc8-869b-ade0bc8ce7d5",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing a dataset by cleaning and transforming it before feeding it into a machine learning model. The dataset contains large, unstructured text files that need to be processed in parallel on multiple EC2 instances. Which instance type should the engineer choose for optimal performance and cost-effectiveness?",
       "options": [
@@ -1310,7 +1310,7 @@
     {
       "question_id": "84907f1b-2c04-4a6b-b3c8-9601d3e38fc5",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An AWS customer is preparing a dataset for machine learning and wants to ensure the data is stored efficiently. The dataset consists of large, cold datasets that are infrequently accessed but require occasional high throughput when processing. Which EBS volume type should they choose to balance cost and performance?",
       "options": [
@@ -1336,7 +1336,7 @@
     {
       "question_id": "6a03018c-483b-4c99-9bc6-1bc48b19de90",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing data for a machine learning model and needs to handle large volumes of unstructured text data. They are considering using Amazon S3 for storage and want to ensure they can efficiently process this data in batches. Which EBS volume type should they choose to optimize their data processing workflow?",
       "options": [
@@ -1362,7 +1362,7 @@
     {
       "question_id": "252dc480-04c2-4fd0-97c0-b2498ab0c5d3",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "You are preparing a large dataset for machine learning and need to ensure that the data is efficiently processed while minimizing costs. Which two services should you consider implementing? (Select TWO)",
       "options": [
@@ -1472,7 +1472,7 @@
     {
       "question_id": "2e00b487-bbe2-403a-ae78-e0ea54166222",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "You are preparing data for a machine learning model that requires high IOPS and frequent read/write operations. You need to choose the most suitable EBS volume type and instance types to support this workload efficiently. (Select TWO)",
       "options": [
@@ -1527,7 +1527,7 @@
     {
       "question_id": "5b229bb2-54c2-4409-9441-09233399bb3b",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing data for a machine learning model and needs to ensure the data is stored in a highly available, cost-effective manner. The dataset is large but infrequently accessed. Which EBS volume type should be used?",
       "options": [
@@ -1634,7 +1634,7 @@
     {
       "question_id": "cb732c27-f19a-4d1f-b7f7-55bec20a8911",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing a large dataset for machine learning and needs to ensure the data is clean, consistent, and ready for model training. Which AWS service should be used for efficient data transformation tasks such as filtering, aggregating, and joining datasets?",
       "options": [
@@ -1690,7 +1690,7 @@
     {
       "question_id": "56057c5e-f2a6-4a67-956b-91107f7301b9",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "Single answer: Your company is preparing to perform data preprocessing on a large dataset using Amazon S3 and AWS Glue. The dataset size exceeds the default storage capacity of AWS Glue's built-in connectors, necessitating an external storage solution. Which service should you use for efficient and scalable data processing while maintaining cost-effectiveness?",
       "options": [
@@ -1716,7 +1716,7 @@
     {
       "question_id": "296e62b0-4d5f-4d99-86cf-2936efdbc33f",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An ML engineer is preparing a dataset for training a machine learning model. The data is in an S3 bucket and needs to be processed using AWS Glue ETL jobs before it can be used. Which of the following actions should the engineer take to ensure efficient data processing while minimizing costs?",
       "options": [
@@ -1849,7 +1849,7 @@
     {
       "question_id": "b3d17b3b-2c37-48ec-ad47-338e204ffdd1",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An AWS customer is preparing a dataset for machine learning and needs to ensure the data is stored efficiently. The data volume is large, with infrequent access patterns but occasional full-volume scans required for analysis. Which EBS volume type should be used to optimize both cost and performance for this use case?",
       "options": [
@@ -1901,7 +1901,7 @@
     {
       "question_id": "e775f10c-8bfb-4147-ab33-c70a7a208aa4",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "multiple",
       "question_text": "You are preparing a dataset for machine learning and need to balance cost, performance, and data access speed. You have decided to use Amazon S3 for storage due to its scalability and durability but want to ensure efficient data processing using AWS services. Which three of the following options would best help you achieve your goals? (Select THREE)",
       "options": [
@@ -2039,7 +2039,7 @@
     {
       "question_id": "7cde736a-ecd1-43fc-83f6-de6ffcad6682",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization needs to prepare large datasets for machine learning models. The data is stored in an S3 bucket and the team wants to use AWS services that can efficiently process this data with minimal manual intervention. Which service should they choose for automating the data preparation tasks, considering both cost and performance?",
       "options": [
@@ -2065,7 +2065,7 @@
     {
       "question_id": "02d8d04b-933b-4f70-a5e1-a6f1133d0a2e",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing a large dataset for machine learning and wants to ensure the data is stored efficiently. The dataset consists of 5 TB of unstructured text files, which are infrequently accessed but need to be quickly scanned when required. Which Amazon EBS volume type should they choose?",
       "options": [
@@ -2308,7 +2308,7 @@
     {
       "question_id": "478f6276-318b-4906-8715-06ede88b6123",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An engineer is preparing a large dataset for machine learning and needs to ensure the data can be processed efficiently. The dataset is over 2 TB in size and will be used for training models. Which Amazon EBS volume type should they choose to optimize both cost and performance?",
       "options": [
@@ -2363,7 +2363,7 @@
     {
       "question_id": "8c2fbce6-01ab-4e40-902a-ad137987014b",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing to perform image recognition tasks on a large dataset that requires significant computational resources. The team has decided to use Amazon EC2 instances but is unsure about the best instance type for this workload, considering both cost and performance. Which of the following EC2 instance types would be most suitable for their needs?",
       "options": [
@@ -2469,7 +2469,7 @@
     {
       "question_id": "1f502177-539e-4e1d-b85f-207b3055485d",
       "cert_code": "MLA-C01",
-      "domain": "Data Preparation for Machine Learning",
+      "domain": "Data Preparation for Machine Learning (ML)",
       "question_type": "single",
       "question_text": "An organization is preparing a large dataset (5 TB) for machine learning and needs to ensure the data can be accessed quickly during the ETL process, with up to 20 concurrent processes. Which Amazon EC2 instance type would best support this requirement?",
       "options": [

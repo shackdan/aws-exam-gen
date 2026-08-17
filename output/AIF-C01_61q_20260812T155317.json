@@ -10,7 +10,7 @@
     {
       "question_id": "b4a6c4cf-7a0f-4f8a-83ae-a5e0ff48d34c",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to use generative AI for text generation in a customer service chatbot. You need to ensure cost-effectiveness and maintain high model accuracy while adapting the pre-trained model to your specific needs. Which two options should you consider? (Select TWO)",
       "options": [
@@ -587,7 +587,7 @@
     {
       "question_id": "29023508-1489-496e-8a1b-2f3f5bf304de",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is considering implementing a generative AI solution to improve customer service by generating personalized responses for common inquiries. You are evaluating cost-effective ways to deploy this model. Which approach should you choose?",
       "options": [
@@ -640,7 +640,7 @@
     {
       "question_id": "c51d1dbe-afa3-43d5-beed-70f8046af9a0",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to deploy a generative AI model for content creation. The primary goal is to reduce costs while ensuring the model can handle high-volume requests and provide efficient inference at scale. Which two strategies should you prioritize? (Select TWO)",
       "options": [
@@ -805,7 +805,7 @@
     {
       "question_id": "a7923c51-75b8-4f6e-9cc8-d32d5fed5ef8",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to implement a generative AI model for customer support. You have around 50GB of training data and expect the model complexity to be moderate, with a need for high-quality responses. Which option best meets these criteria while considering cost-effectiveness?",
       "options": [
@@ -888,7 +888,7 @@
     {
       "question_id": "bd85287f-b3e5-43d1-827d-8f4f610298c5",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to deploy a generative AI model for text summarization. The goal is to reduce the time spent on manually reviewing large documents while ensuring high-quality summaries are generated. Considering cost and performance trade-offs, which two services should you leverage? (Select TWO)",
       "options": [
@@ -1054,7 +1054,7 @@
     {
       "question_id": "bc3c907a-0cc9-411e-9214-dd7039a0c1f3",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is planning to use generative AI for a new product recommendation engine. You need to ensure cost-effectiveness and scalability while maintaining high model performance. Which two strategies should you adopt? (Select TWO)",
       "options": [
@@ -1335,7 +1335,7 @@
     {
       "question_id": "c36b3510-3a35-407a-99b4-a826327b6fec",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "multiple",
       "question_text": "Your company is transitioning its business intelligence (BI) practice to an AI-enabled one, leveraging generative AI capabilities. Which two services or actions would be most beneficial for this transition? (Select TWO)",
       "options": [
@@ -1364,7 +1364,7 @@
     {
       "question_id": "57b31798-0e69-4503-af0a-f043ab4ce5e9",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is developing a generative AI application to automatically generate product descriptions for e-commerce listings. The goal is to reduce the workload on content creators and improve product discoverability. Given that you expect to process large volumes of data and train complex models, which AWS service would be most appropriate for implementing this solution?",
       "options": [
@@ -1502,7 +1502,7 @@
     {
       "question_id": "287bd3b4-89c9-43f6-8fe4-ed8c257d3090",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to use generative AI to create personalized product recommendations for its e-commerce platform. You are considering using Amazon Bedrock with a pre-trained foundation model for this task. Which approach should you take to ensure cost-effectiveness while maintaining high-quality recommendations?",
       "options": [
@@ -1615,7 +1615,7 @@
     {
       "question_id": "8fd95522-3158-47e5-b563-e8d381388816",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to develop a chatbot for customer service that can generate personalized responses based on user interactions and historical data. The goal is to minimize costs while ensuring the model performs well. Which approach should you take to achieve both cost-effectiveness and performance?",
       "options": [
@@ -1672,7 +1672,7 @@
     {
       "question_id": "a618c95e-5141-431b-8cb7-b6a4bb6e17f8",
       "cert_code": "AIF-C01",
-      "domain": "Fundamentals of Generative AI",
+      "domain": "Fundamentals of GenAI",
       "question_type": "single",
       "question_text": "Your company is planning to use generative AI to improve its customer service by generating personalized responses based on user interactions. You need to choose the most cost-effective and scalable solution for deploying this model in production.",
       "options": [
