@@ -946,7 +946,8 @@ def generate_batch(
     Generate a batch of ExamQuestion objects according to the request.
 
     Enforces:
-      - Domain weighting from registry.json
+      - Domain weighting from data/exam-domains.txt (the exam guide's
+        Content Domain breakdown; see utils.get_cert_metadata)
       - 75 % single / 25 % multiple split via _select_question_type()
       - Sequential execution (GTX 1070 single-thread constraint)
       - Configurable domain filtering via request.domain_filter
@@ -962,7 +963,8 @@ def generate_batch(
     embedding_model
         Loaded SentenceTransformer (CPU).
     cert_metadata
-        Certification metadata dict from registry.json.
+        Certification metadata dict from registry.json, with "domains" /
+        "domain_weights" overlaid from data/exam-domains.txt.
     slots
         Number of questions to generate on *this* call. Defaults to
         `request.count`. Used by the top-up loop in
@@ -1357,9 +1359,9 @@ def run_generation_pipeline(
 
     # ── Step 7: Compile content-outline alignment stats ──
     # Compare each domain's share of *approved* questions against its
-    # target weight from registry.json (the exam guide's content outline)
-    # so alignment can be audited from both the console and the export
-    # file, rather than only being inferable by hand.
+    # target weight from data/exam-domains.txt (the exam guide's content
+    # outline) so alignment can be audited from both the console and the
+    # export file, rather than only being inferable by hand.
     domain_weights = cert_metadata["domain_weights"]
     domain_stats: Dict[str, Dict[str, Any]] = {
         domain: {"approved": 0, "rejected": 0, "target_pct": weight * 100}

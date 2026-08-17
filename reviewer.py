@@ -42,6 +42,7 @@ from schemas import (
 from utils import (
     console,
     extract_json_from_text,
+    load_exam_domains,
     logger,
     print_validation_result,
     truncate_text,
@@ -343,6 +344,42 @@ def _check_question_text_length(question_text: str) -> List[CritiqueFlag]:
     return flags
 
 
+def _check_domain_matches_content_outline(
+    cert_code: str,
+    domain: str,
+) -> List[CritiqueFlag]:
+    """
+    Flag questions whose 'domain' is not one of the official "Content
+    Domain" names for this certification, as transcribed from the AWS
+    exam guide into data/exam-domains.txt. This is the same source of
+    truth generator.py uses to pick domains, so a mismatch here means
+    the question has drifted off the exam's content outline.
+    """
+    flags: List[CritiqueFlag] = []
+
+    try:
+        exam_domains = load_exam_domains()
+    except FileNotFoundError as err:
+        log.warning(f"Could not load exam-domains.txt for domain check: {err}")
+        return flags
+
+    valid_domains = exam_domains.get(cert_code, {}).get("domains", [])
+    if valid_domains and domain not in valid_domains:
+        flags.append(CritiqueFlag(
+            field="FORMAT_COMPLIANCE",
+            severity="critical",
+            description=(
+                f"Domain '{domain}' is not one of the official Content "
+                f"Domains for {cert_code} listed in exam-domains.txt: "
+                f"{valid_domains}."
+            ),
+            suggestion=(
+                f"Set domain to one of: {', '.join(valid_domains)}."
+            ),
+        ))
+    return flags
+
+
 def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
     """
     Execute all local (non-LLM) structural checks on a question.
@@ -359,6 +396,11 @@ def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
     )
     flags.extend(_check_explanation_length(question.explanation))
     flags.extend(_check_question_text_length(question.question_text))
+    flags.extend(
+        _check_domain_matches_content_outline(
+            question.cert_code, question.domain
+        )
+    )
 
     if question.question_type == QuestionType.MULTIPLE_SELECTION:
         flags.extend(

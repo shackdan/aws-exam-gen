@@ -61,7 +61,7 @@ class ExamQuestion(BaseModel):
     cert_code: str = Field(
         ...,
         description="AWS certification code, e.g. 'SAA-C03'.",
-        examples=["SAA-C03", "DVA-C02", "SCS-C02"]
+        examples=["SAA-C03", "DVA-C02", "SCS-C03"]
     )
     domain: str = Field(
         ...,

@@ -11,7 +11,7 @@
       ],
       "domain_weights": {
         "Cloud Concepts": 0.24,
-        "Security and Compliance": 0.30,
+        "Security and Compliance": 0.3,
         "Cloud Technology and Services": 0.34,
         "Billing, Pricing, and Support": 0.12
       },
@@ -23,14 +23,14 @@
       "tier": "Foundational",
       "domains": [
         "Fundamentals of AI and ML",
-        "Fundamentals of Generative AI",
+        "Fundamentals of GenAI",
         "Applications of Foundation Models",
         "Guidelines for Responsible AI",
         "Security, Compliance, and Governance for AI Solutions"
       ],
       "domain_weights": {
-        "Fundamentals of AI and ML": 0.20,
-        "Fundamentals of Generative AI": 0.24,
+        "Fundamentals of AI and ML": 0.2,
+        "Fundamentals of GenAI": 0.24,
         "Applications of Foundation Models": 0.28,
         "Guidelines for Responsible AI": 0.14,
         "Security, Compliance, and Governance for AI Solutions": 0.14
@@ -48,10 +48,10 @@
         "Design Cost-Optimized Architectures"
       ],
       "domain_weights": {
-        "Design Secure Architectures": 0.30,
+        "Design Secure Architectures": 0.3,
         "Design Resilient Architectures": 0.26,
         "Design High-Performing Architectures": 0.24,
-        "Design Cost-Optimized Architectures": 0.20
+        "Design Cost-Optimized Architectures": 0.2
       },
       "total_questions": 65,
       "passing_score": 720
@@ -74,24 +74,22 @@
       "total_questions": 65,
       "passing_score": 720
     },
-    "SOA-C02": {
-      "name": "AWS Certified SysOps Administrator Associate",
+    "SOA-C03": {
+      "name": "AWS Certified CloudOps Engineer Associate",
       "tier": "Associate",
       "domains": [
-        "Monitoring, Logging, and Remediation",
+        "Monitoring, Logging, Analysis, Remediation, and Performance Optimization",
         "Reliability and Business Continuity",
         "Deployment, Provisioning, and Automation",
         "Security and Compliance",
-        "Networking and Content Delivery",
-        "Cost and Performance Optimization"
+        "Networking and Content Delivery"
       ],
       "domain_weights": {
-        "Monitoring, Logging, and Remediation": 0.20,
-        "Reliability and Business Continuity": 0.16,
-        "Deployment, Provisioning, and Automation": 0.18,
+        "Monitoring, Logging, Analysis, Remediation, and Performance Optimization": 0.22,
+        "Reliability and Business Continuity": 0.22,
+        "Deployment, Provisioning, and Automation": 0.22,
         "Security and Compliance": 0.16,
-        "Networking and Content Delivery": 0.18,
-        "Cost and Performance Optimization": 0.12
+        "Networking and Content Delivery": 0.18
       },
       "total_questions": 65,
       "passing_score": 720
@@ -118,16 +116,16 @@
       "name": "AWS Certified Machine Learning Engineer Associate",
       "tier": "Associate",
       "domains": [
-        "Data Preparation for Machine Learning",
+        "Data Preparation for Machine Learning (ML)",
         "ML Model Development",
         "Deployment and Orchestration of ML Workflows",
         "ML Solution Monitoring, Maintenance, and Security"
       ],
       "domain_weights": {
-        "Data Preparation for Machine Learning": 0.28,
         "ML Model Development": 0.26,
         "Deployment and Orchestration of ML Workflows": 0.22,
-        "ML Solution Monitoring, Maintenance, and Security": 0.24
+        "ML Solution Monitoring, Maintenance, and Security": 0.24,
+        "Data Preparation for Machine Learning (ML)": 0.28
       },
       "total_questions": 65,
       "passing_score": 720
@@ -145,7 +143,7 @@
         "Design Solutions for Organizational Complexity": 0.26,
         "Design for New Solutions": 0.29,
         "Continuous Improvement for Existing Solutions": 0.25,
-        "Accelerate Workload Migration and Modernization": 0.20
+        "Accelerate Workload Migration and Modernization": 0.2
       },
       "total_questions": 75,
       "passing_score": 750
@@ -172,22 +170,44 @@
       "total_questions": 75,
       "passing_score": 750
     },
-    "SCS-C02": {
+    "AIP-C01": {
+      "name": "AWS Certified Generative AI Developer Professional",
+      "tier": "Professional",
+      "domains": [
+        "Foundation Model Integration, Data Management, and Compliance",
+        "Implementation and Integration",
+        "AI Safety, Security, and Governance",
+        "Operational Efficiency and Optimization for GenAI Applications",
+        "Testing, Validation, and Troubleshooting"
+      ],
+      "domain_weights": {
+        "Foundation Model Integration, Data Management, and Compliance": 0.31,
+        "Implementation and Integration": 0.26,
+        "AI Safety, Security, and Governance": 0.2,
+        "Operational Efficiency and Optimization for GenAI Applications": 0.12,
+        "Testing, Validation, and Troubleshooting": 0.11
+      },
+      "total_questions": 75,
+      "passing_score": 750
+    },
+    "SCS-C03": {
       "name": "AWS Certified Security Specialty",
       "tier": "Specialty",
       "domains": [
-        "Threat Detection and Incident Response",
-        "Security Logging and Monitoring",
+        "Detection",
+        "Incident Response",
         "Infrastructure Security",
         "Identity and Access Management",
-        "Data Protection"
+        "Data Protection",
+        "Security Foundations and Governance"
       ],
       "domain_weights": {
-        "Threat Detection and Incident Response": 0.14,
-        "Security Logging and Monitoring": 0.18,
-        "Infrastructure Security": 0.20,
-        "Identity and Access Management": 0.21,
-        "Data Protection": 0.27
+        "Detection": 0.16,
+        "Incident Response": 0.14,
+        "Infrastructure Security": 0.18,
+        "Identity and Access Management": 0.2,
+        "Data Protection": 0.18,
+        "Security Foundations and Governance": 0.14
       },
       "total_questions": 65,
       "passing_score": 750
@@ -198,13 +218,13 @@
       "domains": [
         "Network Design",
         "Network Implementation",
-        "Network Management and Operations",
+        "Network Management and Operation",
         "Network Security, Compliance, and Governance"
       ],
       "domain_weights": {
-        "Network Design": 0.30,
+        "Network Design": 0.3,
         "Network Implementation": 0.26,
-        "Network Management and Operations": 0.20,
+        "Network Management and Operation": 0.2,
         "Network Security, Compliance, and Governance": 0.24
       },
       "total_questions": 65,

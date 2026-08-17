@@ -21,6 +21,11 @@ DATA_DIR       = BASE_DIR / "data"
 CHROMA_DIR     = BASE_DIR / "chroma_store"
 OUTPUT_DIR     = BASE_DIR / "output"
 REGISTRY_PATH  = BASE_DIR / "registry.json"
+# Canonical per-certification "Content Domain" names and scored-content
+# weightings, transcribed from each exam's official AWS exam guide. This is
+# the single source of truth generator.py / reviewer.py use for domain
+# names and quota weights (see utils.get_cert_metadata).
+EXAM_DOMAINS_PATH = DATA_DIR / "exam-domains.txt"
 
 # Create required directories on import
 for _d in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):

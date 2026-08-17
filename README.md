@@ -69,12 +69,13 @@ Run `python main.py list` to see all certifications known to [registry.json](reg
 | AIF-C01 | AWS Certified AI Practitioner |
 | SAA-C03 | AWS Certified Solutions Architect Associate |
 | DVA-C02 | AWS Certified Developer Associate |
-| SOA-C02 | AWS Certified SysOps Administrator Associate |
+| SOA-C03 | AWS Certified CloudOps Engineer Associate |
 | DEA-C01 | AWS Certified Data Engineer Associate |
 | MLA-C01 | AWS Certified Machine Learning Engineer Associate |
 | SAP-C02 | AWS Certified Solutions Architect Professional |
 | DOP-C02 | AWS Certified DevOps Engineer Professional |
-| SCS-C02 | AWS Certified Security Specialty |
+| AIP-C01 | AWS Certified Generative AI Developer Professional |
+| SCS-C03 | AWS Certified Security Specialty |
 | ANS-C01 | AWS Certified Advanced Networking Specialty |
 
 ## 1. Download source documents
@@ -111,8 +112,8 @@ Ingest **every** certification in the registry:
 
 ```powershell
 $certs = @(
-    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C02",
-    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "SCS-C02", "ANS-C01"
+    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C03",
+    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "AIP-C01", "SCS-C03", "ANS-C01"
 )
 
 foreach ($cert in $certs) {
@@ -123,7 +124,7 @@ foreach ($cert in $certs) {
 **Bash**
 
 ```bash
-certs=(CLF-C02 AIF-C01 SAA-C03 DVA-C02 SOA-C02 DEA-C01 MLA-C01 SAP-C02 DOP-C02 SCS-C02 ANS-C01)
+certs=(CLF-C02 AIF-C01 SAA-C03 DVA-C02 SOA-C03 DEA-C01 MLA-C01 SAP-C02 DOP-C02 AIP-C01 SCS-C03 ANS-C01)
 
 for cert in "${certs[@]}"; do
     python main.py ingest --cert "$cert"
@@ -160,8 +161,8 @@ Generate 500 questions (5 x 100) for **every** certification:
 
 ```powershell
 $certs = @(
-    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C02",
-    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "SCS-C02", "ANS-C01"
+    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C03",
+    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "AIP-C01", "SCS-C03", "ANS-C01"
 )
 
 foreach ($cert in $certs) {
@@ -174,7 +175,7 @@ foreach ($cert in $certs) {
 **Bash**
 
 ```bash
-certs=(CLF-C02 AIF-C01 SAA-C03 DVA-C02 SOA-C02 DEA-C01 MLA-C01 SAP-C02 DOP-C02 SCS-C02 ANS-C01)
+certs=(CLF-C02 AIF-C01 SAA-C03 DVA-C02 SOA-C03 DEA-C01 MLA-C01 SAP-C02 DOP-C02 AIP-C01 SCS-C03 ANS-C01)
 
 for cert in "${certs[@]}"; do
     for i in $(seq 1 5); do

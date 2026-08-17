@@ -508,7 +508,7 @@ def print_domain_alignment_table(domain_stats: Dict[str, Dict[str, Any]]) -> Non
     """
     Render a Rich table comparing each domain's actual share of
     *approved* questions in this run against its target weight from
-    registry.json (the exam guide's content outline percentages).
+    exam-domains.txt (the exam guide's content outline percentages).
 
     domain_stats entries are expected to carry "approved", "target_pct",
     "actual_pct", and "delta_pct" — see generator.run_generation_pipeline.
@@ -605,13 +605,123 @@ def load_registry(registry_path: Path) -> Dict[str, Any]:
         return json.load(fh)
 
 
+# ─────────────────────────────────────────────
+# Content-domain source of truth (data/exam-domains.txt)
+# ─────────────────────────────────────────────
+
+# Matches "AWS Certified Foo (XXX-C01)" or a bare "XXX-C01:" header line.
+_EXAM_DOMAINS_CODE_IN_PARENS_RE = re.compile(
+    r"\(([A-Z]{2,5}-[A-Z0-9]{2,4})\)\s*:?\s*$"
+)
+_EXAM_DOMAINS_BARE_CODE_RE = re.compile(r"^([A-Z]{2,5}-[A-Z0-9]{2,4}):\s*$")
+
+# Matches "Content Domain N: <name> (NN% of scored content)".
+_EXAM_DOMAINS_DOMAIN_LINE_RE = re.compile(
+    r"Content\s+Domain\s+\d+\s*:\s*(?P<name>.+?)\s*"
+    r"\(\s*(?P<pct>[\d.]+)\s*%\s*of scored content\s*\)",
+    re.IGNORECASE,
+)
+
+
+def parse_exam_domains_file(path: Path) -> Dict[str, Dict[str, Any]]:
+    """
+    Parse data/exam-domains.txt into per-certification content-domain data.
+
+    The file is a sequence of blank-line-separated blocks, each starting
+    with a header line naming the certification (either
+    "<Full Name> (<CERT-CODE>)" or a bare "<CERT-CODE>:"), followed by one
+    "Content Domain N: <name> (<pct>% of scored content)" line per domain.
+
+    Returns
+    ───────
+    { cert_code: {"name": Optional[str], "domains": [str, ...],
+                   "domain_weights": {str: float}} }
+    """
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Content-domain source file not found at {path}. "
+            "This file is the source of truth for exam domain names and "
+            "weights used by the generator and reviewer."
+        )
+
+    text = path.read_text(encoding="utf-8")
+    blocks = [b.strip() for b in text.split("\n\n") if b.strip()]
+
+    result: Dict[str, Dict[str, Any]] = {}
+
+    for block in blocks:
+        lines = [ln.strip() for ln in block.splitlines() if ln.strip()]
+        if not lines:
+            continue
+
+        header = lines[0]
+        name: Optional[str] = None
+
+        code_match = _EXAM_DOMAINS_CODE_IN_PARENS_RE.search(header)
+        if code_match:
+            cert_code = code_match.group(1)
+            name = header[: code_match.start()].strip() or None
+        else:
+            bare_match = _EXAM_DOMAINS_BARE_CODE_RE.match(header)
+            if not bare_match:
+                # Not a recognisable certification header — skip this block.
+                continue
+            cert_code = bare_match.group(1)
+
+        domains: List[str] = []
+        domain_weights: Dict[str, float] = {}
+        for line in lines[1:]:
+            m = _EXAM_DOMAINS_DOMAIN_LINE_RE.search(line)
+            if not m:
+                continue
+            domain_name = m.group("name").strip()
+            domains.append(domain_name)
+            domain_weights[domain_name] = round(float(m.group("pct")) / 100, 4)
+
+        if domains:
+            result[cert_code] = {
+                "name": name,
+                "domains": domains,
+                "domain_weights": domain_weights,
+            }
+
+    return result
+
+
+_EXAM_DOMAINS_CACHE: Optional[Dict[str, Dict[str, Any]]] = None
+
+
+def load_exam_domains(path: Optional[Path] = None) -> Dict[str, Dict[str, Any]]:
+    """
+    Load and cache the parsed content-domain data from exam-domains.txt.
+    Pass an explicit path to bypass the module-level cache (e.g. in tests).
+    """
+    global _EXAM_DOMAINS_CACHE
+
+    if path is not None:
+        return parse_exam_domains_file(path)
+
+    if _EXAM_DOMAINS_CACHE is None:
+        from config import EXAM_DOMAINS_PATH
+        _EXAM_DOMAINS_CACHE = parse_exam_domains_file(EXAM_DOMAINS_PATH)
+    return _EXAM_DOMAINS_CACHE
+
+
 def get_cert_metadata(
     cert_code: str,
     registry: Dict[str, Any],
 ) -> Dict[str, Any]:
     """
     Retrieve metadata for a specific certification code.
-    Raises ValueError if the cert_code is not found in the registry.
+
+    "domains" and "domain_weights" are always overlaid from
+    data/exam-domains.txt (the canonical per-exam "Content Domain"
+    breakdown from the official AWS exam guide) rather than read from
+    registry.json, so the generator and reviewer stay aligned with the
+    exam guide's content outline even if registry.json drifts.
+
+    Raises ValueError if the cert_code is not found in the registry, or if
+    it has no corresponding content-domain entry in exam-domains.txt.
     """
     certs = registry.get("certifications", {})
     if cert_code not in certs:
@@ -620,7 +730,19 @@ def get_cert_metadata(
             f"Certification '{cert_code}' not found in registry. "
             f"Available codes: {available}"
         )
-    return certs[cert_code]
+    metadata = dict(certs[cert_code])
+
+    exam_domains = load_exam_domains()
+    if cert_code not in exam_domains:
+        available = ", ".join(sorted(exam_domains.keys()))
+        raise ValueError(
+            f"Certification '{cert_code}' has no 'Content Domain' entry in "
+            f"data/exam-domains.txt. Add its domain breakdown there before "
+            f"generating questions. Available codes: {available}"
+        )
+    metadata["domains"] = exam_domains[cert_code]["domains"]
+    metadata["domain_weights"] = exam_domains[cert_code]["domain_weights"]
+    return metadata
 
 
 def select_domain_by_quota(
@@ -631,7 +753,7 @@ def select_domain_by_quota(
 ) -> str:
     """
     Select the domain that is currently most "behind" its proportional
-    target, so the domain mix converges on registry.json's domain_weights
+    target, so the domain mix converges on exam-domains.txt's domain_weights
     (i.e. the exam guide's content outline percentages) even in small
     batches — mirroring the deficit-tracking allocation already used for
     the single/multiple answer-type split (see generator._select_question_type).

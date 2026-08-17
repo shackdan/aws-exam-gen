@@ -398,7 +398,7 @@ def cmd_generate(
     Examples:
       python main.py generate --cert SAA-C03 --count 10
       python main.py generate --cert DVA-C02 --count 20 --output csv
-      python main.py generate --cert SCS-C02 --count 5  --domain "Identity"
+      python main.py generate --cert SCS-C03 --count 5  --domain "Identity"
       python main.py generate --cert SAA-C03 --count 10 --output moodle_xml
     """
     cert_code = cert.upper().strip()

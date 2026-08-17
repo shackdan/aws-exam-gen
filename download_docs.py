@@ -738,12 +738,12 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
     ],
 
     # ══════════════════════════════════════════
-    # SOA-C02 — AWS Certified SysOps Administrator Associate
+    # SOA-C03 — AWS Certified CloudOps Engineer - Associate
     # ══════════════════════════════════════════
-    "SOA-C02": [
+    "SOA-C03": [
         {
-            "url"     : "https://d1.awsstatic.com/training-and-certification/docs-sysops-associate/AWS-Certified-SysOps-Administrator-Associate_Exam-Guide.pdf",
-            "filename": "SOA-C02_Exam-Guide.pdf",
+            "url"     : "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-cloudops-associate/AWS-Certified-CloudOps-Engineer-Associate_Exam-Guide.pdf",
+            "filename": "SOA-C03_Exam-Guide.pdf",
             "sha256"  : None,
             "category": "exam_guide",
             "required": True,
@@ -1661,12 +1661,12 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
     ],
 
     # ══════════════════════════════════════════
-    # SCS-C02 — AWS Certified Security Specialty
+    # SCS-C03 — AWS Certified Security - Specialty
     # ══════════════════════════════════════════
-    "SCS-C02": [
+    "SCS-C03": [
         {
-            "url"     : "https://d1.awsstatic.com/training-and-certification/docs-security-spec/AWS-Certified-Security-Specialty_Exam-Guide.pdf",
-            "filename": "SCS-C02_Exam-Guide.pdf",
+            "url"     : "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-security-spec/AWS-Certified-Security-Specialty_Exam-Guide-03.pdf",
+            "filename": "SCS-C03_Exam-Guide.pdf",
             "sha256"  : None,
             "category": "exam_guide",
             "required": True,
@@ -1836,6 +1836,69 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
         {
             "url"     : "https://aws.amazon.com/s3/faqs/",
             "filename": "FAQ-S3.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+    ],
+
+    # ══════════════════════════════════════════
+    # AIP-C01 — AWS Certified Generative AI Developer - Professional
+    # ══════════════════════════════════════════
+    "AIP-C01": [
+        {
+            "url"     : "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-aip/AWS-Certified-Generative-AI-Developer-Pro_Exam-Guide.pdf",
+            "filename": "AIP-C01_Exam-Guide.pdf",
+            "sha256"  : None,
+            "category": "exam_guide",
+            "required": True,
+        },
+        {
+            "url"     : "https://docs.aws.amazon.com/pdfs/wellarchitected/latest/generative-ai-lens/generative-ai-lens.pdf",
+            "filename": "AWS-Well-Architected-Generative-AI-Lens.pdf",
+            "sha256"  : None,
+            "category": "framework",
+            "required": True,
+        },
+        {
+            "url"     : "https://docs.aws.amazon.com/whitepapers/latest/introduction-aws-security/introduction-aws-security.pdf",
+            "filename": "Introduction-to-AWS-Security.pdf",
+            "sha256"  : None,
+            "category": "whitepaper",
+            "required": False,
+        },
+        # ── GenAI service FAQs ──────────────────────
+        {
+            "url"     : "https://aws.amazon.com/bedrock/faqs/",
+            "filename": "FAQ-Bedrock.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/sagemaker/faqs/",
+            "filename": "FAQ-SageMaker.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/opensearch-service/faqs/",
+            "filename": "FAQ-OpenSearchService.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/lambda/faqs/",
+            "filename": "FAQ-Lambda.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/iam/faqs/",
+            "filename": "FAQ-IAM.html",
             "sha256"  : None,
             "category": "faq",
             "required": False,
