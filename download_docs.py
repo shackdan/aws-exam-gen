@@ -1847,7 +1847,7 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
     # ══════════════════════════════════════════
     "AIP-C01": [
         {
-            "url"     : "https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-aip/AWS-Certified-Generative-AI-Developer-Pro_Exam-Guide.pdf",
+            "url"     : "https://docs.aws.amazon.com/pdfs/aws-certification/latest/ai-professional-01/ai-professional-01.pdf",
             "filename": "AIP-C01_Exam-Guide.pdf",
             "sha256"  : None,
             "category": "exam_guide",
