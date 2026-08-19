@@ -820,7 +820,28 @@ def _get_or_create_collection(cert_code: str) -> Any:
                     f"AWS {cert_code} exam documentation embeddings"
                 ),
             },
+            # Default ef_search (100) is tuned for small collections. Once
+            # a handful of oversized source PDFs (e.g. the ~1,000-page
+            # Well-Architected Framework) dominate a corpus, a shallow
+            # HNSW search can converge entirely inside their neighborhood
+            # and never surface chunks from smaller, more specific
+            # documents — starving generator.py's retrieve_context() of
+            # anything to diversify across. A deeper search costs a bit
+            # of query latency in exchange for materially better recall.
+            configuration = {"hnsw": {"ef_search": 400}},
         )
+        # Existing collections keep whatever ef_search they were created
+        # with — bump it in place so already-ingested certs benefit too
+        # without a full re-ingest.
+        current_ef = (
+            collection.configuration_json.get("hnsw", {}).get("ef_search")
+            if collection.configuration_json else None
+        )
+        if current_ef is not None and current_ef < 400:
+            collection.modify(configuration={"hnsw": {"ef_search": 400}})
+            log.debug(
+                f"Raised '{collection_name}' ef_search {current_ef} → 400."
+            )
         log.debug(
             f"ChromaDB collection '{collection_name}' ready "
             f"(existing docs: {collection.count()})."

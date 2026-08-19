@@ -22,6 +22,10 @@ Document sources:
 
 All downloads are:
   - Verified via SHA-256 checksum where known
+  - Structurally validated (valid PDF header + parse, or HTML content)
+    regardless of checksum — a corrupt/truncated file or an HTML
+    error page served under the expected filename is discarded and
+    re-downloaded up to 2 additional times before being marked failed
   - Skipped if the file already exists and --force is not set
   - Retried up to 3 times on transient network errors
   - Logged with file size and download duration
@@ -1334,6 +1338,44 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
             "category": "faq",
             "required": False,
         },
+        # Migration and Transfer — Domain 4 (Tasks 4.1/4.2) names these
+        # tools directly; without them the corpus has no migration-tool
+        # content for retrieval to find regardless of query strategy.
+        {
+            "url"     : "https://aws.amazon.com/datasync/faqs/",
+            "filename": "FAQ-DataSync.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/dms/faqs/",
+            "filename": "FAQ-DMS.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/snowball/faqs/",
+            "filename": "FAQ-SnowFamily.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/aws-transfer-family/faqs/",
+            "filename": "FAQ-TransferFamily.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
+        {
+            "url"     : "https://aws.amazon.com/application-migration-service/faqs/",
+            "filename": "FAQ-ApplicationMigrationService.html",
+            "sha256"  : None,
+            "category": "faq",
+            "required": False,
+        },
         # Application integration
         {
             "url"     : "https://aws.amazon.com/sqs/faqs/",
@@ -1695,13 +1737,6 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
         {
             "url"     : "https://docs.aws.amazon.com/whitepapers/latest/logical-separation/logical-separation.pdf",
             "filename": "AWS-Logical-Separation.pdf",
-            "sha256"  : None,
-            "category": "whitepaper",
-            "required": False,
-        },
-        {
-            "url"     : "https://docs.aws.amazon.com/kms/latest/developerguide/kms-dg.pdf",
-            "filename": "KMS-Best-Practices.pdf",
             "sha256"  : None,
             "category": "whitepaper",
             "required": False,
@@ -2487,13 +2522,32 @@ def _build_session(
     session.mount("https://", adapter)
     session.mount("http://",  adapter)
 
+    # Only advertise "br" (Brotli) if this environment can actually
+    # decode it. requests/urllib3 decode gzip/deflate natively, but
+    # Brotli needs the optional `brotli` or `brotlicffi` package — if
+    # neither is installed, advertising "br" anyway makes AWS's CDN
+    # serve Brotli-compressed bytes that never get decompressed, so
+    # they land on disk as garbage that looks like (but isn't) a
+    # corrupt download. This is exactly what happened to
+    # SAP-C02_Exam-Guide.pdf: HTTP 200, Content-Encoding: br, and no
+    # decoder — the compressed bytes were written verbatim.
+    try:
+        import brotli  # noqa: F401
+        accept_encoding = "gzip, deflate, br"
+    except ImportError:
+        try:
+            import brotlicffi  # noqa: F401
+            accept_encoding = "gzip, deflate, br"
+        except ImportError:
+            accept_encoding = "gzip, deflate"
+
     session.headers.update({
         "User-Agent"     : (
             "Mozilla/5.0 (compatible; AWSExamDocDownloader/1.0; "
             "+https://github.com/aws-exam-gen)"
         ),
         "Accept"         : "application/pdf,text/html,*/*",
-        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Encoding": accept_encoding,
         "Accept-Language": "en-US,en;q=0.9",
     })
 
@@ -2550,6 +2604,85 @@ def _verify_checksum(
 
 
 # ─────────────────────────────────────────────
+# Downloaded-file structural validation
+# ─────────────────────────────────────────────
+
+def _validate_downloaded_file(file_path: Path) -> Tuple[bool, str]:
+    """
+    Structural sanity check for a downloaded file.
+
+    This is independent of _verify_checksum() above: checksum
+    verification only runs when a catalogue entry has a known
+    sha256 (currently none do), whereas this always runs and catches
+    the failure mode that prompted it — a request returns HTTP 200,
+    but the body isn't actually the document (an interrupted
+    transfer, a redirected HTML error page served under the expected
+    filename, or otherwise truncated/corrupt bytes). This is exactly
+    what happened to SAP-C02_Exam-Guide.pdf: it downloaded "successfully"
+    but doesn't start with a valid PDF header.
+
+    Parameters
+    ──────────
+    file_path
+        Path to the downloaded file (checked in place, before the
+        atomic rename to its final destination).
+
+    Returns
+    ───────
+    (is_valid, reason) — reason is "" when the file passes.
+    """
+    suffix = file_path.suffix.lower()
+
+    try:
+        size = file_path.stat().st_size
+    except OSError as stat_err:
+        return False, f"could not stat file: {stat_err}"
+
+    if size == 0:
+        return False, "file is empty (0 bytes)"
+
+    if suffix == ".pdf":
+        with file_path.open("rb") as fh:
+            header = fh.read(5)
+        if header != b"%PDF-":
+            return False, (
+                f"missing PDF header (starts with {header!r} instead of "
+                "b'%PDF-') — likely a corrupted transfer or an HTML/error "
+                "page served in place of the PDF"
+            )
+        # Header alone doesn't catch truncated/corrupt bodies (a bad
+        # transfer can still start with a valid header) — parse it if
+        # pypdf is available for a deeper check. Falls back to the
+        # header check alone if pypdf isn't installed.
+        try:
+            import pypdf
+        except ImportError:
+            return True, ""
+        try:
+            page_count = len(pypdf.PdfReader(str(file_path)).pages)
+        except Exception as parse_err:
+            return False, f"PDF failed to parse: {parse_err}"
+        if page_count == 0:
+            return False, "PDF parsed but has zero pages"
+        return True, ""
+
+    if suffix in (".html", ".htm"):
+        with file_path.open("rb") as fh:
+            head = fh.read(4096).lower()
+        if b"<html" not in head and b"<!doctype html" not in head:
+            return False, (
+                "does not look like HTML (no <html> or <!DOCTYPE html> "
+                "in the first 4 KB) — the server may have returned an "
+                "error page or an empty body"
+            )
+        return True, ""
+
+    # Unknown extension — the non-empty check above is the best we
+    # can do without knowing the expected format.
+    return True, ""
+
+
+# ─────────────────────────────────────────────
 # File size formatting
 # ─────────────────────────────────────────────
 
@@ -2578,6 +2711,7 @@ def download_file(
     force:        bool = False,
     dry_run:      bool = False,
     expected_sha256: Optional[str] = None,
+    max_validation_retries: int = 2,
 ) -> DownloadResult:
     """
     Download a single file from a URL to dest_path.
@@ -2600,6 +2734,14 @@ def download_file(
         If True, simulate the download without writing any files.
     expected_sha256
         If provided, verify the downloaded file's checksum.
+    max_validation_retries
+        If the downloaded file fails _validate_downloaded_file() (e.g.
+        a corrupt PDF or an HTML error page served under the expected
+        filename), discard it and re-download from scratch up to this
+        many additional times before giving up. A validation failure
+        is a different failure mode than the HTTP-level retries
+        `session`'s Retry adapter already handles: the request
+        succeeds (200 OK), the response body just isn't the document.
 
     Returns
     ───────
@@ -2632,104 +2774,135 @@ def download_file(
         result.status = "skipped"
         return result
 
-    # ── Stream download ────────────────────────
-    t_start = time.monotonic()
+    # ── Stream download, with validation-triggered retries ──
+    t_start      = time.monotonic()
+    tmp_path     = dest_path.with_suffix(".tmp")
+    max_attempts = 1 + max_validation_retries
 
-    try:
-        response = session.get(url, stream=True, timeout=60)
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = session.get(url, stream=True, timeout=60)
 
-        if response.status_code == 404:
-            result.status        = "failed"
-            result.error_message = (
-                f"HTTP 404 — URL not found. "
-                "The document may have been moved or renamed by AWS."
+            if response.status_code == 404:
+                result.status        = "failed"
+                result.error_message = (
+                    f"HTTP 404 — URL not found. "
+                    "The document may have been moved or renamed by AWS."
+                )
+                log.warning(f"404 Not Found: {url}")
+                return result
+
+            if response.status_code != 200:
+                result.status        = "failed"
+                result.error_message = (
+                    f"HTTP {response.status_code} — "
+                    f"{response.reason}"
+                )
+                log.warning(
+                    f"HTTP {response.status_code} for '{filename}': "
+                    f"{response.reason}"
+                )
+                return result
+
+            # Get content length for progress bar if available
+            content_length = int(
+                response.headers.get("Content-Length", 0)
             )
-            log.warning(f"404 Not Found: {url}")
+            if content_length:
+                progress.update(task_id, total=content_length)
+
+            # Ensure parent directory exists
+            dest_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # Write to a temporary file first, then rename atomically
+            # so interrupted downloads don't leave corrupt partial files
+            bytes_written = 0
+
+            with tmp_path.open("wb") as fh:
+                for chunk in response.iter_content(chunk_size=65536):
+                    if chunk:
+                        fh.write(chunk)
+                        bytes_written += len(chunk)
+                        progress.advance(task_id, advance=len(chunk))
+
+            # ── Structural validation ──────────
+            is_valid, invalid_reason = _validate_downloaded_file(tmp_path)
+            if not is_valid:
+                tmp_path.unlink(missing_ok=True)
+                log.warning(
+                    f"'{filename}' failed validation "
+                    f"(attempt {attempt}/{max_attempts}): {invalid_reason}"
+                )
+                if attempt < max_attempts:
+                    log.info(f"Retrying download of '{filename}'…")
+                    progress.update(task_id, completed=0, total=None)
+                    continue
+                result.status        = "failed"
+                result.error_message = (
+                    f"Downloaded file failed validation after "
+                    f"{max_attempts} attempt(s): {invalid_reason}"
+                )
+                return result
+
+            # Atomic replace — Path.rename() doesn't overwrite an
+            # existing destination on Windows (raises WinError 183),
+            # which broke every --force re-download of a file that's
+            # already on disk. Path.replace() is atomic and overwrites
+            # on both Windows and POSIX.
+            tmp_path.replace(dest_path)
+
+            result.file_size_bytes  = bytes_written
+            result.duration_seconds = round(time.monotonic() - t_start, 2)
+
+            # ── Checksum verification ──────────
+            result.checksum_ok = _verify_checksum(dest_path, expected_sha256)
+            if result.checksum_ok is False:
+                result.status        = "failed"
+                result.error_message = (
+                    "SHA-256 checksum mismatch — file may be corrupt. "
+                    "Re-run with --force to re-download."
+                )
+                return result
+
+            result.status = "ok"
+            log.info(
+                f"Downloaded '{filename}' "
+                f"({_human_size(bytes_written)}) "
+                f"in {result.duration_seconds:.1f}s"
+                + (f", {attempt} attempt(s)" if attempt > 1 else "")
+                + "."
+            )
             return result
 
-        if response.status_code != 200:
+        except requests.exceptions.ConnectionError as conn_err:
             result.status        = "failed"
-            result.error_message = (
-                f"HTTP {response.status_code} — "
-                f"{response.reason}"
-            )
-            log.warning(
-                f"HTTP {response.status_code} for '{filename}': "
-                f"{response.reason}"
-            )
+            result.error_message = f"Connection error: {conn_err}"
+            log.error(f"Connection error downloading '{filename}': {conn_err}")
             return result
 
-        # Get content length for progress bar if available
-        content_length = int(
-            response.headers.get("Content-Length", 0)
-        )
-        if content_length:
-            progress.update(task_id, total=content_length)
-
-        # Ensure parent directory exists
-        dest_path.parent.mkdir(parents=True, exist_ok=True)
-
-        # Write to a temporary file first, then rename atomically
-        # so interrupted downloads don't leave corrupt partial files
-        tmp_path    = dest_path.with_suffix(".tmp")
-        bytes_written = 0
-
-        with tmp_path.open("wb") as fh:
-            for chunk in response.iter_content(chunk_size=65536):
-                if chunk:
-                    fh.write(chunk)
-                    bytes_written += len(chunk)
-                    progress.advance(task_id, advance=len(chunk))
-
-        # Atomic rename
-        tmp_path.rename(dest_path)
-
-        result.file_size_bytes  = bytes_written
-        result.duration_seconds = round(time.monotonic() - t_start, 2)
-
-        # ── Checksum verification ──────────────
-        result.checksum_ok = _verify_checksum(dest_path, expected_sha256)
-        if result.checksum_ok is False:
+        except requests.exceptions.Timeout:
             result.status        = "failed"
-            result.error_message = (
-                "SHA-256 checksum mismatch — file may be corrupt. "
-                "Re-run with --force to re-download."
-            )
+            result.error_message = "Request timed out after 60 seconds."
+            log.error(f"Timeout downloading '{filename}'.")
             return result
 
-        result.status = "ok"
-        log.info(
-            f"Downloaded '{filename}' "
-            f"({_human_size(bytes_written)}) "
-            f"in {result.duration_seconds:.1f}s."
-        )
+        except requests.exceptions.RequestException as req_err:
+            result.status        = "failed"
+            result.error_message = str(req_err)
+            log.error(f"Request error downloading '{filename}': {req_err}")
+            return result
 
-    except requests.exceptions.ConnectionError as conn_err:
-        result.status        = "failed"
-        result.error_message = f"Connection error: {conn_err}"
-        log.error(f"Connection error downloading '{filename}': {conn_err}")
-
-    except requests.exceptions.Timeout:
-        result.status        = "failed"
-        result.error_message = "Request timed out after 60 seconds."
-        log.error(f"Timeout downloading '{filename}'.")
-
-    except requests.exceptions.RequestException as req_err:
-        result.status        = "failed"
-        result.error_message = str(req_err)
-        log.error(f"Request error downloading '{filename}': {req_err}")
-
-    except OSError as io_err:
-        result.status        = "failed"
-        result.error_message = f"File system error: {io_err}"
-        log.error(f"IO error writing '{filename}': {io_err}")
-        # Clean up partial temp file
-        tmp_path = dest_path.with_suffix(".tmp")
-        if tmp_path.exists():
-            try:
-                tmp_path.unlink()
-            except OSError:
-                pass
+        except OSError as io_err:
+            result.status        = "failed"
+            result.error_message = f"File system error: {io_err}"
+            log.error(f"IO error writing '{filename}': {io_err}")
+            # Clean up partial temp file
+            if tmp_path.exists():
+                try:
+                    tmp_path.unlink()
+                except OSError:
+                    pass
+            return result
 
     return result
 

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import ast
 import csv
+import hashlib
 import json
 import logging
 import re
@@ -16,7 +17,7 @@ import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 from xml.dom import minidom
 
 from rich.console import Console
@@ -589,6 +590,72 @@ def build_output_filename(
     }.get(fmt, ".json")
 
     return output_dir / f"{stem}{extension}"
+
+
+# ─────────────────────────────────────────────
+# Cross-run duplicate detection
+# ─────────────────────────────────────────────
+
+def normalize_question_text(text: str) -> str:
+    """
+    Normalize question text for duplicate comparison: lowercase, strip
+    punctuation, collapse whitespace. Two questions that differ only
+    in casing, punctuation, or incidental whitespace should still
+    compare equal.
+    """
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9 ]", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def hash_question_text(text: str) -> str:
+    """SHA-256 hex digest of the normalized question text."""
+    return hashlib.sha256(normalize_question_text(text).encode("utf-8")).hexdigest()
+
+
+def load_prior_question_hashes(cert_code: str, output_dir: Path) -> Set[str]:
+    """
+    Load normalized question_text hashes from every previous export
+    for this cert_code under output_dir (files named
+    "{cert_code}_*.json", per build_output_filename's convention), so
+    a new generation run can be checked for duplicates against past
+    runs — not just within its own in-progress batch.
+
+    Malformed or unreadable prior files are skipped with a warning
+    rather than aborting the pipeline; a corrupt old export shouldn't
+    block generating new questions.
+
+    Returns an empty set if output_dir doesn't exist or no prior
+    exports are found for this cert.
+    """
+    hashes: Set[str] = set()
+    if not output_dir.exists():
+        return hashes
+
+    for path in sorted(output_dir.glob(f"{cert_code}_*.json")):
+        try:
+            with path.open("r", encoding="utf-8") as fh:
+                data = json.load(fh)
+        except (OSError, json.JSONDecodeError) as read_err:
+            logger.warning(
+                f"Skipping unreadable prior output file '{path.name}' "
+                f"during duplicate check: {read_err}"
+            )
+            continue
+
+        for q in data.get("questions", []):
+            text = q.get("question_text")
+            if text:
+                hashes.add(hash_question_text(text))
+
+    if hashes:
+        logger.info(
+            f"Loaded {len(hashes)} prior question hash(es) for '{cert_code}' "
+            f"from {output_dir} for cross-run duplicate detection."
+        )
+
+    return hashes
 
 
 def load_registry(registry_path: Path) -> Dict[str, Any]:

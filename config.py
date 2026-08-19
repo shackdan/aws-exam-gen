@@ -110,6 +110,15 @@ class GenerationConfig:
     # approve zero new questions (signals a systemic quality problem
     # that more rounds won't fix).
     max_zero_progress_rounds: int = 2
+    # Once a domain has generated at least this many questions, any
+    # AWS service that shows up in more than
+    # service_repeat_threshold_pct of that domain's questions so far
+    # gets flagged to the LLM as "already emphasized" for the next
+    # question, so a handful of frequently-retrieved services (e.g.
+    # ones tied to an oversized ingested document) don't dominate
+    # every question in a domain.
+    service_repeat_min_sample:  int   = 4
+    service_repeat_threshold_pct: float = 0.3
 
 
 # ─────────────────────────────────────────────

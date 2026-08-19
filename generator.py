@@ -29,7 +29,7 @@ import random
 import time
 from collections import Counter
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 import ollama
 from tenacity import (
@@ -62,6 +62,8 @@ from utils import (
     export_to_moodle_xml,
     extract_json_from_text,
     get_cert_metadata,
+    hash_question_text,
+    load_prior_question_hashes,
     load_registry,
     make_progress_bar,
     print_domain_alignment_table,
@@ -107,7 +109,7 @@ Generate ONE single-answer multiple-choice question for the AWS {cert_name} \
 
 Target domain  : {domain}
 Difficulty tier: {difficulty}
-
+{avoid_note}
 ─── REFERENCE CONTEXT (from official AWS documentation) ──────────────────────
 {context}
 ──────────────────────────────────────────────────────────────────────────────
@@ -148,7 +150,7 @@ Generate ONE multiple-selection question for the AWS {cert_name} \
 Target domain  : {domain}
 Difficulty tier: {difficulty}
 Correct answers: {num_correct} (the question stem MUST say "Select {count_word}")
-
+{avoid_note}
 ─── REFERENCE CONTEXT (from official AWS documentation) ──────────────────────
 {context}
 ──────────────────────────────────────────────────────────────────────────────
@@ -245,14 +247,29 @@ def _load_embedding_model() -> Any:
 
 
 def retrieve_context(
-    domain:          str,
-    collection:      Any,
-    embedding_model: Any,
-    n_results:       int = EMBEDDING_CONFIG.top_k_results,
+    domain:                str,
+    collection:            Any,
+    embedding_model:       Any,
+    n_results:             int              = EMBEDDING_CONFIG.top_k_results,
+    exclude_chunk_ids:     Optional[Set[str]] = None,
+    max_chunks_per_source: int              = 2,
 ) -> Tuple[str, Optional[str], List[str]]:
     """
     Retrieve the most relevant document chunks from ChromaDB for a
     given exam domain using semantic similarity search.
+
+    Every question generated for a domain embeds the same domain
+    string, so a plain top-k nearest-neighbor query would return the
+    same chunks for every question in that domain — and, because a
+    handful of source documents (e.g. the ~1,000-page Well-Architected
+    Framework PDF) can account for 50-70%+ of a collection's chunks,
+    those oversized documents would dominate every retrieval regardless
+    of how relevant a smaller, more specific document is. To counter
+    both effects this over-fetches a larger candidate pool and then
+    greedily selects up to `n_results` chunks while: (1) skipping any
+    id in `exclude_chunk_ids` (chunks already used earlier in the same
+    domain's generation run, passed in by the caller), and (2) capping
+    how many chunks can come from any single `source_file`.
 
     Parameters
     ──────────
@@ -264,6 +281,14 @@ def retrieve_context(
         Loaded SentenceTransformer model (CPU) for query embedding.
     n_results
         Number of top chunks to retrieve and concatenate.
+    exclude_chunk_ids
+        Chunk ids to skip — typically chunks already used for earlier
+        questions in the same domain, so repeated calls rotate through
+        the corpus instead of returning the same context every time.
+    max_chunks_per_source
+        Maximum number of chunks allowed from any single source_file
+        per call, so one oversized document can't crowd out the rest
+        of the corpus.
 
     Returns
     ───────
@@ -297,20 +322,38 @@ def retrieve_context(
                 f"ChromaDB collection is empty — "
                 "no context available for generation."
             )
-            return ""
+            return "", None, []
 
         clamped_n = min(n_results, collection_size)
 
+        # If the exclude set has grown so large that fewer chunks remain
+        # than we need, rotate: drop the exclusions for this call rather
+        # than starving retrieval down to near-empty context. This keeps
+        # small collections (a few hundred chunks) usable across a full
+        # domain's worth of questions instead of degrading over time.
+        if exclude_chunk_ids and (collection_size - len(exclude_chunk_ids)) < clamped_n:
+            exclude_chunk_ids = None
+
+        # Over-fetch a much larger candidate pool than n_results so the
+        # per-source cap and exclusion list have real alternatives to
+        # select from. This matters more than it looks: a domain name is
+        # a short, generic query, and an oversized, self-similar source
+        # document (e.g. a 1,000-page framework PDF) can occupy the
+        # entire top few hundred nearest neighbors by itself — a shallow
+        # over-fetch (e.g. top-20) would just hand the cap logic more of
+        # the same one document instead of a genuine alternative.
+        candidate_n = min(collection_size, max(clamped_n * 40, 200))
+
         results = collection.query(
             query_embeddings = [query_embedding],
-            n_results        = clamped_n,
+            n_results        = candidate_n,
             include          = ["documents", "metadatas", "distances"],
         )
 
         # results["documents"] is a list of lists (one per query vector)
-        documents = results.get("documents", [[]])[0]
-        metadatas = results.get("metadatas", [[]])[0]
-        chunk_ids = results.get("ids", [[]])[0] if "ids" in results else []
+        documents      = results.get("documents", [[]])[0]
+        metadatas      = results.get("metadatas", [[]])[0]
+        candidate_ids  = results.get("ids", [[]])[0] if "ids" in results else []
 
         if not documents:
             log.warning(
@@ -318,25 +361,62 @@ def retrieve_context(
             )
             return "", None, []
 
+        # ── Greedy diversified selection ───────────
+        # Rank order from ChromaDB is preserved; a chunk is skipped only
+        # if it was already used for this domain or its source has hit
+        # the per-call cap. A backfill pass relaxes the source cap (but
+        # keeps honoring exclusions) if the cap left us short.
+        selected_idx:     List[int]  = []
+        per_source_count: Counter    = Counter()
+        exclude_chunk_ids = exclude_chunk_ids or set()
+
+        for idx in range(len(documents)):
+            if len(selected_idx) >= clamped_n:
+                break
+            cid = candidate_ids[idx] if idx < len(candidate_ids) else None
+            if cid is not None and cid in exclude_chunk_ids:
+                continue
+            source = metadatas[idx].get("source_file", "unknown")
+            if per_source_count[source] >= max_chunks_per_source:
+                continue
+            selected_idx.append(idx)
+            per_source_count[source] += 1
+
+        if len(selected_idx) < clamped_n:
+            for idx in range(len(documents)):
+                if len(selected_idx) >= clamped_n:
+                    break
+                if idx in selected_idx:
+                    continue
+                cid = candidate_ids[idx] if idx < len(candidate_ids) else None
+                if cid is not None and cid in exclude_chunk_ids:
+                    continue
+                selected_idx.append(idx)
+
         # Concatenate retrieved chunks with source attribution
         source_url: Optional[str] = None
         context_parts: List[str] = []
-        for idx, (doc, meta) in enumerate(zip(documents, metadatas)):
+        chunk_ids: List[str] = []
+        for rank, idx in enumerate(selected_idx):
+            doc, meta = documents[idx], metadatas[idx]
             source  = meta.get("source_file", "unknown")
             page    = meta.get("page_number", "?")
             chunk_url = meta.get("source_url")
             if source_url is None and chunk_url:
                 source_url = chunk_url
-            attribution = f"[Source {idx + 1}: {source}, p.{page}]"
+            attribution = f"[Source {rank + 1}: {source}, p.{page}]"
             if chunk_url:
-                attribution = f"[Source {idx + 1}: {source}, p.{page}, URL: {chunk_url}]"
+                attribution = f"[Source {rank + 1}: {source}, p.{page}, URL: {chunk_url}]"
             context_parts.append(f"{attribution}\n{doc}")
+            if idx < len(candidate_ids):
+                chunk_ids.append(candidate_ids[idx])
 
         context = "\n\n".join(context_parts)
 
         log.debug(
-            f"Retrieved {len(documents)} chunk(s) for domain '{domain}' "
-            f"(collection size: {collection_size})."
+            f"Retrieved {len(selected_idx)} chunk(s) for domain '{domain}' "
+            f"from {len(per_source_count)} distinct source(s) "
+            f"(collection size: {collection_size}, excluded: {len(exclude_chunk_ids)})."
         )
 
         return context, source_url, chunk_ids
@@ -434,6 +514,7 @@ def build_generation_prompt(
     context: str,
     num_correct: int = 2,
     count_word: str = "TWO",
+    avoid_services: Optional[List[str]] = None,
 ) -> str:
     """
     Assemble the user-turn prompt for the LLM generation call.
@@ -446,6 +527,14 @@ def build_generation_prompt(
       System + user prompt ≈  750 tokens (template scaffolding)
       Response             ≈ OLLAMA_CONFIG.max_tokens (generation cap)
       Context block        ≈ remainder of num_ctx, at ~4 chars/token
+
+    avoid_services
+        AWS services that have already shown up disproportionately
+        often among this domain's previously generated questions
+        (see generate_batch). Surfaced to the LLM as a soft steer, not
+        a hard rule — the retrieved context is still the source of
+        truth, but this discourages defaulting to whichever service
+        the retrieved chunks keep repeating.
     """
     # Truncate context to avoid exceeding num_ctx
     reserved_tokens   = 750 + OLLAMA_CONFIG.max_tokens
@@ -454,12 +543,20 @@ def build_generation_prompt(
     if len(context) > max_context_chars:
         context = context[:max_context_chars] + "\n… [context truncated]"
 
+    avoid_note = ""
+    if avoid_services:
+        avoid_note = (
+            "Already emphasized in this domain — do not center the question "
+            f"on these unless clearly the best fit: {', '.join(avoid_services)}\n"
+        )
+
     if question_type == QuestionType.SINGLE_ANSWER:
         return SINGLE_ANSWER_PROMPT_TEMPLATE.format(
             cert_name  = cert_name,
             cert_code  = cert_code,
             domain     = domain,
             difficulty = difficulty,
+            avoid_note = avoid_note,
             context    = context or "(No context retrieved — use general AWS knowledge.)",
         )
     else:
@@ -468,6 +565,7 @@ def build_generation_prompt(
             cert_code  = cert_code,
             domain     = domain,
             difficulty = difficulty,
+            avoid_note = avoid_note,
             context    = context or "(No context retrieved — use general AWS knowledge.)",
             num_correct= num_correct,
             count_word = count_word,
@@ -713,19 +811,40 @@ def _normalise_options(raw_options: List[Any]) -> List[str]:
 # ─────────────────────────────────────────────
 
 def generate_single_question(
-    cert_code:       str,
-    cert_name:       str,
-    domain:          str,
-    difficulty:      str,
-    question_type:   QuestionType,
-    collection:      Any,
-    embedding_model: Any,
-    ollama_client:   Any,
-    num_correct:     int = 1,
-    count_word:      str = "ONE",
+    cert_code:         str,
+    cert_name:         str,
+    domain:            str,
+    difficulty:        str,
+    question_type:     QuestionType,
+    collection:        Any,
+    embedding_model:   Any,
+    ollama_client:     Any,
+    num_correct:       int = 1,
+    count_word:        str = "ONE",
+    exclude_chunk_ids: Optional[Set[str]] = None,
+    avoid_services:    Optional[List[str]] = None,
+    seen_hashes:       Optional[Set[str]] = None,
 ) -> Optional[ExamQuestion]:
     """
     Generate a single ExamQuestion via RAG + Ollama prompt.
+
+    exclude_chunk_ids
+        Chunk ids already used for earlier questions in this domain
+        (see generate_batch), so retrieval rotates through the corpus
+        instead of returning the same top-k chunks for every question
+        in the domain. The chunks actually used end up on the returned
+        question's `rag_source_chunks` field for the caller to fold in.
+    avoid_services
+        AWS services already over-represented in this domain so far
+        (see generate_batch) — passed through to build_generation_prompt
+        as a soft steer against the LLM defaulting to the same service.
+    seen_hashes
+        Normalized question_text hashes to reject as duplicates —
+        prior-run exports plus everything accepted so far this run
+        (see generate_batch / utils.load_prior_question_hashes). A
+        match is treated the same as a structural validation failure:
+        retried up to max_generation_attempts, then the slot fails.
+        On success this set gains the new question's hash in place.
 
     Returns None on any failure so the caller can skip the slot
     gracefully without crashing the batch.
@@ -734,10 +853,11 @@ def generate_single_question(
         for attempt in range(1, GENERATION_CONFIG.max_generation_attempts + 1):
             # ── Step 1: Retrieve context ───────────
             context, source_url, chunk_ids = retrieve_context(
-                domain          = domain,
-                collection      = collection,
-                embedding_model = embedding_model,
-                n_results       = EMBEDDING_CONFIG.top_k_results,
+                domain            = domain,
+                collection        = collection,
+                embedding_model   = embedding_model,
+                n_results         = EMBEDDING_CONFIG.top_k_results,
+                exclude_chunk_ids = exclude_chunk_ids,
             )
 
             if not context:
@@ -753,14 +873,15 @@ def generate_single_question(
             # ── Step 2: Build prompt ───────────────
             try:
                 prompt = build_generation_prompt(
-                    cert_code     = cert_code,
-                    cert_name     = cert_name,
-                    domain        = domain,
-                    difficulty    = difficulty,
-                    question_type = question_type,
-                    context       = context,
-                    num_correct   = num_correct,
-                    count_word    = count_word,
+                    cert_code      = cert_code,
+                    cert_name      = cert_name,
+                    domain         = domain,
+                    difficulty     = difficulty,
+                    question_type  = question_type,
+                    context        = context,
+                    num_correct    = num_correct,
+                    count_word     = count_word,
+                    avoid_services = avoid_services,
                 )
             except Exception as prompt_err:
                 log.error(f"Prompt build failed for domain '{domain}': {prompt_err}")
@@ -822,6 +943,28 @@ def generate_single_question(
                     f"Giving up after {attempt} generation attempts for domain '{domain}'."
                 )
                 return None
+
+            # ── Step 5b: Cross-run + within-run duplicate check ──
+            if seen_hashes is not None:
+                text_hash = hash_question_text(question.question_text)
+                if text_hash in seen_hashes:
+                    log.warning(
+                        f"Generated question duplicates a prior/earlier question for "
+                        f"domain '{domain}' (question_text hash already seen): "
+                        f"{question.question_text[:80]}…"
+                    )
+                    if attempt < GENERATION_CONFIG.max_generation_attempts:
+                        log.info(
+                            f"Retrying generation for domain '{domain}' "
+                            f"(attempt {attempt + 1}/{GENERATION_CONFIG.max_generation_attempts})."
+                        )
+                        continue
+                    log.warning(
+                        f"Giving up after {attempt} generation attempts for domain "
+                        f"'{domain}' — kept producing a duplicate question."
+                    )
+                    return None
+                seen_hashes.add(text_hash)
 
             question.difficulty = difficulty
             question.validation_status = ValidationStatus.PENDING
@@ -941,6 +1084,7 @@ def generate_batch(
     single_count_start: int           = 0,
     multi_count_start:  int           = 0,
     domain_count_start: Optional[Dict[str, int]] = None,
+    seen_hashes:        Optional[Set[str]] = None,
 ) -> List[ExamQuestion]:
     """
     Generate a batch of ExamQuestion objects according to the request.
@@ -951,6 +1095,7 @@ def generate_batch(
       - 75 % single / 25 % multiple split via _select_question_type()
       - Sequential execution (GTX 1070 single-thread constraint)
       - Configurable domain filtering via request.domain_filter
+      - Cross-run + within-run question uniqueness (see seen_hashes)
 
     Parameters
     ──────────
@@ -975,6 +1120,15 @@ def generate_batch(
         Running progress from prior rounds, so `_select_question_type` and
         `select_domain_by_quota` keep allocating against the overall
         request total instead of restarting their ratios from zero.
+    seen_hashes
+        Normalized-text hashes (see utils.hash_question_text) to reject
+        as duplicates — typically seeded from every prior approved
+        export for this cert_code (utils.load_prior_question_hashes)
+        and mutated in place as this run accepts new questions, so it
+        also catches duplicates within the same run and across top-up
+        rounds. Pass the same set object into successive calls (as
+        run_generation_pipeline's top-up loop does) to keep it growing
+        across rounds; omit it to disable duplicate checking entirely.
 
     Returns
     ───────
@@ -992,6 +1146,24 @@ def generate_batch(
     multi_count:  int = multi_count_start
     domain_counts: Dict[str, int] = dict(domain_count_start or {})
     failed_slots: int = 0
+
+    # Chunk ids already used for each domain in this batch, so
+    # retrieve_context() rotates through the corpus instead of handing
+    # every question in a domain the same top-k chunks (see its
+    # docstring for why that matters).
+    domain_used_chunks: Dict[str, Set[str]] = {}
+
+    # AWS services already covered per domain in this batch (from the
+    # LLM's self-reported aws_services field), so overused services can
+    # be flagged to the LLM as "already emphasized" — the prompt-side
+    # complement to domain_used_chunks above.
+    domain_service_counts: Dict[str, Counter] = {}
+
+    # Mutated in place (not reassigned) so the caller's set — seeded
+    # from prior runs and shared across top-up rounds — keeps growing
+    # across every call rather than resetting each time.
+    if seen_hashes is None:
+        seen_hashes = set()
 
     log.info(
         f"Starting batch generation: {slots_to_fill} questions for {cert_code} "
@@ -1035,18 +1207,38 @@ def generate_batch(
                 f"domain='{domain}' | correct={num_correct}"
             )
 
+            # ── Services to steer away from ────────
+            # Once a domain has enough questions to judge from, flag any
+            # AWS service that's already showing up in a disproportionate
+            # share of that domain's questions.
+            domain_so_far   = domain_counts.get(domain, 0)
+            avoid_services: Optional[List[str]] = None
+            if domain_so_far >= GENERATION_CONFIG.service_repeat_min_sample:
+                threshold = max(
+                    2, round(domain_so_far * GENERATION_CONFIG.service_repeat_threshold_pct)
+                )
+                overused = [
+                    svc for svc, count in
+                    domain_service_counts.get(domain, Counter()).most_common()
+                    if count >= threshold
+                ]
+                avoid_services = overused[:5] or None
+
             # ── Generate question ──────────────────
             question = generate_single_question(
-                cert_code       = cert_code,
-                cert_name       = cert_name,
-                domain          = domain,
-                difficulty      = difficulty,
-                question_type   = q_type,
-                collection      = collection,
-                embedding_model = embedding_model,
-                ollama_client   = ollama_client,
-                num_correct     = num_correct,
-                count_word      = count_word,
+                cert_code         = cert_code,
+                cert_name         = cert_name,
+                domain            = domain,
+                difficulty        = difficulty,
+                question_type     = q_type,
+                collection        = collection,
+                embedding_model   = embedding_model,
+                ollama_client     = ollama_client,
+                num_correct       = num_correct,
+                count_word        = count_word,
+                exclude_chunk_ids = domain_used_chunks.get(domain),
+                avoid_services    = avoid_services,
+                seen_hashes       = seen_hashes,
             )
 
             # ── Handle generation failure ──────────
@@ -1065,6 +1257,12 @@ def generate_batch(
             else:
                 multi_count += 1
             domain_counts[question.domain] = domain_counts.get(question.domain, 0) + 1
+            domain_used_chunks.setdefault(question.domain, set()).update(
+                question.rag_source_chunks
+            )
+            domain_service_counts.setdefault(question.domain, Counter()).update(
+                question.aws_services
+            )
 
             questions.append(question)
 
@@ -1190,6 +1388,20 @@ def run_generation_pipeline(
             f"ChromaDB error: {chroma_err}"
         ) from chroma_err
 
+    # ── Step 4b: Load prior-run question hashes ─
+    # Cross-run duplicate detection: every previously exported question
+    # for this cert_code (output/{cert_code}_*.json — export_to_json
+    # only ever writes approved questions) is hashed up front. The same
+    # set is threaded through generate_batch() below and every top-up
+    # round, and grows as new questions are accepted, so duplicates are
+    # rejected against prior runs AND everything generated so far in
+    # this run.
+    from config import OUTPUT_DIR
+    seen_question_hashes = load_prior_question_hashes(
+        cert_code  = request.cert_code,
+        output_dir = OUTPUT_DIR,
+    )
+
     # ── Step 5: Generate raw question batch ───
     log.info(
         f"Generating {request.count} question(s) for {request.cert_code}…"
@@ -1200,6 +1412,7 @@ def run_generation_pipeline(
         collection      = collection,
         embedding_model = embedding_model,
         cert_metadata   = cert_metadata,
+        seen_hashes     = seen_question_hashes,
     )
 
     if not raw_questions:
@@ -1297,6 +1510,7 @@ def run_generation_pipeline(
             single_count_start = single_count,
             multi_count_start  = multi_count,
             domain_count_start = domain_counts,
+            seen_hashes        = seen_question_hashes,
         )
 
         if not topup_raw:

@@ -112,8 +112,7 @@ Ingest **every** certification in the registry:
 
 ```powershell
 $certs = @(
-    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C03",
-    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "AIP-C01", "SCS-C03", "ANS-C01"
+    "AIF-C01", "CLF-C02", "SOA-C03", "DEA-C01", "DVA-C02", "MLA-C01", "SAA-C03", "SAP-C02", "DOP-C02", "AIP-C01", "SCS-C03", "ANS-C01"
 )
 
 foreach ($cert in $certs) {
@@ -135,15 +134,36 @@ Check what was ingested at any time with `python main.py status --cert <CODE>`. 
 
 ## 3. Generate questions
 
-`main.py generate` retrieves relevant chunks from ChromaDB, drafts questions with the local LLM, and runs each one through an AI-reviewer loop (up to 2 revisions) before writing only **Approved** questions to `./output/`. Each run is capped at 200 questions (`--count`), so to build a 500-question bank per certification, loop 5 runs of 100 questions each — every run writes its own timestamped file (e.g. `output/SAA-C03_100q_20260814T120000.json`).
+`main.py generate` retrieves relevant chunks from ChromaDB, drafts questions with the local LLM, and runs each one through an AI-reviewer loop (up to 2 revisions) before writing only **Approved** questions to `./output/`. Each run is capped at 200 questions (`--count`), so to build a full bank per certification, loop several runs of 100–200 questions each — every run writes its own timestamped file (e.g. `output/SAA-C03_100q_20260814T120000.json`) and is checked for duplicates against every prior approved export for that cert, so looping more runs adds coverage rather than repeats.
 
-Generate 500 questions (5 x 100) for a single certification:
+### How many questions is enough?
+
+Matching the real exam's question count (see `total_questions` in [registry.json](registry.json)) only gets you one mock exam — it doesn't tell you whether a user is actually weak on a specific domain or just got unlucky on one attempt. As a rule of thumb, a bank needs to be large enough for (a) several non-repeating mock exams and (b) enough questions per domain that a low score there is a real signal, not noise. That works out to roughly 4–7x the real exam length, more for certs with more domains:
+
+| Code | Certification | Real exam Qs | Domains | Recommended bank |
+| --- | --- | --- | --- | --- |
+| CLF-C02 | AWS Certified Cloud Practitioner | 65 | 4 | 300 |
+| AIF-C01 | AWS Certified AI Practitioner | 85 | 5 | 350 |
+| SAA-C03 | AWS Certified Solutions Architect Associate | 65 | 4 | 350 |
+| DVA-C02 | AWS Certified Developer Associate | 65 | 4 | 350 |
+| SOA-C03 | AWS Certified CloudOps Engineer Associate | 65 | 5 | 400 |
+| DEA-C01 | AWS Certified Data Engineer Associate | 65 | 4 | 350 |
+| MLA-C01 | AWS Certified Machine Learning Engineer Associate | 65 | 4 | 350 |
+| SAP-C02 | AWS Certified Solutions Architect Professional | 75 | 4 | 500 |
+| DOP-C02 | AWS Certified DevOps Engineer Professional | 75 | 6 | 500 |
+| AIP-C01 | AWS Certified Generative AI Developer Professional | 75 | 5 | 500 |
+| SCS-C03 | AWS Certified Security Specialty | 65 | 6 | 400 |
+| ANS-C01 | AWS Certified Advanced Networking Specialty | 65 | 4 | 350 |
+
+Professional-tier certs sit at the top of the range — more domains and tasks are tested in more depth, so more questions are needed before a per-domain score is trustworthy. A bank this size also depends on the ingested source documents actually covering the cert's full in-scope service list, not just a handful of frequently-retrieved services — see [Adding a new certification](#adding-a-new-certification) and keep `DOCUMENT_CATALOGUE` broad, not just large.
+
+Generate the recommended 500 for SAP-C02 (5 x 100 — see the table above for other certs' targets):
 
 **PowerShell**
 
 ```powershell
 for ($i = 1; $i -le 5; $i++) {
-    python main.py generate --cert SAA-C03 --count 100 --output json
+    python main.py generate --cert SAP-C02 --count 100 --output json
 }
 ```
 
@@ -151,23 +171,24 @@ for ($i = 1; $i -le 5; $i++) {
 
 ```bash
 for i in $(seq 1 5); do
-    python main.py generate --cert SAA-C03 --count 100 --output json
+    python main.py generate --cert SAP-C02 --count 100 --output json
 done
 ```
 
-Generate 500 questions (5 x 100) for **every** certification:
+Generate each certification's recommended bank size from the table above (runs in batches of 100, rounded up):
 
 **PowerShell**
 
 ```powershell
-$certs = @(
-    "CLF-C02", "AIF-C01", "SAA-C03", "DVA-C02", "SOA-C03",
-    "DEA-C01", "MLA-C01", "SAP-C02", "DOP-C02", "AIP-C01", "SCS-C03", "ANS-C01"
-)
+$certBatches = @{
+    "CLF-C02" = 3; "AIF-C01" = 4; "SAA-C03" = 4; "DVA-C02" = 4; "SOA-C03" = 4
+    "DEA-C01" = 4; "MLA-C01" = 4; "SAP-C02" = 5; "DOP-C02" = 5; "AIP-C01" = 5
+    "SCS-C03" = 4; "ANS-C01" = 4
+}
 
-foreach ($cert in $certs) {
-    for ($i = 1; $i -le 5; $i++) {
-        python main.py generate --cert $cert --count 100 --output json
+foreach ($cert in $certBatches.Keys) {
+    for ($i = 1; $i -le $certBatches[$cert]; $i++) {
+        python main.py generate --cert $cert --count 200 --output json
     }
 }
 ```
@@ -175,10 +196,14 @@ foreach ($cert in $certs) {
 **Bash**
 
 ```bash
-certs=(CLF-C02 AIF-C01 SAA-C03 DVA-C02 SOA-C03 DEA-C01 MLA-C01 SAP-C02 DOP-C02 AIP-C01 SCS-C03 ANS-C01)
+declare -A cert_batches=(
+    [CLF-C02]=3 [AIF-C01]=4 [SAA-C03]=4 [DVA-C02]=4 [SOA-C03]=4
+    [DEA-C01]=4 [MLA-C01]=4 [SAP-C02]=5 [DOP-C02]=5 [AIP-C01]=5
+    [SCS-C03]=4 [ANS-C01]=4
+)
 
-for cert in "${certs[@]}"; do
-    for i in $(seq 1 5); do
+for cert in "${!cert_batches[@]}"; do
+    for i in $(seq 1 "${cert_batches[$cert]}"); do
         python main.py generate --cert "$cert" --count 100 --output json
     done
 done
@@ -186,7 +211,7 @@ done
 
 Supported `--output` formats: `json`, `csv`, `moodle_xml`. Other useful flags: `--domain "<name>"` (restrict to one exam domain), `--difficulty <tier>`, `--show-questions` (print results to the console), `--out-file <path>` (explicit output path instead of a timestamped default).
 
-> Since the LLM reviewer rejects some drafts, each 100-question run typically yields somewhat fewer than 100 *approved* questions. Run extra batches per certification if you need to top up to a full 500.
+> Since the LLM reviewer rejects some drafts, each 100-question run typically yields somewhat fewer than 100 *approved* questions. Run extra batches per certification if you need to top up to the recommended bank size.
 
 ## Command reference
 
