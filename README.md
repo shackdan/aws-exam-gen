@@ -188,7 +188,7 @@ $certBatches = @{
 
 foreach ($cert in $certBatches.Keys) {
     for ($i = 1; $i -le $certBatches[$cert]; $i++) {
-        python main.py generate --cert $cert --count 200 --output json
+        python main.py generate --cert $cert --count 100 --output json
     }
 }
 ```

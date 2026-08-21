@@ -3391,7 +3391,7 @@
       "cert_code": "SAP-C02",
       "domain": "Accelerate Workload Migration and Modernization",
       "question_type": "single",
-      "question_text": "Your company is in the final stages of migrating its on-premises workload to AWS. The IT team has successfully scaled up during the migration but now faces challenges in managing the growing complexity. The team is overwhelmed with operational toil and lacks clear visibility into the skills and capacity required to support the new workloads. As a solutions architect, you need to recommend a strategy to improve the situation. Correct Answer: C",
+      "question_text": "Your company is in the final stages of migrating its on-premises workload to AWS. The IT team has successfully scaled up during the migration but now faces challenges in managing the growing complexity. The team is overwhelmed with operational toil and lacks clear visibility into the skills and capacity required to support the new workloads. As a solutions architect, you need to recommend a strategy to improve the situation.",
       "options": [
         "A. Implement AWS Budgets to monitor and alert on cost overruns.",
         "B. Use AWS CloudTrail to log and monitor API calls for security auditing.",

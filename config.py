@@ -48,7 +48,7 @@ class OllamaConfig:
             "OLLAMA_BASE_URL", "http://localhost:11434"
         )
     )
-    # 4 096 tokens keeps the full KV-cache inside 8 GB VRAM at Q4_K_M.
+    # 4096 tokens keeps the full KV-cache inside 8 GB VRAM at Q4_K_M.
     # Raise via OLLAMA_NUM_CTX on systems with more VRAM headroom.
     num_ctx: int = field(
         default_factory=lambda: int(os.getenv("OLLAMA_NUM_CTX", "4096"))
