@@ -368,7 +368,7 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
             "required": False,
         },
         {
-            "url"     : "https://docs.aws.amazon.com/whitepapers/latest/serverless-architectures-lambda/serverless-architectures-aws-lambda.pdf",
+            "url"     : "https://docs.aws.amazon.com/pdfs/whitepapers/latest/serverless-architectures-lambda/serverless-architectures-lambda.pdf",
             "filename": "Serverless-Architectures-Lambda.pdf",
             "sha256"  : None,
             "category": "whitepaper",
@@ -550,7 +550,7 @@ DOCUMENT_CATALOGUE: Dict[str, List[Dict]] = {
             "required": True,
         },
         {
-            "url"     : "https://docs.aws.amazon.com/whitepapers/latest/serverless-architectures-lambda/serverless-architectures-aws-lambda.pdf",
+            "url"     : "https://docs.aws.amazon.com/pdfs/whitepapers/latest/serverless-architectures-lambda/serverless-architectures-lambda.pdf",
             "filename": "Serverless-Architectures-Lambda.pdf",
             "sha256"  : None,
             "category": "whitepaper",
