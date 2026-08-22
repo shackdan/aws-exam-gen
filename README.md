@@ -51,11 +51,11 @@ $env:OLLAMA_NUM_CTX = "16384"
 $env:RAG_TOP_K = "8"
 ```
 
-**Bash**
+**Bash** (for m1 macbook air 16gb)
 
 ```bash
 export OLLAMA_MODEL="qwen2.5:14b-instruct"
-export OLLAMA_NUM_CTX="16384"
+export OLLAMA_NUM_CTX="8192"
 export RAG_TOP_K="8"
 ```
 
