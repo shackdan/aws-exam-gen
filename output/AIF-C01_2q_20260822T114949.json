@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "cert_code": "AIF-C01",
+    "generated_at": "2026-08-22T11:49:49.613266+00:00",
+    "total_questions": 2,
+    "approved": 2,
+    "rejected": 0,
+    "domain_stats": {
+      "Fundamentals of AI and ML": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 20.0,
+        "actual_pct": 50.0,
+        "delta_pct": 30.0
+      },
+      "Fundamentals of GenAI": {
+        "approved": 0,
+        "rejected": 1,
+        "target_pct": 24.0,
+        "actual_pct": 0.0,
+        "delta_pct": -24.0
+      },
+      "Applications of Foundation Models": {
+        "approved": 0,
+        "rejected": 1,
+        "target_pct": 28.000000000000004,
+        "actual_pct": 0.0,
+        "delta_pct": -28.0
+      },
+      "Guidelines for Responsible AI": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 0.0,
+        "delta_pct": -14.0
+      },
+      "Security, Compliance, and Governance for AI Solutions": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 50.0,
+        "delta_pct": 36.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "913ab26b-0f11-455f-8564-09176df8a74d",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "A retail company wants to analyze customer purchase history to predict future buying behavior and offer personalized product recommendations. Which AWS service should they use to implement this solution?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Redshift",
+        "C. AWS Lambda",
+        "D. Amazon S3"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon SageMaker is the best choice for implementing a solution that requires analyzing customer purchase history to predict future buying behavior and offer personalized product recommendations. SageMaker provides a fully managed service for building, training, and deploying machine learning models, which is ideal for this use case. It supports both supervised and unsupervised learning, making it suitable for recommendation systems. Amazon Redshift (B) is a data warehouse service, which is more suited for querying and analyzing large datasets, but it does not provide the machine learning capabilities needed for this scenario. AWS Lambda (C) is a serverless compute service that can be used to process data, but it does not include the necessary machine learning models and algorithms for building a recommendation system. Amazon S3 (D) is a storage service for unstructured data, which could be used to store the purchase history, but it does not provide the analytics or machine learning capabilities required for this use case.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T11:49:27.380492Z"
+    },
+    {
+      "question_id": "682342cc-1e57-4a4c-9cab-3f3766f5ce09",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "A multinational corporation is developing an AI system to analyze customer feedback for product improvement. The company is concerned about adhering to global data protection regulations and ensuring the transparency of the model's decision-making process. Which AWS service would best assist in implementing governance and compliance regulations for this AI system?",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon Inspector",
+        "C. AWS Artifact",
+        "D. AWS CloudTrail"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "AWS Artifact is the best answer as it provides a centralized repository for governance, compliance, and regulatory artifacts. It supports various compliance standards and can help the company document and manage policies, procedures, and reporting, which are crucial for adhering to global data protection regulations and ensuring model transparency. AWS Config (A) is used for continuous evaluation of AWS resources, Amazon Inspector (B) is for security and compliance assessments, and AWS CloudTrail (D) is for logging and auditing API calls, none of which directly support governance and compliance documentation and reporting as comprehensively as AWS Artifact.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.11, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nTask Statement 5.2: Recognize governance and compliance regulations for AI\nsystems.\nObjectives:\n- Identify regulatory compliance standards for AI systems (for example,\nInternational Organization for Standardization [ISO], System and\nOrganization Controls [SOC], algorithm accountability laws).\n- Identify AWS services and features to a",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Artifact"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T11:49:39.897852Z"
+    }
+  ]
+}
