@@ -186,6 +186,10 @@ $certBatches = @{
     "SCS-C03" = 4; "ANS-C01" = 4
 }
 
+$certBatches = @{
+    "SAA-C03" = 2; "DOP-C02" = 3; "AIP-C01" = 3
+}
+
 foreach ($cert in $certBatches.Keys) {
     for ($i = 1; $i -le $certBatches[$cert]; $i++) {
         python main.py generate --cert $cert --count 100 --output json
