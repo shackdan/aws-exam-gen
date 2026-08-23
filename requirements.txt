@@ -3,10 +3,15 @@ python-dotenv>=1.0.0
 pydantic>=2.5.0
 click>=8.1.7
 
-# LLM & Ollama
+# LLM backends
 ollama>=0.1.8
 langchain>=0.1.0
 langchain-community>=0.0.20
+# openai is only used as an HTTP client for mlx_lm.server's OpenAI-
+# compatible API (LLM_BACKEND=mlx) — no OpenAI account/API key needed.
+# mlx-lm itself is macOS/Apple Silicon-only, so it's not listed here —
+# install it separately (see README's MLX-LM section).
+openai>=1.30.0
 
 # RAG & Embeddings
 chromadb>=0.4.22

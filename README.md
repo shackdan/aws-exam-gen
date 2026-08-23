@@ -1,12 +1,14 @@
 # AWS Exam Gen
 
-A local, offline pipeline for generating AWS certification practice exams. It downloads official AWS source documentation (exam guides, whitepapers, service FAQs), ingests it into a local ChromaDB vector store, and uses a local Ollama LLM with a RAG (retrieval-augmented generation) + AI-reviewer loop to draft, validate, and export multiple-choice questions.
+A local, offline pipeline for generating AWS certification practice exams. It downloads official AWS source documentation (exam guides, whitepapers, service FAQs), ingests it into a local ChromaDB vector store, and uses a local LLM (Ollama, or MLX-LM on Apple Silicon Macs) with a RAG (retrieval-augmented generation) + AI-reviewer loop to draft, validate, and export multiple-choice questions.
 
 ## Prerequisites
 
 - Python 3.10+
-- [Ollama](https://ollama.com/) installed and running locally
-- An Ollama model pulled that matches `OLLAMA_MODEL` in [config.py](config.py) (defaults to `qwen2.5:7b-instruct`)
+- An LLM backend — either:
+  - [Ollama](https://ollama.com/) installed and running locally (default), **or**
+  - MLX-LM on an Apple Silicon Mac — see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon)
+- An Ollama model pulled that matches `OLLAMA_MODEL` in [config.py](config.py) (defaults to `qwen2.5:7b-instruct`) — skip this if using MLX-LM instead
 
 ```powershell
 ollama pull qwen2.5:7b-instruct
@@ -43,6 +45,8 @@ The defaults in [config.py](config.py) are sized for the dev box's Nvidia GTX 10
 
 The prompt's context-truncation limit scales automatically with `OLLAMA_NUM_CTX`, so raising it also lets more retrieved context reach the model.
 
+> This tuning section is Ollama-specific. If you're on an Apple Silicon Mac, [MLX-LM](#using-mlx-lm-on-a-macbook-apple-silicon) runs Metal-native and is usually both faster and less memory-hungry than Ollama's llama.cpp backend on the same hardware.
+
 **PowerShell**
 
 ```powershell
@@ -54,10 +58,47 @@ $env:RAG_TOP_K = "8"
 **Bash** (for m1 macbook air 16gb)
 
 ```bash
-export OLLAMA_MODEL="qwen2.5:14b-instruct"
+export OLLAMA_MODEL="qwen2.5:7b-instruct"
 export OLLAMA_NUM_CTX="8192"
 export RAG_TOP_K="8"
 ```
+
+## Using MLX-LM on a MacBook (Apple Silicon)
+
+[MLX-LM](https://github.com/ml-explore/mlx-lm) runs on Apple's MLX framework instead of Ollama's llama.cpp backend, so inference goes straight to Metal on the GPU. On an M-series MacBook this is typically faster and lighter on memory than the same model through Ollama — worth switching to if you're generating large question banks locally.
+
+The pipeline talks to MLX-LM through `mlx_lm.server`, which exposes an OpenAI-compatible `/v1/chat/completions` endpoint. Set `LLM_BACKEND=mlx` and it's a drop-in replacement for Ollama — `ingest` is unaffected either way, since only `generate` calls the LLM.
+
+**1. Install MLX-LM** (separate from `requirements.txt` — it's macOS/Apple Silicon-only, so it isn't a default dependency):
+
+```bash
+pip install mlx-lm
+```
+
+**2. Start the MLX-LM server** with a model from the [mlx-community](https://huggingface.co/mlx-community) org on Hugging Face (pre-quantized for Apple Silicon). It downloads the model on first run and keeps it resident in memory between requests:
+
+```bash
+mlx_lm.server --model mlx-community/Qwen2.5-7B-Instruct-4bit --port 8080
+```
+
+**3. Point the pipeline at it** by setting `LLM_BACKEND=mlx` (and `MLX_MODEL` to match whatever you passed to `--model` above, if different from the default):
+
+```bash
+export LLM_BACKEND="mlx"
+export MLX_MODEL="mlx-community/Qwen2.5-7B-Instruct-4bit"
+export MLX_BASE_URL="http://localhost:8080/v1"   # default — omit unless you changed --port
+```
+
+Then run `ingest` / `generate` as usual — `python main.py generate --cert SAA-C03 --count 10` works unchanged, it's just talking to MLX-LM instead of Ollama.
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `LLM_BACKEND` | `ollama` | Set to `mlx` to use MLX-LM instead of Ollama |
+| `MLX_MODEL` | `mlx-community/Qwen2.5-7B-Instruct-4bit` | Model to request from `mlx_lm.server` |
+| `MLX_BASE_URL` | `http://localhost:8080/v1` | `mlx_lm.server`'s OpenAI-compatible base URL |
+| `MLX_NUM_CTX` | `8192` | Context window used for prompt-side truncation (raise for a model with a larger trained context) |
+
+To switch back to Ollama, unset `LLM_BACKEND` (or set it to `ollama`) and make sure `ollama serve` is running.
 
 ## Supported certifications
 
@@ -233,6 +274,7 @@ Run any command with `--help` for the full list of options.
 ## Troubleshooting
 
 - **`Ollama not reachable`** — start Ollama with `ollama serve` and confirm the model from [config.py](config.py) is pulled.
+- **`MLX-LM server not reachable`** (`LLM_BACKEND=mlx`) — start it with `mlx_lm.server --model <MLX_MODEL>` (see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon)).
 - **`No questions were approved`** — confirm the certification was ingested (`python main.py status --cert <CODE>`), try a smaller `--count`, or check logs with `--log-level DEBUG`.
 - **`Source directory not found`** during ingest — run the download step first, or pass `--path` to point at your own PDF directory.
 
@@ -247,8 +289,9 @@ Run any command with `--help` for the full list of options.
 | [ingest.py](ingest.py) | PDF/HTML parsing, chunking, embedding, ChromaDB upsert |
 | [generator.py](generator.py) | RAG retrieval + LLM question drafting pipeline |
 | [reviewer.py](reviewer.py) | AI reviewer persona that approves/rejects/revises drafted questions |
+| [llm_backend.py](llm_backend.py) | Backend-agnostic LLM client — adapts Ollama and MLX-LM (via `mlx_lm.server`'s OpenAI-compatible API) to the same interface |
 | [schemas.py](schemas.py) | Pydantic v2 models (`ExamQuestion`, `ValidationCritique`, `GenerationRequest`, ...) |
-| [config.py](config.py) | Central config (paths, Ollama settings, embedding/generation tuning) |
+| [config.py](config.py) | Central config (paths, Ollama/MLX-LM settings, embedding/generation tuning) |
 | [utils.py](utils.py) | Logging, JSON repair, export formatting (CSV/Moodle XML), console output |
 | [registry.json](registry.json) | Certification metadata: name, tier, domains, domain weights, exam question counts |
 
