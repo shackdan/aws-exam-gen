@@ -45,7 +45,8 @@ if str(_PROJECT_ROOT) not in sys.path:
 from config import (
     CHROMA_DIR,
     DATA_DIR,
-    OLLAMA_CONFIG,
+    LLM_BACKEND,
+    LLM_CONFIG,
     OUTPUT_DIR,
     REGISTRY_PATH,
 )
@@ -82,11 +83,12 @@ def cli(ctx: click.Context, log_level: str) -> None:
     \b
     ╔══════════════════════════════════════════════════════╗
     ║   AWS Certification Exam Generator & Validator       ║
-    ║   Local AI Pipeline  ·  Powered by Ollama + RAG      ║
+    ║   Local AI Pipeline  ·  Ollama / MLX-LM + RAG        ║
     ╚══════════════════════════════════════════════════════╝
 
     Generate realistic AWS certification practice questions
-    using a local LLM (Ollama) and RAG over your own PDF docs.
+    using a local LLM (Ollama or MLX-LM — see LLM_BACKEND in
+    config.py) and RAG over your own PDF docs.
     """
     # Re-configure logging with the user-supplied level
     setup_logging(log_level)
@@ -390,8 +392,9 @@ def cmd_generate(
 
     \b
     Queries the ChromaDB vector store for relevant context, prompts
-    the local Ollama LLM to draft questions, then runs each question
-    through the AI Reviewer loop (up to 2 revision attempts).
+    the local LLM (Ollama or MLX-LM) to draft questions, then runs
+    each question through the AI Reviewer loop (up to 2 revision
+    attempts).
     Only Approved questions are written to the output file.
 
     \b
@@ -418,8 +421,9 @@ def cmd_generate(
             f"[bold]Output format :[/bold] {output_format}\n"
             f"[bold]Domain filter :[/bold] {domain_filter or '(all domains)'}\n"
             f"[bold]Difficulty    :[/bold] {difficulty or cert_metadata['tier']}\n"
-            f"[bold]Model         :[/bold] {OLLAMA_CONFIG.model}\n"
-            f"[bold]Context window:[/bold] {OLLAMA_CONFIG.num_ctx} tokens\n"
+            f"[bold]LLM backend   :[/bold] {LLM_BACKEND}\n"
+            f"[bold]Model         :[/bold] {LLM_CONFIG.model}\n"
+            f"[bold]Context window:[/bold] {LLM_CONFIG.num_ctx} tokens\n"
             f"[bold]Output dir    :[/bold] {OUTPUT_DIR}",
             title        = "[bold blue]Generation Configuration[/bold blue]",
             border_style = "blue",
@@ -470,14 +474,20 @@ def cmd_generate(
         )
 
     if result.approved == 0:
+        backend_hint = (
+            f"ollama run {LLM_CONFIG.model}"
+            if LLM_BACKEND != "mlx"
+            else f"mlx_lm.server --model {LLM_CONFIG.model}"
+        )
         console.print(
             Panel(
                 "[yellow]No questions were approved by the AI Reviewer.\n"
                 "Suggestions:\n"
                 "  • Ensure your ChromaDB collection is populated "
                 "(run 'ingest' first).\n"
-                "  • Verify Ollama is running with the correct model:\n"
-                f"    ollama run {OLLAMA_CONFIG.model}\n"
+                f"  • Verify the {LLM_BACKEND} backend is running with the "
+                "correct model:\n"
+                f"    {backend_hint}\n"
                 "  • Try reducing --count and re-running.\n"
                 "  • Check logs with --log-level DEBUG for details.[/yellow]",
                 title        = "[yellow]No Questions Approved[/yellow]",
@@ -776,7 +786,7 @@ def _run_startup_checks() -> None:
       1. Python version >= 3.10
       2. registry.json is present and readable
       3. Required directories exist (created if missing)
-      4. Ollama reachability (non-fatal warning only)
+      4. LLM backend reachability (non-fatal warning only)
 
     Prints warnings to console but does not abort — individual
     commands handle their own dependency validation.
@@ -798,21 +808,11 @@ def _run_startup_checks() -> None:
     for directory in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):
         directory.mkdir(parents=True, exist_ok=True)
 
-    # Ollama ping (non-fatal)
-    try:
-        import ollama
-        client = ollama.Client(
-            host    = OLLAMA_CONFIG.base_url,
-            timeout = 5,
-        )
-        client.list()
-    except Exception:
-        console.print(
-            f"[yellow]⚠ Ollama not reachable at "
-            f"{OLLAMA_CONFIG.base_url}. "
-            "Start Ollama before running 'generate'.\n"
-            f"  Command: ollama serve[/yellow]"
-        )
+    # LLM backend ping (non-fatal)
+    from llm_backend import ping_backend
+    reachable, hint = ping_backend(timeout=5)
+    if not reachable:
+        console.print(f"[yellow]⚠ {hint}[/yellow]")
 
 
 # ─────────────────────────────────────────────

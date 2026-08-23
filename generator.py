@@ -6,8 +6,8 @@ AI Question Generator Agent
 Responsibilities:
   1. Query the ChromaDB vector store for domain-relevant context chunks
      (RAG retrieval).
-  2. Build structured prompts and call the local Ollama LLM to draft
-     ExamQuestion objects.
+  2. Build structured prompts and call the local LLM (Ollama or MLX-LM
+     — see llm_backend.py) to draft ExamQuestion objects.
   3. Enforce the 75 % single-answer / 25 % multiple-selection split.
   4. Act as the revision_callback for reviewer.py — receiving a
      ValidationCritique and re-prompting the LLM to correct flaws.
@@ -17,7 +17,8 @@ Responsibilities:
 Hardware note:
   All LLM calls are synchronous and single-threaded to prevent OOM
   crashes on the GTX 1070 (8 GB VRAM).  The embedding model
-  (all-MiniLM-L6-v2) runs on CPU so it never competes for VRAM.
+  (all-MiniLM-L6-v2) runs on CPU so it never competes for VRAM/RAM
+  with the LLM.
 """
 
 from __future__ import annotations
@@ -31,7 +32,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-import ollama
 from tenacity import (
     retry,
     retry_if_exception_type,
@@ -44,9 +44,10 @@ from config import (
     CHROMA_DIR,
     EMBEDDING_CONFIG,
     GENERATION_CONFIG,
-    OLLAMA_CONFIG,
+    LLM_CONFIG,
     REGISTRY_PATH,
 )
+from llm_backend import LLMClient, init_llm_client
 from schemas import (
     ExamQuestion,
     GenerationRequest,
@@ -227,13 +228,13 @@ def _load_embedding_model() -> Any:
     """
     Load the sentence-transformer embedding model onto CPU.
     Returns the SentenceTransformer instance.
-    Keeps VRAM free for the Ollama LLM.
+    Keeps VRAM/unified memory free for the LLM.
     """
     try:
         from sentence_transformers import SentenceTransformer
         model = SentenceTransformer(
             EMBEDDING_CONFIG.model_name,
-            device="cpu",    # Explicit CPU — never competes with Ollama VRAM
+            device="cpu",    # Explicit CPU — never competes with the LLM
         )
         log.debug(
             f"Embedding model '{EMBEDDING_CONFIG.model_name}' loaded on CPU."
@@ -520,12 +521,13 @@ def build_generation_prompt(
     Assemble the user-turn prompt for the LLM generation call.
 
     Inserts a truncated context block to stay within the configured
-    OLLAMA_CONFIG.num_ctx limit (4096 tokens on the GTX 1070 dev box,
-    override via the OLLAMA_NUM_CTX env var on higher-VRAM systems).
+    LLM_CONFIG.num_ctx limit (4096 tokens on the GTX 1070 dev box via
+    OLLAMA_NUM_CTX, or MLX_NUM_CTX on the MLX-LM backend — see
+    config.py / llm_backend.py).
 
     Context budget:
       System + user prompt ≈  750 tokens (template scaffolding)
-      Response             ≈ OLLAMA_CONFIG.max_tokens (generation cap)
+      Response             ≈ LLM_CONFIG.max_tokens (generation cap)
       Context block        ≈ remainder of num_ctx, at ~4 chars/token
 
     avoid_services
@@ -537,8 +539,8 @@ def build_generation_prompt(
         the retrieved chunks keep repeating.
     """
     # Truncate context to avoid exceeding num_ctx
-    reserved_tokens   = 750 + OLLAMA_CONFIG.max_tokens
-    context_budget    = max(OLLAMA_CONFIG.num_ctx - reserved_tokens, 500)
+    reserved_tokens   = 750 + LLM_CONFIG.max_tokens
+    context_budget    = max(LLM_CONFIG.num_ctx - reserved_tokens, 500)
     max_context_chars = context_budget * 4  # ~4 chars/token
     if len(context) > max_context_chars:
         context = context[:max_context_chars] + "\n… [context truncated]"
@@ -573,7 +575,7 @@ def build_generation_prompt(
 
 
 # ─────────────────────────────────────────────
-# Ollama LLM call
+# LLM call (backend-agnostic — see llm_backend.py)
 # ─────────────────────────────────────────────
 
 @retry(
@@ -582,12 +584,13 @@ def build_generation_prompt(
     wait    = wait_fixed(3),
     reraise = True,
 )
-def _call_ollama_generator(
+def _call_generator_llm(
     user_prompt: str,
-    ollama_client: Any,
+    llm_client: LLMClient,
 ) -> str:
     """
-    Send a generation prompt to Ollama and return the raw response string.
+    Send a generation prompt to the configured LLM backend and return
+    the raw response string.
 
     Uses a slightly higher temperature than the reviewer (0.4) to
     encourage creative, varied question scenarios while remaining
@@ -595,22 +598,16 @@ def _call_ollama_generator(
 
     Retries up to 3 times on transient network / timeout errors.
     """
-    response = ollama_client.chat(
-        model    = OLLAMA_CONFIG.model,
+    return llm_client.chat(
         messages = [
             {"role": "system", "content": GENERATOR_SYSTEM_PROMPT},
             {"role": "user",   "content": user_prompt},
         ],
-        options  = {
-            "temperature": OLLAMA_CONFIG.temperature,
-            "top_p"      : OLLAMA_CONFIG.top_p,
-            "num_ctx"    : OLLAMA_CONFIG.num_ctx,
-            "num_predict": OLLAMA_CONFIG.max_tokens,
-        },
-        format    = "json",
-        keep_alive= OLLAMA_CONFIG.keep_alive,
+        temperature= LLM_CONFIG.temperature,
+        top_p      = LLM_CONFIG.top_p,
+        max_tokens = LLM_CONFIG.max_tokens,
+        json_mode  = True,
     )
-    return response["message"]["content"]
 
 
 # ─────────────────────────────────────────────
@@ -818,7 +815,7 @@ def generate_single_question(
     question_type:     QuestionType,
     collection:        Any,
     embedding_model:   Any,
-    ollama_client:     Any,
+    llm_client:        LLMClient,
     num_correct:       int = 1,
     count_word:        str = "ONE",
     exclude_chunk_ids: Optional[Set[str]] = None,
@@ -826,7 +823,7 @@ def generate_single_question(
     seen_hashes:       Optional[Set[str]] = None,
 ) -> Optional[ExamQuestion]:
     """
-    Generate a single ExamQuestion via RAG + Ollama prompt.
+    Generate a single ExamQuestion via RAG + LLM prompt.
 
     exclude_chunk_ids
         Chunk ids already used for earlier questions in this domain
@@ -887,16 +884,16 @@ def generate_single_question(
                 log.error(f"Prompt build failed for domain '{domain}': {prompt_err}")
                 return None
 
-            # ── Step 3: Call Ollama ────────────────
+            # ── Step 3: Call the LLM ────────────────
             try:
-                raw_text = _call_ollama_generator(prompt, ollama_client)
-            except Exception as ollama_err:
-                log.error(f"Ollama call failed for domain '{domain}': {ollama_err}")
+                raw_text = _call_generator_llm(prompt, llm_client)
+            except Exception as llm_err:
+                log.error(f"LLM call failed for domain '{domain}': {llm_err}")
                 continue
 
             if not raw_text or not raw_text.strip():
                 log.warning(
-                    f"Ollama returned empty content for domain '{domain}'."
+                    f"LLM returned empty content for domain '{domain}'."
                 )
                 continue
 
@@ -1001,7 +998,7 @@ def generate_single_question(
 # ─────────────────────────────────────────────
 
 def build_revision_callback(
-    ollama_client: Any,
+    llm_client: LLMClient,
     collection: Any,
     embedding_model: Any,
 ) -> Any:
@@ -1020,7 +1017,7 @@ def build_revision_callback(
       5. Returns the revised question (or raises on total failure).
 
     Using a factory keeps the generator and reviewer decoupled while
-    sharing the same Ollama client and VRAM context.
+    sharing the same LLM client (and its VRAM/unified-memory footprint).
     """
     def revision_callback(
         question: ExamQuestion,
@@ -1040,7 +1037,7 @@ def build_revision_callback(
 
         # Call LLM with the correction instructions
         try:
-            raw_response = _call_ollama_generator(revision_prompt, ollama_client)
+            raw_response = _call_generator_llm(revision_prompt, llm_client)
         except Exception as llm_err:
             raise RuntimeError(
                 f"LLM revision call failed for question "
@@ -1075,7 +1072,7 @@ def build_revision_callback(
 
 def generate_batch(
     request: GenerationRequest,
-    ollama_client: Any,
+    llm_client: LLMClient,
     collection: Any,
     embedding_model: Any,
     cert_metadata: Dict[str, Any],
@@ -1101,8 +1098,8 @@ def generate_batch(
     ──────────
     request
         A GenerationRequest specifying cert_code, count, etc.
-    ollama_client
-        Initialised Ollama client.
+    llm_client
+        Initialised LLM client (backend-agnostic — see llm_backend.py).
     collection
         ChromaDB collection for the cert_code.
     embedding_model
@@ -1233,7 +1230,7 @@ def generate_batch(
                 question_type     = q_type,
                 collection        = collection,
                 embedding_model   = embedding_model,
-                ollama_client     = ollama_client,
+                llm_client        = llm_client,
                 num_correct       = num_correct,
                 count_word        = count_word,
                 exclude_chunk_ids = domain_used_chunks.get(domain),
@@ -1298,7 +1295,8 @@ def run_generation_pipeline(
 
     Steps:
       1.  Load the certification registry and validate the cert_code.
-      2.  Initialise the Ollama client (model stays resident in VRAM).
+      2.  Initialise the configured LLM client (Ollama or MLX-LM — see
+          llm_backend.py; the model stays resident in memory).
       3.  Load the sentence-transformer embedding model (CPU).
       4.  Retrieve the ChromaDB collection for the certification.
       5.  Generate the raw question batch via generate_batch().
@@ -1312,9 +1310,9 @@ def run_generation_pipeline(
       7.  Export approved questions to the requested output format.
       8.  Return a GenerationResult summary to the CLI.
 
-    All heavy objects (Ollama client, embedding model, ChromaDB
+    All heavy objects (LLM client, embedding model, ChromaDB
     collection) are initialised once and shared across the entire
-    pipeline to minimise VRAM / memory churn on the GTX 1070.
+    pipeline to minimise VRAM / memory churn.
 
     Parameters
     ──────────
@@ -1342,25 +1340,10 @@ def run_generation_pipeline(
         f"({request.cert_code}) | Tier: {cert_metadata['tier']}"
     )
 
-    # ── Step 2: Initialise Ollama client ───────
-    log.info(
-        f"Initialising Ollama client → model: {OLLAMA_CONFIG.model} | "
-        f"num_ctx: {OLLAMA_CONFIG.num_ctx} | "
-        f"keep_alive: {OLLAMA_CONFIG.keep_alive}"
-    )
-    try:
-        ollama_client = ollama.Client(
-            host    = OLLAMA_CONFIG.base_url,
-            timeout = OLLAMA_CONFIG.timeout,
-        )
-        # Warm-up ping to confirm Ollama is reachable before heavy work
-        ollama_client.list()
-        log.info("Ollama client connected successfully.")
-    except Exception as ollama_err:
-        raise RuntimeError(
-            f"Cannot connect to Ollama at {OLLAMA_CONFIG.base_url}. "
-            f"Ensure Ollama is running. Error: {ollama_err}"
-        ) from ollama_err
+    # ── Step 2: Initialise LLM client ──────────
+    # init_llm_client() picks Ollama or MLX-LM per config.LLM_BACKEND
+    # and warm-up-pings it, raising RuntimeError if unreachable.
+    llm_client = init_llm_client()
 
     # ── Step 3: Load embedding model ──────────
     log.info(
@@ -1408,7 +1391,7 @@ def run_generation_pipeline(
     )
     raw_questions = generate_batch(
         request         = request,
-        ollama_client   = ollama_client,
+        llm_client      = llm_client,
         collection      = collection,
         embedding_model = embedding_model,
         cert_metadata   = cert_metadata,
@@ -1418,7 +1401,7 @@ def run_generation_pipeline(
     if not raw_questions:
         log.error(
             "Generation produced zero valid questions. "
-            "Check Ollama model availability and ChromaDB ingestion."
+            "Check LLM model availability and ChromaDB ingestion."
         )
         return GenerationResult(
             cert_code        = request.cert_code,
@@ -1440,7 +1423,7 @@ def run_generation_pipeline(
     log.info("Starting AI reviewer validation loop…")
 
     revision_cb = build_revision_callback(
-        ollama_client   = ollama_client,
+        llm_client      = llm_client,
         collection      = collection,
         embedding_model = embedding_model,
     )
@@ -1451,7 +1434,7 @@ def run_generation_pipeline(
 
     reviewed_questions, critiques = review_batch(
         questions         = raw_questions,
-        ollama_client     = ollama_client,
+        llm_client        = llm_client,
         revision_callback = revision_cb,
     )
 
@@ -1501,7 +1484,7 @@ def run_generation_pipeline(
 
         topup_raw = generate_batch(
             request            = request,
-            ollama_client      = ollama_client,
+            llm_client         = llm_client,
             collection         = collection,
             embedding_model    = embedding_model,
             cert_metadata      = cert_metadata,
@@ -1529,7 +1512,7 @@ def run_generation_pipeline(
 
         topup_reviewed, topup_critiques = review_batch(
             questions         = topup_raw,
-            ollama_client     = ollama_client,
+            llm_client        = llm_client,
             revision_callback = revision_cb,
         )
         reviewed_questions.extend(topup_reviewed)
@@ -1677,7 +1660,7 @@ def run_generation_pipeline(
         metadata         = {
             "cert_name"        : cert_metadata["name"],
             "tier"             : cert_metadata["tier"],
-            "model"            : OLLAMA_CONFIG.model,
+            "model"            : LLM_CONFIG.model,
             "embedding_model"  : EMBEDDING_CONFIG.model_name,
             "domain_stats"     : domain_stats,
             "type_distribution": {

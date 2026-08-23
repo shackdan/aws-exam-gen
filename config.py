@@ -33,6 +33,15 @@ for _d in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):
 
 
 # ─────────────────────────────────────────────
+# LLM backend selection
+# ─────────────────────────────────────────────
+# "ollama" (default) talks to a local Ollama server.
+# "mlx"    talks to an `mlx_lm.server` instance (Apple Silicon, Metal-
+#          accelerated) via its OpenAI-compatible API — see llm_backend.py.
+LLM_BACKEND: str = os.getenv("LLM_BACKEND", "ollama").strip().lower()
+
+
+# ─────────────────────────────────────────────
 # Ollama / LLM settings  (GTX 1070 8 GB tuning)
 # ─────────────────────────────────────────────
 @dataclass
@@ -60,6 +69,36 @@ class OllamaConfig:
     # Keeps model resident in VRAM between calls (-1 = indefinitely)
     keep_alive: int = -1
     # Hard cap on generated tokens per request
+    max_tokens: int = 2048
+    # Request timeout in seconds
+    timeout: int = 180
+
+
+# ─────────────────────────────────────────────
+# MLX-LM settings  (Apple Silicon / Metal, via `mlx_lm.server`)
+# ─────────────────────────────────────────────
+@dataclass
+class MLXConfig:
+    # Model repo id as passed to `mlx_lm.server --model ...`
+    model: str = field(
+        default_factory=lambda: os.getenv(
+            "MLX_MODEL", "mlx-community/Qwen2.5-7B-Instruct-4bit"
+        )
+    )
+    # mlx_lm.server's OpenAI-compatible base URL
+    base_url: str = field(
+        default_factory=lambda: os.getenv(
+            "MLX_BASE_URL", "http://localhost:8080/v1"
+        )
+    )
+    # Context window — informs prompt-side context truncation only;
+    # the server itself is configured via `mlx_lm.server --max-tokens`
+    # / the model's own trained context length.
+    num_ctx: int = field(
+        default_factory=lambda: int(os.getenv("MLX_NUM_CTX", "8192"))
+    )
+    temperature: float = 0.4
+    top_p: float = 0.9
     max_tokens: int = 2048
     # Request timeout in seconds
     timeout: int = 180
@@ -125,5 +164,12 @@ class GenerationConfig:
 # Convenience accessor (singleton-ish pattern)
 # ─────────────────────────────────────────────
 OLLAMA_CONFIG    = OllamaConfig()
+MLX_CONFIG       = MLXConfig()
 EMBEDDING_CONFIG = EmbeddingConfig()
 GENERATION_CONFIG = GenerationConfig()
+
+# Whichever backend config is active — generator.py / reviewer.py read
+# shared fields (model, num_ctx, temperature, top_p, max_tokens, timeout)
+# through this instead of picking a class directly, so prompt-budget math
+# and logging stay correct regardless of LLM_BACKEND.
+LLM_CONFIG = MLX_CONFIG if LLM_BACKEND == "mlx" else OLLAMA_CONFIG

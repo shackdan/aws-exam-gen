@@ -9,12 +9,13 @@ before it is approved for export.
 
 Validation pipeline per question:
   1.  Structural checks  (fast, local, no LLM call)
-  2.  LLM deep-review    (Ollama prompt → ValidationCritique JSON)
+  2.  LLM deep-review    (prompt → ValidationCritique JSON, via
+      whichever backend is configured — see llm_backend.py)
   3.  Feedback loop      (up to max_revision_attempts if failed)
   4.  Final status stamp (Approved / Rejected)
 
 The reviewer is intentionally kept stateless between questions so it can
-be run sequentially without accumulating VRAM pressure on the GTX 1070.
+be run sequentially without accumulating VRAM/memory pressure.
 """
 
 from __future__ import annotations
@@ -31,7 +32,8 @@ from tenacity import (
     wait_fixed,
 )
 
-from config import GENERATION_CONFIG, OLLAMA_CONFIG
+from config import GENERATION_CONFIG, LLM_CONFIG
+from llm_backend import LLMClient
 from schemas import (
     CritiqueFlag,
     ExamQuestion,
@@ -487,31 +489,25 @@ def build_revision_prompt(
     wait      = wait_fixed(2),
     reraise   = True,
 )
-def _call_ollama_reviewer(
+def _call_reviewer_llm(
     user_prompt: str,
-    ollama_client: Any,
+    llm_client: LLMClient,
 ) -> str:
     """
-    Send the review prompt to Ollama and return the raw response string.
-    Uses the same model and context settings as the generator to avoid
-    loading a second model into VRAM on the GTX 1070.
+    Send the review prompt to the configured LLM backend and return the
+    raw response string. Uses the same model and client as the
+    generator to avoid loading a second model into memory.
     Retries up to 3 times on transient connection / timeout errors.
     """
-    response = ollama_client.chat(
-        model   = OLLAMA_CONFIG.model,
-        messages= [
+    return llm_client.chat(
+        messages = [
             {"role": "system", "content": REVIEWER_SYSTEM_PROMPT},
             {"role": "user",   "content": user_prompt},
         ],
-        options = {
-            "temperature" : 0.1,      # Low temp → deterministic critique
-            "top_p"       : 0.9,
-            "num_ctx"     : OLLAMA_CONFIG.num_ctx,
-            "num_predict" : 1024,     # Critique JSON is shorter than a question
-        },
-        keep_alive= OLLAMA_CONFIG.keep_alive,
+        temperature= 0.1,      # Low temp → deterministic critique
+        top_p      = 0.9,
+        max_tokens = 1024,     # Critique JSON is shorter than a question
     )
-    return response["message"]["content"]
 
 
 # ─────────────────────────────────────────────
@@ -644,7 +640,7 @@ def _apply_revision_to_question(
 
 def review_question(
     question: ExamQuestion,
-    ollama_client: Any,
+    llm_client: LLMClient,
     revision_callback: Optional[Callable[[ExamQuestion, ValidationCritique], ExamQuestion]] = None,
 ) -> Tuple[ExamQuestion, ValidationCritique]:
     """
@@ -663,8 +659,9 @@ def review_question(
     ──────────
     question
         The ExamQuestion to review.
-    ollama_client
-        An initialised ollama.Client instance (injected for testability).
+    llm_client
+        An initialised LLMClient (backend-agnostic — see
+        llm_backend.py; injected for testability).
     revision_callback
         Optional callable that accepts (question, critique) and returns
         a revised ExamQuestion.  When None, no revisions are attempted.
@@ -747,7 +744,7 @@ def review_question(
 
         try:
             review_prompt = build_review_prompt(current_q)
-            raw_response  = _call_ollama_reviewer(review_prompt, ollama_client)
+            raw_response  = _call_reviewer_llm(review_prompt, llm_client)
             critique      = _parse_critique_response(
                 raw_response, current_q.question_id
             )
@@ -841,22 +838,24 @@ def review_question(
 
 def review_batch(
     questions: List[ExamQuestion],
-    ollama_client: Any,
+    llm_client: LLMClient,
     revision_callback: Optional[Callable[[ExamQuestion, ValidationCritique], ExamQuestion]] = None,
     on_progress: Optional[Callable[[int, int, ExamQuestion], None]] = None,
 ) -> Tuple[List[ExamQuestion], List[ValidationCritique]]:
     """
     Review a batch of questions sequentially.
 
-    Sequential execution is intentional: the GTX 1070 (8 GB VRAM) cannot
-    sustain concurrent Ollama inference without OOM risk.
+    Sequential execution is intentional: on the GTX 1070 (8 GB VRAM)
+    dev box, concurrent inference risks OOM; the same conservative
+    default is kept for the MLX-LM backend too.
 
     Parameters
     ──────────
     questions
         List of ExamQuestion objects to review.
-    ollama_client
-        Initialised Ollama client (shared with the generator).
+    llm_client
+        Initialised LLMClient (backend-agnostic — shared with the
+        generator).
     revision_callback
         Callable used to request a revised question from the generator
         when review fails.  Signature: (question, critique) → ExamQuestion.
@@ -886,7 +885,7 @@ def review_batch(
 
         reviewed_q, critique = review_question(
             question          = question,
-            ollama_client     = ollama_client,
+            llm_client        = llm_client,
             revision_callback = revision_callback,
         )
 
