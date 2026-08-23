@@ -75,11 +75,15 @@ The pipeline talks to MLX-LM through `mlx_lm.server`, which exposes an OpenAI-co
 pip install mlx-lm
 ```
 
+If your `venv` predates this feature, `openai` won't be installed yet — re-run `pip install -r requirements.txt` to pick it up (it's used only as an HTTP client for `mlx_lm.server`'s OpenAI-compatible API, no OpenAI account needed).
+
 **2. Start the MLX-LM server** with a model from the [mlx-community](https://huggingface.co/mlx-community) org on Hugging Face (pre-quantized for Apple Silicon). It downloads the model on first run and keeps it resident in memory between requests:
 
 ```bash
 mlx_lm.server --model mlx-community/Qwen2.5-7B-Instruct-4bit --port 8080
 ```
+
+> `mlx_lm.server` prints no "ready" banner — after the `Fetching N files: 100%` line it goes quiet but is already serving. Don't mistake the silence for a hang; confirm it's up with `curl http://localhost:8080/v1/models`.
 
 **3. Point the pipeline at it** by setting `LLM_BACKEND=mlx` (and `MLX_MODEL` to match whatever you passed to `--model` above, if different from the default):
 
@@ -99,6 +103,22 @@ Then run `ingest` / `generate` as usual — `python main.py generate --cert SAA-
 | `MLX_NUM_CTX` | `8192` | Context window used for prompt-side truncation (raise for a model with a larger trained context) |
 
 To switch back to Ollama, unset `LLM_BACKEND` (or set it to `ollama`) and make sure `ollama serve` is running.
+
+### Model size vs. approval rate
+
+The 7B model is fast but doesn't always follow the exact-option-count instructions in the prompt (e.g. 5 options on a single-answer question), which the schema validator rejects outright — not a reviewer rejection, a generation failure. Bumping to a 14B model fixed this in testing:
+
+| Model | Hardware | Result (5-question test run) | Pace |
+| --- | --- | --- | --- |
+| `mlx-community/Qwen2.5-7B-Instruct-4bit` | M1 MacBook Air, 16 GB | Some generation failures from malformed option counts | Faster |
+| `mlx-community/Qwen2.5-14B-Instruct-4bit` | M1 MacBook Air, 16 GB | 5/5 approved (100%) | ~2.5 min/question |
+
+```bash
+mlx_lm.server --model mlx-community/Qwen2.5-14B-Instruct-4bit --port 8080
+export MLX_MODEL="mlx-community/Qwen2.5-14B-Instruct-4bit"
+```
+
+The 14B model is a tight fit on 16 GB unified memory — expect a slow first request (~1 min, one-time weight load) and close other memory-heavy apps if you hit swapping. On 16 GB+ systems it's worth the trade for large batch runs; for quick iteration the 7B model is still the faster choice.
 
 ## Supported certifications
 
