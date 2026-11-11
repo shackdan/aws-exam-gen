@@ -35,10 +35,10 @@ for _d in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):
 # ─────────────────────────────────────────────
 # LLM backend selection
 # ─────────────────────────────────────────────
-# "ollama" (default) talks to a local Ollama server.
-# "mlx"    talks to an `mlx_lm.server` instance (Apple Silicon, Metal-
-#          accelerated) via its OpenAI-compatible API — see llm_backend.py.
-LLM_BACKEND: str = os.getenv("LLM_BACKEND", "ollama").strip().lower()
+# "mlx"    (default) talks to an `mlx_lm.server` instance (Apple Silicon,
+#          Metal-accelerated) via its OpenAI-compatible API — see llm_backend.py.
+# "ollama" talks to a local Ollama server.
+LLM_BACKEND: str = os.getenv("LLM_BACKEND", "mlx").strip().lower()
 
 
 # ─────────────────────────────────────────────

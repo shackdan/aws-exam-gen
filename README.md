@@ -6,9 +6,9 @@ A local, offline pipeline for generating AWS certification practice exams. It do
 
 - Python 3.10+
 - An LLM backend — either:
-  - [Ollama](https://ollama.com/) installed and running locally (default), **or**
-  - MLX-LM on an Apple Silicon Mac — see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon)
-- An Ollama model pulled that matches `OLLAMA_MODEL` in [config.py](config.py) (defaults to `qwen2.5:7b-instruct`) — skip this if using MLX-LM instead
+  - MLX-LM on an Apple Silicon Mac (default) — see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon), **or**
+  - [Ollama](https://ollama.com/) installed and running locally — set `LLM_BACKEND=ollama`
+- If using Ollama, an Ollama model pulled that matches `OLLAMA_MODEL` in [config.py](config.py) (defaults to `qwen2.5:7b-instruct`)
 
 ```powershell
 ollama pull qwen2.5:7b-instruct
@@ -95,14 +95,16 @@ export MLX_BASE_URL="http://localhost:8080/v1"   # default — omit unless you c
 
 Then run `ingest` / `generate` as usual — `python main.py generate --cert SAA-C03 --count 10` works unchanged, it's just talking to MLX-LM instead of Ollama.
 
+> On a base M1 (not Pro/Max/Ultra), memory bandwidth is ~68 GB/s vs. a GTX 1070's ~256 GB/s — LLM decoding is bandwidth-bound, so even the 7B model here will typically trail a 7B model on that GPU. The 14B model below trades noticeably more of that speed for a higher approval rate; only opt into it if quality matters more than pace on your hardware.
+
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `LLM_BACKEND` | `ollama` | Set to `mlx` to use MLX-LM instead of Ollama |
+| `LLM_BACKEND` | `mlx` | Set to `ollama` to use Ollama instead of MLX-LM |
 | `MLX_MODEL` | `mlx-community/Qwen2.5-7B-Instruct-4bit` | Model to request from `mlx_lm.server` |
 | `MLX_BASE_URL` | `http://localhost:8080/v1` | `mlx_lm.server`'s OpenAI-compatible base URL |
 | `MLX_NUM_CTX` | `8192` | Context window used for prompt-side truncation (raise for a model with a larger trained context) |
 
-To switch back to Ollama, unset `LLM_BACKEND` (or set it to `ollama`) and make sure `ollama serve` is running.
+To switch to Ollama, set `LLM_BACKEND=ollama` and make sure `ollama serve` is running.
 
 ### Model size vs. approval rate
 

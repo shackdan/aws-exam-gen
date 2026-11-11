@@ -5,11 +5,11 @@ Backend-agnostic LLM client used by generator.py and reviewer.py.
 
 Two backends are supported, selected via the LLM_BACKEND env var
 (see config.py):
-  - "ollama" (default) — talks to a local Ollama server through the
-    `ollama` package's native /api/chat endpoint.
-  - "mlx"    — talks to an `mlx_lm.server` instance (Apple's MLX
-    runtime, Metal-accelerated on Apple Silicon) through its
+  - "mlx"    (default) — talks to an `mlx_lm.server` instance (Apple's
+    MLX runtime, Metal-accelerated on Apple Silicon) through its
     OpenAI-compatible /v1/chat/completions endpoint.
+  - "ollama" — talks to a local Ollama server through the
+    `ollama` package's native /api/chat endpoint.
 
 Both backends expose the same `.chat(...)` signature so the rest of
 the pipeline never branches on which one is active.
