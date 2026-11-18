@@ -1,0 +1,315 @@
+{
+  "metadata": {
+    "cert_code": "SAA-C03",
+    "generated_at": "2026-08-22T20:21:30.884413+00:00",
+    "total_questions": 10,
+    "approved": 10,
+    "rejected": 0,
+    "domain_stats": {
+      "Design Secure Architectures": {
+        "approved": 4,
+        "rejected": 0,
+        "target_pct": 30.0,
+        "actual_pct": 40.0,
+        "delta_pct": 10.0
+      },
+      "Design Resilient Architectures": {
+        "approved": 2,
+        "rejected": 1,
+        "target_pct": 26.0,
+        "actual_pct": 20.0,
+        "delta_pct": -6.0
+      },
+      "Design High-Performing Architectures": {
+        "approved": 2,
+        "rejected": 1,
+        "target_pct": 24.0,
+        "actual_pct": 20.0,
+        "delta_pct": -4.0
+      },
+      "Design Cost-Optimized Architectures": {
+        "approved": 2,
+        "rejected": 1,
+        "target_pct": 20.0,
+        "actual_pct": 20.0,
+        "delta_pct": 0.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "781a6216-39d9-49b6-93ed-08ce102cc580",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "An AWS customer is designing a secure architecture for a new application that will process sensitive customer data. The application will run in a VPC and needs to be isolated from the internet. Which of the following approaches should the architect choose to ensure the application is secure and compliant with the AWS Well-Architected Framework's security principles?",
+      "options": [
+        "A. Deploy the application in a public subnet with a NAT gateway for internet access.",
+        "B. Use a VPC with a private subnet and ensure the application instances are launched in the private subnet with no internet access.",
+        "C. Place the application in a public subnet and use security groups to restrict access to the internet.",
+        "D. Create a VPC with a single subnet and allow internet access to the application for easier management."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. According to the AWS Well-Architected Framework, separating workloads using accounts (SEC01-BP01) and operating your workloads securely (SEC01-BP03) are crucial for a secure architecture. Placing the application in a private subnet ensures it is isolated from the internet, aligning with the security principles of the framework. This approach also simplifies security management by limiting exposure to the internet. Option A is incorrect as it exposes the application to the internet through a NAT gateway, which is not compliant with the security principles. Option C is incorrect because it still allows internet access via security groups, and Option D is incorrect as it does not follow the principle of isolating the application from the internet, making it more vulnerable to security threats.",
+      "source_context": "[Source 1: Well-Architected-Security-Pillar.pdf, p.232, URL: https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf]\nSecurity Pillar AWS Well-Architected Framework\nConclusion\nSecurity is an ongoing effort. When incidents occur, they should be treated as opportunities to\nimprove the security of the architecture. Having strong identity controls, automating responses\nto security events, protecting infrastructure at multiple levels, and managing well-c",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "VPC"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:16:05.027713Z"
+    },
+    {
+      "question_id": "e56b2471-4ba0-4f4e-b546-c63dd4b7c97a",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "multiple",
+      "question_text": "You are designing a resilient architecture for a healthcare application that must comply with HIPAA regulations. The application relies on a third-party database service for storing sensitive patient data. To ensure the application can handle potential failures in the third-party service, you need to implement graceful degradation. Which two AWS services should you use to achieve this goal while maintaining compliance? (Select TWO)",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon SNS",
+        "C. AWS Lambda",
+        "D. Amazon RDS Multi-AZ",
+        "E. Amazon DynamoDB Streams"
+      ],
+      "correct_answers": [
+        "C",
+        "D"
+      ],
+      "explanation": "{'A': 'AWS Config is used to evaluate, record, and report on the configuration of AWS resources. It is not directly related to graceful degradation or handling dependency failures.', 'B': 'Amazon SNS is a messaging service that allows you to decouple applications and services, but it is not specifically designed for implementing graceful degradation in the context of third-party service failures.', 'C': 'AWS Lambda can be used to implement logic that detects failures in the third-party database service and triggers appropriate actions, such as logging the failure, sending notifications, or switching to a local cache, thus achieving graceful degradation.', 'D': 'Amazon RDS Multi-AZ can be used to ensure high availability of the third-party database service by automatically replicating data across multiple Availability Zones. This can help in maintaining service availability even if the primary database fails, aligning with the goal of graceful degradation.', 'E': 'Amazon DynamoDB Streams can be used for change data capture, but it is not directly related to implementing graceful degradation in the context of third-party service failures.'}",
+      "source_context": "[Source 1: Well-Architected-Reliability-Pillar.pdf, p.91, URL: https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf]\nLevel of risk exposed if this best practice is not established: High\nImplementation guidance\nImplementing graceful degradation helps minimize the impact of dependency failures on\ncomponent function. Ideally, a component detects dependency failures and works around them in\na way that minimally impacts other components or custo",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Lambda",
+        "Amazon RDS Multi-AZ"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:16:20.595979Z"
+    },
+    {
+      "question_id": "1f474f6f-0f16-4783-aee8-a79fc55534c5",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare provider is required to design a HIPAA-compliant architecture for storing patient records. The provider needs to ensure that the data is encrypted both at rest and in transit, and access to the data is restricted to authorized personnel. Which of the following solutions best meets these requirements?",
+      "options": [
+        "A. Use Amazon S3 with server-side encryption and S3 bucket policies to restrict access.",
+        "B. Use Amazon EBS with instance-level encryption and security groups to restrict access.",
+        "C. Use Amazon RDS with encryption at rest and IAM roles for access control.",
+        "D. Use Amazon S3 with client-side encryption and IAM roles for access control."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best solution is A. Amazon S3 with server-side encryption and S3 bucket policies for access control. This approach ensures that data is encrypted both at rest and in transit, and access is restricted to authorized personnel via S3 bucket policies. Server-side encryption in S3 is the recommended practice for HIPAA-compliant architectures as it provides encryption at rest, and S3 bucket policies can be used for access control. Amazon EBS with instance-level encryption (option B) is only for data at rest and does not provide encryption in transit. Amazon RDS with encryption at rest and IAM roles (option C) is suitable for databases but does not cover the requirement for data in transit encryption. Client-side encryption in S3 (option D) is not a recommended practice for HIPAA-compliant architectures. The AWS Well-Architected Framework for HIPAA Security and Compliance recommends using server-side encryption for data at rest and IAM roles for access control.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\nAmazon's trademarks and trade dress may not be used in connection with any product or service\nthat is not Amazon's, in any manner that is likely to cause confusion among customers, or in any\nmanne",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "S3",
+        "IAM",
+        "S3 Bucket Policies"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-22T20:16:46.816532Z"
+    },
+    {
+      "question_id": "38b25b60-f083-430f-9c85-548ed8cd3deb",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "multiple",
+      "question_text": "A healthcare provider is designing a HIPAA-compliant architecture for their application that processes sensitive patient data. The architecture must ensure data availability and minimize recovery time. Which two services should the architect choose to meet these requirements? (Select TWO)",
+      "options": [
+        "A. AWS Lambda",
+        "B. Amazon S3",
+        "C. Amazon RDS Multi-AZ",
+        "D. AWS CloudTrail",
+        "E. AWS Direct Connect"
+      ],
+      "correct_answers": [
+        "C",
+        "B"
+      ],
+      "explanation": "A. AWS Lambda - While useful for serverless computing, it does not directly contribute to data availability or disaster recovery.\n\nB. Amazon S3 - Provides durable and highly available storage, which is essential for ensuring data availability and minimizing recovery time.\n\nC. Amazon RDS Multi-AZ - Ensures high availability and automatic failover, making it a key component in a HIPAA-compliant architecture.\n\nD. AWS CloudTrail - Used for logging and monitoring AWS API calls, which is important for compliance but not directly related to data availability or disaster recovery.\n\nE. AWS Direct Connect - Facilitates a private connection between your on-premises infrastructure and AWS, which is not directly related to the availability and recovery time of the application.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon S3",
+        "Amazon RDS Multi-AZ"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:17:29.079338Z"
+    },
+    {
+      "question_id": "d350eafe-065b-4efd-a933-3e8068d53627",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare provider is designing a HIPAA-compliant architecture for storing patient records. They want to ensure that the data is encrypted both at rest and in transit, and they are considering using AWS services to achieve this. Which of the following configurations should they choose to meet their requirements?",
+      "options": [
+        "A. Use Amazon S3 with server-side encryption and enable S3 Transfer Acceleration for data in transit.",
+        "B. Use Amazon EFS with client-side encryption and enable VPC endpoint for data in transit.",
+        "C. Use Amazon EBS with AWS KMS for server-side encryption and enable TLS for data in transit.",
+        "D. Use Amazon RDS with AES-256 encryption and enable SSL for data in transit."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Amazon EBS with AWS KMS for server-side encryption and enabling TLS for data in transit is the best choice for meeting the HIPAA-compliant data encryption requirements. AWS KMS provides robust key management capabilities, and TLS ensures secure data transmission. Amazon S3 with S3 Transfer Acceleration (option A) and Amazon EFS with client-side encryption (option B) do not provide server-side encryption at rest, which is required for HIPAA compliance. Amazon RDS with AES-256 encryption (option D) is not suitable for EBS-based storage, as RDS is designed for database storage and not for general-purpose storage like EBS.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This whitepaper has been archived. For the latest technical information on HIPAA\nCompliance and AWS, see the HIPAA Eligible Services Reference.\n\n[Source 2: Disaster-Recovery-on-AWS.pdf, p.3]\nDisaster Recovery of Workloads on AWS: Recovery in the Cloud AWS Well-Architected Fram",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon EBS",
+        "AWS KMS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:17:42.925264Z"
+    },
+    {
+      "question_id": "46f4a007-cdca-43bd-b4fd-35bd23ebd649",
+      "cert_code": "SAA-C03",
+      "domain": "Design Cost-Optimized Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company needs to design a HIPAA-compliant architecture that minimizes costs while ensuring data availability and security. The company is evaluating different strategies to store patient records. Which of the following options would be the most cost-effective while still meeting the required compliance standards?",
+      "options": [
+        "A. Store patient records in Amazon S3 Standard with Infrequent Access (S3 Standard-IA) and enable S3 Cross-Region Replication (S3 CR Replication) to a different region.",
+        "B. Use Amazon S3 Glacier for storing patient records and enable S3 Cross-Region Replication (S3 CR Replication) to a different region.",
+        "C. Utilize Amazon S3 Standard with S3 Intelligent-Tiering and enable S3 Cross-Region Replication (S3 CR Replication) to a different region.",
+        "D. Employ Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) with S3 Cross-Region Replication (S3 CR Replication) to a different region."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best answer is A. Amazon S3 Standard with Infrequent Access (S3 Standard-IA) is the most cost-effective option for storing patient records while meeting HIPAA compliance standards. S3 Standard-IA is optimized for data that is accessed infrequently but still requires quick and reliable access when needed. Enabling S3 Cross-Region Replication (S3 CR Replication) to a different region provides an additional layer of redundancy and compliance with HIPAA's requirement for data availability and disaster recovery. S3 Glacier (Option B) is more expensive and designed for data archiving, not frequent access, making it less cost-effective. S3 Intelligent-Tiering (Option C) automatically moves data between storage classes based on access patterns, which could lead to increased costs due to its dynamic nature. Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) (Option D) is cheaper than S3 Standard but is stored in a single Availability Zone, which may not meet the high availability and disaster recovery requirements of HIPAA compliance.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:18:01.459679Z"
+    },
+    {
+      "question_id": "73637c09-0e44-4afa-9365-9c3196539939",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "single",
+      "question_text": "A company operates a web application that requires high availability and disaster recovery. The application is currently hosted in a single AWS Region and the company wants to ensure that data can be quickly restored in case of a regional outage. Which of the following strategies should the company adopt to meet these requirements?",
+      "options": [
+        "A. Enable AWS Backup for daily snapshots and use these to restore the application in a different Availability Zone within the same Region.",
+        "B. Implement AWS CloudFormation to automate the deployment of the application in another Region and use AWS CloudTrail to monitor changes.",
+        "C. Use AWS Elastic Disaster Recovery (EDR) to replicate the application across multiple Regions and enable cross-Region replication.",
+        "D. Configure an Amazon RDS Multi-AZ DB instance and use the secondary DB instance as a failover in another Region."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. AWS Elastic Disaster Recovery (EDR) is specifically designed for disaster recovery scenarios, allowing for the replication of AWS resources across multiple Regions. This ensures that the application can be quickly restored in another Region in case of a regional outage, providing a robust disaster recovery solution. \n\nOption A is incorrect because enabling AWS Backup for daily snapshots and restoring in a different Availability Zone within the same Region does not provide cross-Region disaster recovery. \n\nOption B is incorrect because AWS CloudFormation is used for infrastructure as code and AWS CloudTrail for monitoring changes, neither of which provides disaster recovery capabilities. \n\nOption D is incorrect because configuring an Amazon RDS Multi-AZ DB instance uses a secondary DB instance within the same Region, which does not provide cross-Region disaster recovery.",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.3]\n.................................................................... 10\nDisaster recovery is different in the cloud ................................................................................... 13\nSingle AWS Region .................................................................................................................................... 13\nMultiple AWS Regions ............................................................................",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Elastic Disaster Recovery",
+        "AWS Backup"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:18:17.103400Z"
+    },
+    {
+      "question_id": "2d6f19e7-b08e-4ca6-ab15-34e6e7907b37",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company requires a HIPAA-compliant architecture for storing and processing sensitive patient data. The company is concerned about maintaining high performance while ensuring data is encrypted both at rest and in transit. Which of the following approaches should the architect take to meet these requirements?",
+      "options": [
+        "A. Use Amazon S3 with Server-Side Encryption (SSE) and AWS Key Management Service (KMS) for encryption, and transfer data using SSL/TLS.",
+        "B. Deploy an on-premises file server with local encryption and use AWS Storage Gateway to back up data to S3.",
+        "C. Use Amazon EBS with customer-managed keys for encryption and transfer data using S3 Transfer Acceleration.",
+        "D. Implement an AWS Lambda function to encrypt data on-the-fly and store it in an S3 bucket with SSE enabled."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Using Amazon S3 with Server-Side Encryption (SSE) and AWS Key Management Service (KMS) for encryption, and transferring data using SSL/TLS, ensures both compliance and high performance. SSE and KMS are specifically designed for HIPAA compliance, providing strong encryption at rest. SSL/TLS ensures data is encrypted in transit, meeting the security requirements. On-premises solutions like option B do not offer the same level of security and compliance, and while option C uses customer-managed keys, it does not provide the same level of managed encryption as KMS. Option D, while it provides encryption, does not address the compliance and performance needs as effectively as S3 with SSE and KMS.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.1]\nAWS Whitepaper\nArchitecting for HIPAA Security and\nCompliance on Amazon Web Services\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "S3",
+        "AWS KMS",
+        "SSL/TLS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:20:47.343862Z"
+    },
+    {
+      "question_id": "d7f2442a-d5ae-4bca-9024-f84206673290",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "An AWS customer is designing a secure architecture for a multi-tenant SaaS application that requires strong identity controls and automated security event responses. The application must be separated into distinct accounts for each tenant to ensure isolation and minimize the blast radius in case of a security incident. Which of the following approaches should the architect take to meet these requirements?",
+      "options": [
+        "A. Use AWS IAM policies to enforce least privilege and attach them to IAM users and roles in a single account.",
+        "B. Create a separate AWS account for each tenant and use AWS Organizations to manage these accounts.",
+        "C. Implement AWS CloudTrail and AWS Config to monitor and log all API calls and resource changes across all accounts.",
+        "D. Deploy a centralized AWS Lambda function to handle security events and create IAM roles with permissions to access tenant-specific resources."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Using AWS Organizations to create a separate AWS account for each tenant allows for better isolation and management of resources. This aligns with the 'Separate workloads using accounts' best practice (SEC01-BP01) in the AWS Well-Architected Framework, which emphasizes the importance of separating workloads to minimize the impact of security incidents. This approach also facilitates easier management and governance of resources, as well as the implementation of strong identity controls and automated security event responses. \n\nOption A is incorrect because it does not provide the necessary isolation between tenants, and IAM policies alone do not fully address the need for automated responses to security events. \n\nOption C is incorrect because AWS CloudTrail and AWS Config are monitoring tools, not mechanisms for creating separate accounts for each tenant. \n\nOption D is incorrect because deploying a centralized Lambda function would not provide the necessary isolation between tenant accounts and might introduce single points of failure, which goes against the principle of defense in depth.",
+      "source_context": "[Source 1: Well-Architected-Security-Pillar.pdf, p.232, URL: https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf]\nSecurity Pillar AWS Well-Architected Framework\nConclusion\nSecurity is an ongoing effort. When incidents occur, they should be treated as opportunities to\nimprove the security of the architecture. Having strong identity controls, automating responses\nto security events, protecting infrastructure at multiple levels, and managing well-c",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Organizations"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:21:02.833442Z"
+    },
+    {
+      "question_id": "ea042d6e-9a2f-4ae3-a6f6-5ddbdcfb131a",
+      "cert_code": "SAA-C03",
+      "domain": "Design Cost-Optimized Architectures",
+      "question_type": "single",
+      "question_text": "A company is looking to optimize its AWS costs by implementing detailed cost controls and tracking usage across multiple AWS accounts. They have decided to use AWS Budgets and AWS Cost Explorer. Which of the following actions should they take to ensure accurate cost allocation and monitoring across their organization?",
+      "options": [
+        "A. Create cost allocation tags on all resources and configure AWS Budgets to monitor spending by tag.",
+        "B. Use AWS Trusted Advisor to monitor overall resource usage and cost.",
+        "C. Enable AWS Cost Explorer to view cost and usage reports but do not configure any budgets.",
+        "D. Set up AWS Organizations and configure AWS Budgets within the organization to monitor spending across all accounts."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Creating cost allocation tags on all resources and configuring AWS Budgets to monitor spending by tag ensures accurate cost allocation and monitoring. This approach allows for detailed cost tracking based on specific resource usage, which is crucial for cost optimization. AWS Trusted Advisor (B) is a useful tool for identifying potential cost savings but does not provide the detailed cost tracking required. AWS Cost Explorer (C) is a useful tool for viewing cost and usage reports but does not enforce budget limits. Setting up AWS Organizations and configuring AWS Budgets (D) is a good practice for managing multiple accounts but does not directly address the need for tagging and detailed cost monitoring on individual resources.",
+      "source_context": "[Source 1: Well-Architected-Cost-Optimization-Pillar.pdf, p.4, URL: https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf]\nCost Optimization Pillar AWS Well-Architected Framework\nExpenditure and usage awareness ............................................................................................... 32\nGovernance.................................................................................................................",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Budgets",
+        "AWS Cost Explorer",
+        "AWS Organizations"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:21:15.193521Z"
+    }
+  ]
+}

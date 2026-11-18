@@ -1,0 +1,328 @@
+{
+  "metadata": {
+    "cert_code": "SAA-C03",
+    "generated_at": "2026-08-22T20:42:42.874207+00:00",
+    "total_questions": 10,
+    "approved": 10,
+    "rejected": 0,
+    "domain_stats": {
+      "Design Secure Architectures": {
+        "approved": 3,
+        "rejected": 0,
+        "target_pct": 30.0,
+        "actual_pct": 30.0,
+        "delta_pct": 0.0
+      },
+      "Design Resilient Architectures": {
+        "approved": 3,
+        "rejected": 0,
+        "target_pct": 26.0,
+        "actual_pct": 30.0,
+        "delta_pct": 4.0
+      },
+      "Design High-Performing Architectures": {
+        "approved": 3,
+        "rejected": 0,
+        "target_pct": 24.0,
+        "actual_pct": 30.0,
+        "delta_pct": 6.0
+      },
+      "Design Cost-Optimized Architectures": {
+        "approved": 1,
+        "rejected": 1,
+        "target_pct": 20.0,
+        "actual_pct": 10.0,
+        "delta_pct": -10.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "dba5af09-3813-4798-8a5a-f80d7ee8374c",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company is implementing a HIPAA-compliant architecture on AWS. They have decided to use AWS Identity and Access Management (IAM) for managing user access and AWS CloudTrail for logging API calls. However, they are unsure about how to best integrate AWS Security Hub for security compliance and monitoring. Which of the following approaches should they take to ensure comprehensive security monitoring and compliance reporting?",
+      "options": [
+        "A. Enable AWS Security Hub and configure findings from various AWS services to be shared with a security center.",
+        "B. Use AWS Config to monitor resource configurations and AWS CloudWatch for logging and monitoring.",
+        "C. Implement an AWS Lambda function to parse CloudTrail logs and push findings to AWS CloudWatch.",
+        "D. Deploy a third-party SIEM tool to collect and analyze logs from AWS services."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. AWS Security Hub is designed to collect, catalog, and surface the security state of AWS resources, making it ideal for comprehensive security monitoring and compliance reporting. By enabling Security Hub and configuring findings from various AWS services to be shared with a security center, the company can get a consolidated view of security across their AWS environment, which is crucial for HIPAA compliance. \n\nOption B is less comprehensive as AWS Config is primarily for resource configuration management, and CloudWatch is for logging and monitoring, but it does not provide the same level of security findings and compliance reporting as Security Hub. \n\nOption C is a manual and less efficient approach as AWS Lambda would require custom coding and ongoing maintenance, which is not as straightforward as using a built-in service like Security Hub. \n\nOption D, while a viable alternative, is more costly and complex to set up and maintain compared to using AWS Security Hub, which is a managed service tailored for security compliance and monitoring.",
+      "source_context": "[Source 1: Well-Architected-Security-Pillar.pdf, p.232, URL: https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf]\nSecurity Pillar AWS Well-Architected Framework\nConclusion\nSecurity is an ongoing effort. When incidents occur, they should be treated as opportunities to\nimprove the security of the architecture. Having strong identity controls, automating responses\nto security events, protecting infrastructure at multiple levels, and managing well-c",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Identity and Access Management (IAM)",
+        "AWS CloudTrail",
+        "AWS Security Hub"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:37:13.873314Z"
+    },
+    {
+      "question_id": "5be70c90-1327-4d1b-a970-3948f5006e0e",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "multiple",
+      "question_text": "You are designing a resilient architecture for a web application that processes sensitive healthcare data. The application relies on multiple third-party APIs for data validation, which can be unreliable and cause service disruptions. To ensure the application remains functional and compliant with HIPAA security standards, which two strategies should you implement? (Select TWO)",
+      "options": [
+        "A. Use S3 for storing data to ensure high availability and performant access",
+        "B. Implement CloudWatch alarms to monitor API response times and automatically scale the application",
+        "C. Use API Gateway to manage API calls and implement graceful degradation for unreliable API dependencies",
+        "D. Configure RDS with multiple read replica to improve database read performance",
+        "E. Enable SNS topics for notification of API failure and automate recovery actions"
+      ],
+      "correct_answers": [
+        "C",
+        "E"
+      ],
+      "explanation": "A. Use S3 for storing data to ensure high availability and performant access - While S3 is highly available, it does not address the issue of third-party API reliability or compliance with HIPAA standards.\n\nB. Implement CloudWatch alarms to monitor API response times and automatically scale the application - CloudWatch alarms can help monitor API performance but do not address the issue of graceful degradation or compliance with HIPAA standards.\n\nC. Use API Gateway to manage API calls and implement graceful degradation for unreliable API dependencies - This is correct as API Gateway can manage API calls and implement graceful degradation, ensuring the application remains functional even if third-party APIs fail. This aligns with the AWS Well-Architected Framework's recommendation for REL05-BP01.\n\nD. Configure RDS with multiple read replica to improve database read performance - This option is not directly related to third-party API reliability or compliance with HIPAA standards.\n\nE. Enable SNS topics for notification of API failure and automate recovery actions - This is correct as SNS topics can be used to notify the application of API failures and automate recovery actions, ensuring compliance with HIPAA standards and maintaining application functionality.",
+      "source_context": "[Source 1: Well-Architected-Reliability-Pillar.pdf, p.91, URL: https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf]\nLevel of risk exposed if this best practice is not established: High\nImplementation guidance\nImplementing graceful degradation helps minimize the impact of dependency failures on\ncomponent function. Ideally, a component detects dependency failures and works around them in\na way that minimally impacts other components or custo",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "API_GATEWAY",
+        "CLOUDWATCH",
+        "SNS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:37:32.649368Z"
+    },
+    {
+      "question_id": "3e44de0a-1a71-4cf3-88b3-6f22b69bf9e0",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company needs to design a HIPAA-compliant architecture for storing and processing patient data. The company wants to ensure that data is encrypted both at rest and in transit, and access to the data is strictly controlled. Which of the following solutions would be the most appropriate for encrypting data at rest and in transit, and ensuring access control, while maintaining high performance and cost-effectiveness?",
+      "options": [
+        "A. Use AWS KMS for encryption and IAM for access control, and enable SSE-S3 for S3 buckets.",
+        "B. Use AWS CloudHSM for encryption and AWS IAM for access control, and enable SSE-KMS for S3 buckets.",
+        "C. Use AWS KMS for encryption and AWS Cognito for access control, and enable SSE-S3 for S3 buckets.",
+        "D. Use AWS KMS for encryption and AWS IAM for access control, and enable client-side encryption with AWS SDK for S3 buckets."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is a. AWS KMS (Key Management Service) is used for managing encryption keys, and IAM (Identity and Access Management) is used for access control. SSE-S3 (Server-Side Encryption with AWS KMS) ensures that data is encrypted at rest in S3 buckets, which is cost-effective and easy to implement. This solution also provides high performance as encryption and decryption are handled by AWS. \n\nOption B is incorrect because AWS CloudHSM is more expensive and complex than AWS KMS, and it is not necessary for this scenario. Option C is incorrect because AWS Cognito is used for user authentication and not for access control to S3 buckets. Option D is incorrect because client-side encryption requires additional code and can be less performant compared to server-side encryption handled by AWS.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.1]\nAWS Whitepaper\nArchitecting for HIPAA Security and\nCompliance on Amazon Web Services\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS KMS",
+        "IAM",
+        "S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:37:47.336401Z"
+    },
+    {
+      "question_id": "abf2a439-f8ef-4f3d-b07d-4fa6565ec09c",
+      "cert_code": "SAA-C03",
+      "domain": "Design Cost-Optimized Architectures",
+      "question_type": "single",
+      "question_text": "A company is planning to migrate its on-premises database to AWS and wants to ensure cost optimization by leveraging AWS services. The company currently has a budget of $10,000 per month for the database and expects to handle up to 500,000 reads and 200,000 writes per day. Which AWS service should be chosen to best meet the company's cost and performance requirements?",
+      "options": [
+        "A. Amazon Aurora Serverless v2",
+        "B. Amazon DynamoDB on-demand",
+        "C. Amazon RDS for MySQL with reserved instances",
+        "D. Amazon Redshift Spectrum"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Amazon Aurora Serverless v2 is the best choice for cost optimization as it automatically scales to zero during periods of low activity and only charges for the resources it uses, making it ideal for fluctuating workloads. \n\nB. Amazon DynamoDB on-demand is more expensive and charges for reads and writes regardless of usage, which could exceed the budget.\n\nC. Amazon RDS for MySQL with reserved instances could be cost-effective, but requires upfront commitment and may not scale as easily, which could lead to underutilization and higher costs.\n\nD. Amazon Redshift Spectrum is designed for analytics and querying large datasets, not for transactional workloads, making it unsuitable for this scenario.",
+      "source_context": "[Source 1: Well-Architected-Cost-Optimization-Pillar.pdf, p.4, URL: https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf]\nCost Optimization Pillar AWS Well-Architected Framework\nExpenditure and usage awareness ............................................................................................... 32\nGovernance.................................................................................................................",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon Aurora Serverless v2",
+        "Amazon DynamoDB",
+        "Amazon RDS for MySQL",
+        "Amazon Redshift Spectrum"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:37:59.852577Z"
+    },
+    {
+      "question_id": "0df3ac3a-b0b9-4824-9ef1-931da0682fd4",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare provider is designing a HIPAA-compliant architecture on AWS to store and process sensitive patient data. They are concerned about ensuring data is encrypted at rest and in transit. Which of the following approaches should they take to meet these requirements?",
+      "options": [
+        "A. Use Amazon S3 with S3 Server-Side Encryption (SSE) and AWS Key Management Service (KMS) for data at rest, and enable S3 Transfer Acceleration for data in transit.",
+        "B. Use Amazon S3 with SSE and AWS CloudHSM for data at rest, and enable S3 Transfer Acceleration for data in transit.",
+        "C. Use Amazon S3 with SSE and AWS KMS for data at rest, and use AWS Certificate Manager (ACM) for data in transit.",
+        "D. Use Amazon S3 with SSE and AWS KMS for data at rest, and enable S3 Transfer Acceleration for data in transit."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Amazon S3 with S3 Server-Side Encryption (SSE) and AWS Key Management Service (KMS) for data at rest, and enabling S3 Transfer Acceleration for data in transit is the best practice for HIPAA compliance. S3 Transfer Acceleration ensures data is securely transferred over HTTPS, which is required for data in transit. Option B is incorrect because AWS CloudHSM is for managing keys, not for encrypting data at rest. Option C is incorrect because AWS Certificate Manager (ACM) is for managing SSL/TLS certificates, not for encrypting data at rest. Option D is incorrect because enabling S3 Transfer Acceleration for data in transit is not necessary and could introduce additional costs and complexity.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "S3",
+        "KMS",
+        "S3 Transfer Acceleration"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:38:15.234511Z"
+    },
+    {
+      "question_id": "55b2ffa2-8939-4a0d-8214-650e76c13765",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "multiple",
+      "question_text": "A healthcare company is designing a HIPAA-compliant architecture for their patient data storage and processing system. The company requires high availability, strict data protection, and minimal downtime during a disaster. Which three of the following AWS services and configurations should be used to meet these requirements? (Select THREE)",
+      "options": [
+        "A. AWS Identity and Access Management (IAM) to enforce strict access controls and logging",
+        "B. Amazon S3 with S3 Transfer Acceleration for faster data transfer",
+        "C. Amazon RDS with Multi-AZ deployments to ensure high availability and automatic failover",
+        "D. AWS CloudTrail to monitor and log API calls for auditing purposes",
+        "E. Amazon EC2 instances in a single Availability Zone for cost optimization"
+      ],
+      "correct_answers": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "A. AWS IAM enforces strict access controls and logging, which is crucial for HIPAA compliance. B. S3 Transfer Acceleration is not necessary for HIPAA compliance and does not contribute to high availability. C. Amazon RDS Multi-AZ deployments ensure high availability and automatic failover, meeting the requirement for minimal downtime. D. AWS CloudTrail is essential for monitoring and logging API calls, which is required for auditing and compliance. E. Placing EC2 instances in a single Availability Zone does not provide the necessary resiliency and is not recommended for HIPAA compliance.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "IAM",
+        "RDS",
+        "CloudTrail"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:38:43.370368Z"
+    },
+    {
+      "question_id": "57163f08-9e0d-4ffb-8d5c-c3bc9dacb21d",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare provider is designing a HIPAA-compliant architecture for storing patient records. They want to ensure that the data is encrypted both at rest and in transit, and they are considering using AWS services to meet these requirements. Which of the following AWS services should they use for both encryption at rest and in transit to meet their HIPAA compliance needs?",
+      "options": [
+        "A. AWS KMS for encryption at rest and AWS CloudHSM for encryption in transit",
+        "B. AWS KMS for both encryption at rest and in transit",
+        "C. AWS S3 for encryption at rest and AWS CloudFront for encryption in transit",
+        "D. AWS EBS for encryption at rest and AWS VPC for encryption in transit"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is b. AWS KMS (Key Management Service) should be used for both encryption at rest and in transit to meet HIPAA compliance needs. AWS KMS provides a managed key management service that supports both symmetric and asymmetric encryption. It integrates with other AWS services, making it easy to use for both encryption at rest and in transit. AWS CloudHSM is a hardware security module service that provides a FIPS 140-2 Level 3 validated hardware security module, but it is not suitable for both encryption at rest and in transit. AWS S3 and AWS CloudFront are storage and content delivery services, respectively, and do not provide encryption in transit. AWS EBS and AWS VPC are storage and networking services, respectively, and do not provide encryption for data in transit.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS KMS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:38:57.967059Z"
+    },
+    {
+      "question_id": "781f4fc5-8b14-419a-ad80-7e5f5a93b582",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A financial services company is designing a disaster recovery plan for its critical real-time trading application running in a single AWS Region. The application has a Recovery Time Objective (RTO) of 15 minutes and a Recovery Point Objective (RPO) of 5 minutes. The application requires minimal downtime and data loss to avoid significant financial impact. Which of the following disaster recovery strategies should the architect recommend to meet these requirements while minimizing costs and maintaining high availability?",
+      "options": [
+        "A. Use AWS Backup to create daily snapshots and manually restore the application to a new instance in a different Availability Zone.",
+        "B. Implement a warm standby setup with an identical application running in the same Region and use AWS CloudFormation to automate failover.",
+        "C. Deploy a pilot light environment in the same Region, keeping a subset of the application running at a lower capacity during normal operations.",
+        "D. Configure an AWS Lambda function to periodically sync the application state to an S3 bucket and use S3 versioning to ensure data integrity."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Implementing a warm standby setup with an identical application running in the same Region is the most cost-effective and simplest way to meet the RTO and RPO requirements while maintaining high availability. The warm standby setup ensures that the application can be quickly switched to the running instance within the same Region, meeting the 15-minute RTO. AWS CloudFormation can be used to automate the failover process, ensuring minimal downtime. S3 versioning can be used to ensure data integrity, aligning with the customer's requirement. The warm standby setup is more cost-effective than a pilot light environment and simpler than manually restoring from snapshots or using AWS Lambda for syncing.",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.3]\nDisaster Recovery of Workloads on AWS: Recovery in the Cloud AWS Well-Architected Framework\nTable of Contents\nAbstract ............................................................................................................................................ 1\nIntroduction ..................................................................................................................................... 2\nDisaster recovery and availability ........",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS CloudFormation",
+        "AWS CloudTrail",
+        "AWS Lambda",
+        "AWS S3",
+        "AWS Backup"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-22T20:39:17.870189Z"
+    },
+    {
+      "question_id": "54164500-0ced-4b9c-95e2-e6798d07716c",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "single",
+      "question_text": "A company operates a web application with a global user base. They want to ensure that the application remains available in the event of a regional outage. Which of the following strategies should they implement to achieve this goal?",
+      "options": [
+        "A. Use AWS Lambda to deploy the application in a single region for simplicity and cost savings.",
+        "B. Deploy the application in a single region with an Auto Scaling group to handle increased traffic.",
+        "C. Set up a warm standby in another region with Application Load Balancer (ALB) and Route 53 for failover.",
+        "D. Use Amazon S3 for storing application data and rely on its built-in redundancy features."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Setting up a warm standby in another region with Application Load Balancer (ALB) and Route 53 for failover is the best strategy for achieving regional availability. This approach ensures that if one region experiences an outage, traffic can be automatically redirected to the standby region, maintaining application availability. Warm standby involves keeping the secondary region's infrastructure up and running, which is more resilient than a single-region deployment (A and B) or relying solely on S3's redundancy (D). Warm standby also provides a more controlled failover process compared to the automatic failover offered by S3 (D).",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.3]\n.................................................................... 10\nDisaster recovery is different in the cloud ................................................................................... 13\nSingle AWS Region .................................................................................................................................... 13\nMultiple AWS Regions ............................................................................",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "Route 53",
+        "Application Load Balancer",
+        "AWS Lambda"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:39:43.436710Z"
+    },
+    {
+      "question_id": "dde0674c-a83b-42e9-ab51-64c4ba3e0cff",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company needs to design a HIPAA-compliant architecture that ensures data is encrypted both at rest and in transit. The company is concerned about the performance impact of encryption and wants to minimize costs. Which of the following solutions best meets these requirements?",
+      "options": [
+        "A. Use AWS KMS for key management and enable server-side encryption on S3 buckets. Enable SSL/TLS for all data in transit.",
+        "B. Use AWS CloudHSM for key management and enable client-side encryption on S3 buckets. Use a custom encryption library for data in transit.",
+        "C. Use AWS KMS for key management and enable client-side encryption on S3 buckets. Use AWS Certificate Manager (ACM) for SSL/TLS in transit.",
+        "D. Use AWS KMS for key management and enable server-side encryption on S3 buckets. Use AWS Global Accelerator for SSL/TLS in transit."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "Option A is the best choice because AWS KMS is a cost-effective and managed service for key management, and server-side encryption on S3 buckets ensures data is encrypted at rest without impacting performance. Enabling SSL/TLS for data in transit via S3 also meets the requirement without additional costs. Option B introduces client-side encryption and AWS CloudHSM, which adds complexity and cost. Option C uses client-side encryption, which can impact performance, and ACM is not necessary for S3 data in transit. Option D uses server-side encryption but AWS Global Accelerator is not required for S3 data in transit and can incur additional costs.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.1]\nAWS Whitepaper\nArchitecting for HIPAA Security and\nCompliance on Amazon Web Services\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS KMS",
+        "S3",
+        "SSL/TLS",
+        "AWS Certificate Manager (ACM)"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:42:37.479878Z"
+    }
+  ]
+}
