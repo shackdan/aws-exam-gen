@@ -18,7 +18,7 @@ the pipeline never branches on which one is active.
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, List, Protocol, Tuple
+from typing import Any, Dict, List, Optional, Protocol, Tuple
 
 from config import LLM_BACKEND, MLX_CONFIG, OLLAMA_CONFIG
 
@@ -44,8 +44,9 @@ class LLMClient(Protocol):
 class OllamaLLMClient:
     """Adapts ollama.Client to the shared LLMClient interface."""
 
-    def __init__(self, client: Any) -> None:
+    def __init__(self, client: Any, model: str) -> None:
         self._client = client
+        self.model   = model
 
     def chat(
         self,
@@ -60,7 +61,7 @@ class OllamaLLMClient:
         if json_mode:
             kwargs["format"] = "json"
         response = self._client.chat(
-            model    = OLLAMA_CONFIG.model,
+            model    = self.model,
             messages = messages,
             options  = {
                 "temperature": temperature,
@@ -74,11 +75,12 @@ class OllamaLLMClient:
         return response["message"]["content"]
 
 
-def _init_ollama_client() -> OllamaLLMClient:
+def _init_ollama_client(model: Optional[str] = None) -> OllamaLLMClient:
     import ollama
 
+    model = model or OLLAMA_CONFIG.model
     log.info(
-        f"Initialising Ollama client → model: {OLLAMA_CONFIG.model} | "
+        f"Initialising Ollama client → model: {model} | "
         f"num_ctx: {OLLAMA_CONFIG.num_ctx} | "
         f"keep_alive: {OLLAMA_CONFIG.keep_alive}"
     )
@@ -94,7 +96,14 @@ def _init_ollama_client() -> OllamaLLMClient:
             f"Cannot connect to Ollama at {OLLAMA_CONFIG.base_url}. "
             f"Ensure Ollama is running. Error: {err}"
         ) from err
-    return OllamaLLMClient(client)
+    try:
+        client.show(model)  # fail fast if the model isn't pulled
+    except Exception as err:
+        raise RuntimeError(
+            f"Ollama model '{model}' is not available. "
+            f"Run: ollama pull {model}. Error: {err}"
+        ) from err
+    return OllamaLLMClient(client, model)
 
 
 # ─────────────────────────────────────────────
@@ -108,8 +117,9 @@ class MLXLLMClient:
     /v1/chat/completions API — to the shared LLMClient interface.
     """
 
-    def __init__(self, client: Any) -> None:
+    def __init__(self, client: Any, model: str) -> None:
         self._client = client
+        self.model   = model
 
     def chat(
         self,
@@ -126,7 +136,7 @@ class MLXLLMClient:
         # the prompts already instruct the model to return JSON only,
         # and utils.extract_json_from_text tolerates surrounding prose.
         response = self._client.chat.completions.create(
-            model      = MLX_CONFIG.model,
+            model      = self.model,
             messages   = messages,
             temperature= temperature,
             top_p      = top_p,
@@ -135,7 +145,10 @@ class MLXLLMClient:
         return response.choices[0].message.content or ""
 
 
-def _init_mlx_client() -> MLXLLMClient:
+def _init_mlx_client(
+    model: Optional[str] = None,
+    base_url: Optional[str] = None,
+) -> MLXLLMClient:
     try:
         from openai import OpenAI
     except ImportError:
@@ -146,12 +159,14 @@ def _init_mlx_client() -> MLXLLMClient:
             "Run: pip install openai"
         )
 
+    model    = model or MLX_CONFIG.model
+    base_url = base_url or MLX_CONFIG.base_url
     log.info(
-        f"Initialising MLX-LM client → model: {MLX_CONFIG.model} | "
-        f"base_url: {MLX_CONFIG.base_url}"
+        f"Initialising MLX-LM client → model: {model} | "
+        f"base_url: {base_url}"
     )
     client = OpenAI(
-        base_url= MLX_CONFIG.base_url,
+        base_url= base_url,
         api_key = "mlx-lm-local",  # unused by mlx_lm.server, required by the SDK
         timeout = MLX_CONFIG.timeout,
     )
@@ -160,24 +175,30 @@ def _init_mlx_client() -> MLXLLMClient:
         log.info("MLX-LM server connected successfully.")
     except Exception as err:
         raise RuntimeError(
-            f"Cannot connect to MLX-LM server at {MLX_CONFIG.base_url}. "
-            f"Ensure `mlx_lm.server` is running. Error: {err}"
+            f"Cannot connect to MLX-LM server at {base_url}. "
+            f"Ensure `mlx_lm.server --model {model}` is running. Error: {err}"
         ) from err
-    return MLXLLMClient(client)
+    return MLXLLMClient(client, model)
 
 
 # ─────────────────────────────────────────────
 # Public entry points
 # ─────────────────────────────────────────────
 
-def init_llm_client() -> LLMClient:
+def init_llm_client(
+    model: Optional[str] = None,
+    base_url: Optional[str] = None,
+) -> LLMClient:
     """
-    Initialise and warm-up-ping the backend selected via LLM_BACKEND.
+    Initialise and warm-up-ping a client for `model` on the backend
+    selected via LLM_BACKEND. model / base_url default to the backend's
+    Generator settings; base_url only applies to MLX-LM (Ollama serves
+    every model from one server).
     Raises RuntimeError with a descriptive message if unreachable.
     """
     if LLM_BACKEND == "mlx":
-        return _init_mlx_client()
-    return _init_ollama_client()
+        return _init_mlx_client(model=model, base_url=base_url)
+    return _init_ollama_client(model=model)
 
 
 def ping_backend(timeout: int = 5) -> Tuple[bool, str]:

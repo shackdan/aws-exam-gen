@@ -20,7 +20,7 @@ def run_pipeline(monkeypatch, tmp_path, verdicts):
     """Run the pipeline where Review gives each drafted Question the next verdict."""
     output_dir = tmp_path / "output"
     monkeypatch.setattr(config, "OUTPUT_DIR", output_dir)
-    monkeypatch.setattr(generator, "init_llm_client", lambda: object())
+    monkeypatch.setattr(generator, "init_llm_client", lambda model=None, base_url=None: object())
     monkeypatch.setattr(generator, "_load_embedding_model", lambda: object())
 
     class FakeCollection:

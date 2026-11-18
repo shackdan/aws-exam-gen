@@ -4,4 +4,4 @@ The Generator and the AI Reviewer both run on a local model (Ollama, or MLX-LM o
 
 ## Consequences
 
-- The same model currently plays both the Generator and AI Reviewer roles. A model grading its own output tends to be lenient, which weakens Review. This is a known weakness, not an intended design.
+- By default the same model plays both the Generator and AI Reviewer roles. A model grading its own output tends to be lenient, which weakens Review. Since #4, the AI Reviewer can be given its own local model (still on the same backend), at the cost of keeping two models in memory.

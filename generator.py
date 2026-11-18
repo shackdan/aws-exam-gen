@@ -1283,6 +1283,34 @@ def generate_batch(
 # Full pipeline runner
 # ─────────────────────────────────────────────
 
+def init_role_clients() -> Tuple[LLMClient, LLMClient, str, str]:
+    """
+    Connect one LLM client per role and return
+    (generator_client, reviewer_client, generator_model, reviewer_model).
+
+    The AI Reviewer uses LLM_CONFIG.reviewer_model (and, for MLX-LM,
+    reviewer_base_url) when set, otherwise the Generator's model. When
+    both resolve to the same model and address, one client is shared.
+    """
+    generator_model = LLM_CONFIG.model
+    reviewer_model  = getattr(LLM_CONFIG, "reviewer_model", None) or generator_model
+    reviewer_url    = getattr(LLM_CONFIG, "reviewer_base_url", None) or LLM_CONFIG.base_url
+
+    generator_client = init_llm_client(model=generator_model, base_url=LLM_CONFIG.base_url)
+
+    if (reviewer_model, reviewer_url) == (generator_model, LLM_CONFIG.base_url):
+        return generator_client, generator_client, generator_model, reviewer_model
+
+    log.info(f"AI Reviewer uses a separate model: {reviewer_model}")
+    try:
+        reviewer_client = init_llm_client(model=reviewer_model, base_url=reviewer_url)
+    except RuntimeError as err:
+        raise RuntimeError(
+            f"AI Reviewer model '{reviewer_model}' is unavailable: {err}"
+        ) from err
+    return generator_client, reviewer_client, generator_model, reviewer_model
+
+
 def run_generation_pipeline(
     request: GenerationRequest,
 ) -> GenerationResult:
@@ -1337,10 +1365,13 @@ def run_generation_pipeline(
         f"({request.cert_code}) | Tier: {cert_metadata['tier']}"
     )
 
-    # ── Step 2: Initialise LLM client ──────────
-    # init_llm_client() picks Ollama or MLX-LM per config.LLM_BACKEND
-    # and warm-up-pings it, raising RuntimeError if unreachable.
-    llm_client = init_llm_client()
+    # ── Step 2: Initialise LLM clients ─────────
+    # One client per role: the Generator drafts and revises, the AI
+    # Reviewer writes Critiques. Both are connected (and warm-up-pinged)
+    # here, before any drafting, so an unreachable model fails fast.
+    llm_client, reviewer_client, generator_model, reviewer_model = (
+        init_role_clients()
+    )
 
     # ── Step 3: Load embedding model ──────────
     log.info(
@@ -1431,7 +1462,7 @@ def run_generation_pipeline(
 
     reviewed_questions, critiques = review_batch(
         questions         = raw_questions,
-        llm_client        = llm_client,
+        llm_client        = reviewer_client,
         revision_callback = revision_cb,
     )
 
@@ -1509,7 +1540,7 @@ def run_generation_pipeline(
 
         topup_reviewed, topup_critiques = review_batch(
             questions         = topup_raw,
-            llm_client        = llm_client,
+            llm_client        = reviewer_client,
             revision_callback = revision_cb,
         )
         reviewed_questions.extend(topup_reviewed)
@@ -1595,7 +1626,11 @@ def run_generation_pipeline(
             fmt            = request.output_format,
             out_file       = Path(request.output_path) if request.output_path else None,
             output_dir     = OUTPUT_DIR,
-            extra_metadata = {"domain_stats": domain_stats},
+            extra_metadata = {
+                "domain_stats"   : domain_stats,
+                "generator_model": generator_model,
+                "reviewer_model" : reviewer_model,
+            },
         )
         if outputs.export_path is None:
             log.warning("No Approved Questions — nothing exported.")
@@ -1643,7 +1678,9 @@ def run_generation_pipeline(
         metadata         = {
             "cert_name"        : cert_metadata["name"],
             "tier"             : cert_metadata["tier"],
-            "model"            : LLM_CONFIG.model,
+            "model"            : generator_model,
+            "generator_model"  : generator_model,
+            "reviewer_model"   : reviewer_model,
             "embedding_model"  : EMBEDDING_CONFIG.model_name,
             "domain_stats"     : domain_stats,
             "type_distribution": {
