@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "cert_code": "AIF-C01",
+    "generated_at": "2026-08-22T19:07:17.592292+00:00",
+    "total_questions": 2,
+    "approved": 2,
+    "rejected": 0,
+    "domain_stats": {
+      "Fundamentals of AI and ML": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 20.0,
+        "actual_pct": 50.0,
+        "delta_pct": 30.0
+      },
+      "Fundamentals of GenAI": {
+        "approved": 0,
+        "rejected": 1,
+        "target_pct": 24.0,
+        "actual_pct": 0.0,
+        "delta_pct": -24.0
+      },
+      "Applications of Foundation Models": {
+        "approved": 0,
+        "rejected": 1,
+        "target_pct": 28.000000000000004,
+        "actual_pct": 0.0,
+        "delta_pct": -28.0
+      },
+      "Guidelines for Responsible AI": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 0.0,
+        "delta_pct": -14.0
+      },
+      "Security, Compliance, and Governance for AI Solutions": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 50.0,
+        "delta_pct": 36.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "bfb09944-61d8-403c-bab6-6154e1ea2b45",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of AI and ML",
+      "question_type": "single",
+      "question_text": "A company is developing a recommendation system for its e-commerce platform. The system needs to process large volumes of user interactions in real-time to suggest products. Which AWS service should the company use to ensure scalable and cost-effective processing of this data?",
+      "options": [
+        "A. Amazon SageMaker",
+        "B. Amazon Kinesis Data Streams",
+        "C. AWS Lambda with Amazon DynamoDB",
+        "D. Amazon Redshift"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Amazon Kinesis Data Streams is the best choice for real-time processing of large volumes of data, which aligns with the requirement for a recommendation system that needs to process user interactions in real-time. Kinesis Data Streams can handle millions of events per second and is designed for low-latency data processing, making it highly scalable and cost-effective for this use case. Amazon SageMaker is more suitable for batch training and deploying machine learning models, not for real-time data processing. AWS Lambda with DynamoDB is a good choice for serverless computing but is not optimized for real-time data streams. Amazon Redshift is designed for large-scale data warehousing and analytics, making it unsuitable for real-time data processing.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.9, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the similarities and differences between AI, ML, GenAI, deep learning, and agentic AI.\n- Describe various types of inferencing (for example, batch, real-time, asynchronous, serverless).\n- Describe the different types of data in AI models (for example, labeled and unlabeled,",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon Kinesis Data Streams"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T19:06:31.248316Z"
+    },
+    {
+      "question_id": "1b45396a-78d2-43a5-85ce-3578ec09b041",
+      "cert_code": "AIF-C01",
+      "domain": "Security, Compliance, and Governance for AI Solutions",
+      "question_type": "single",
+      "question_text": "Your company is developing a generative AI application that will be used across multiple departments. The application will process sensitive data and must comply with various regulatory standards, such as GDPR and HIPAA. You need to implement a robust security and governance framework to ensure compliance and manage policies, procedures, and reporting. Which AWS service would be most appropriate for creating and managing policies, procedures, and reporting to empower the business while minimizing risk?",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon Inspector",
+        "C. AWS Artifact",
+        "D. AWS Trusted Advisor"
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. AWS Artifact is the most appropriate service for creating and managing policies, procedures, and reporting to empower the business while minimizing risk. AWS Artifact provides a centralized repository for AWS security, compliance, and governance documents, including policies, procedures, and reports. It supports the creation of custom reports and dashboards, making it easier to comply with regulatory standards and governance requirements. AWS Config, on the other hand, is used for evaluating, recording, and managing the configuration of AWS resources. Amazon Inspector is used for security and compliance assessments. AWS Trusted Advisor provides a set of recommendations to help you optimize the performance, security, and cost of your AWS resources. Each of these services serves a different purpose, and AWS Artifact is specifically designed for governance and compliance.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.11, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nTask Statement 5.2: Recognize governance and compliance regulations for AI\nsystems.\nObjectives:\n- Identify regulatory compliance standards for AI systems (for example,\nInternational Organization for Standardization [ISO], System and\nOrganization Controls [SOC], algorithm accountability laws).\n- Identify AWS services and features to a",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "AWS Artifact"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 1,
+      "created_at": "2026-08-22T19:06:45.132585Z"
+    }
+  ]
+}

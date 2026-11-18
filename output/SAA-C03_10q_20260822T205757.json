@@ -1,0 +1,318 @@
+{
+  "metadata": {
+    "cert_code": "SAA-C03",
+    "generated_at": "2026-08-22T20:57:57.199988+00:00",
+    "total_questions": 10,
+    "approved": 10,
+    "rejected": 0,
+    "domain_stats": {
+      "Design Secure Architectures": {
+        "approved": 3,
+        "rejected": 0,
+        "target_pct": 30.0,
+        "actual_pct": 30.0,
+        "delta_pct": 0.0
+      },
+      "Design Resilient Architectures": {
+        "approved": 3,
+        "rejected": 0,
+        "target_pct": 26.0,
+        "actual_pct": 30.0,
+        "delta_pct": 4.0
+      },
+      "Design High-Performing Architectures": {
+        "approved": 2,
+        "rejected": 0,
+        "target_pct": 24.0,
+        "actual_pct": 20.0,
+        "delta_pct": -4.0
+      },
+      "Design Cost-Optimized Architectures": {
+        "approved": 2,
+        "rejected": 0,
+        "target_pct": 20.0,
+        "actual_pct": 20.0,
+        "delta_pct": 0.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "7b001d50-156d-4a79-ae32-d844f9053676",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company is implementing a new AWS-based architecture to comply with HIPAA regulations. The company wants to ensure that all sensitive data is encrypted both at rest and in transit. Which of the following approaches should the company take to meet this requirement?",
+      "options": [
+        "A. Use AWS Key Management Service (KMS) for encryption keys and enable server-side encryption with KMS keys for S3 buckets and RDS instances.",
+        "B. Implement customer-managed encryption keys in AWS Config and use AWS Lambda to automatically encrypt and decrypt data.",
+        "C. Use AWS Certificate Manager (ACM) to manage SSL/TLS certificates for data in transit and AWS Storage Gateway for data at rest encryption.",
+        "D. Enable AWS CloudHSM for all encryption needs and use it to generate and manage encryption keys."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best approach is A. AWS Key Management Service (KMS) is designed for secure key management and provides a secure and convenient way to create and manage encryption keys. Enabling server-side encryption with KMS keys for S3 buckets and RDS instances ensures that data is encrypted both at rest and in transit. This meets the HIPAA requirement for data encryption in a secure and scalable manner. \n\nB is incorrect because AWS Config is used for compliance and resource management, not for encryption. \n\nC is incorrect because AWS Certificate Manager (ACM) is used for managing SSL/TLS certificates for HTTPS connections, not for data encryption. \n\nD is incorrect because AWS CloudHSM is a hardware-based service for generating and managing encryption keys, but it is not necessary for all encryption needs and may be overkill for the company's requirements.",
+      "source_context": "[Source 1: Well-Architected-Security-Pillar.pdf, p.232, URL: https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf]\nSecurity Pillar AWS Well-Architected Framework\nConclusion\nSecurity is an ongoing effort. When incidents occur, they should be treated as opportunities to\nimprove the security of the architecture. Having strong identity controls, automating responses\nto security events, protecting infrastructure at multiple levels, and managing well-c",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Key Management Service (KMS)"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:54:55.367671Z"
+    },
+    {
+      "question_id": "d268ae5b-720a-4733-925c-e67dd77d0680",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "multiple",
+      "question_text": "A company is designing a web application that needs to handle high traffic and ensure data consistency across multiple regions. The application should degrade gracefully in case of a failure, and the solution should also comply with HIPAA security and compliance requirements. Which two services or configurations should the architect choose to meet these requirements? (Select TWO)",
+      "options": [
+        "A. AWS Config",
+        "B. Amazon Route 53",
+        "C. AWS CloudTrail",
+        "D. Amazon DynamoDB Global Tables",
+        "E. AWS Lambda with API Gateway"
+      ],
+      "correct_answers": [
+        "D",
+        "E"
+      ],
+      "explanation": "A. AWS Config is a service that continuously monitors and evaluates the configuration of AWS resources. While it is useful for compliance and auditing, it does not directly support graceful degradation or data consistency across multiple regions. AWS Config does not meet the requirements for this scenario.\n\nB. Amazon Route 53 is a highly available and scalable DNS web service. It can be used for traffic distribution and failover, but it does not provide data consistency or graceful degradation. Route 53 is not the best choice for this scenario.\n\nC. AWS CloudTrail is a service that records AWS API calls for your account and delivers log files to Amazon S3. It is useful for compliance and auditing but does not support graceful degradation or data consistency across multiple regions. CloudTrail does not meet the requirements for this scenario.\n\nD. Amazon DynamoDB Global Tables is a feature of Amazon DynamoDB that automatically replicates data across multiple AWS regions. This feature ensures data consistency and availability, which is crucial for high-traffic applications. It also supports graceful degradation by allowing the application to continue functioning even if some regions fail. DynamoDB Global Tables meet the requirements for this scenario.\n\nE. AWS Lambda with API Gateway is a serverless computing solution that allows you to run code without provisioning or managing servers. It can be used to implement a function that handles traffic and performs graceful degradation in case of a failure. Lambda with API Gateway can be used to build a resilient application that complies with HIPAA security and compliance requirements. AWS Lambda with API Gateway meets the requirements for this scenario.",
+      "source_context": "[Source 1: Well-Architected-Reliability-Pillar.pdf, p.91, URL: https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf]\nLevel of risk exposed if this best practice is not established: High\nImplementation guidance\nImplementing graceful degradation helps minimize the impact of dependency failures on\ncomponent function. Ideally, a component detects dependency failures and works around them in\na way that minimally impacts other components or custo",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/wellarchitected-reliability-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "DynamoDB",
+        "Lambda",
+        "API Gateway"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:55:12.646363Z"
+    },
+    {
+      "question_id": "c2820d81-e725-466c-a0fb-7a6ddb7d1e9c",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company is designing a HIPAA-compliant architecture for storing patient records. The company wants to ensure that the data is encrypted both at rest and in transit, and that the encryption keys are managed securely. Which combination of AWS services should the architect choose to meet these requirements?",
+      "options": [
+        "A. AWS KMS for key management and AWS S3 for storage with server-side encryption",
+        "B. AWS CloudHSM for key management and AWS S3 for storage with client-side encryption",
+        "C. AWS KMS for key management and AWS S3 for storage with client-side encryption",
+        "D. AWS CloudHSM for key management and AWS S3 for storage with server-side encryption"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is a. AWS KMS (Key Management Service) is the recommended service for key management in AWS, as it provides a secure and scalable way to generate, store, and manage encryption keys. AWS S3 supports server-side encryption with AWS KMS keys, ensuring that data is encrypted both at rest and in transit. AWS S3 also supports client-side encryption, but this requires additional code and management, which is less secure and more complex. AWS CloudHSM, while a secure hardware-based key management solution, does not provide the same level of ease of use and integration with AWS services as AWS KMS. The other options either use client-side encryption, which is less secure and more complex, or do not use AWS KMS for key management, which is not recommended for HIPAA compliance.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.1]\nAWS Whitepaper\nArchitecting for HIPAA Security and\nCompliance on Amazon Web Services\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS KMS",
+        "AWS S3"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:55:25.615600Z"
+    },
+    {
+      "question_id": "69c30ed2-4485-48c6-81c1-6cbdd2d4d2e2",
+      "cert_code": "SAA-C03",
+      "domain": "Design Cost-Optimized Architectures",
+      "question_type": "single",
+      "question_text": "A new AWS customer is setting up a cost-optimized architecture for their company, which has a strict budget of $50,000 per month. They need to track and manage costs effectively to ensure they do not exceed this budget. Which of the following would be the most effective approach to manage and monitor their costs within the budget constraints?",
+      "options": [
+        "A. Implement detailed cost allocation tags and use AWS Budgets to set up alerts for when costs exceed the budget.",
+        "B. Use AWS Cost Explorer to track historical costs and adjust the budget monthly based on past spending.",
+        "C. Enable AWS Trusted Advisor to monitor the overall cost and performance of the architecture.",
+        "D. Configure AWS Organizations and set up cost allocation reports to track spending at a high level."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The most effective approach is A. Implementing detailed cost allocation tags and using AWS Budgets to set up alerts ensures that the customer can track and manage costs in real-time, helping them to stay within their budget. AWS Budgets provide a way to set up alerts when costs exceed a specified threshold, which is crucial for proactive cost management. AWS Cost Explorer (option B) is useful for tracking historical costs but does not provide real-time alerts, making it less effective for budget management. AWS Trusted Advisor (option C) is a monitoring tool that provides suggestions for cost optimization and performance improvements, but it does not directly manage or alert on budget breaches. Configuring AWS Organizations and setting up cost allocation reports (option D) is a good practice for managing costs across multiple accounts but may be overkill for a single account with a strict budget, as it introduces additional complexity without the real-time alerting capabilities of AWS Budgets.",
+      "source_context": "[Source 1: Well-Architected-Cost-Optimization-Pillar.pdf, p.4, URL: https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf]\nCost Optimization Pillar AWS Well-Architected Framework\nExpenditure and usage awareness ............................................................................................... 32\nGovernance.................................................................................................................",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/wellarchitected-cost-optimization-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Budgets",
+        "AWS Cost Explorer",
+        "AWS Trusted Advisor",
+        "AWS Organizations"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:55:40.271795Z"
+    },
+    {
+      "question_id": "b7869f60-8dbb-4777-b4a0-00d297d19c2d",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "An organization is developing a HIPAA-compliant application that requires secure data storage and access control. The application will handle sensitive patient information and must be compliant with the HIPAA Security Rule. Which AWS service should be used to store and manage patient data securely, while ensuring that only authorized users can access it?",
+      "options": [
+        "A. Amazon S3 with server-side encryption and IAM policies",
+        "B. Amazon DynamoDB with encryption at rest and IAM roles",
+        "C. Amazon RDS with a MySQL database and security groups",
+        "D. Amazon S3 Glacier with versioning and lifecycle policies"
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "B is the best answer because Amazon DynamoDB provides built-in support for encryption at rest using AWS Key Management Service (KMS), and it integrates seamlessly with AWS Identity and Access Management (IAM) for fine-grained access control, which is essential for HIPAA compliance. DynamoDB also offers strong consistency and scalability, making it suitable for sensitive data storage. A is not the best choice because although Amazon S3 is a highly secure service, it requires additional steps for access control, such as using IAM policies, which can be more complex. C is not the best choice because Amazon RDS is a managed service, but it does not provide built-in encryption at rest, and its security groups are not sufficient for HIPAA compliance. D is not the best choice because Amazon S3 Glacier is designed for long-term archival storage and is not optimized for frequent access or real-time data access requirements, which are critical for patient data management in a HIPAA-compliant application.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "DYNAMODB"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:55:53.811428Z"
+    },
+    {
+      "question_id": "06b1d4e7-67d2-4687-8172-3ba8da172712",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "multiple",
+      "question_text": "A HIPAA-compliant healthcare organization is designing a resilient architecture for its patient data storage and processing system. The system must ensure high availability, maintain regulatory compliance, and be cost-effective. Which two services should the architect choose to meet these requirements? (Select TWO)",
+      "options": [
+        "A. Amazon S3 for storing patient data with server-side encryption and S3 Intelligent-Tiering",
+        "B. AWS Lambda for processing patient data with VPC endpoints",
+        "C. AWS Global Accelerator for load balancing across multiple AWS Regions",
+        "D. Amazon RDS with Multi-AZ deployments for database redundancy",
+        "E. AWS Config for monitoring and enforcing compliance with HIPAA regulations"
+      ],
+      "correct_answers": [
+        "A",
+        "D"
+      ],
+      "explanation": "A. Amazon S3 is a highly durable and secure storage service that supports server-side encryption and S3 Intelligent-Tiering for cost optimization, making it suitable for storing patient data. D. Amazon RDS with Multi-AZ deployments provides database redundancy and automatic failover, ensuring high availability and compliance with HIPAA requirements. B. AWS Lambda is a serverless compute service, but it does not directly address storage or database redundancy. C. AWS Global Accelerator is used for global traffic management and does not provide storage or database redundancy. E. AWS Config is used for monitoring and enforcing compliance but does not directly address storage or database redundancy.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon S3",
+        "Amazon RDS"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:56:07.376033Z"
+    },
+    {
+      "question_id": "ac6fe85b-77c7-4391-9085-9202ab854db2",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare organization is required to comply with HIPAA regulations and needs to ensure that their application can recover from a single AWS Region failure within 15 minutes. Which solution would best meet these requirements while ensuring data availability and minimizing data loss?",
+      "options": [
+        "A. Implement a warm standby solution using AWS CloudFormation and RDS Multi-AZ for database replication.",
+        "B. Use AWS Elastic Disaster Recovery (ELDR) to replicate the application across multiple AWS Regions.",
+        "C. Deploy a single-instance application in a highly available configuration with Auto Scaling and RDS Multi-AZ.",
+        "D. Configure a pilot light environment with AWS Lambda and S3 for disaster recovery."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The best solution is A. Implementing a warm standby solution using AWS CloudFormation and RDS Multi-AZ for database replication ensures that the application can recover from a single AWS Region failure within 15 minutes, as required by HIPAA. This approach minimizes data loss and ensures data availability by replicating the database in a separate AWS Region, allowing for quick failover. \n\nB is incorrect because AWS Elastic Disaster Recovery (ELDR) is designed for disaster recovery across multiple AWS Regions, which is overkill for a single Region failure scenario. \n\nC is incorrect because a single-instance application with Auto Scaling and RDS Multi-AZ does not provide the necessary redundancy and failover capabilities required for a 15-minute recovery time objective (RTO). \n\nD is incorrect because a pilot light environment with AWS Lambda and S3 is not a standard solution for disaster recovery and does not provide the required RTO and RPO for HIPAA compliance.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS CloudFormation",
+        "RDS Multi-AZ"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:56:21.410666Z"
+    },
+    {
+      "question_id": "39cfd3cc-2ff3-4263-aaa3-f1fd45b38ccc",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A financial services firm is designing a disaster recovery plan for its critical application running on AWS. The application is currently deployed in a single AWS Region and the firm wants to ensure that the application can be rapidly recovered from a regional outage. Which of the following strategies would best meet the firm's requirements for a disaster recovery solution in the cloud?",
+      "options": [
+        "A. Implement a warm standby solution in a different Availability Zone within the same Region.",
+        "B. Deploy the application in multiple AWS Regions and use AWS CloudFormation for infrastructure as code.",
+        "C. Use AWS Backup to create automated backups of the application's data and use AWS Lambda to restore them.",
+        "D. Configure AWS Elastic Disaster Recovery (EDR) to replicate the application's state to a secondary Region."
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D. AWS Elastic Disaster Recovery (EDR) is designed to provide a managed replication service that can replicate the state of an application running on AWS to a secondary Region. This allows for a rapid recovery from a regional outage, aligning with the firm's requirement for a disaster recovery solution in the cloud. EDR ensures that the application can be quickly brought back online in the secondary Region, minimizing downtime and data loss. \n\nOption A is incorrect because it only addresses a single Availability Zone within the same Region, which does not provide the same level of protection against regional outages as a secondary Region. \n\nOption B is incorrect because AWS CloudFormation is a tool for provisioning and managing infrastructure as code, which is not a disaster recovery solution. \n\nOption C is incorrect because AWS Backup is used for creating and managing backups of data, but it does not provide the same level of application state replication and failover capabilities as AWS EDR.",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.3]\nDisaster Recovery of Workloads on AWS: Recovery in the Cloud AWS Well-Architected Framework\nTable of Contents\nAbstract ............................................................................................................................................ 1\nIntroduction ..................................................................................................................................... 2\nDisaster recovery and availability ........",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Elastic Disaster Recovery"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:56:35.984134Z"
+    },
+    {
+      "question_id": "2640692a-de93-4631-986b-3ddf4b4a6704",
+      "cert_code": "SAA-C03",
+      "domain": "Design Cost-Optimized Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company needs to ensure its application is cost-optimized while still meeting HIPAA compliance requirements. The company has a legacy application that processes patient data and requires minimal downtime during updates. Which solution would best balance cost optimization and compliance requirements?",
+      "options": [
+        "A. Deploy the application in a single Availability Zone with Auto Scaling and RDS Multi-AZ for data redundancy.",
+        "B. Use AWS Lambda for the application logic and DynamoDB for data storage, with cross-region replication for disaster recovery.",
+        "C. Deploy the application in multiple Availability Zones with EC2 instances and S3 for data storage, and enable AWS Shield for DDoS protection.",
+        "D. Implement a serverless architecture with API Gateway, Lambda, and S3, and use CloudFront for content delivery and caching."
+      ],
+      "correct_answers": [
+        "C"
+      ],
+      "explanation": "The correct answer is C. Deploying the application in multiple Availability Zones with EC2 instances and S3 for data storage, and enabling AWS Shield for DDoS protection, best balances cost optimization and compliance requirements. This setup ensures high availability and data redundancy, which is crucial for HIPAA compliance. It also provides a cost-effective solution by leveraging EC2 instances and S3, and AWS Shield for protection against DDoS attacks, which can be expensive if not managed properly. \n\nOption A is suboptimal because it uses a single Availability Zone, which does not provide the required high availability and disaster recovery capabilities. Option B is not suitable for HIPAA compliance due to the use of DynamoDB, which is not a HIPAA-eligible service. Option D, while cost-effective, does not meet the requirement for minimal downtime during updates and is not as robust for data protection and compliance as the EC2 and S3 setup.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.3]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nTable of Contents\nArchitecting for HIPAA Security and Compliance on Amazon Web Services ................................. i\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.4]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on\nAmazon Web Services\nNotice: This wh",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "EC2",
+        "S3",
+        "AWS Shield"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:56:50.680708Z"
+    },
+    {
+      "question_id": "e492e34d-8610-4570-b760-4bdc13e03837",
+      "cert_code": "SAA-C03",
+      "domain": "Design Resilient Architectures",
+      "question_type": "single",
+      "question_text": "A company operates a global e-commerce platform and wants to ensure that their application remains available during regional disasters. They are considering using AWS services to implement a disaster recovery strategy. Which of the following approaches should they choose to provide the highest level of availability and recovery time objective (RTO) while maintaining cost-effectiveness?",
+      "options": [
+        "A. Use AWS Elastic Load Balancer (ELB) with Auto Scaling groups in a single Region to ensure high availability and RTO.",
+        "B. Deploy a warm standby environment in a different AWS Region using AWS CloudFormation to replicate the primary Region's resources.",
+        "C. Configure AWS Global Accelerator with a single endpoint in the primary Region to distribute traffic and improve performance.",
+        "D. Implement AWS Disaster Recovery (DR) using AWS CloudFormation to create a pilot light environment in a secondary Region."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Deploying a warm standby environment in a different AWS Region using AWS CloudFormation is the best approach for providing the highest level of availability and recovery time objective (RTO) while maintaining cost-effectiveness. A warm standby setup ensures that the application is running and can be quickly switched to in case of a disaster in the primary Region, thus minimizing RTO. However, it requires less resources and is more cost-effective compared to a multi-site active/active setup, which would be more complex and expensive to maintain. \n\nOption A is incorrect because it only addresses high availability within a single Region and does not provide a disaster recovery solution. Option C is incorrect because AWS Global Accelerator is designed for global traffic management and does not provide disaster recovery capabilities. Option D is incorrect because AWS Disaster Recovery (DR) using AWS CloudFormation for a pilot light environment is more complex and resource-intensive than a warm standby setup, making it less cost-effective for the given scenario.",
+      "source_context": "[Source 1: Disaster-Recovery-on-AWS.pdf, p.3]\n.................................................................... 10\nDisaster recovery is different in the cloud ................................................................................... 13\nSingle AWS Region .................................................................................................................................... 13\nMultiple AWS Regions ............................................................................",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS CloudFormation",
+        "AWS Elastic Load Balancer (ELB)",
+        "AWS Global Accelerator",
+        "AWS Disaster Recovery"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:57:06.505788Z"
+    }
+  ]
+}

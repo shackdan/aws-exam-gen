@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "cert_code": "AIF-C01",
+    "generated_at": "2026-08-22T20:14:42.897148+00:00",
+    "total_questions": 2,
+    "approved": 2,
+    "rejected": 0,
+    "domain_stats": {
+      "Fundamentals of AI and ML": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 20.0,
+        "actual_pct": 0.0,
+        "delta_pct": -20.0
+      },
+      "Fundamentals of GenAI": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 24.0,
+        "actual_pct": 50.0,
+        "delta_pct": 26.0
+      },
+      "Applications of Foundation Models": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 28.000000000000004,
+        "actual_pct": 50.0,
+        "delta_pct": 22.0
+      },
+      "Guidelines for Responsible AI": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 0.0,
+        "delta_pct": -14.0
+      },
+      "Security, Compliance, and Governance for AI Solutions": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 14.000000000000002,
+        "actual_pct": 0.0,
+        "delta_pct": -14.0
+      }
+    }
+  },
+  "questions": [
+    {
+      "question_id": "f451179e-cfd9-43a9-9af6-94dc12d94fe9",
+      "cert_code": "AIF-C01",
+      "domain": "Applications of Foundation Models",
+      "question_type": "single",
+      "question_text": "Your company is developing a conversational AI chatbot for customer support using a large language model (LLM). The team wants to ensure the chatbot can handle a wide range of customer queries while maintaining high accuracy. They are considering different approaches to customize the LLM. The company currently uses AWS services for their infrastructure and is looking for a solution that leverages AWS tools. Which approach should they choose to balance cost and performance effectively?",
+      "options": [
+        "A. Pre-train the LLM on a large dataset and deploy it as is, to minimize costs and effort.",
+        "B. Fine-tune the LLM with a small dataset of customer queries, to balance cost and performance.",
+        "C. Use in-context learning to provide examples within the chatbot's responses, to improve performance without significant cost increase.",
+        "D. Deploy multiple LLMs and use AWS Lambda and API Gateway to route queries to the most appropriate model, to ensure high performance but at a higher cost."
+      ],
+      "correct_answers": [
+        "B"
+      ],
+      "explanation": "The correct answer is B. Fine-tuning the LLM with a small dataset of customer queries (Option B) is the best approach to balance cost and performance. Fine-tuning allows the model to be tailored to the specific needs of the chatbot without the extensive resource requirements of full pre-training. Option A is less effective as it does not adapt the model to the specific use case. Option C, while useful, may not provide the same level of customization as fine-tuning. Option D, while providing high performance, increases costs significantly due to the deployment of multiple models and the complexity of the routing mechanism.",
+      "source_context": "[Source 1: AWS-CAF-for-AI.pdf, p.1, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Whitepaper\nAWS Cloud Adoption Framework for\nArtificial Intelligence, Machine Learning,\nand Generative AI\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: AWS-CAF-for-AI.pdf, p.2, URL: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf]\nAWS Cloud Adoption Framework for Artificial Intelligence, Machine Learn",
+      "source_url": "https://docs.aws.amazon.com/whitepapers/latest/aws-caf-for-ai/aws-caf-for-ai.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "AWS Lambda",
+        "Amazon API Gateway"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 2,
+      "created_at": "2026-08-22T20:13:32.079742Z"
+    },
+    {
+      "question_id": "ec6c9cf6-e078-4b92-8361-23a29e7a073c",
+      "cert_code": "AIF-C01",
+      "domain": "Fundamentals of GenAI",
+      "question_type": "single",
+      "question_text": "A company is developing a chatbot to assist customers with product inquiries. The chatbot needs to handle a wide range of customer questions and provide accurate responses. Which of the following approaches would be most appropriate for ensuring the chatbot can handle a broad range of inquiries while maintaining accuracy?",
+      "options": [
+        "A. Use a single large language model (LLM) to handle all types of customer inquiries.",
+        "B. Develop a custom rule-based system with predefined rules for each type of question.",
+        "C. Employ multiple smaller language models, each specialized in a specific domain of customer inquiries.",
+        "D. Implement a hybrid approach with a small rule-based system for common questions and a large language model for complex inquiries."
+      ],
+      "correct_answers": [
+        "D"
+      ],
+      "explanation": "The correct answer is D. A hybrid approach with a small rule-based system for common questions and a large language model for complex inquiries is the most appropriate as it leverages the strengths of both systems. Rule-based systems can handle common and straightforward questions efficiently, while LLMs can handle complex and varied inquiries with a higher degree of accuracy and adaptability. Using a single large language model (A) might lead to inaccuracy and hallucinations for complex inquiries. Developing a custom rule-based system (B) may not cover all scenarios and can be inflexible. Employing multiple smaller language models (C) could be too complex and may not provide the same level of adaptability and performance as a single LLM for varied inquiries.",
+      "source_context": "[Source 1: AIF-C01_Exam-Guide.pdf, p.11, URL: https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf]\nAWS Certified AI Practitioner Exam Guide (AIF-C01)\n- Describe the role of context engineering in FM applications.\n- Define foundational agentic AI concepts (for example, multi-agent system patterns for complex\nAI applications, Model Context Protocol [MCP] and its role in connecting agents to external\nsystems, multi-agent communicatio",
+      "source_url": "https://d1.awsstatic.com/training-and-certification/docs-ai-practitioner/AWS-Certified-AI-Practitioner_Exam-Guide.pdf",
+      "difficulty": "Foundational",
+      "aws_services": [
+        "Amazon SageMaker",
+        "Amazon Bedrock"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-08-22T20:13:44.601352Z"
+    }
+  ]
+}
