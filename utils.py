@@ -13,11 +13,12 @@ import hashlib
 import json
 import logging
 import re
+import shutil
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, NamedTuple, Optional, Set
 from xml.dom import minidom
 
 from rich.console import Console
@@ -33,7 +34,7 @@ from rich.progress import (
 )
 from rich.table import Table
 
-from schemas import ExamQuestion, GenerationResult, ValidationStatus
+from schemas import ExamQuestion, ExportFormat, GenerationResult, ValidationStatus
 
 console = Console()
 
@@ -492,7 +493,11 @@ def print_generation_summary(result: GenerationResult) -> None:
         f"({approved_pct} %)\n"
         f"[bold]Rejected:[/bold]       [red]{result.rejected}[/red]\n"
         f"[bold]Duration:[/bold]       {result.duration_seconds:.1f}s\n"
-        f"[bold]Output file:[/bold]    {result.output_file or 'N/A'}"
+        f"[bold]Export:[/bold]         {result.output_file or 'N/A'}"
+        + (
+            f"\n[bold]Rendering:[/bold]      {result.rendering_file}"
+            if result.rendering_file else ""
+        )
     )
 
     console.print(
@@ -590,6 +595,60 @@ def build_output_filename(
     }.get(fmt, ".json")
 
     return output_dir / f"{stem}{extension}"
+
+
+class RunOutputs(NamedTuple):
+    """Files written by one Generation Run."""
+    export_path:    Path
+    rendering_path: Optional[Path]
+
+
+def write_run_outputs(
+    questions: List[ExamQuestion],
+    exam_code: str,
+    fmt: ExportFormat,
+    out_file: Optional[Path],
+    output_dir: Path,
+    extra_metadata: Optional[Dict[str, Any]] = None,
+) -> RunOutputs:
+    """
+    Write a Generation Run's Export, plus a Rendering when one is asked for.
+
+    The Export is always JSON in output_dir, named
+    "{exam_code}_{n}q_{timestamp}.json", because that is where the
+    Question Bank (and so Duplicate detection) reads from.
+    """
+    approved_count = sum(
+        1 for q in questions if q.validation_status == ValidationStatus.APPROVED
+    )
+    export_path = build_output_filename(
+        cert_code  = exam_code,
+        count      = approved_count,
+        fmt        = ExportFormat.JSON.value,
+        output_dir = output_dir,
+    )
+    export_to_json(
+        questions      = questions,
+        output_path    = export_path,
+        cert_code      = exam_code,
+        extra_metadata = extra_metadata,
+    )
+
+    rendering_path: Optional[Path] = None
+    if fmt == ExportFormat.CSV:
+        rendering_path = out_file or export_path.with_suffix(".csv")
+        export_to_csv(questions=questions, output_path=rendering_path)
+    elif fmt == ExportFormat.MOODLE:
+        rendering_path = out_file or export_path.with_suffix(".xml")
+        export_to_moodle_xml(questions=questions, output_path=rendering_path)
+    elif out_file is not None:
+        # JSON run with an explicit --out-file: a byte-identical copy of
+        # the Export at that path. It is not part of the Question Bank.
+        rendering_path = out_file
+        rendering_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(export_path, rendering_path)
+
+    return RunOutputs(export_path=export_path, rendering_path=rendering_path)
 
 
 # ─────────────────────────────────────────────

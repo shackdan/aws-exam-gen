@@ -276,7 +276,13 @@ for cert in "${!cert_batches[@]}"; do
 done
 ```
 
-Supported `--output` formats: `json`, `csv`, `moodle_xml`. Other useful flags: `--domain "<name>"` (restrict to one exam domain), `--difficulty <tier>`, `--show-questions` (print results to the console), `--out-file <path>` (explicit output path instead of a timestamped default).
+### Exports and Renderings
+
+Every run that approves at least one question writes a JSON **Export** to `./output/{ExamCode}_{n}q_{timestamp}.json`, whatever `--output` says. The Exports together are the certification's question bank: duplicate detection reads them, and nothing else does. They are the only copy, so commit or back them up.
+
+`--output csv` or `--output moodle_xml` additionally writes a **Rendering** in that format for a learning platform. By default it goes next to the Export; `--out-file <path>` puts it somewhere else. With `--output json`, `--out-file` writes an extra JSON copy of the Export. Renderings are never part of the question bank, so moving or deleting one has no effect on duplicate detection.
+
+Other useful flags: `--domain "<name>"` (restrict to one exam domain), `--difficulty <tier>`, `--show-questions` (print results to the console).
 
 > Since the LLM reviewer rejects some drafts, each 100-question run typically yields somewhat fewer than 100 *approved* questions. Run extra batches per certification if you need to top up to the recommended bank size.
 
@@ -325,7 +331,7 @@ Run any command with `--help` for the full list of options.
 
 ### Making changes
 
-There is no automated test suite or linter configured yet — verify changes manually by running the affected command(s) end-to-end (see above) with `--log-level DEBUG` and confirming the console output/exported file look correct. Match the existing style: type hints, `from __future__ import annotations`, Pydantic models for data passed between modules, and `rich` for console output.
+Run the tests with `pip install -r requirements-dev.txt` then `python -m pytest`. They cover only a few modules so far, so also verify changes manually by running the affected command(s) end-to-end (see above) with `--log-level DEBUG` and confirming the console output/exported file look correct. Match the existing style: type hints, `from __future__ import annotations`, Pydantic models for data passed between modules, and `rich` for console output.
 
 Keep pull requests focused on one change (e.g. one new certification, one bug fix) and describe what you tested it with (which cert, model, and command).
 

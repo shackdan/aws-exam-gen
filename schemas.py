@@ -278,6 +278,11 @@ class GenerationResult(BaseModel):
     approved:           int                = Field(...)
     rejected:           int                = Field(...)
     questions:          List[ExamQuestion] = Field(default_factory=list)
-    output_file:        Optional[str]      = Field(None)
+    output_file:        Optional[str]      = Field(
+        None, description="Path of the JSON Export (part of the Question Bank)."
+    )
+    rendering_file:     Optional[str]      = Field(
+        None, description="Path of the Rendering (CSV, Moodle XML or JSON copy), if any."
+    )
     duration_seconds:   float              = Field(0.0)
     metadata:           Dict[str, Any]     = Field(default_factory=dict)
