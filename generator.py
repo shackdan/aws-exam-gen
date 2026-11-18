@@ -57,10 +57,6 @@ from schemas import (
     ValidationStatus,
 )
 from utils import (
-    build_output_filename,
-    export_to_csv,
-    export_to_json,
-    export_to_moodle_xml,
     extract_json_from_text,
     get_cert_metadata,
     hash_question_text,
@@ -68,6 +64,7 @@ from utils import (
     load_registry,
     make_progress_bar,
     print_domain_alignment_table,
+    write_run_outputs,
     print_generation_summary,
     print_question_table,
     select_domain_by_quota,
@@ -1583,19 +1580,11 @@ def run_generation_pipeline(
         entry["delta_pct"]  = round(actual_pct - entry["target_pct"], 1)
 
     # ── Step 8: Export output ──────────────────
-    output_file: Optional[str] = None
-
-    # Determine output path
-    if request.output_path:
-        output_path = Path(request.output_path)
-    else:
-        from config import OUTPUT_DIR
-        output_path = build_output_filename(
-            cert_code  = request.cert_code,
-            count      = approved_count,
-            fmt        = request.output_format.value,
-            output_dir = OUTPUT_DIR,
-        )
+    # The Export is always JSON in OUTPUT_DIR (that is the Question Bank);
+    # --output csv|moodle_xml and --out-file only add a Rendering.
+    from config import OUTPUT_DIR
+    output_file:    Optional[str] = None
+    rendering_file: Optional[str] = None
 
     # Export only approved questions (rejected kept in result for audit)
     questions_to_export = (
@@ -1603,26 +1592,19 @@ def run_generation_pipeline(
     )
 
     try:
-        if request.output_format.value == "json":
-            export_to_json(
-                questions      = questions_to_export,
-                output_path    = output_path,
-                cert_code      = request.cert_code,
-                extra_metadata = {"domain_stats": domain_stats},
-            )
-        elif request.output_format.value == "csv":
-            export_to_csv(
-                questions   = questions_to_export,
-                output_path = output_path,
-            )
-        elif request.output_format.value == "moodle_xml":
-            export_to_moodle_xml(
-                questions   = questions_to_export,
-                output_path = output_path,
-            )
-
-        output_file = str(output_path)
+        outputs = write_run_outputs(
+            questions      = questions_to_export,
+            exam_code      = request.cert_code,
+            fmt            = request.output_format,
+            out_file       = Path(request.output_path) if request.output_path else None,
+            output_dir     = OUTPUT_DIR,
+            extra_metadata = {"domain_stats": domain_stats},
+        )
+        output_file = str(outputs.export_path)
         log.info(f"Export complete → {output_file}")
+        if outputs.rendering_path is not None:
+            rendering_file = str(outputs.rendering_path)
+            log.info(f"Rendering complete → {rendering_file}")
 
     except Exception as export_err:
         log.error(f"Export failed: {export_err}")
@@ -1656,6 +1638,7 @@ def run_generation_pipeline(
         rejected         = rejected_count,
         questions        = reviewed_questions,
         output_file      = output_file,
+        rendering_file   = rendering_file,
         duration_seconds = round(duration, 2),
         metadata         = {
             "cert_name"        : cert_metadata["name"],

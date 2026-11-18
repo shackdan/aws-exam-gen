@@ -336,7 +336,10 @@ def cmd_ingest(
         case_sensitive=False,
     ),
     show_default = True,
-    help     = "Export format for approved questions.",
+    help     = (
+        "Rendering format. A JSON Export is always written to ./output/; "
+        "csv or moodle_xml additionally writes a Rendering in that format."
+    ),
 )
 @click.option(
     "--out-file",
@@ -344,8 +347,8 @@ def cmd_ingest(
     default  = None,
     metavar  = "FILE_PATH",
     help     = (
-        "Explicit output file path. "
-        "If omitted, a timestamped file is created in ./output/."
+        "Where to write the Rendering (for a json run: an extra copy of the "
+        "Export). The Export itself always goes to ./output/."
     ),
 )
 @click.option(
@@ -469,8 +472,13 @@ def cmd_generate(
     # ── Actionable next steps ──────────────────
     if result.output_file:
         console.print(
-            f"\n[bold green]✔ Output written to:[/bold green] "
+            f"\n[bold green]✔ Export written to:[/bold green] "
             f"[cyan]{result.output_file}[/cyan]"
+        )
+    if result.rendering_file:
+        console.print(
+            f"[bold green]✔ Rendering written to:[/bold green] "
+            f"[cyan]{result.rendering_file}[/cyan]"
         )
 
     if result.approved == 0:

@@ -131,7 +131,7 @@ A restriction that limits a Generation Run to a single Domain.
 The JSON record of a Generation Run's Approved Questions. Every Generation Run that approves at least one Question writes exactly one Export.
 
 **Rendering**:
-A copy of a Generation Run's Approved Questions in a format for a learning platform, such as CSV or Moodle XML. It is written alongside the Export and is never part of the Question Bank.
+A copy of a Generation Run's Approved Questions for use outside the Question Bank: CSV or Moodle XML for a learning platform, or a JSON copy of the Export at a path of your choosing. It is written alongside the Export and is never part of the Question Bank.
 _Avoid_: Export (for CSV or Moodle files)
 
 **Question Bank**:
