@@ -42,6 +42,7 @@ The defaults in [config.py](config.py) are sized for the dev box's Nvidia GTX 10
 | `OLLAMA_MODEL` | `qwen2.5:7b-instruct` | Ollama model to use — a larger model (e.g. `qwen2.5:14b-instruct`) can improve question quality |
 | `OLLAMA_NUM_CTX` | `4096` | Context window size (tokens) passed to Ollama |
 | `RAG_TOP_K` | `4` | Number of RAG chunks retrieved per question |
+| `OLLAMA_REVIEWER_MODEL` | *(unset: same as `OLLAMA_MODEL`)* | Separate model for the AI Reviewer. See [Using a separate AI Reviewer model](#using-a-separate-ai-reviewer-model) |
 
 The prompt's context-truncation limit scales automatically with `OLLAMA_NUM_CTX`, so raising it also lets more retrieved context reach the model.
 
@@ -103,6 +104,8 @@ Then run `ingest` / `generate` as usual — `python main.py generate --cert SAA-
 | `MLX_MODEL` | `mlx-community/Qwen2.5-7B-Instruct-4bit` | Model to request from `mlx_lm.server` |
 | `MLX_BASE_URL` | `http://localhost:8080/v1` | `mlx_lm.server`'s OpenAI-compatible base URL |
 | `MLX_NUM_CTX` | `8192` | Context window used for prompt-side truncation (raise for a model with a larger trained context) |
+| `MLX_REVIEWER_MODEL` | *(unset: same as `MLX_MODEL`)* | Separate model for the AI Reviewer |
+| `MLX_REVIEWER_BASE_URL` | *(unset: same as `MLX_BASE_URL`)* | A second `mlx_lm.server` for the reviewer model |
 
 To switch to Ollama, set `LLM_BACKEND=ollama` and make sure `ollama serve` is running.
 
@@ -121,6 +124,25 @@ export MLX_MODEL="mlx-community/Qwen2.5-14B-Instruct-4bit"
 ```
 
 The 14B model is a tight fit on 16 GB unified memory — expect a slow first request (~1 min, one-time weight load) and close other memory-heavy apps if you hit swapping. On 16 GB+ systems it's worth the trade for large batch runs; for quick iteration the 7B model is still the faster choice.
+
+### Using a separate AI Reviewer model
+
+By default one model both drafts questions and reviews them, and a model grading its own work tends to be lenient. Set a reviewer model to have Critiques written by a different model. Drafts and Revisions still come from the main model, and the startup panel shows both. Every Export records `generator_model` and `reviewer_model` in its metadata.
+
+```bash
+# Ollama: both models are served by the same `ollama serve`
+ollama pull qwen2.5:14b-instruct
+export OLLAMA_REVIEWER_MODEL="qwen2.5:14b-instruct"
+
+# MLX-LM: run a second server so both models stay loaded
+mlx_lm.server --model mlx-community/Qwen2.5-14B-Instruct-4bit --port 8081
+export MLX_REVIEWER_MODEL="mlx-community/Qwen2.5-14B-Instruct-4bit"
+export MLX_REVIEWER_BASE_URL="http://localhost:8081/v1"
+```
+
+If the reviewer model can't be reached, `generate` fails at startup, before drafting anything. Both roles use the same `LLM_BACKEND`.
+
+> **Memory cost:** Ollama keeps models loaded indefinitely here (`keep_alive=-1`), so two models both want to stay resident. On an 8 GB card such as the GTX 1070, a 7B Generator plus a 14B reviewer won't both fit. Ollama will offload layers to the CPU or swap models in and out, and Review becomes much slower. Two MLX-LM servers on 16 GB of unified memory face the same squeeze. Pair the Generator with a reviewer of similar size, or accept the slowdown.
 
 ## Supported certifications
 

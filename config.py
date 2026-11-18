@@ -11,6 +11,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 from dataclasses import dataclass, field
+from typing import Optional
 
 
 # ─────────────────────────────────────────────
@@ -63,6 +64,14 @@ class OllamaConfig:
             "OLLAMA_BASE_URL", "http://localhost:11434"
         )
     )
+    # Optional separate model for the AI Reviewer role (same Ollama server).
+    # Unset → the AI Reviewer uses `model`, as before.
+    reviewer_model: Optional[str] = field(
+        default_factory=lambda: os.getenv("OLLAMA_REVIEWER_MODEL") or None
+    )
+    # Ollama serves every model from one server, so there is no separate
+    # reviewer URL; kept as None for parity with MLXConfig.
+    reviewer_base_url: Optional[str] = None
     # 4096 tokens keeps the full KV-cache inside 8 GB VRAM at Q4_K_M.
     # Raise via OLLAMA_NUM_CTX on systems with more VRAM headroom.
     num_ctx: int = field(
@@ -96,6 +105,15 @@ class MLXConfig:
         default_factory=lambda: os.getenv(
             "MLX_BASE_URL", "http://localhost:8080/v1"
         )
+    )
+    # Optional separate model for the AI Reviewer role. Unset → `model`.
+    reviewer_model: Optional[str] = field(
+        default_factory=lambda: os.getenv("MLX_REVIEWER_MODEL") or None
+    )
+    # Optional second mlx_lm.server for the reviewer model, so both models
+    # stay resident instead of one server reloading. Unset → `base_url`.
+    reviewer_base_url: Optional[str] = field(
+        default_factory=lambda: os.getenv("MLX_REVIEWER_BASE_URL") or None
     )
     # Context window — informs prompt-side context truncation only;
     # the server itself is configured via `mlx_lm.server --max-tokens`

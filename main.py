@@ -150,6 +150,12 @@ def _validate_export_format(fmt: str) -> ExportFormat:
     return result
 
 
+def _separate_reviewer_model() -> bool:
+    """True when the AI Reviewer is configured to use its own model."""
+    reviewer = getattr(LLM_CONFIG, "reviewer_model", None)
+    return bool(reviewer) and reviewer != LLM_CONFIG.model
+
+
 def _confirm_reset(cert_code: str) -> bool:
     """
     Prompt the user to confirm a destructive reset operation.
@@ -427,6 +433,11 @@ def cmd_generate(
     export_fmt = _validate_export_format(output_format)
 
     # ── Display generation configuration ──────
+    reviewer_label = (
+        LLM_CONFIG.reviewer_model
+        if _separate_reviewer_model()
+        else f"{LLM_CONFIG.model} (same as Generator)"
+    )
     console.print(
         Panel(
             f"[bold]Certification :[/bold] {cert_metadata['name']} ({cert_code})\n"
@@ -436,7 +447,8 @@ def cmd_generate(
             f"[bold]Domain filter :[/bold] {domain_filter or '(all domains)'}\n"
             f"[bold]Difficulty    :[/bold] {difficulty or cert_metadata['tier']}\n"
             f"[bold]LLM backend   :[/bold] {LLM_BACKEND}\n"
-            f"[bold]Model         :[/bold] {LLM_CONFIG.model}\n"
+            f"[bold]Generator     :[/bold] {LLM_CONFIG.model}\n"
+            f"[bold]AI Reviewer   :[/bold] {reviewer_label}\n"
             f"[bold]Context window:[/bold] {LLM_CONFIG.num_ctx} tokens\n"
             f"[bold]Output dir    :[/bold] {OUTPUT_DIR}",
             title        = "[bold blue]Generation Configuration[/bold blue]",
@@ -512,7 +524,14 @@ def cmd_generate(
                 f"  • Verify the {LLM_BACKEND} backend is running with the "
                 "correct model:\n"
                 f"    {backend_hint}\n"
-                "  • Try reducing --count and re-running.\n"
+                + (
+                    f"  • The AI Reviewer uses a separate model "
+                    f"({LLM_CONFIG.reviewer_model}); a stricter reviewer can "
+                    "reject every draft. Unset the reviewer model to compare.\n"
+                    if _separate_reviewer_model()
+                    else ""
+                )
+                + "  • Try reducing --count and re-running.\n"
                 "  • Check logs with --log-level DEBUG for details.[/yellow]",
                 title        = "[yellow]No Questions Approved[/yellow]",
                 border_style = "yellow",

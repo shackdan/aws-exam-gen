@@ -495,8 +495,9 @@ def _call_reviewer_llm(
 ) -> str:
     """
     Send the review prompt to the configured LLM backend and return the
-    raw response string. Uses the same model and client as the
-    generator to avoid loading a second model into memory.
+    raw response string. llm_client is the AI Reviewer's client: the
+    Generator's own client unless a separate reviewer model is configured
+    (see generator.init_role_clients).
     Retries up to 3 times on transient connection / timeout errors.
     """
     return llm_client.chat(
