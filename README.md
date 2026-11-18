@@ -282,6 +282,8 @@ Every run that approves at least one question writes a JSON **Export** to `./out
 
 `--output csv` or `--output moodle_xml` additionally writes a **Rendering** in that format for a learning platform. By default it goes next to the Export; `--out-file <path>` puts it somewhere else. With `--output json`, `--out-file` writes an extra JSON copy of the Export. Renderings are never part of the question bank, so moving or deleting one has no effect on duplicate detection.
 
+To commit each new Export automatically, pass `--commit`, or set `AUTO_COMMIT_EXPORTS=1` to make that the default (`--no-commit` overrides it for one run). Only the new Export is committed: anything else you have staged or modified is left out and stays as it was. Nothing is pushed. The commit is skipped, with a message, when the run approved no questions or the Export is outside `./output/`. If git is missing, the folder isn't a repository, or git refuses the commit (a hook, a merge in progress), you get a warning, the Export stays on disk, and the run still succeeds.
+
 Other useful flags: `--domain "<name>"` (restrict to one exam domain), `--difficulty <tier>`, `--show-questions` (print results to the console).
 
 > Since the LLM reviewer rejects some drafts, each 100-question run typically yields somewhat fewer than 100 *approved* questions. Run extra batches per certification if you need to top up to the recommended bank size.

@@ -40,6 +40,12 @@ for _d in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):
 # "ollama" talks to a local Ollama server.
 LLM_BACKEND: str = os.getenv("LLM_BACKEND", "mlx").strip().lower()
 
+# When true, `generate` commits each new Export to git (see export_vcs.py).
+# The --commit / --no-commit flag overrides it per run.
+AUTO_COMMIT_EXPORTS: bool = os.getenv("AUTO_COMMIT_EXPORTS", "").strip().lower() in (
+    "1", "true", "yes", "on",
+)
+
 
 # ─────────────────────────────────────────────
 # Ollama / LLM settings  (GTX 1070 8 GB tuning)

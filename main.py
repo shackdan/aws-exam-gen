@@ -43,6 +43,7 @@ if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
 
 from config import (
+    AUTO_COMMIT_EXPORTS,
     CHROMA_DIR,
     DATA_DIR,
     LLM_BACKEND,
@@ -379,6 +380,15 @@ def cmd_ingest(
     default  = False,
     help     = "Print the full question table to the console after generation.",
 )
+@click.option(
+    "--commit/--no-commit",
+    "auto_commit",
+    default  = None,
+    help     = (
+        "Commit the new Export to git after the run (only the Export, never "
+        "other changes). Defaults to the AUTO_COMMIT_EXPORTS env var, else off."
+    ),
+)
 @click.pass_context
 def cmd_generate(
     ctx:           click.Context,
@@ -389,6 +399,7 @@ def cmd_generate(
     domain_filter: Optional[str],
     difficulty:    Optional[str],
     show_questions:bool,
+    auto_commit:   Optional[bool],
 ) -> None:
     """
     Generate and validate MCQ questions for an AWS certification.
@@ -481,6 +492,11 @@ def cmd_generate(
             f"[cyan]{result.rendering_file}[/cyan]"
         )
 
+    _auto_commit_export(
+        result,
+        enabled = AUTO_COMMIT_EXPORTS if auto_commit is None else auto_commit,
+    )
+
     if result.approved == 0:
         backend_hint = (
             f"ollama run {LLM_CONFIG.model}"
@@ -516,6 +532,35 @@ def cmd_generate(
         sys.exit(0)
 
     sys.exit(0)
+
+
+def _auto_commit_export(result, enabled: bool) -> None:
+    """Commit the run's Export when auto-commit is on. Never fails the run."""
+    from export_vcs import commit_export, should_commit
+
+    export_path = Path(result.output_file) if result.output_file else None
+    decision = should_commit(
+        enabled        = enabled,
+        export_path    = export_path,
+        approved_count = result.approved,
+        output_dir     = OUTPUT_DIR,
+    )
+    if not decision.commit:
+        if enabled:
+            console.print(f"[yellow]Auto-commit skipped: {decision.reason}[/yellow]")
+        return
+
+    outcome = commit_export(
+        export_path,
+        exam_code = result.cert_code,
+        count     = result.approved,
+    )
+    if outcome.committed:
+        console.print(
+            f"[bold green]✔ Export committed:[/bold green] [cyan]{outcome.sha[:7]}[/cyan]"
+        )
+    else:
+        console.print(f"[yellow]⚠ Auto-commit failed: {outcome.reason}[/yellow]")
 
 
 # ─────────────────────────────────────────────

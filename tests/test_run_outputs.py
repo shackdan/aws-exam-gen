@@ -133,3 +133,44 @@ def test_later_run_sees_csv_runs_questions_as_duplicates(tmp_path):
 
     question_bank = load_prior_question_hashes(cert_code="SAA-C03", output_dir=output_dir)
     assert hash_question_text(text) in question_bank
+
+
+def rejected_question(text: str) -> ExamQuestion:
+    return approved_question(text).model_copy(
+        update={"validation_status": ValidationStatus.REJECTED}
+    )
+
+
+def test_only_rejected_questions_writes_nothing(tmp_path):
+    output_dir = tmp_path / "output"
+
+    outputs = write_run_outputs(
+        questions=[rejected_question("Which service would a rejected draft have recommended here?")],
+        exam_code="SAA-C03",
+        fmt=ExportFormat.CSV,
+        out_file=tmp_path / "lms" / "upload.csv",
+        output_dir=output_dir,
+    )
+
+    assert outputs.export_path is None
+    assert outputs.rendering_path is None
+    assert not (tmp_path / "lms").exists()
+    assert load_prior_question_hashes(cert_code="SAA-C03", output_dir=output_dir) == set()
+
+
+def test_mixed_run_exports_only_approved_questions(tmp_path):
+    outputs = write_run_outputs(
+        questions=[
+            approved_question("Which service stores log archives most durably and cheaply?"),
+            rejected_question("Which service would a rejected draft have recommended here?"),
+        ],
+        exam_code="SAA-C03",
+        fmt=ExportFormat.JSON,
+        out_file=None,
+        output_dir=tmp_path / "output",
+    )
+
+    exported = json.loads(outputs.export_path.read_text(encoding="utf-8"))
+    assert [q["question_text"] for q in exported["questions"]] == [
+        "Which service stores log archives most durably and cheaply?"
+    ]
