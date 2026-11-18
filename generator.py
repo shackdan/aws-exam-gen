@@ -1586,22 +1586,22 @@ def run_generation_pipeline(
     output_file:    Optional[str] = None
     rendering_file: Optional[str] = None
 
-    # Export only approved questions (rejected kept in result for audit)
-    questions_to_export = (
-        approved_questions if approved_questions else reviewed_questions
-    )
-
+    # Only Approved Questions are exported; Rejected ones stay in the
+    # result (for the console) but never enter the Question Bank.
     try:
         outputs = write_run_outputs(
-            questions      = questions_to_export,
+            questions      = approved_questions,
             exam_code      = request.cert_code,
             fmt            = request.output_format,
             out_file       = Path(request.output_path) if request.output_path else None,
             output_dir     = OUTPUT_DIR,
             extra_metadata = {"domain_stats": domain_stats},
         )
-        output_file = str(outputs.export_path)
-        log.info(f"Export complete → {output_file}")
+        if outputs.export_path is None:
+            log.warning("No Approved Questions — nothing exported.")
+        else:
+            output_file = str(outputs.export_path)
+            log.info(f"Export complete → {output_file}")
         if outputs.rendering_path is not None:
             rendering_file = str(outputs.rendering_path)
             log.info(f"Rendering complete → {rendering_file}")

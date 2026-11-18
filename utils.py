@@ -599,7 +599,7 @@ def build_output_filename(
 
 class RunOutputs(NamedTuple):
     """Files written by one Generation Run."""
-    export_path:    Path
+    export_path:    Optional[Path]   # None when the run approved nothing
     rendering_path: Optional[Path]
 
 
@@ -614,16 +614,22 @@ def write_run_outputs(
     """
     Write a Generation Run's Export, plus a Rendering when one is asked for.
 
+    Only Approved Questions are written; Rejected Questions never enter
+    the Question Bank. A run with no Approved Questions writes nothing.
+
     The Export is always JSON in output_dir, named
     "{exam_code}_{n}q_{timestamp}.json", because that is where the
     Question Bank (and so Duplicate detection) reads from.
     """
-    approved_count = sum(
-        1 for q in questions if q.validation_status == ValidationStatus.APPROVED
-    )
+    questions = [
+        q for q in questions if q.validation_status == ValidationStatus.APPROVED
+    ]
+    if not questions:
+        return RunOutputs(export_path=None, rendering_path=None)
+
     export_path = build_output_filename(
         cert_code  = exam_code,
-        count      = approved_count,
+        count      = len(questions),
         fmt        = ExportFormat.JSON.value,
         output_dir = output_dir,
     )
