@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto-commit Exports Prototype</title>
+<style>
+  :root {
+    --bg: #fafaf9; --panel: #ffffff; --text: #1c1917; --muted: #78716c;
+    --line: #e7e5e4; --accent: #2563eb; --accent-soft: #dbeafe;
+    --good: #15803d; --good-soft: #dcfce7; --warn: #b45309; --warn-soft: #fef3c7;
+    --bad: #b91c1c; --bad-soft: #fee2e2; --changed: #fef9c3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1917; --panel: #292524; --text: #f5f5f4; --muted: #a8a29e;
+      --line: #44403c; --accent: #60a5fa; --accent-soft: #1e3a5f;
+      --good: #4ade80; --good-soft: #14532d; --warn: #fbbf24; --warn-soft: #451a03;
+      --bad: #f87171; --bad-soft: #450a0a; --changed: #3f3a10;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 10px; }
+  .prototype-tag { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 99px;
+    background: var(--warn-soft); color: var(--warn); font-weight: 600; margin-bottom: 8px; }
+  .intro { color: var(--muted); max-width: 75ch; }
+  .intro strong { color: var(--text); }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 16px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+  dt { color: var(--muted); }
+  dd { margin: 0; font-weight: 500; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; }
+  code { font: 13px/1.4 ui-monospace, "Cascadia Code", Consolas, monospace; overflow-wrap: anywhere; }
+  .pill { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 99px; margin: 1px 4px 1px 0; white-space: nowrap; }
+  .p-committed { background: var(--good-soft); color: var(--good); }
+  .p-untracked, .p-modified { background: var(--warn-soft); color: var(--warn); }
+  .p-staged { background: var(--accent-soft); color: var(--accent); }
+  .p-bank { background: var(--accent-soft); color: var(--accent); }
+  .p-bad { background: var(--bad-soft); color: var(--bad); }
+  .p-plain { background: var(--line); color: var(--text); }
+  .changed { background: var(--changed); }
+  .outcome { border-left: 4px solid var(--line); padding: 8px 12px; margin-top: 8px; }
+  .outcome.ok { border-color: var(--good); }
+  .outcome.warn { border-color: var(--warn); }
+  .outcome.skip { border-color: var(--muted); }
+  .outcome.bad { border-color: var(--bad); }
+  .muted { color: var(--muted); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 12px; align-items: center; }
+  .btn-row .label { color: var(--muted); font-size: 13px; min-width: 150px; }
+  button { font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+  button:hover { border-color: var(--accent); }
+  button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  button:disabled { opacity: .4; cursor: default; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .tabs button { border: none; border-bottom: 2px solid transparent; border-radius: 0; background: none; padding: 8px 10px; }
+  .tabs button.active { border-bottom-color: var(--accent); color: var(--accent); font-weight: 600; }
+  ol.steps { padding-left: 20px; margin: 8px 0 0; }
+  ol.steps li { margin: 6px 0; }
+  ol.steps li.done button { text-decoration: line-through; }
+  .watch { background: var(--accent-soft); border-radius: 6px; padding: 8px 12px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="prototype-tag">PROTOTYPE · throwaway · issue #6</span>
+  <h1>Auto-commit Exports</h1>
+  <p class="intro">
+    <strong>The question:</strong> when auto-commit is on and a Generation Run finishes, does
+    "commit only the new Export, never fail the run" behave the way we want in the awkward cases?
+    Those cases are: unrelated work already sitting in git, CSV and Moodle runs, runs with zero Approved
+    Questions, custom output locations, and git refusing the commit. Toggle <strong>#2 landed</strong> and
+    <strong>#3 landed</strong> to see how the answer changes once those fixes ship.
+    Nothing here touches real git: it is all simulated in memory.
+  </p>
+
+  <section>
+    <h2>Guided walkthroughs</h2>
+    <div class="tabs" id="tabs"></div>
+    <div id="scenario"></div>
+  </section>
+
+  <section>
+    <h2>Free play</h2>
+    <div id="controls"></div>
+  </section>
+
+  <section id="last-run"></section>
+
+  <div class="grid">
+    <section><h2>Generation Run settings</h2><dl id="settings"></dl></section>
+    <section><h2>Git environment</h2><dl id="env"></dl></section>
+    <section><h2>Fixes landed</h2><dl id="fixes"></dl></section>
+  </div>
+
+  <section>
+    <h2>Working tree</h2>
+    <table><thead><tr><th>File</th><th>Git status</th><th>What it is</th></tr></thead><tbody id="files"></tbody></table>
+  </section>
+
+  <section>
+    <h2>Commit history (newest first)</h2>
+    <table><thead><tr><th>Commit</th><th>Message</th><th>Files in commit</th></tr></thead><tbody id="commits"></tbody></table>
+  </section>
+</main>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   Portable logic module. Pure: no DOM. This is the part that
+   lifts into export_vcs.py once the behaviour is agreed.
+   ───────────────────────────────────────────────────────────── */
+const AutoCommitModel = (() => {
+  const EXT = { json: ".json", csv: ".csv", moodle_xml: ".xml" };
+
+  function initialState() {
+    return {
+      settings: { examCode: "SAA-C03", autoCommit: false, format: "json", outLocation: "default", approved: 10 },
+      env: { gitInstalled: true, isRepo: true, hookRejects: false, mergeInProgress: false },
+      fixes: { issue2: false, issue3: false },
+      files: [],
+      commits: [{ sha: "8efaad3", message: "Add domain glossary, ADR-0001, and track Question Bank exports", files: ["GLOSSARY.md", "docs/adr/0001-local-llm-only.md", "output/…(5 Exports)"] }],
+      runCount: 0,
+      lastRun: null,
+      changed: [],
+    };
+  }
+
+  function customPath(outLocation, ext) {
+    if (outLocation === "inside") return "exports/my-run" + ext;
+    if (outLocation === "outside") return "~/Desktop/my-run" + ext;
+    return null;
+  }
+
+  function describe(file, examCode) {
+    return {
+      ...file,
+      insideRepo: !file.path.startsWith("~"),
+      inQuestionBank: new RegExp("^output/" + examCode + "_.*\\.json$").test(file.path),
+    };
+  }
+
+  // Which files does a Generation Run write?
+  function filesWritten(state, ts) {
+    const { examCode, format, outLocation, approved } = state.settings;
+    if (approved === 0 && state.fixes.issue2) return [];
+    const containsRejected = approved === 0;           // today's bug: rejected questions get exported
+    const stem = `output/${examCode}_${approved}q_${ts}`;
+    const out = [];
+    if (state.fixes.issue3) {
+      out.push({ path: stem + ".json", kind: "export", containsRejected });
+      if (format !== "json") {
+        out.push({ path: customPath(outLocation, EXT[format]) ?? stem + EXT[format], kind: "rendering", containsRejected });
+      }
+    } else {
+      const path = customPath(outLocation, EXT[format]) ?? stem + EXT[format];
+      out.push({ path, kind: format === "json" ? "export" : "rendering", containsRejected });
+    }
+    return out.map(f => describe(f, examCode));
+  }
+
+  // Should we try to commit? (the proposed should_commit rule)
+  function shouldCommit(settings, written) {
+    if (!settings.autoCommit) return { commit: false, reason: "Auto-commit is off, so git is left untouched." };
+    if (settings.approved === 0) return { commit: false, reason: "No Approved Questions, so there is nothing for the Question Bank and nothing is committed." };
+    const exp = written.find(f => f.kind === "export");
+    if (!exp) return { commit: false, reason: "This run wrote no JSON Export (only a Rendering), so there is nothing to commit." };
+    return { commit: true, target: exp };
+  }
+
+  // Try the commit; git problems become warnings, never a failed run.
+  function attemptCommit(state, target) {
+    const e = state.env;
+    if (!e.gitInstalled) return { warning: "git isn't installed. The Export stays on disk, uncommitted." };
+    if (!e.isRepo) return { warning: "This folder isn't a git repository. The Export stays on disk, uncommitted." };
+    if (!target.insideRepo) return { warning: "The Export was written outside the repository, so git can't commit it." };
+    if (e.mergeInProgress) return { warning: "A merge is in progress, and git refuses to commit a single file mid-merge. The Export stays on disk, uncommitted." };
+    if (e.hookRejects) return { warning: "A pre-commit hook rejected the commit. The Export stays on disk, uncommitted." };
+    return { ok: true };
+  }
+
+  function finishRun(state) {
+    const n = state.runCount + 1;
+    const ts = "20261118T12" + String(n).padStart(2, "0") + "00";
+    const written = filesWritten(state, ts);
+    const decision = shouldCommit(state.settings, written);
+    let commit = null, warning = null;
+    if (decision.commit) {
+      const r = attemptCommit(state, decision.target);
+      if (r.ok) {
+        commit = {
+          sha: (0xa1b2c3d + n * 0x1f3d5).toString(16).slice(0, 7),
+          message: `Add ${state.settings.approved} ${state.settings.examCode} questions (${ts})`,
+          files: [decision.target.path],
+        };
+      } else warning = r.warning;
+    }
+    const files = [...state.files];
+    for (const f of written) {
+      files.push({ ...f, status: commit && commit.files.includes(f.path) ? "committed" : "untracked" });
+    }
+    return {
+      ...state,
+      runCount: n,
+      files,
+      commits: commit ? [commit, ...state.commits] : state.commits,
+      lastRun: { written, decision, commit, warning },
+      changed: ["lastRun", "commits", ...written.map(f => f.path)],
+    };
+  }
+
+  function upsertFile(files, path, status) {
+    const i = files.findIndex(f => f.path === path);
+    const f = { path, kind: "source", status };
+    return i === -1 ? [...files, f] : files.map((x, j) => j === i ? { ...x, status } : x);
+  }
+
+  function reduce(state, action) {
+    switch (action.type) {
+      case "RESET": return initialState();
+      case "SET_SETTING": return { ...state, settings: { ...state.settings, [action.key]: action.value }, changed: ["settings." + action.key] };
+      case "SET_ENV": return { ...state, env: { ...state.env, [action.key]: action.value }, changed: ["env." + action.key] };
+      case "SET_FIX": return { ...state, fixes: { ...state.fixes, [action.key]: action.value }, changed: ["fixes." + action.key] };
+      case "EDIT_SOURCE": return { ...state, files: upsertFile(state.files, "generator.py", "modified"), changed: ["generator.py"] };
+      case "STAGE_UNRELATED": return { ...state, files: upsertFile(state.files, "README.md", "staged"), changed: ["README.md"] };
+      case "FINISH_RUN": return finishRun(state);
+      default: return state;
+    }
+  }
+
+  return { initialState, reduce };
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   Throwaway page shell
+   ───────────────────────────────────────────────────────────── */
+const A = {
+  autoCommit: v => ({ type: "SET_SETTING", key: "autoCommit", value: v }),
+  format: v => ({ type: "SET_SETTING", key: "format", value: v }),
+  out: v => ({ type: "SET_SETTING", key: "outLocation", value: v }),
+  approved: v => ({ type: "SET_SETTING", key: "approved", value: v }),
+  env: (k, v) => ({ type: "SET_ENV", key: k, value: v }),
+  fix: (k, v) => ({ type: "SET_FIX", key: k, value: v }),
+  edit: { type: "EDIT_SOURCE" },
+  stage: { type: "STAGE_UNRELATED" },
+  run: { type: "FINISH_RUN" },
+};
+
+const SCENARIOS = [
+  { title: "Happy path",
+    text: "Auto-commit is on and a normal JSON run approves 10 Questions.",
+    watch: "Exactly one new commit, containing only the new Export, with the message “Add 10 SAA-C03 questions (…)”. The Export is marked as in the Question Bank.",
+    steps: [["Turn auto-commit on", A.autoCommit(true)], ["Finish a Generation Run", A.run]] },
+  { title: "Unrelated work stays out",
+    text: "You have an unstaged edit to generator.py and a staged README.md change, then a run finishes.",
+    watch: "The commit contains only the Export. README.md is still staged and generator.py is still modified, so your work in progress isn't swept in.",
+    steps: [["Edit a source file (don't stage it)", A.edit], ["Stage an unrelated change", A.stage], ["Turn auto-commit on", A.autoCommit(true)], ["Finish a Generation Run", A.run]] },
+  { title: "Auto-commit off",
+    text: "This is the default: auto-commit stays off.",
+    watch: "The Export is written but left untracked, and git isn't touched at all. This is today's behaviour.",
+    steps: [["Finish a Generation Run", A.run]] },
+  { title: "CSV run, before and after #3",
+    text: "A run with the format set to CSV. Today CSV replaces the JSON Export, while after #3 CSV is an extra Rendering.",
+    watch: "Before #3: no Export exists, so nothing is committed and those Approved Questions never reach the Question Bank. After #3: the JSON Export is committed and the CSV Rendering is left untracked. Is leaving the Rendering untracked what you want?",
+    steps: [["Turn auto-commit on", A.autoCommit(true)], ["Format: CSV", A.format("csv")], ["Finish a Generation Run (today)", A.run], ["Mark #3 as landed", A.fix("issue3", true)], ["Finish a Generation Run (after #3)", A.run]] },
+  { title: "Zero approvals, before and after #2",
+    text: "Review rejects every Question in the run.",
+    watch: "Before #2: a file of Rejected Questions is written into output/ and silently joins the Question Bank, but auto-commit refuses to commit it. After #2: nothing is written at all.",
+    steps: [["Turn auto-commit on", A.autoCommit(true)], ["Approved Questions: 0", A.approved(0)], ["Finish a Generation Run (today)", A.run], ["Mark #2 as landed", A.fix("issue2", true)], ["Finish a Generation Run (after #2)", A.run]] },
+  { title: "Custom output location",
+    text: "Today, --out-file can send the JSON Export to a different folder in the repo, or outside the repo entirely.",
+    watch: "Inside the repo: it IS committed, yet it isn't in the Question Bank (Duplicate detection only reads output/). Should auto-commit still commit it? Outside the repo: you get a warning and no commit.",
+    steps: [["Turn auto-commit on", A.autoCommit(true)], ["Output location: custom folder inside the repo", A.out("inside")], ["Finish a Generation Run", A.run], ["Output location: outside the repo", A.out("outside")], ["Finish a Generation Run", A.run]] },
+  { title: "git says no",
+    text: "Three ways git can refuse: a merge is in progress, a pre-commit hook rejects the commit, or the folder isn't a repository.",
+    watch: "Every time: a warning, the Export stays on disk untracked, and the Generation Run still succeeds.",
+    steps: [["Turn auto-commit on", A.autoCommit(true)], ["Start a merge", A.env("mergeInProgress", true)], ["Finish a Generation Run", A.run], ["Finish the merge", A.env("mergeInProgress", false)], ["Make the pre-commit hook reject", A.env("hookRejects", true)], ["Finish a Generation Run", A.run], ["Hook passes again; leave the repository", A.env("hookRejects", false)], ["Not a git repository", A.env("isRepo", false)], ["Finish a Generation Run", A.run]] },
+];
+
+let state = AutoCommitModel.initialState();
+let activeTab = 0, stepIndex = 0;
+
+function dispatch(action) { state = AutoCommitModel.reduce(state, action); render(); }
+const el = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const isChanged = key => state.changed.includes(key) ? ' class="changed"' : "";
+const yesNo = b => b ? "Yes" : "No";
+const FORMAT_LABEL = { json: "JSON", csv: "CSV", moodle_xml: "Moodle XML" };
+const OUT_LABEL = { default: "Default (output/)", inside: "Custom folder inside the repo", outside: "Outside the repo" };
+
+function startScenario(i) { activeTab = i; stepIndex = 0; state = AutoCommitModel.initialState(); render(); }
+function doStep(i) { if (i !== stepIndex) return; dispatch(SCENARIOS[activeTab].steps[i][1]); stepIndex++; render(); }
+
+function render() {
+  // tabs
+  el("tabs").innerHTML = SCENARIOS.map((s, i) => `<button class="${i === activeTab ? "active" : ""}" onclick="startScenario(${i})">${esc(s.title)}</button>`).join("");
+  const sc = SCENARIOS[activeTab];
+  el("scenario").innerHTML = `
+    <p>${esc(sc.text)}</p>
+    <div class="watch"><strong>Watch for:</strong> ${esc(sc.watch)}</div>
+    <ol class="steps">${sc.steps.map(([label], i) => `
+      <li class="${i < stepIndex ? "done" : ""}"><button ${i === stepIndex ? 'class="primary"' : ""} ${i !== stepIndex ? "disabled" : ""} onclick="doStep(${i})">${esc(label)}</button></li>`).join("")}
+    </ol>
+    ${stepIndex >= sc.steps.length ? '<p class="muted">Walkthrough complete. Click the tab again to restart it.</p>' : ""}`;
+
+  // free play
+  const s = state.settings, e = state.env, f = state.fixes;
+  const opt = (label, on, action) => `<button class="${on ? "on" : ""}" onclick='dispatch(${JSON.stringify(action)})'>${esc(label)}</button>`;
+  el("controls").innerHTML = `
+    <div class="btn-row"><span class="label">Auto-commit</span>${opt("Off", !s.autoCommit, A.autoCommit(false))}${opt("On", s.autoCommit, A.autoCommit(true))}</div>
+    <div class="btn-row"><span class="label">Format</span>${["json", "csv", "moodle_xml"].map(v => opt(FORMAT_LABEL[v], s.format === v, A.format(v))).join("")}</div>
+    <div class="btn-row"><span class="label">Output location</span>${["default", "inside", "outside"].map(v => opt(OUT_LABEL[v], s.outLocation === v, A.out(v))).join("")}</div>
+    <div class="btn-row"><span class="label">Approved Questions</span>${[10, 3, 0].map(v => opt(String(v), s.approved === v, A.approved(v))).join("")}</div>
+    <div class="btn-row"><span class="label">Git environment</span>
+      ${opt("git installed", e.gitInstalled, A.env("gitInstalled", !e.gitInstalled))}
+      ${opt("Inside a repo", e.isRepo, A.env("isRepo", !e.isRepo))}
+      ${opt("Hook rejects", e.hookRejects, A.env("hookRejects", !e.hookRejects))}
+      ${opt("Merge in progress", e.mergeInProgress, A.env("mergeInProgress", !e.mergeInProgress))}</div>
+    <div class="btn-row"><span class="label">Fixes landed</span>
+      ${opt("#2 zero-approval fix", f.issue2, A.fix("issue2", !f.issue2))}
+      ${opt("#3 Export + Rendering", f.issue3, A.fix("issue3", !f.issue3))}</div>
+    <div class="btn-row"><span class="label">Your work in progress</span>
+      <button onclick='dispatch(${JSON.stringify(A.edit)})'>Edit a source file (don't stage)</button>
+      <button onclick='dispatch(${JSON.stringify(A.stage)})'>Stage an unrelated change</button></div>
+    <div class="btn-row"><span class="label"></span>
+      <button class="primary" onclick='dispatch(${JSON.stringify(A.run)})'>Finish a Generation Run</button>
+      <button onclick='dispatch({"type":"RESET"})'>Reset everything</button></div>`;
+
+  // last run
+  const lr = state.lastRun;
+  if (!lr) {
+    el("last-run").innerHTML = `<h2>Last Generation Run</h2><p class="muted">No run finished yet.</p>`;
+  } else {
+    const cls = lr.commit ? "ok" : lr.warning ? "warn" : "skip";
+    const headline = lr.commit ? `Committed <code>${esc(lr.commit.sha)}</code>: “${esc(lr.commit.message)}”`
+      : lr.warning ? `Not committed. ${esc(lr.warning)}`
+      : `Not committed. ${esc(lr.decision.reason)}`;
+    const badRejected = lr.written.some(w => w.containsRejected && w.inQuestionBank);
+    el("last-run").innerHTML = `<h2>Last Generation Run</h2>
+      <div class="${state.changed.includes("lastRun") ? "changed" : ""}">
+        <p><strong>Files written:</strong> ${lr.written.length ? lr.written.map(w => `<code>${esc(w.path)}</code>`).join(", ") : '<span class="muted">none</span>'}</p>
+        <div class="outcome ${cls}">${headline}<br><span class="muted">The Generation Run itself succeeded.</span></div>
+        ${badRejected ? `<div class="outcome bad">Rejected Questions are now in the Question Bank: Duplicate detection reads this file even though it was never committed (bug #2).</div>` : ""}
+      </div>`;
+  }
+
+  // panels
+  el("settings").innerHTML = `
+    <dt${isChanged("settings.autoCommit")}>Auto-commit</dt><dd${isChanged("settings.autoCommit")}>${s.autoCommit ? "On" : "Off"}</dd>
+    <dt${isChanged("settings.format")}>Format</dt><dd${isChanged("settings.format")}>${FORMAT_LABEL[s.format]}</dd>
+    <dt${isChanged("settings.outLocation")}>Output location</dt><dd${isChanged("settings.outLocation")}>${OUT_LABEL[s.outLocation]}</dd>
+    <dt${isChanged("settings.approved")}>Approved Questions</dt><dd${isChanged("settings.approved")}>${s.approved}</dd>
+    <dt>Exam</dt><dd>${esc(s.examCode)}</dd>`;
+  el("env").innerHTML = `
+    <dt${isChanged("env.gitInstalled")}>git installed</dt><dd${isChanged("env.gitInstalled")}>${yesNo(e.gitInstalled)}</dd>
+    <dt${isChanged("env.isRepo")}>Inside a repo</dt><dd${isChanged("env.isRepo")}>${yesNo(e.isRepo)}</dd>
+    <dt${isChanged("env.hookRejects")}>Pre-commit hook rejects</dt><dd${isChanged("env.hookRejects")}>${yesNo(e.hookRejects)}</dd>
+    <dt${isChanged("env.mergeInProgress")}>Merge in progress</dt><dd${isChanged("env.mergeInProgress")}>${yesNo(e.mergeInProgress)}</dd>`;
+  el("fixes").innerHTML = `
+    <dt${isChanged("fixes.issue2")}>#2 zero-approval fix</dt><dd${isChanged("fixes.issue2")}>${yesNo(f.issue2)}</dd>
+    <dt${isChanged("fixes.issue3")}>#3 Export + Rendering</dt><dd${isChanged("fixes.issue3")}>${yesNo(f.issue3)}</dd>`;
+
+  const STATUS_LABEL = { committed: "Committed", untracked: "Untracked", modified: "Modified, not staged", staged: "Staged" };
+  el("files").innerHTML = state.files.length ? state.files.map(file => {
+    const tags = [];
+    if (file.kind === "export") tags.push('<span class="pill p-plain">Export</span>');
+    if (file.kind === "rendering") tags.push('<span class="pill p-plain">Rendering</span>');
+    if (file.kind === "source") tags.push('<span class="pill p-plain">Your work in progress</span>');
+    if (file.inQuestionBank) tags.push('<span class="pill p-bank">In Question Bank</span>');
+    if (file.kind === "export" && !file.inQuestionBank) tags.push('<span class="pill p-bad">Not in Question Bank</span>');
+    if (file.containsRejected) tags.push('<span class="pill p-bad">Contains Rejected Questions</span>');
+    if (file.insideRepo === false) tags.push('<span class="pill p-bad">Outside repo</span>');
+    return `<tr${isChanged(file.path)}><td><code>${esc(file.path)}</code></td><td><span class="pill p-${file.status}">${STATUS_LABEL[file.status]}</span></td><td>${tags.join("")}</td></tr>`;
+  }).join("") : '<tr><td colspan="3" class="muted">No new or changed files.</td></tr>';
+
+  el("commits").innerHTML = state.commits.map((c, i) => `<tr${i === 0 && state.changed.includes("commits") && state.lastRun && state.lastRun.commit === c ? ' class="changed"' : ""}>
+    <td><code>${esc(c.sha)}</code></td><td>${esc(c.message)}</td><td>${c.files.map(p => `<code>${esc(p)}</code>`).join("<br>")}</td></tr>`).join("");
+}
+
+render();
+</script>
+</body>
+</html>
