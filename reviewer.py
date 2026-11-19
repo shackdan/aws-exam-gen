@@ -41,6 +41,7 @@ from schemas import (
     ValidationCritique,
     ValidationStatus,
 )
+from text_utils import services_tested
 from utils import (
     console,
     extract_json_from_text,
@@ -650,6 +651,13 @@ def _apply_revision_to_question(
     merged["correct_answers"] = [
         a.upper() for a in merged.get("correct_answers", [])
     ]
+
+    # A Revision's AWS Services, like a draft's, list only what it tests
+    merged["aws_services"] = services_tested(
+        merged.get("aws_services") or [],
+        merged.get("options") or [],
+        merged["correct_answers"],
+    )
 
     # Carry forward identity fields – never allow LLM to change these
     merged["question_id"]    = original.question_id
