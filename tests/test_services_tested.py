@@ -103,3 +103,45 @@ def test_the_drafting_prompts_ask_for_the_correct_answers_services_only(
 
     for prompt in client.prompts("draft"):
         assert "not the distractors" in prompt
+
+
+def test_a_plural_service_name_matches_its_singular_in_the_correct_answer(monkeypatch, tmp_path):
+    serial = itertools.count(1)
+
+    def draft(prompt, n):
+        s = next(serial)
+        if is_multiple(prompt):
+            return drafts_fixture_multi(prompt, s)
+        return {
+            "question_text": (f"Scenario {s}: a retailer expects traffic spikes during sales "
+                              f"and wants to cut compute cost. Which solution fits best?"),
+            "options": ["A. Use a Spot Instance fleet behind Auto Scaling",
+                        "B. Use AWS Lambda for every workload",
+                        "C. Use an Amazon CloudFront distribution",
+                        "D. Use a fixed-size group of On-Demand instances"],
+            "correct_answers": ["A"],
+            "explanation": LONG_EXPLANATION,
+            "aws_services": ["Spot Instances", "Auto Scaling", "Lambda", "CloudFront"],
+        }
+
+    install(monkeypatch, tmp_path, ScriptedClient(draft=draft))
+
+    result = run(count=4)
+
+    singles = [q for q in exported_questions(result) if q["question_type"] == "single"]
+    assert len(singles) == 3
+    for q in singles:
+        assert q["aws_services"] == ["Spot Instances", "Auto Scaling"]
+
+
+def drafts_fixture_multi(prompt, s):
+    k = correct_count(prompt)
+    return {
+        "question_text": (f"Scenario {s}: a retailer must keep order logs durable and cheap "
+                          f"for seven years. Which actions meet this? (Select {COUNT_WORDS[k]})"),
+        "options": ["A. Amazon S3 Lifecycle rules", "B. Amazon S3 Glacier Deep Archive",
+                    "C. Amazon S3 Object Lock", "D. AWS CloudHSM", "E. AWS WAF"],
+        "correct_answers": list("ABCDE"[:k]),
+        "explanation": LONG_EXPLANATION,
+        "aws_services": ["Amazon S3", "S3 Glacier"],
+    }

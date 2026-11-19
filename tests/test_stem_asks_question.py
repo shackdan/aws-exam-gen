@@ -94,3 +94,60 @@ def test_drafting_and_revision_prompts_say_to_end_with_the_question(monkeypatch,
     assert any(is_multiple(p) for p in drafts) and any(not is_multiple(p) for p in drafts)
     for prompt in drafts + client.prompts("revision"):
         assert "must end with the question being asked" in prompt
+
+
+def test_multiple_choice_revision_prompt_never_mentions_a_select_phrase(monkeypatch, tmp_path):
+    client = ScriptedClient(draft=draft_without_question_mark, revision=revision_adds_question)
+    install(monkeypatch, tmp_path, client)
+
+    run(count=4)
+
+    revisions = client.prompts("revision")
+    assert revisions
+    for prompt in revisions:
+        assert "(Select" not in prompt
+
+
+def test_multiple_response_revision_prompt_names_the_real_select_phrase(monkeypatch, tmp_path):
+    critiques = iter([4.0])  # the Multiple-response Question's first Critique fails
+
+    def critique(prompt, n):
+        score = next(critiques, 9.0) if "(Select" in prompt else 9.0
+        flags = [] if score >= 7 else [{"field": "explanation", "severity": "major",
+                                        "description": "Thin.", "suggestion": "Expand."}]
+        return {"passed": score >= 7, "overall_score": score, "flags": flags,
+                "reviewer_comments": "fake critique"}
+
+    client = ScriptedClient(draft=draft_without_question_mark, revision=revision_adds_question,
+                            critique=critique)
+    install(monkeypatch, tmp_path, client)
+
+    run(count=4)
+
+    multi_revisions = [p for p in client.prompts("revision") if is_multiple(p)]
+    assert len(multi_revisions) == 1
+    k = correct_count(multi_revisions[0])
+    assert f'"(Select {COUNT_WORDS[k]})"' in multi_revisions[0]
+    assert "(Select N)" not in multi_revisions[0]
+
+
+def test_multiple_choice_stem_with_a_select_phrase_is_revised(monkeypatch, tmp_path):
+    def draft(prompt, n):
+        q = revision_adds_question(prompt, n)
+        if not is_multiple(prompt):
+            q["question_text"] += " (Select N)"
+            return q
+        return draft_without_question_mark(prompt, n)
+
+    client = ScriptedClient(draft=draft, revision=revision_adds_question)
+    install(monkeypatch, tmp_path, client)
+
+    result = run(count=4)
+
+    revisions = client.prompts("revision")
+    assert len(revisions) == 3
+    for prompt in revisions:
+        assert "Severity : CRITICAL" in prompt
+    assert result.approved == 4
+    singles = [q for q in exported_questions(result) if q["question_type"] == "single"]
+    assert all("(Select" not in q["question_text"] for q in singles)

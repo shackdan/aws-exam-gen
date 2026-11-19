@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import time
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
@@ -190,8 +191,7 @@ Flags to fix:
 {flags_formatted}
 ──────────────────────────────────────────────────────────────────────────────
 
-The question stem must end with the question being asked: a sentence \
-ending in "?", followed by "(Select N)" for a multiple-selection question.
+{stem_rule}
 
 Return ONLY a valid JSON object for the corrected question matching this \
 schema exactly:
@@ -409,6 +409,25 @@ def _check_stem_asks_question(question_text: str) -> List[CritiqueFlag]:
     return flags
 
 
+def _check_no_select_phrase(question_text: str) -> List[CritiqueFlag]:
+    """
+    A Multiple-choice Question has exactly one Correct Answer, so its
+    stem must not tell the candidate to '(Select N)' answers.
+    """
+    flags: List[CritiqueFlag] = []
+    if re.search(r"\(\s*select\b", question_text, re.IGNORECASE):
+        flags.append(CritiqueFlag(
+            field="FORMAT_COMPLIANCE",
+            severity="critical",
+            description=(
+                "A single-answer question's text contains a '(Select …)' "
+                "phrase, which only multiple-selection questions use."
+            ),
+            suggestion="Remove the '(Select …)' phrase from the question stem.",
+        ))
+    return flags
+
+
 def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
     """
     Execute all local (non-LLM) structural checks on a question.
@@ -439,6 +458,7 @@ def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
         )
     else:
         flags.extend(_check_stem_asks_question(question.question_text))
+        flags.extend(_check_no_select_phrase(question.question_text))
 
     return flags
 
@@ -494,7 +514,22 @@ def build_revision_prompt(
     Assemble the revision instruction prompt that is fed back to the
     generator when a question fails review.
     """
+    if question.question_type == QuestionType.MULTIPLE_SELECTION:
+        count_words = {2: "TWO", 3: "THREE", 4: "FOUR"}
+        n = len(question.correct_answers)
+        stem_rule = (
+            "The question stem must end with the question being asked, "
+            f'followed by "(Select {count_words.get(n, n)})".'
+        )
+    else:
+        stem_rule = (
+            "The question stem must end with the question being asked, as a "
+            'sentence ending in "?". It has one correct answer, so it must '
+            'not contain a "Select" phrase.'
+        )
+
     return REVISION_INSTRUCTION_TEMPLATE.format(
+        stem_rule         = stem_rule,
         cert_code         = question.cert_code,
         domain            = question.domain,
         question_type     = question.question_type.value,
