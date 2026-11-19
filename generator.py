@@ -116,6 +116,8 @@ Requirements:
   - Exactly 4 answer options labelled A, B, C, D.
   - Exactly 1 correct answer.
   - The question stem must describe a realistic customer scenario (≥ 2 sentences).
+  - The question stem must end with the question being asked, as a sentence \
+ending in "?" (e.g. "Which solution meets these requirements?").
   - Distractors must be plausible AWS services or configurations that a \
 partially-prepared candidate might choose.
   - The explanation must state WHY the correct answer is best AND why each \
@@ -156,8 +158,8 @@ Correct answers: {num_correct} (the question stem MUST say "Select {count_word}"
 Requirements:
   - Exactly 5 answer options labelled A, B, C, D, E.
   - Exactly {num_correct} correct answers.
-  - The question stem MUST end with "(Select {count_word})" or \
-"(Select {count_word} answers)".
+  - The question stem must end with the question being asked, followed by \
+"(Select {count_word})" or "(Select {count_word} answers)".
   - The scenario must involve a genuine trade-off or multi-step solution where \
 selecting fewer or more than {num_correct} answers would be incorrect.
   - All distractors must be real AWS services or configurations that are \

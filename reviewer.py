@@ -189,6 +189,9 @@ Flags to fix:
 {flags_formatted}
 ──────────────────────────────────────────────────────────────────────────────
 
+The question stem must end with the question being asked: a sentence \
+ending in "?", followed by "(Select N)" for a multiple-selection question.
+
 Return ONLY a valid JSON object for the corrected question matching this \
 schema exactly:
 {{
@@ -382,6 +385,29 @@ def _check_domain_matches_content_outline(
     return flags
 
 
+def _check_stem_asks_question(question_text: str) -> List[CritiqueFlag]:
+    """
+    A Multiple-choice Question's text must actually ask something: a
+    sentence ending in '?'. A Multiple-response Question's required
+    '(Select N)' phrase counts as its ask, so it is not checked here.
+    """
+    flags: List[CritiqueFlag] = []
+    if "?" not in question_text:
+        flags.append(CritiqueFlag(
+            field="FORMAT_COMPLIANCE",
+            severity="critical",
+            description=(
+                "The question text sets up a scenario but never asks a "
+                "question: it contains no sentence ending in '?'."
+            ),
+            suggestion=(
+                "End the stem with the question being asked, e.g. "
+                "'Which solution meets these requirements?'."
+            ),
+        ))
+    return flags
+
+
 def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
     """
     Execute all local (non-LLM) structural checks on a question.
@@ -410,6 +436,8 @@ def run_structural_checks(question: ExamQuestion) -> List[CritiqueFlag]:
                 question.question_text, question.correct_answers
             )
         )
+    else:
+        flags.extend(_check_stem_asks_question(question.question_text))
 
     return flags
 
