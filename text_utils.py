@@ -358,8 +358,8 @@ def services_tested(
     The Generator tends to list every service in the Question, Distractors
     included, which inflates the per-domain service counts used to steer
     later drafts. A service matches an Option when its name (with any
-    leading "Amazon"/"AWS" dropped) appears in that Option's text,
-    ignoring case. If no listed service matches, the list is kept as it
+    leading "Amazon"/"AWS" dropped, and singular or plural) appears in
+    that Option's text, ignoring case. If no listed service matches, the list is kept as it
     was rather than leaving the Question with no AWS Services.
     """
     correct = {a.strip().upper() for a in correct_answers}
@@ -369,10 +369,13 @@ def services_tested(
         if opt.split(".", 1)[0].strip().upper() in correct
     ).lower()
 
-    kept = [
-        svc for svc in aws_services
-        if _SERVICE_PREFIX.sub("", svc.strip()).lower() in correct_text
-    ]
+    def named(svc: str) -> bool:
+        name = _SERVICE_PREFIX.sub("", svc.strip()).lower()
+        # Allow for plurals either way ("Spot Instances" vs "a Spot Instance").
+        stem = re.sub(r"(es|s)$", "", name) if len(name) > 3 else name
+        return bool(name) and (name in correct_text or stem in correct_text)
+
+    kept = [svc for svc in aws_services if named(svc)]
     return kept or list(aws_services)
 
 
