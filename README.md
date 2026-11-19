@@ -6,8 +6,8 @@ A local, offline pipeline for generating AWS certification practice exams. It do
 
 - Python 3.10+
 - An LLM backend — either:
-  - MLX-LM on an Apple Silicon Mac (default) — see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon), **or**
-  - [Ollama](https://ollama.com/) installed and running locally — set `LLM_BACKEND=ollama`
+  - [Ollama](https://ollama.com/) installed and running locally (default), **or**
+  - MLX-LM on an Apple Silicon Mac — set `LLM_BACKEND=mlx` and see [Using MLX-LM on a MacBook](#using-mlx-lm-on-a-macbook-apple-silicon)
 - If using Ollama, an Ollama model pulled that matches `OLLAMA_MODEL` in [config.py](config.py) (defaults to `qwen2.5:7b-instruct`)
 
 ```powershell
@@ -100,14 +100,14 @@ Then run `ingest` / `generate` as usual — `python main.py generate --cert SAA-
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `LLM_BACKEND` | `mlx` | Set to `ollama` to use Ollama instead of MLX-LM |
+| `LLM_BACKEND` | `ollama` | Set to `mlx` to use MLX-LM instead of Ollama |
 | `MLX_MODEL` | `mlx-community/Qwen2.5-7B-Instruct-4bit` | Model to request from `mlx_lm.server` |
 | `MLX_BASE_URL` | `http://localhost:8080/v1` | `mlx_lm.server`'s OpenAI-compatible base URL |
 | `MLX_NUM_CTX` | `8192` | Context window used for prompt-side truncation (raise for a model with a larger trained context) |
 | `MLX_REVIEWER_MODEL` | *(unset: same as `MLX_MODEL`)* | Separate model for the AI Reviewer |
 | `MLX_REVIEWER_BASE_URL` | *(unset: same as `MLX_BASE_URL`)* | A second `mlx_lm.server` for the reviewer model |
 
-To switch to Ollama, set `LLM_BACKEND=ollama` and make sure `ollama serve` is running.
+To switch back to Ollama (the default), unset `LLM_BACKEND` or set it to `ollama`, and make sure `ollama serve` is running.
 
 ### Model size vs. approval rate
 
