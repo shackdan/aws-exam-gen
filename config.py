@@ -36,10 +36,10 @@ for _d in (DATA_DIR, CHROMA_DIR, OUTPUT_DIR):
 # ─────────────────────────────────────────────
 # LLM backend selection
 # ─────────────────────────────────────────────
-# "mlx"    (default) talks to an `mlx_lm.server` instance (Apple Silicon,
+# "ollama" (default) talks to a local Ollama server.
+# "mlx"    talks to an `mlx_lm.server` instance (Apple Silicon,
 #          Metal-accelerated) via its OpenAI-compatible API — see llm_backend.py.
-# "ollama" talks to a local Ollama server.
-LLM_BACKEND: str = os.getenv("LLM_BACKEND", "mlx").strip().lower()
+LLM_BACKEND: str = os.getenv("LLM_BACKEND", "ollama").strip().lower()
 
 # When true, `generate` commits each new Export to git (see export_vcs.py).
 # The --commit / --no-commit flag overrides it per run.
