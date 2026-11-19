@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "cert_code": "SAA-C03",
+    "generated_at": "2026-11-18T23:19:27.668746+00:00",
+    "total_questions": 2,
+    "approved": 2,
+    "rejected": 0,
+    "domain_stats": {
+      "Design Secure Architectures": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 30.0,
+        "actual_pct": 50.0,
+        "delta_pct": 20.0
+      },
+      "Design Resilient Architectures": {
+        "approved": 0,
+        "rejected": 1,
+        "target_pct": 26.0,
+        "actual_pct": 0.0,
+        "delta_pct": -26.0
+      },
+      "Design High-Performing Architectures": {
+        "approved": 1,
+        "rejected": 0,
+        "target_pct": 24.0,
+        "actual_pct": 50.0,
+        "delta_pct": 26.0
+      },
+      "Design Cost-Optimized Architectures": {
+        "approved": 0,
+        "rejected": 0,
+        "target_pct": 20.0,
+        "actual_pct": 0.0,
+        "delta_pct": -20.0
+      }
+    },
+    "generator_model": "llama3.1:8b",
+    "reviewer_model": "llama3.1:8b"
+  },
+  "questions": [
+    {
+      "question_id": "26229756-a5cf-4bb5-81f6-6887c547e2b5",
+      "cert_code": "SAA-C03",
+      "domain": "Design Secure Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare company is migrating its patient data to AWS. They need to ensure that sensitive patient data is encrypted both in transit and at rest. However, they are concerned about the added cost and complexity of implementing a separate encryption solution.",
+      "options": [
+        "A. Use AWS Key Management Service (KMS) to encrypt sensitive patient data at rest and use AWS Certificate Manager (ACM) to manage SSL/TLS certificates for encrypting data in transit.",
+        "B. Use AWS IAM to create a custom policy that grants access to sensitive patient data, and use AWS CloudWatch to monitor and alert on potential security threats.",
+        "C. Use AWS S3 default server-side encryption to encrypt data at rest and use AWS Route 53 to manage DNS records for the company's website.",
+        "D. Use AWS CloudHSM to manage encryption keys for sensitive patient data and use AWS WAF to protect against common web exploits."
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A. Using AWS Key Management Service (KMS) to encrypt sensitive patient data at rest and using AWS Certificate Manager (ACM) to manage SSL/TLS certificates for encrypting data in transit provides the necessary encryption for both data at rest and in transit. AWS KMS allows the healthcare company to manage encryption keys securely, while AWS ACM provides a managed service for SSL/TLS certificates. This approach is more secure and cost-effective than implementing a separate encryption solution. Option B is incorrect because IAM policies are not sufficient to encrypt data, and CloudWatch is not a security solution. Option C is incorrect because S3 default server-side encryption is not sufficient to encrypt data at rest, and Route 53 is not a security solution. Option D is incorrect because CloudHSM is a more expensive and complex solution than AWS KMS, and WAF is not a solution for encrypting data.",
+      "source_context": "[Source 1: Well-Architected-Security-Pillar.pdf, p.232, URL: https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf]\nSecurity Pillar AWS Well-Architected Framework\nConclusion\nSecurity is an ongoing effort. When incidents occur, they should be treated as opportunities to\nimprove the security of the architecture. Having strong identity controls, automating responses\nto security events, protecting infrastructure at multiple levels, and managing well-c",
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf",
+      "difficulty": "Associate",
+      "aws_services": [
+        "AWS Key Management Service (KMS)",
+        "AWS Certificate Manager (ACM)",
+        "AWS IAM",
+        "AWS CloudWatch",
+        "AWS S3",
+        "AWS Route 53",
+        "AWS CloudHSM",
+        "AWS WAF"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-11-18T23:17:28.348827Z"
+    },
+    {
+      "question_id": "086c9a1f-c757-479d-9a64-55753c143ac8",
+      "cert_code": "SAA-C03",
+      "domain": "Design High-Performing Architectures",
+      "question_type": "single",
+      "question_text": "A healthcare organization is implementing a disaster recovery strategy for their mission-critical EHR database on AWS. The database has a high availability requirement of 99.99% and a recovery time objective (RTO) of 4 hours. The organization wants to minimize costs while ensuring data consistency and integrity.",
+      "options": [
+        "A. Use Amazon RDS for PostgreSQL with Multi-AZ deployment and enable automated backups to Amazon S3",
+        "B. Use Amazon Aurora with PostgreSQL-compatible edition, deploy in a single Availability Zone, and enable point-in-time recovery",
+        "C. Use Amazon DynamoDB with On-Demand capacity and enable Continuous Backup to Amazon S3",
+        "D. Use Amazon DocumentDB (with MongoDB compatibility) with Multi-AZ deployment and enable automated backups to Amazon S3"
+      ],
+      "correct_answers": [
+        "A"
+      ],
+      "explanation": "The correct answer is A because Amazon RDS for PostgreSQL with Multi-AZ deployment provides high availability (HA) with a 99.99% uptime, which meets the organization's HA requirement. Additionally, enabling automated backups to Amazon S3 ensures data consistency and integrity. Option B is incorrect because deploying Amazon Aurora in a single Availability Zone does not meet the HA requirement. Option C is incorrect because Amazon DynamoDB does not provide HA with On-Demand capacity, and Continuous Backup to Amazon S3 does not ensure data consistency and integrity. Option D is incorrect because Amazon DocumentDB (with MongoDB compatibility) does not provide HA with Multi-AZ deployment, and automated backups to Amazon S3 do not ensure data consistency and integrity.",
+      "source_context": "[Source 1: Architecting-HIPAA-Security-Compliance.pdf, p.1]\nAWS Whitepaper\nArchitecting for HIPAA Security and\nCompliance on Amazon Web Services\nCopyright Web Services, Inc. and/or its affiliates. All rights reserved.\n\n[Source 2: Architecting-HIPAA-Security-Compliance.pdf, p.2]\nArchitecting for HIPAA Security and Compliance on Amazon Web Services AWS Whitepaper\nArchitecting for HIPAA Security and Compliance on Amazon Web\nServices: AWS Whitepaper\nCopyright Web Services, Inc. and/or its affiliates",
+      "source_url": null,
+      "difficulty": "Associate",
+      "aws_services": [
+        "Amazon RDS",
+        "Amazon S3",
+        "Amazon Aurora",
+        "Amazon DynamoDB",
+        "Amazon DocumentDB"
+      ],
+      "validation_status": "Approved",
+      "revision_count": 0,
+      "created_at": "2026-11-18T23:19:16.835186Z"
+    }
+  ]
+}
