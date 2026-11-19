@@ -357,6 +357,15 @@ Run any command with `--help` for the full list of options.
 
 Run the tests with `pip install -r requirements-dev.txt` then `python -m pytest`. They cover only a few modules so far, so also verify changes manually by running the affected command(s) end-to-end (see above) with `--log-level DEBUG` and confirming the console output/exported file look correct. Match the existing style: type hints, `from __future__ import annotations`, Pydantic models for data passed between modules, and `rich` for console output.
 
+### Upgrading dependencies
+
+`requirements.txt` and `requirements-dev.txt` pin exact versions that a real Generation Run has been verified with, so a fresh install reproduces a known-good setup. To upgrade on purpose:
+
+1. Bump the pins you want to change (or `pip install -U <package>` and copy the version from `pip freeze`).
+2. Install them into a fresh venv: `pip install -r requirements.txt -r requirements-dev.txt`.
+3. Run `python -m pytest`, then a small real run: `python main.py generate --cert SAA-C03 --count 2`.
+4. If both pass, commit the new pins and say in the commit which model and command you verified them with.
+
 Keep pull requests focused on one change (e.g. one new certification, one bug fix) and describe what you tested it with (which cert, model, and command).
 
 ## License
