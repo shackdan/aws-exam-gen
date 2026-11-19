@@ -56,6 +56,7 @@ from schemas import (
     ValidationCritique,
     ValidationStatus,
 )
+from text_utils import services_tested
 from utils import (
     extract_json_from_text,
     get_cert_metadata,
@@ -123,6 +124,8 @@ partially-prepared candidate might choose.
   - The explanation must state WHY the correct answer is best AND why each \
 distractor is inferior, citing specific AWS service behaviour or limits.
   - Use uppercase letters only for correct_answers.
+  - aws_services lists only the AWS services the correct answer(s) rely on, \
+not the distractors.
   - Do NOT include prose, markdown fences, code blocks, or commentary outside the JSON.
 
 Return ONLY a JSON object with this exact schema:
@@ -166,6 +169,8 @@ selecting fewer or more than {num_correct} answers would be incorrect.
 related to the domain but suboptimal or inapplicable to this scenario.
   - The explanation must cover every option individually.
   - Use uppercase letters only for correct_answers.
+  - aws_services lists only the AWS services the correct answer(s) rely on, \
+not the distractors.
   - Do NOT include prose, markdown fences, code blocks, or commentary outside the JSON.
 
 Return ONLY a JSON object with this exact schema:
@@ -677,6 +682,12 @@ def _parse_question_response(
         # ── Default aws_services if absent ────────
         if "aws_services" not in data or not data["aws_services"]:
             data["aws_services"] = []
+
+        # ── Keep only the services the Question tests ──
+        # (named in a Correct Answer, not just in a Distractor)
+        data["aws_services"] = services_tested(
+            data["aws_services"], data["options"], data["correct_answers"]
+        )
 
         # ── Build Pydantic model ──────────────────
         question = ExamQuestion(**data)

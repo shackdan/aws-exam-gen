@@ -338,3 +338,39 @@ def has_shouting_caps(text: str) -> bool:
     if not text or not isinstance(text, str):
         return False
     return fix_shouting_caps(text) != text
+
+
+# ─────────────────────────────────────────────
+# AWS Services a Question tests
+# ─────────────────────────────────────────────
+
+_SERVICE_PREFIX = re.compile(r"^(amazon|aws)\s+", re.IGNORECASE)
+
+
+def services_tested(
+    aws_services: List[str],
+    options: List[str],
+    correct_answers: List[str],
+) -> List[str]:
+    """
+    Keep only the listed AWS Services named in a Correct Answer Option.
+
+    The Generator tends to list every service in the Question, Distractors
+    included, which inflates the per-domain service counts used to steer
+    later drafts. A service matches an Option when its name (with any
+    leading "Amazon"/"AWS" dropped) appears in that Option's text,
+    ignoring case. If no listed service matches, the list is kept as it
+    was rather than leaving the Question with no AWS Services.
+    """
+    correct = {a.strip().upper() for a in correct_answers}
+    correct_text = " ".join(
+        opt.split(".", 1)[1] if "." in opt else opt
+        for opt in options
+        if opt.split(".", 1)[0].strip().upper() in correct
+    ).lower()
+
+    kept = [
+        svc for svc in aws_services
+        if _SERVICE_PREFIX.sub("", svc.strip()).lower() in correct_text
+    ]
+    return kept or list(aws_services)
