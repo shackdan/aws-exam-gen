@@ -56,7 +56,7 @@ from schemas import (
     ValidationCritique,
     ValidationStatus,
 )
-from text_utils import services_tested
+from text_utils import detect_industry, services_tested
 from utils import (
     extract_json_from_text,
     get_cert_metadata,
@@ -520,6 +520,7 @@ def build_generation_prompt(
     num_correct: int = 2,
     count_word: str = "TWO",
     avoid_services: Optional[List[str]] = None,
+    avoid_industries: Optional[List[str]] = None,
 ) -> str:
     """
     Assemble the user-turn prompt for the LLM generation call.
@@ -541,6 +542,10 @@ def build_generation_prompt(
         a hard rule — the retrieved context is still the source of
         truth, but this discourages defaulting to whichever service
         the retrieved chunks keep repeating.
+    avoid_industries
+        Scenario industries already used in this Generation Run (see
+        generate_batch), so the Generator sets the next Question in a
+        different one instead of opening every scenario the same way.
     """
     # Truncate context to avoid exceeding num_ctx
     reserved_tokens   = 750 + LLM_CONFIG.max_tokens
@@ -554,6 +559,11 @@ def build_generation_prompt(
         avoid_note = (
             "Already emphasized in this domain — do not center the question "
             f"on these unless clearly the best fit: {', '.join(avoid_services)}\n"
+        )
+    if avoid_industries:
+        avoid_note += (
+            "Scenario industries already used in this run — set the scenario "
+            f"in a different industry from: {', '.join(avoid_industries)}\n"
         )
 
     if question_type == QuestionType.SINGLE_ANSWER:
@@ -831,6 +841,7 @@ def generate_single_question(
     exclude_chunk_ids: Optional[Set[str]] = None,
     avoid_services:    Optional[List[str]] = None,
     seen_hashes:       Optional[Set[str]] = None,
+    avoid_industries:  Optional[List[str]] = None,
 ) -> Optional[ExamQuestion]:
     """
     Generate a single ExamQuestion via RAG + LLM prompt.
@@ -845,6 +856,9 @@ def generate_single_question(
         AWS services already over-represented in this domain so far
         (see generate_batch) — passed through to build_generation_prompt
         as a soft steer against the LLM defaulting to the same service.
+    avoid_industries
+        Scenario industries already used in this Generation Run — passed
+        through to build_generation_prompt.
     seen_hashes
         Normalized question_text hashes to reject as duplicates —
         prior-run exports plus everything accepted so far this run
@@ -889,6 +903,7 @@ def generate_single_question(
                     num_correct    = num_correct,
                     count_word     = count_word,
                     avoid_services = avoid_services,
+                    avoid_industries = avoid_industries,
                 )
             except Exception as prompt_err:
                 log.error(f"Prompt build failed for domain '{domain}': {prompt_err}")
@@ -1092,6 +1107,7 @@ def generate_batch(
     multi_count_start:  int           = 0,
     domain_count_start: Optional[Dict[str, int]] = None,
     seen_hashes:        Optional[Set[str]] = None,
+    used_industries:    Optional[List[str]] = None,
 ) -> List[ExamQuestion]:
     """
     Generate a batch of ExamQuestion objects according to the request.
@@ -1136,6 +1152,11 @@ def generate_batch(
         rounds. Pass the same set object into successive calls (as
         run_generation_pipeline's top-up loop does) to keep it growing
         across rounds; omit it to disable duplicate checking entirely.
+    used_industries
+        Scenario industries (see text_utils.detect_industry) already used
+        in this Generation Run, in first-seen order. Mutated in place like
+        seen_hashes, so pass the same list into every round of one run;
+        each later draft is asked to use a different industry.
 
     Returns
     ───────
@@ -1171,6 +1192,8 @@ def generate_batch(
     # across every call rather than resetting each time.
     if seen_hashes is None:
         seen_hashes = set()
+    if used_industries is None:
+        used_industries = []
 
     log.info(
         f"Starting batch generation: {slots_to_fill} questions for {cert_code} "
@@ -1246,6 +1269,7 @@ def generate_batch(
                 exclude_chunk_ids = domain_used_chunks.get(domain),
                 avoid_services    = avoid_services,
                 seen_hashes       = seen_hashes,
+                avoid_industries  = list(used_industries) or None,
             )
 
             # ── Handle generation failure ──────────
@@ -1270,6 +1294,9 @@ def generate_batch(
             domain_service_counts.setdefault(question.domain, Counter()).update(
                 question.aws_services
             )
+            industry = detect_industry(question.question_text)
+            if industry and industry not in used_industries:
+                used_industries.append(industry)
 
             questions.append(question)
 
@@ -1421,6 +1448,9 @@ def run_generation_pipeline(
     # rejected against prior runs AND everything generated so far in
     # this run.
     from config import OUTPUT_DIR
+    # Scenario industries used so far in this Generation Run (issue #13);
+    # shared by every round so Backfill keeps steering away from them.
+    run_industries: List[str] = []
     seen_question_hashes = load_prior_question_hashes(
         cert_code  = request.cert_code,
         output_dir = OUTPUT_DIR,
@@ -1437,6 +1467,7 @@ def run_generation_pipeline(
         embedding_model = embedding_model,
         cert_metadata   = cert_metadata,
         seen_hashes     = seen_question_hashes,
+        used_industries = run_industries,
     )
 
     if not raw_questions:
@@ -1535,6 +1566,7 @@ def run_generation_pipeline(
             multi_count_start  = multi_count,
             domain_count_start = domain_counts,
             seen_hashes        = seen_question_hashes,
+            used_industries    = run_industries,
         )
 
         if not topup_raw:

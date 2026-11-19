@@ -14,7 +14,7 @@ intentional emphasis like "Select TWO") is left untouched.
 from __future__ import annotations
 
 import re
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 # ─────────────────────────────────────────────
 # Known casing exceptions
@@ -374,3 +374,52 @@ def services_tested(
         if _SERVICE_PREFIX.sub("", svc.strip()).lower() in correct_text
     ]
     return kept or list(aws_services)
+
+
+# ─────────────────────────────────────────────
+# Scenario industry of a Question
+# ─────────────────────────────────────────────
+
+# Common exam-scenario industries and the keywords that signal them, in
+# priority order (the first industry with a matching keyword wins).
+INDUSTRY_KEYWORDS: Dict[str, List[str]] = {
+    "healthcare":         ["healthcare", "health care", "hospital", "clinic", "patient",
+                           "medical", "pharmaceutical", "telehealth"],
+    "financial services": ["financial", "bank", "banking", "fintech", "insurance",
+                           "trading", "brokerage"],
+    "retail":             ["retail", "retailer", "e-commerce", "ecommerce", "online store",
+                           "shopping"],
+    "media":              ["media", "video streaming", "broadcast", "video-on-demand", "publishing",
+                           "news"],
+    "gaming":             ["gaming", "game studio", "game developer", "esports"],
+    "manufacturing":      ["manufacturing", "manufacturer", "factory"],
+    "education":          ["education", "university", "school", "e-learning", "edtech",
+                           "students"],
+    "government":         ["government", "public sector", "government agency", "municipal"],
+    "logistics":          ["logistics", "shipping company", "freight", "supply chain"],
+    "travel":             ["travel", "airline", "hotel", "hospitality"],
+    "automotive":         ["automotive", "vehicle", "car maker"],
+    "energy":             ["energy", "utility company", "oil and gas", "power grid"],
+    "telecommunications": ["telecommunications", "telecom", "mobile carrier"],
+    "SaaS":               ["saas", "software-as-a-service", "software as a service"],
+}
+
+_INDUSTRY_PATTERNS = {
+    industry: re.compile(
+        r"\b(" + "|".join(re.escape(k) for k in keywords) + r")s?\b", re.IGNORECASE
+    )
+    for industry, keywords in INDUSTRY_KEYWORDS.items()
+}
+
+
+def detect_industry(question_text: str) -> Optional[str]:
+    """
+    Return the scenario industry a Question's text is set in, or None.
+
+    Uses a fixed keyword list rather than asking the model; a Question
+    with no keyword match has no industry.
+    """
+    for industry, pattern in _INDUSTRY_PATTERNS.items():
+        if pattern.search(question_text):
+            return industry
+    return None
